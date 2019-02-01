@@ -1,0 +1,94 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">RCS Dashboard</ui:define>
+
+    <ui:define name="viewname">RCS Dashboard</ui:define>
+
+    <ui:define name="head">
+        <style type="text/css">
+            .main-content {
+                padding: 0;
+            }
+            .landing-wrapper{
+                padding: 0 7px;
+            }
+            .landing-wrapper #header .header-top {
+                min-height: 60px;
+                background-color: #ffffff;
+                padding: 0;
+            }
+            .head-menu{
+                margin: 0;
+            }
+            .landing-wrapper #header .head-menu li {
+                display: inline-block;
+            }
+            .landing-wrapper #header .head-menu li a {
+                font-size: 20px;
+                display: inline-block;
+                padding: 19px;
+                color: #5b616b;
+                border-bottom: 4px solid transparent;
+            }
+        </style>
+    </ui:define>
+
+    <ui:define name="content">
+        <div class="landing-wrapper">
+            <div id="header">
+                <div class="header-top clearfix">
+                    <ul class="head-menu">
+                        <li><a href="#"><span>Home</span></a></li>
+                        <li><a href="#"><span>Search</span></a></li>
+                        <li><a href="contractAdd.xhtml"><span>New Contract</span></a></li>
+                        <li><a href="#"><span>New Changes</span></a></li>
+                        <li><a href="#"><span>Messages</span></a></li>
+                        <li><a href="#"><span>Help</span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <h:form id="form">
+            <div class="dashboard">
+
+
+                <div class="ui-g">
+                    <div class="ui-g-12 ui-md-12 ui-lg-12">
+                        <div class="card card-w-title">
+                            <p:messages id="messages" showDetail="true" />
+                            <div style="display: inline-block;">
+                                <p:graphicImage name="images/avatar.png" library="california-layout" style="width: 150px;float: left;"/>
+                                <h1 style="float: left;margin: 35px 45px;">Welcome Mark</h1>
+                            </div>
+                            <h1>Reporting Units</h1>
+
+                            <p:dataTable  reflow="true" paginator="true" rows="10">
+                                <f:facet name="header">
+                                    Contracts
+                                </f:facet>
+                                <p:column headerText="Task" >
+                                    <h:outputText value="Confirm Booking" />
+                                </p:column>
+
+                                <p:column headerText="Contract" >
+                                    <h:outputText value="60543" />
+                                </p:column>
+
+                                <p:column headerText="Due" >
+                                    <h:outputText value="17-Dec-2018" />
+                                </p:column>
+
+                                <p:column headerText="Complete">
+                                    <h:outputText value="" />
+                                </p:column>
+
+                            </p:dataTable>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

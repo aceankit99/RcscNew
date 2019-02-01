@@ -1,0 +1,46 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">RU Workflow Status</ui:define>
+
+    <ui:define name="viewname">RU Workflow Status</ui:define>
+
+
+    <ui:define name="content">
+        <h:form id="form">
+            <div class="dashboard">
+                <div class="ui-g">
+                    <div class="ui-g-12">
+                        <div class="card card-w-title">
+                            <p:messages id="messages" showDetail="true" />
+                            <h1>#{webSession.currentPeriod.id} Reporting Unit Workflow Status</h1>
+                            <p:dataTable id="ruTable" style="margin-top: 10px;" value="#{ruWorkflowStatus.listAllRUs}" var="ru" paginator="true" rows="30"
+                                         tableStyle="table-layout:auto" rowIndexVar="rowIndex"  paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}">
+                                <f:facet name="header">
+                                    Reporting Units
+                                </f:facet>
+                                <f:facet name="{Exporters}">
+                                    <h:commandLink   title="Export Data to Excel">
+                                        <p:graphicImage value="images/excel.png" width="28" style="margin-left: 15px"/>
+                                        <p:dataExporter type="xlsx" target="ruTable" fileName="RU_WorkFlow_Status_#{webSession.currentPeriod.id}" />
+                                    </h:commandLink>
+                                </f:facet>
+                                <p:column headerText="Reporting Unit" sortBy="#{ru.name} " filterBy="#{ru.name}">
+                                    <h:outputText value="#{ru.name}" style="white-space: nowrap;"/>
+                                </p:column>
+                                <p:column headerText="Code" filterBy="#{ru.code}">
+                                    <h:outputText value="#{ru.code}" style="white-space: nowrap;"/>
+                                </p:column>
+                                <p:column headerText="Workflow Status" filterBy="#{ruWorkflowStatus.getWorkflowStatus(ru).description}">
+                                    <p:graphicImage value="#{ruWorkflowStatus.getWorkflowStatus(ru).icon}" width="25px" height="15px" style="float: left; margin-top: 2px; margin-right: 2px;"/>
+                                    <h:outputText value="#{ruWorkflowStatus.getWorkflowStatus(ru).description}" />
+                                </p:column>
+                            </p:dataTable>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

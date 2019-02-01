@@ -1,0 +1,73 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+
+
+        </style>
+    </ui:define>
+
+    <ui:define name="title">POCC Information</ui:define>
+
+    <ui:define name="viewname">POCC Information</ui:define>
+
+    <ui:define name="content">
+        <div style="min-height: calc(100vh - 235px);">
+            <h:form>
+                <div class="ui-fluid">
+                    <div class="ui-g">
+                        <div class="ui-g-12">
+                            <div class="card card-w-title">
+
+                                <p:graphicImage url="../images/Flowserve.svg.png" height="80" width="200" stream="false" style="margin-left:50px"/>
+                                <h4 style="float:right;margin-right: 160px">POCC Information</h4>
+                                <br></br>
+
+                                <br></br>
+
+                                <p:panelGrid columns="4" columnClasses="ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank form-group" style="border:0px none; background-color:transparent;margin-left: 50px">
+                                    <p:outputLabel  value="POb Name:"  />
+                                    <p:inputText/>
+                                    <p:outputLabel  value="Actual Costs Incurred:"  />
+                                    <p:inputText/>
+
+                                    <p:outputLabel  value="Estimated Costs at Completion:"  />
+                                    <p:inputText/>
+                                    <p:outputLabel  value="Period:"  />
+                                    <p:selectOneMenu  value="" >
+                                        <f:selectItem itemLabel="8" itemValue="" noSelectionOption="true" />
+                                        <f:selectItems value="" />
+                                    </p:selectOneMenu>
+
+                                    <p:outputLabel  value="Revenue Type:" />
+                                    <p:inputText/>
+                                    <p:outputLabel  value="Delivery Date:" />
+                                    <p:calendar/>
+
+                                    <p:outputLabel  value="System Entry:" />
+                                    <p:selectBooleanCheckbox value=""  />
+                                </p:panelGrid>
+                                <br></br>
+                                <p:panelGrid columns="4"  layout="grid" styleClass="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4" style="border:0px none; background-color:transparent;margin-left: 50px">
+                                    <p:outputLabel  value=""  />
+                                    <p:outputLabel  value=""  />
+                                    <p:outputLabel  value=""  />
+                                    <p:commandButton value="Close" style="width:120px"></p:commandButton>
+                                </p:panelGrid>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+        </div>
+    </ui:define>
+
+</ui:composition>
+
+

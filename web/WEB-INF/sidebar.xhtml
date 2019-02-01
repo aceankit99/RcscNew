@@ -1,0 +1,184 @@
+<ui:composition
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:pc="http://primefaces.org/california">
+
+    <div class="layout-sidebar #{guestPreferences.darkMenu ? 'layout-sidebar-dark' : ''} #{guestPreferences.gradientMenu ? 'layout-sidebar-gradient': ''}">
+        <div id="nano-container" class="nano">
+            <div class="nano-content sidebar-scroll-content">
+                <ui:fragment rendered="#{guestPreferences.profileMode == 'inline'}">
+                    <div class="user-profile">
+                        <a id="sidebar-profile-button" href="#">
+                            <!--<p:graphicImage name="images/avatar.png" library="california-layout" />-->
+                            <span class="sidebar-profile-name">#{webSession.getUsername()}</span>
+                            <span class="sidebar-profile-role">#{webSession.getUserTitle()}</span>
+                        </a>
+                        <ul id="sidebar-usermenu" class="usermenu">
+                            <li>
+                                <a href="userProfile.xhtml">
+                                    <i class="fa fa-fw fa-user"></i>
+                                    <span class="topbar-item-name">Profile</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-fw fa-cog"></i>
+                                    <span class="topbar-item-name">Settings</span>
+                                    <i class="layout-menuitem-toggler fa fa-fw fa-angle-down"></i>
+                                </a>
+                                <ul>
+                                    <li role="menuitem">
+                                        <a href="#">
+                                            <i class="fa fa-fw fa-paint-brush"></i>
+                                            <span>Change</span>
+                                        </a>
+                                    </li>
+                                    <li role="menuitem">
+                                        <a href="#">
+                                            <i class="fa fa-fw fa-star-o"></i>
+                                            <span>Favorites</span>
+                                        </a>
+                                    </li>
+                                    <li role="menuitem">
+                                        <a href="#">
+                                            <i class="fa fa-fw fa-lock"></i>
+                                            <span>Lock Screen</span>
+                                        </a>
+                                    </li>
+                                    <li role="menuitem">
+                                        <a href="#">
+                                            <i class="fa fa-fw fa-picture-o"></i>
+                                            <span>Wallpaper</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-fw fa-envelope-o"></i>
+                                    <span class="topbar-item-name">Messages</span>
+                                    <i class="layout-menuitem-toggler fa fa-fw fa-angle-down"></i>
+                                </a>
+                                <ul>
+                                    <li role="menuitem">
+                                        <a href="#" class="topbar-message">
+                                            <p:graphicImage name="images/avatar1.png" library="california-layout" width="25"/>
+                                            <span>Give me a call</span>
+                                        </a>
+                                    </li>
+                                    <li role="menuitem">
+                                        <a href="#" class="topbar-message">
+                                            <p:graphicImage name="images/avatar2.png" library="california-layout" width="25"/>
+                                            <span>Reports attached</span>
+                                        </a>
+                                    </li>
+                                    <li role="menuitem">
+                                        <a href="#" class="topbar-message">
+                                            <p:graphicImage name="images/avatar3.png" library="california-layout" width="25"/>
+                                            <span>About your invoice</span>
+                                        </a>
+                                    </li>
+                                    <li role="menuitem">
+                                        <a href="#" class="topbar-message">
+                                            <p:graphicImage name="images/avatar2.png" library="california-layout" width="25"/>
+                                            <span>Meeting today</span>
+                                        </a>
+                                    </li>
+                                    <li role="menuitem">
+                                        <a href="#" class="topbar-message">
+                                            <p:graphicImage name="images/avatar4.png" library="california-layout" width="25"/>
+                                            <span>Out of office</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-fw fa-bell-o"></i>
+                                    <span class="topbar-item-name">Notifications</span>
+                                    <i class="layout-menuitem-toggler fa fa-fw fa-angle-down"></i>
+                                </a>
+                                <ul>
+                                    <li role="menuitem">
+                                        <a href="#">
+                                            <i class="fa fa-fw fa-tasks"></i>
+                                            <span>Pending tasks</span>
+                                        </a>
+                                    </li>
+                                    <li role="menuitem">
+                                        <a href="#">
+                                            <i class="fa fa-fw fa-calendar-check-o"></i>
+                                            <span>Meeting today</span>
+                                        </a>
+                                    </li>
+                                    <li role="menuitem">
+                                        <a href="#">
+                                            <i class="fa fa-fw fa-download"></i>
+                                            <span>Download</span>
+                                        </a>
+                                    </li>
+                                    <li role="menuitem">
+                                        <a href="#">
+                                            <i class="fa fa-fw fa-plane"></i>
+                                            <span>Book flight</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </ui:fragment>
+
+                <h:form id="menuform">
+                    <pc:menu widgetVar="me">
+                        <p:submenu label="Navigation" icon="fa fa-fw fa-gg">
+                            <p:menuitem id="pob_input" value="Dashboard" icon="fa fa-fw fa-home" outcome="/dashboard"/>
+                            <p:menuitem value="Inputs" icon="fa fa-fw fa-sign-in" outcome="/inputOnlineEntry"/>
+                            <p:menuitem value="Calculations" icon="fa fa-fw fa-sign-in" outcome="/pobCalculationReview"/>
+                            <p:menuitem value="Reports" icon="fa fa-fw fa-sign-in" outcome="/reportsReview"/>
+                        </p:submenu>
+
+                        <p:submenu label="Administration" icon="fa fa-fw fa-gg" rendered="#{viewSupport.renderAdminMenu()}">
+                            <p:menuitem value="User Mgmt" icon="fa fa-fw fa-sign-in" outcome="/userSearch"/>
+                            <p:menuitem value="Business Units" icon="fa fa-fw fa-sign-in" outcome="/businessUnitList"/>
+                            <p:menuitem value="Business Rules" icon="fa fa-fw fa-sign-in" outcome="/editBusinessRules"/>
+                            <p:menuitem value="Reporting Units" icon="fa fa-fw fa-sign-in" outcome="/reportingUnitSearch"/>
+                            <p:menuitem value="Exchange Rate Search" icon="fa fa-fw fa-sign-in" outcome="/exchangeRateSearch"/>
+                            <p:menuitem value="Metric Type List" icon="fa fa-fw fa-sign-in" outcome="/metricTypeList"/>
+                            <p:menuitem value="Company List" icon="fa fa-fw fa-sign-in" outcome="/companyList"/>
+                            <p:menuitem value="Company Reports" icon="fa fa-fw fa-sign-in" outcome="/companyReports"/>
+                            <p:menuitem value="Financial Periods" icon="fa fa-fw fa-sign-in" outcome="/financialPeriodList"/>
+                            <p:menuitem value="Calendar" icon="fa fa-fw fa-sign-in" outcome="/calendar"/>
+                            <p:menuitem value="Holiday List" icon="fa fa-fw fa-sign-in" outcome="/holidaysList"/>
+                            <p:menuitem value="Account List" icon="fa fa-fw fa-sign-in" outcome="/accountList"/>
+                            <p:menuitem value="Account Mapping List" icon="fa fa-fw fa-sign-in" outcome="/accountMappingList"/>
+                            <p:menuitem value="RU Hierarchy" icon="fa fa-fw fa-sign-in" outcome="/hierarchy"/>
+                            <p:menuitem value="RU Workflow Status" icon="fa fa-fw fa-sign-in" outcome="/ruWorkflowStatus"/>
+                            <p:menuitem value="Upload User Role" icon="fa fa-fw fa-sign-in" outcome="/userRoleUpload"/>
+                            <p:menuitem value="Upload User File" icon="fa fa-fw fa-sign-in" outcome="/userUpload"/>
+                            <p:menuitem value="Metric Value Search" icon="fa fa-fw fa-sign-in" outcome="/metricValueSearch"/>
+                            <p:menuitem value="Metric Control Totals" icon="fa fa-fw fa-sign-in" outcome="/metricControlTotals"/>
+                            <p:submenu label="System Data Init" icon="fa fa-fw fa-gg">
+                                <p:menuitem value="Upload Fx Rate DB" icon="fa fa-fw fa-sign-in" outcome="/inputExchangeRateDatabase"/>
+                                <p:menuitem value="Upload Initial Structural Load DB" icon="fa fa-fw fa-home" outcome="/initialContractUpload"/>
+                                <p:menuitem value="Upload Period Input DB" icon="fa fa-fw fa-home" outcome="/inputPOCIUpload"/>
+                            </p:submenu>
+                            <p:submenu label="System Data Updates" icon="fa fa-fw fa-gg">
+                                <p:menuitem value="Upload Fx Rates DB" icon="fa fa-fw fa-sign-in" outcome="/inputExchangeRateDatabase"/>
+                                <p:menuitem value="Upload Fx Rates Update" icon="fa fa-fw fa-sign-in" outcome="/inputExchangeRateUpdate"/>
+                                <p:menuitem value="Upload Structural Update DB" icon="fa fa-fw fa-home" outcome="/uploadStructuralDataUpdate"/>
+                                <p:menuitem value="Upload Period Input DB" icon="fa fa-fw fa-home" outcome="/inputPOCIUpload"/>
+                                <p:menuitem value="Upload Contract Booking Date DB" icon="fa fa-fw fa-home" outcome="/uploadContractBookingDate"/>
+                            </p:submenu>
+                        </p:submenu>
+                    </pc:menu>
+                </h:form>
+            </div>
+        </div>
+
+    </div>
+
+</ui:composition>

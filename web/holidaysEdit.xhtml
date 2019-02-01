@@ -1,0 +1,61 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+
+        </style>
+    </ui:define>
+
+    <ui:define name="title">#{holidaysEdit.days.getId() == null ? "New" : "Edit" } Holiday</ui:define>
+
+    <ui:define name="viewname">#{holidaysEdit.days.getId() == null ? "New" : "Edit" } Holiday</ui:define>
+
+    <ui:define name="content">
+        <div style="min-height: calc(100vh - 235px);">
+            <h:form>
+                <div class="ui-fluid">
+                    <div class="ui-g">
+                        <div class="ui-g-12">
+                            <div class="card card-w-title">
+                                
+                                <p:panel header="#{holidaysEdit.days.getId() == null ? 'New' : 'Edit' } Holiday">
+                                    <p:messages>
+                                        <p:autoUpdate />
+                                    </p:messages>
+                                <p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank form-group" style="border:0px none; background-color:transparent;">
+                                    <p:outputLabel for="name" value="Name"/>
+                                    <p:inputText id="name" value="#{holidaysEdit.days.name}" required="true" requiredMessage="Please Enter the Holiday Name"/>
+
+                                    <p:outputLabel for="enterDate" value="Select Date" />
+                                    <p:calendar id="enterDate" converter="localDateConverter" style="width: 100%;"  value="#{holidaysEdit.days.holidayDate}" pattern="MM/dd/yyyy" required="true" requiredMessage="Please Select a Date" >
+                                    </p:calendar>
+                                    
+                                    <p:outputLabel for="comh" value="Company"/>
+                                    <p:selectOneMenu id="comh" value="#{holidaysEdit.days.company}" panelStyle="width:180px"
+                                                     effect="fade" var="t" converter="companyConverter"  required="true" requiredMessage="Please Select one Company">
+                                        <f:selectItem itemLabel="Select Company" itemValue=""/>
+                                        <f:selectItems value="#{holidaysEdit.company}" var="com" itemLabel="#{com.name}" itemValue="#{com}" />
+                                        <p:column>
+                                            <h:outputText value="#{t.name}" />
+                                        </p:column>
+                                    </p:selectOneMenu>
+
+                                    <p:outputLabel for="btn" value="" />
+                                    <p:commandButton id="btn"  icon="ui-icon-edit" value="#{holidaysEdit.days.getId() == null ? 'Add' : 'Update' }"  style="max-width:150px;" action="#{holidaysEdit.addUpdateCondition()}"/>
+                                 
+                                </p:panelGrid>
+                               </p:panel>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+        </div>
+    </ui:define>
+
+</ui:composition>

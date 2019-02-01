@@ -1,0 +1,66 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+
+        </style>
+    </ui:define>
+
+    <ui:define name="title">Metric Control Totals</ui:define>
+
+    <ui:define name="viewname">Metric Control Totals</ui:define>
+
+    <ui:define name="content" >
+        <div style="min-height: calc(100vh - 235px);">
+            <div class="ui-g">
+                <div class="ui-g-12">
+                    <div class="card card-w-title">
+                        <p:messages showDetail="true" />
+                        <h1>Metric Control Totals</h1>
+                        <h:form id="metricForm">
+                            <h:panelGrid columns="7" style="margin-bottom:10px" cellpadding="5">
+                                <p:outputLabel for="periodID" value="Financial Period" />
+                                <p:selectOneMenu id="periodID" value="#{metricControlTotals.selectedPeriod}" panelStyle="width:250px"
+                                                 effect="fade" var="t" style="width:225px"
+                                                 converter="periodConverter" filter="true" filterMatchMode="startsWith">
+                                    <f:selectItem itemLabel="Select Financial Period" itemValue="" />
+                                    <f:selectItems value="#{metricControlTotals.financialPeriods}" var="period" itemLabel="#{period.id}" itemValue="#{period}" />
+                                    <p:ajax event="change" update="metricForm:metricControlTable" />
+                                    <p:column>
+                                        <h:outputText value="#{t.id}" />
+                                    </p:column>
+
+                                </p:selectOneMenu>
+                            </h:panelGrid>
+                            <p:dataTable id="metricControlTable" widgetVar="meTable" var="metric" value="#{metricControlTotals.metricControlTotalsList}"   paginator="true" rows="30">
+
+                                <p:column headerText="Code">
+                                    <h:outputText value="#{metric[0]}"/>
+                                </p:column>
+
+                                <p:column headerText="Financial Period">
+                                    <h:outputText value="#{metricControlTotals.selectedPeriod.id}"/>
+                                </p:column>
+
+                                <p:column headerText="Total LC Value">
+                                    <h:outputText value="#{metric[1]}">
+                                        <f:convertNumber type="currency" currencySymbol=""/>
+                                    </h:outputText>
+                                </p:column>
+
+                            </p:dataTable>
+
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ui:define>
+
+</ui:composition>
+

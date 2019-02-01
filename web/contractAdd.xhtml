@@ -1,0 +1,194 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+
+            body .ui-widget .ui-widget
+            {
+                width: 180px;
+                min-width: 180px;
+            }
+            .tagsize{
+                width: 180px;
+            }
+
+        </style>
+    </ui:define>
+
+    <ui:define name="title">Contract Edit</ui:define>
+
+    <ui:define name="viewname">Contract Edit</ui:define>
+
+    <ui:define name="content">
+        <div style="min-height: calc(100vh - 235px);">
+            <h:form>
+                <div class="ui-fluid">
+                    <div class="ui-g">
+                        <div class="ui-g-12">
+                            <div class="card card-w-title">
+                                <div style="display: flex;">
+                                    <p:graphicImage url="images/Flowserve.svg.png" height="80" width="200" stream="false" style="float: left;margin-left:50px"/>
+                                    <div style="margin: 0 auto;">
+                                        <h1>New Contract Entry</h1>
+                                    </div>
+                                </div>
+                                <h3 style="margin-left: 55px;">General Information</h3>
+                                <p:panelGrid columns="4" columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank form-group" style="border:0px none; background-color:transparent;margin-left: 50px">
+
+                                    <p:outputLabel  value="Submitted By:"/>
+                                    <p:autoComplete
+                                        id="submittedBy"
+                                        var="user"
+                                        maxResults="10"
+                                        required="#{false}"
+                                        forceSelection="#{true}"
+                                        value="#{contractAdd.completedUser}"
+                                        completeMethod="#{viewSupport.completeUser}"
+                                        itemLabel="#{user.name}"
+                                        itemValue="#{user}"
+                                        converter="userConverter"
+                                        placeholder="Search User">
+                                    </p:autoComplete>
+
+                                    <p:outputLabel  value="Reporting Unit:"/>
+                                    <p:autoComplete
+                                        id="searchRU"
+                                        var="ru"
+                                        maxResults="10"
+                                        required="#{false}"
+                                        forceSelection="#{true}"
+                                        value="#{contractAdd.addContractVersion.reportingUnit}"
+                                        completeMethod="#{viewSupport.getCompleteReportingUnit}"
+                                        itemLabel="#{ru.name}"
+                                        itemValue="#{ru}"
+                                        converter="reportingUnitConverter"
+                                        placeholder="Search RUs..">
+                                    </p:autoComplete>
+
+                                    <p:outputLabel  value="Entry Date : "/>
+                                    <p:calendar id="entryDate" converter="localDateConverter" style="width: 100%;"  pattern="MM/dd/yyyy" requiredMessage="Please Select a Date" >
+                                    </p:calendar>
+
+                                    <p:outputLabel  value="Platform : "/>
+                                    <p:selectOneMenu id="console" value="#{contractAdd.addContractVersion.businessUnit}"
+                                                     effect="fade" var="t" style="width:180px" converter="businessUnitConverter">
+                                        <f:selectItem itemLabel="Select Platform" itemValue="" />
+                                        <f:selectItems value="#{contractAdd.businessUnits}" var="cnt" itemLabel="#{cnt.name}" itemValue="#{cnt}" />
+                                        <p:column>
+                                            <h:outputText value="#{t.name}" />
+                                        </p:column>
+                                    </p:selectOneMenu>
+                                </p:panelGrid>
+
+                                <h3 style="margin-left: 55px;">Contract Header</h3>
+                                <p:panelGrid columns="4" columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank form-group" style="border:0px none; background-color:transparent;margin-left: 50px">
+
+                                    <p:outputLabel  value="Customer Name : "/>
+                                    <p:autoComplete
+                                        id="customername"
+                                        var="customer"
+                                        maxResults="10"
+                                        required="#{false}"
+                                        forceSelection="#{true}"
+                                        value="#{contractAdd.completeCustomer}"
+                                        completeMethod="#{viewSupport.completeCustomer}"
+                                        itemLabel="#{customer.name}"
+                                        itemValue="#{customer}"
+                                        converter="customerConverter"
+                                        placeholder="Search Customer">
+                                    </p:autoComplete>
+
+                                    <p:outputLabel  value="Customer PO# : "/>
+                                    <p:inputText  value="#{contractAdd.addContractVersion.customerPurchaseOrderNumber}"/>
+
+                                    <p:outputLabel  value="Legal Customer Name : "/>
+                                    <p:autoComplete
+                                        id="leagalname"
+                                        var="customer"
+                                        maxResults="10"
+                                        required="#{false}"
+                                        forceSelection="#{true}"
+                                        value="#{contractAdd.completeCustomer}"
+                                        completeMethod="#{viewSupport.completeCustomer}"
+                                        itemLabel="#{customer.legalName}"
+                                        itemValue="#{customer}"
+                                        converter="customerConverter"
+                                        placeholder="Search Customer">
+                                    </p:autoComplete>
+
+                                    <p:outputLabel  value="FLS Sales Order# : "/>
+                                    <p:inputText  value="#{contractAdd.addContractVersion.salesOrderNumber}"/>
+
+                                    <p:outputLabel  value="Project Name : "/>
+                                    <p:inputText value="#{contractAdd.addContractVersion.projectName}"/>
+
+                                    <p:outputLabel  value="SAP# : "/>
+                                    <p:inputText  value="#{contractAdd.addContractVersion.sapNumber}"/>
+
+                                    <p:outputLabel  value="Purchase Order Date : "/>
+                                    <p:calendar id="orderDate" value="#{contractAdd.addContractVersion.purchaseOrderDate}" converter="localDateConverter" style="width: 100%;"  pattern="MM/dd/yyyy" required="true" requiredMessage="Please Select a Date" >
+                                    </p:calendar>
+                                    <p:outputLabel  value=""/>
+                                    <p:outputLabel  value=""/>
+
+                                    <p:outputLabel  value="Date FLS sent acceptance : "/>
+                                    <p:calendar id="flsSentDate" value="#{contractAdd.addContractVersion.flsSentDate}" converter="localDateConverter" style="width: 100%;"  pattern="MM/dd/yyyy" required="true" requiredMessage="Please Select a Date" >
+                                    </p:calendar>
+                                    <p:outputLabel  value=""/>
+                                    <p:outputLabel  value=""/>
+
+
+                                </p:panelGrid>
+
+                                <p:panelGrid columns="6" columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank form-group" style="border:0px none;margin-top: 40px; background-color:transparent;margin-left: 50px">
+
+                                    <p:outputLabel  value="Contract Currency : "/>
+                                    <p:selectOneMenu id="contractCurrency" value="#{contractAdd.addContractVersion.contractCurrency}"
+                                                     effect="fade" style="width:180px" converter="currencyConverter">
+                                        <f:selectItem itemLabel="Select Currency" itemValue="" />
+                                        <f:selectItems value="#{viewSupport.allCurrencies}" var="cur" itemLabel="#{cur.currencyCode}" itemValue="#{cur}" />
+                                        <p:column>
+                                            <h:outputText value="#{cur.currencyCode}" />
+                                        </p:column>
+                                    </p:selectOneMenu>
+                                    <p:outputLabel  value=""/>
+                                    <p:outputLabel  value=""/>
+                                    <p:outputLabel  value=""/>
+                                    <p:outputLabel  value=""/>
+
+                                    <p:outputLabel  value="Stated Contract Price : "/>
+                                    <p:inputNumber style="width: 180px" />
+
+                                    <p:outputLabel  value="Stated Contract Price(USD) : "/>
+                                    <p:inputNumber style="width: 180px" />
+
+                                    <p:outputLabel  value="Stated Contract Price(Local Currency) : "/>
+                                    <p:inputNumber style="width: 180px" />
+
+                                </p:panelGrid>
+
+                                <p:toolbar style="margin-top: 50px;">
+                                    <f:facet name="right">
+                                        <p:commandButton id="btnAnalysis" value="Submit for Analysis" action="#{contractAdd.saveNewContractVersion(contractAdd.addContractVersion)}" ajax="false" icon="ui-icon-disk fa fa-save" style="width: 215px;"/>
+                                        <p:commandButton id="btnSave" value="Save" ajax="false" icon="ui-icon-disk fa fa-save" />
+                                    </f:facet>
+                                </p:toolbar>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+        </div>
+    </ui:define>
+
+</ui:composition>
+
+

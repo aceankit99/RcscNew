@@ -1,0 +1,1 @@
+OTHEXP.GLEXCH|DEBIT|OthExp - (Gain) Loss on Foreign Exchange|OTHEXP.GLEXCH|FLS|STCONTLIAB

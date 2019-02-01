@@ -1,0 +1,94 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+
+            body .ui-widget .ui-widget
+            {
+                width: 180px;
+                min-width: 180px;
+            }
+
+        </style>
+    </ui:define>
+
+    <ui:define name="title">Contract Options</ui:define>
+
+    <ui:define name="viewname">Contract Options</ui:define>
+
+    <ui:define name="content">
+        <div style="min-height: calc(100vh - 235px);">
+            <h:form>
+                <div class="ui-fluid">
+                    <div class="ui-g">
+                        <div class="ui-g-12">
+                            <div class="card card-w-title">
+
+                                <p:graphicImage url="../images/Flowserve.svg.png" height="80" width="200" stream="false" style="margin-left:50px"/>
+                                <h4 style="float:right;margin-right: 160px">Contract Options</h4>
+                                <br></br>
+
+                                <br></br>
+
+
+
+                                <p:panelGrid columns="2" columnClasses="ui-grid-col-6,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank form-group" style="border:0px none; background-color:transparent;margin-left: 50px">
+                                    <p:outputLabel value="Does the contract include options for additional items?"/>
+                                    <p:outputLabel value=""/>
+
+                                    <p:outputLabel  value="Customer PO# :"  />
+                                    <p:inputNumber padControl="false"/>
+
+                                    <p:outputLabel  value="Contract Options :"/>
+                                    <p:selectOneMenu  >
+                                        <f:selectItem itemLabel="No" itemValue="" />
+                                    </p:selectOneMenu>
+
+                                    <p:outputLabel  value="Could the customer obtain benefit from the items without the contract?(A)"/>
+                                    <p:selectOneMenu  >
+                                        <f:selectItem itemLabel="No" itemValue="" />
+                                    </p:selectOneMenu>
+
+                                    <p:outputLabel  value="Does the future price represent the stand-alone selling price?(B)"/>
+                                    <p:selectOneMenu  >
+                                        <f:selectItem itemLabel="No" itemValue="" />
+                                    </p:selectOneMenu>
+
+                                    <p:outputLabel value="Does the future option provide a material right?(C)"/>
+                                    <p:selectOneMenu  >
+                                        <f:selectItem itemLabel="No" itemValue="" />
+                                    </p:selectOneMenu>
+
+                                    <p:outputLabel value="The future option is a POb, include in the POb listing"/>
+                                    <p:inputText value="False"/>
+
+                                    <p:outputLabel value="If Contract Options response is 'No' then 'A', 'B', and 'C' values are 'NA' and final response is 'No'"/>
+                                </p:panelGrid>
+
+                                <hr></hr>
+                                <p:panelGrid columns="4"  layout="grid" styleClass="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4" style="border:0px none; background-color:transparent;margin-left: 50px">
+                                    <p:outputLabel  value=""  />
+                                    <p:outputLabel  value=""  />
+                                    <p:outputLabel  value=""  />
+                                    <p:commandButton value="Close"></p:commandButton>
+                                </p:panelGrid>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+        </div>
+    </ui:define>
+
+</ui:composition>
+
+
+
+
+
+

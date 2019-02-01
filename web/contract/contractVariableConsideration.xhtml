@@ -1,0 +1,147 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+
+            body .ui-widget .ui-widget
+            {
+                width: 180px;
+                min-width: 180px;
+            }
+
+        </style>
+    </ui:define>
+
+    <ui:define name="title">Variable Consideration</ui:define>
+
+    <ui:define name="viewname">Variable Consideration</ui:define>
+
+    <ui:define name="content">
+        <div style="min-height: calc(100vh - 235px);">
+            <h:form>
+                <div class="ui-fluid">
+                    <div class="ui-g">
+                        <div class="ui-g-12">
+                            <div class="card card-w-title">
+
+                                <p:graphicImage url="../images/Flowserve.svg.png" height="80" width="200" stream="false" style="margin-left:50px"/>
+                                <h4 style="float:right;margin-right: 160px">Variable Consideration</h4>
+                                <br></br>
+
+                                <br></br>
+
+                                <p:panelGrid columns="4"  layout="grid" styleClass="ui-panelgrid-blank form-group" style="border:0px none; background-color:transparent;margin-left: 50px">
+                                    <p:outputLabel  value="Customer PO# :"  />
+                                    <p:inputNumber padControl="false"/>
+                                    <p:outputLabel  value=""  />
+                                    <p:outputLabel  value=""  />
+
+                                    <p:outputLabel  value="Are any variable consideration amounts probable?"  />
+                                    <p:selectOneMenu  >
+                                        <f:selectItem itemLabel="No" itemValue="" />
+                                    </p:selectOneMenu>
+                                    <p:outputLabel  value="Are there liquidated damages provisions in the contract?"  />
+                                    <p:selectOneMenu  >
+                                        <f:selectItem itemLabel="No" itemValue="" />
+                                    </p:selectOneMenu>
+                                </p:panelGrid>
+                                <hr></hr>
+                                <p:panelGrid columns="1" columnClasses="ui-grid-col-12" layout="grid" styleClass="ui-panelgrid-blank form-group" style="border:0px none; background-color:transparent;margin-left: 50px">
+                                    <p:outputLabel  value="Liquidated Damages Paragraph:"  />
+                                    <p:inputTextarea style="width:100%"/>
+                                </p:panelGrid>
+
+                                <p:panelGrid columns="4"  layout="grid" styleClass="ui-panelgrid-blank form-group" style="border:0px none; background-color:transparent;margin-left: 50px">
+                                    <p:outputLabel  value="Liquidated Damages "  />
+                                    <p:outputLabel  value=""  />
+                                    <p:outputLabel  value=""  />
+                                    <p:outputLabel  value=""  />
+
+                                    <p:outputLabel  value="Maximum:"  />
+                                    <p:inputNumber value="0.00"/>
+
+                                    <p:outputLabel  value="Minimum:"  />
+                                    <p:inputNumber value="0.00"/>
+                                </p:panelGrid>
+
+                                <p:panelGrid columns="1" columnClasses="ui-grid-col-12" layout="grid" styleClass="ui-panelgrid-blank form-group" style="border:0px none; background-color:transparent;margin-left: 50px">
+                                    <p:outputLabel  value="Liquidated Damages Description:"  />
+                                    <p:inputTextarea style="width:100%"/>
+                                </p:panelGrid>
+
+                                <hr></hr>
+                                <p:panelGrid columns="5" columnClasses="ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank form-group" style="border:0px none; background-color:transparent;margin-left: 50px">
+                                    <p:outputLabel value="Other Variable Consideration Amounts"/>
+                                    <p:outputLabel value=""/>
+                                    <p:outputLabel value=""/>
+                                    <p:outputLabel value=""/>
+                                    <p:outputLabel value=""/>
+
+                                    <p:selectOneMenu  >
+                                        <f:selectItem itemLabel="Estimated Returns" itemValue="" />
+                                    </p:selectOneMenu>
+                                    <p:outputLabel value="Maximun:"/>
+                                    <p:inputNumber value="0.00"/>
+                                    <p:outputLabel value="Expected:"/>
+                                    <p:inputNumber value="0.00"/>
+                                </p:panelGrid>
+                                <p:panelGrid columns="1" columnClasses="ui-grid-col-12" layout="grid" styleClass="ui-panelgrid-blank form-group" style="border:0px none; background-color:transparent;margin-left: 50px">
+                                    <p:outputLabel  value="Variable 1 Description"  />
+                                    <p:inputTextarea style="width:100%"/>
+                                </p:panelGrid>
+
+                                <p:panelGrid columns="5" columnClasses="ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank form-group" style="border:0px none; background-color:transparent;margin-left: 50px">
+                                    <p:selectOneMenu  >
+                                        <f:selectItem itemLabel="Estimated Returns" itemValue="" />
+                                    </p:selectOneMenu>
+                                    <p:outputLabel value="Maximun:"/>
+                                    <p:inputNumber value="0.00"/>
+                                    <p:outputLabel value="Expected:"/>
+                                    <p:inputNumber value="0.00"/>
+
+                                </p:panelGrid>
+
+                                <p:panelGrid columns="1" columnClasses="ui-grid-col-12" layout="grid" styleClass="ui-panelgrid-blank form-group" style="border:0px none; background-color:transparent;margin-left: 50px">
+                                    <p:outputLabel  value="Variable 2 Description"  />
+                                    <p:inputTextarea style="width:100%"/>
+                                </p:panelGrid>
+
+                                <p:panelGrid columns="5" columnClasses="ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank form-group" style="border:0px none; background-color:transparent;margin-left: 50px">
+                                    <p:selectOneMenu  >
+                                        <f:selectItem itemLabel="Estimated Returns" itemValue="" />
+                                    </p:selectOneMenu>
+                                    <p:outputLabel value="Maximun:"/>
+                                    <p:inputNumber value="0.00"/>
+                                    <p:outputLabel value="Expected:"/>
+                                    <p:inputNumber value="0.00"/>
+
+                                </p:panelGrid>
+                                <p:panelGrid columns="1" columnClasses="ui-grid-col-12" layout="grid" styleClass="ui-panelgrid-blank form-group" style="border:0px none; background-color:transparent;margin-left: 50px">
+                                    <p:outputLabel  value="Variable 3 Description"  />
+                                    <p:inputTextarea style="width:100%"/>
+                                </p:panelGrid>
+
+                                <p:panelGrid columns="4"  layout="grid" styleClass="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4" style="border:0px none; background-color:transparent;margin-left: 50px">
+                                    <p:outputLabel  value=""  />
+                                    <p:outputLabel  value=""  />
+                                    <p:outputLabel  value=""  />
+                                    <p:commandButton value="Close"></p:commandButton>
+                                </p:panelGrid>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+        </div>
+    </ui:define>
+
+</ui:composition>
+
+
+
+

@@ -1,0 +1,72 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:of="http://omnifaces.org/functions"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="head">
+        <script type="text/javascript">
+            /* <![CDATA[ */
+            function showStatus() {
+                PF('statusDialog').show();
+            }
+
+            function hideStatus() {
+
+            }
+            /* ]]> */
+        </script>
+
+        <style type="text/css">
+
+        </style>
+    </ui:define>
+
+    <ui:define name="title">Company Reports</ui:define>
+
+    <ui:define name="viewname">Company Reports</ui:define>
+
+    <ui:define name="content">
+        <h:form id="form" style="min-height: calc(100vh - 235px);">
+            <div class="ui-g">
+                <div class="ui-g-12 ui-md-12 ui-lg-10">
+                    <div class="card card-w-title">
+                        <p:messages id="messages" showDetail="true" closable="true"/>
+                        <h1>Company Reports</h1>
+                        <h:panelGrid columns="4" style="margin-bottom:10px" cellpadding="15">
+
+                            <p:commandButton value="Download Inputs and Calcs Report" ajax="false" style="width:auto;" icon="ui-icon-arrowthick-1-s" onclick="PrimeFaces.monitorDownload(showStatus, hideStatus)">
+                                <p:fileDownload value="#{companyReports.getReportInputAndCalc()}"/>
+                            </p:commandButton>
+
+                            <p:commandButton value="Download POC Outputs Report" ajax="false" style="width:auto;" icon="ui-icon-arrowthick-1-s" onclick="PrimeFaces.monitorDownload(showStatus, hideStatus)">
+                                <p:fileDownload value="#{companyReports.getReport1Tab2PocOutputs()}" />
+                            </p:commandButton>
+
+                            <p:commandButton value="Download Report 5 USD Reports Tab-1" ajax="false" style="width:auto;" icon="ui-icon-arrowthick-1-s" onclick="PrimeFaces.monitorDownload(showStatus, hideStatus)">
+                                <p:fileDownload value="#{companyReports.report5USDreportsTab1}" />
+                            </p:commandButton>
+
+                            <p:commandButton value="Download Report 5 USD Reports Tab-2" ajax="false" style="width:auto;" icon="ui-icon-arrowthick-1-s" onclick="PrimeFaces.monitorDownload(showStatus, hideStatus)">
+                                <p:fileDownload value="#{companyReports.report5USDreportsTab2}" />
+                            </p:commandButton>
+
+                            <p:commandButton value="Download Admin Change Log" ajax="false" style="width:auto;" icon="ui-icon-arrowthick-1-s" onclick="PrimeFaces.monitorDownload(showStatus, hideStatus)">
+                                <p:fileDownload value="#{companyReports.adminChangeLog}" />
+                            </p:commandButton>
+
+                            <p:dialog modal="true" widgetVar="statusDialog" header="Preparing Download.  This may take up to 5 minutes." draggable="false" closable="true">
+                                <p:graphicImage value="/images/pbar-ani.gif" style="height: 30px; width: 300px;"/>
+                            </p:dialog>
+
+                        </h:panelGrid>
+                    </div>
+                </div>
+            </div>
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>

@@ -1,0 +1,55 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+
+        </style>
+    </ui:define>
+
+    <ui:define name="title">Holiday List</ui:define>
+
+    <ui:define name="viewname">Holiday List</ui:define>
+
+    <ui:define name="content">
+        <div style="min-height: calc(100vh - 235px);">
+            <h:form id="mainForm">
+                <p:growl id="messages" showDetail="true" />
+
+                <div class="ui-g">
+
+                    <div class="ui-g-12">
+                        <div class="card card-w-title">
+                            <h1>Holiday List</h1>
+                            <p:commandButton icon="ui-icon-contact fa fa-plus" value="Add Holiday" action="#{adminController.newHoliday(h)}"></p:commandButton>
+                            <p:dataTable id="userTable" var="holidays" value="#{holidaysList.holidays}"  paginator="true" rows="30">
+
+                                <p:column headerText="Name" >
+                                    <h:outputText value="#{holidays.name}" />
+                                </p:column>
+
+                                <p:column headerText="Date(YYYY-MM-DD)" >
+                                    <h:outputText value="#{holidays.holidayDate}"/>
+                                </p:column>
+
+                                <p:column headerText="Company" >
+                                    <h:outputText value="#{holidays.company.name}"/>
+                                </p:column>
+
+                                <p:column  headerText="Option" >
+                                    <h:commandLink value="Edit Holiday"  action="#{adminController.editHoliday(holidays)}"></h:commandLink> |
+                                    <h:commandLink value="Delete"  action="#{adminController.deleteHoliday(holidays)}"></h:commandLink>
+                                </p:column>
+                            </p:dataTable>
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+        </div>
+    </ui:define>
+
+</ui:composition>

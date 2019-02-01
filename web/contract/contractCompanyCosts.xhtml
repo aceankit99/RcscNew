@@ -1,0 +1,131 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+
+            body .ui-widget .ui-widget
+            {
+                width: 180px;
+                min-width: 180px;
+            }
+
+        </style>
+    </ui:define>
+
+    <ui:define name="title">Inter-Company Costs</ui:define>
+
+    <ui:define name="viewname">Inter-Company Costs</ui:define>
+
+    <ui:define name="content">
+        <div style="min-height: calc(100vh - 235px);">
+            <h:form>
+                <div class="ui-fluid">
+                    <div class="ui-g">
+                        <div class="ui-g-12">
+                            <div class="card card-w-title">
+
+                                <p:graphicImage url="../images/Flowserve.svg.png" height="80" width="200" stream="false" style="margin-left:50px"/>
+                                <h4 style="float:right;margin-right: 160px;font-weight: bold">Inter-Company Costs</h4>
+                                <br></br>
+
+                                <br></br>
+
+                                <p:panelGrid columns="4" columnClasses="ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank form-group" style="border:0px none; background-color:transparent;margin-left: 50px">
+
+                                    <p:outputLabel  value="Interco Supplier Reporting Unit :"  />
+                                    <p:selectOneMenu  value="" style="width:180px">
+                                        <f:selectItem itemLabel="RU" itemValue="" noSelectionOption="true" />
+                                        <f:selectItems value="" />
+                                    </p:selectOneMenu>
+                                    <p:outputLabel  value="Local Currency :"  />
+                                    <p:inputNumber symbol="$"  emptyValue="sign" value="0.00"/>
+                                </p:panelGrid>
+                                <hr></hr>
+                                <p:panelGrid columns="4" columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank form-group" style="border:0px none; background-color:transparent;margin-left: 50px">
+                                    <p:outputLabel  value="Interco Order Details :" style="font-weight:bold"/>
+                                    <p:outputLabel  value=""  />
+                                    <p:outputLabel  value=""  />
+                                    <p:outputLabel  value=""  />
+
+                                    <p:outputLabel  value="Interco Customer :"  />
+                                    <p:selectOneMenu  value="" style="width:180px">
+                                        <f:selectItem itemLabel="Interco Customer" itemValue="" noSelectionOption="true" />
+                                        <f:selectItems value="" />
+                                    </p:selectOneMenu>
+                                    <p:outputLabel  value="BPC Trading Partner :"  />
+                                    <p:inputText/>
+
+                                    <p:outputLabel  value="Customer PO Number :"  />
+                                    <p:inputNumber/>
+                                    <p:outputLabel  value="Customer PO Currency :"  />
+                                    <p:inputText/>
+
+                                    <p:outputLabel  value="Customer PO Amount :"  />
+                                    <p:inputNumber value="0.00"/>
+                                </p:panelGrid>
+
+                                <hr></hr>
+                                <p:panelGrid columns="1" columnClasses="ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank form-group" style="border:0px none; background-color:transparent;margin-left: 50px">
+                                    <p:outputLabel  value="Current Period Component POC Inputs :"  style="font-weight:bold"  />
+                                </p:panelGrid>
+
+                                <p:panelGrid columns="4" columnClasses="ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank form-group" style="border:0px none; background-color:transparent;margin-left: 50px">
+                                    <p:outputLabel  value="Component Total PO Price :" />
+                                    <p:inputNumber  value="0.00"/>
+                                    <p:outputLabel  value="Component Cost Estimate at Completion (EAC):" />
+                                    <p:inputNumber value="0.00"/>
+
+                                    <p:outputLabel  value="Cumulative Costs Incurred to Date (ITD):" />
+                                    <p:inputNumber value="0.00"/>
+                                    <p:outputLabel  value="" />
+                                    <p:outputLabel  value="" />
+                                </p:panelGrid>
+                                <hr></hr>
+                                <p:panelGrid columns="2" columnClasses="ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank form-group" style="border:0px none; background-color:transparent;margin-left: 50px">
+                                    <p:outputLabel  value="Prior Period Progress Billing Details" style="font-weight: bold"/>
+                                    <p:outputLabel  value="" />
+
+                                    <p:outputLabel  value="Total Cumulative Prior Period Progress Billings :" />
+                                    <p:inputNumber value="0.00"/>
+
+                                    <p:outputLabel  value="Costs Incurred on Prior Period Progress Billings :" />
+                                    <p:inputNumber value="0.00"/>
+
+                                </p:panelGrid>
+                                <hr></hr>
+                                <p:panelGrid columns="2" columnClasses="ui-grid-col-4,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank form-group" style="border:0px none; background-color:transparent;margin-left: 50px">
+                                    <p:outputLabel  value="POC Calculation" style="font-weight: bold"/>
+                                    <p:outputLabel  value="" />
+
+                                    <p:outputLabel  value="Percent Complete (A/B):" />
+                                    <p:inputNumber value="0.00" symbol="%"  emptyValue="sign" symbolPosition="s"/>
+
+                                    <p:outputLabel  value="Total Interco Revenue less Prior Billings(PO Currency):"/>
+                                    <p:inputNumber value="0.00"/>
+
+                                    <p:outputLabel  value="Month End Exchange Rate:"/>
+                                    <p:inputNumber value="0.00"/>
+                                </p:panelGrid>
+
+                                <p:panelGrid columns="4"  layout="grid" styleClass="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4" style="border:0px none; background-color:transparent;margin-left: 50px">
+                                    <p:outputLabel  value=""  />
+                                    <p:outputLabel  value=""  />
+                                    <p:outputLabel  value=""  />
+                                    <p:commandButton value="Close"></p:commandButton>
+                                </p:panelGrid>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+        </div>
+    </ui:define>
+
+</ui:composition>
+
+

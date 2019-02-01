@@ -1,0 +1,63 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+
+        </style>
+    </ui:define>
+
+    <ui:define name="title">#{businessUnitEdit.businessUnit.getId() == null ? "New" : "Edit" } Business Unit</ui:define>
+
+    <ui:define name="viewname">#{businessUnitEdit.businessUnit.getId() == null ? "New" : "Edit" } Business Unit</ui:define>
+
+    <ui:define name="content">
+        <div style="min-height: calc(100vh - 235px);">
+            <h:form>
+                <div class="ui-fluid">
+                    <div class="ui-g">
+                        <div class="ui-g-12">
+                            <div class="card card-w-title">
+                                <h1>#{businessUnitEdit.businessUnit.getId() == null ? "New" : "Edit" } Business Unit</h1>
+                                <p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank form-group" style="border:0px none; background-color:transparent;">
+                                    <p:outputLabel for="id" value="ID"/>
+                                    <p:inputText id="id" value="#{businessUnitEdit.businessUnit.id}"/>
+                                    <p:outputLabel for="name" value="Name"/>
+                                    <p:inputText id="name" value="#{businessUnitEdit.businessUnit.name}"/>
+                                    <p:outputLabel for="type" value="Type"/>
+                                    <p:inputText id="type" value="#{businessUnitEdit.businessUnit.type}"/>
+                                    <p:outputLabel for="description" value="Description"/>
+                                    <p:inputText id="description" value="#{businessUnitEdit.businessUnit.description}"/>
+
+                                    <p:outputLabel for="description" value="Parent"/>
+                                    <p:autoComplete
+                                        id="parentSiteField"
+                                        var="site"
+                                        maxResults="10"
+                                        required="#{false}"
+                                        forceSelection="#{true}"
+                                        value="#{businessUnitEdit.businessUnit.parent}"
+                                        completeMethod="#{viewSupport.CompleteParentBusinessUnit}"
+                                        itemLabel="#{site.name}"
+                                        itemValue="#{site}"
+                                        converter="businessUnitConverter"
+                                        >
+                                        <h:outputText value="Begin typing business unit name"/>
+                                    </p:autoComplete>
+
+                                    <p:outputLabel for="btn" value="" />
+                                    <p:commandButton id="btn" value="#{businessUnitEdit.businessUnit.getId() == null ? 'Add' : 'Update' }" icon="ui-icon-edit" action="#{businessUnitEdit.addUpdateCondition()}" style="max-width:150px;"/>
+                                </p:panelGrid>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+        </div>
+    </ui:define>
+
+</ui:composition>

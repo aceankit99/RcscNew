@@ -1,0 +1,79 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <ui:define name="head">
+        <style type="text/css">
+
+        </style>
+    </ui:define>
+
+    <ui:define name="title">User Profile</ui:define>
+
+    <ui:define name="viewname">User Profile</ui:define>
+
+    <ui:define name="content">
+        <div style="min-height: calc(100vh - 235px);">
+            <h:form id="mainForm">
+                <p:growl id="messages" showDetail="true" />
+
+                <div class="ui-g">
+                    <div class="ui-g-12 ui-md-12 ui-lg-6">
+                        <div class="ui-g-12">
+                            <div class="card card-w-title">
+                                <h1>User Profile</h1>
+                           
+                            <p:panelGrid columns="2" columnClasses="ui-grid-col-6,ui-grid-col-6" layout="grid" styleClass="ui-panelgrid-blank form-group" style="border:0px none; background-color:transparent;">
+                               
+                                <p:outputLabel for="name" value="Name"/>
+                                <p:inputText id="name" value="#{userProfile.sessionUser.name}" style="width:180px;"/>
+                                
+                                   <p:outputLabel for="Email" value="Email"/>
+                                   <p:inputText id="Email" value="#{userProfile.sessionUser.emailAddress}"  style="width:180px;"/>
+                                   
+                               
+                                   
+                                 <p:outputLabel for="country" value="Country"/>
+                                 <p:selectOneMenu id="country" value="#{userProfile.sessionUser.country}" 
+                                                     effect="fade" var="t"  converter="countryConverter" style="width:160px;">
+                                     <f:selectItems value="#{userProfile.allCountries}" var="cnt" itemLabel="#{cnt.name}" itemValue="#{cnt}" />
+                                        <p:column>
+                                            <h:outputText value="#{t.name}" />
+                                        </p:column>
+                                    </p:selectOneMenu>
+                                 
+                                
+                                 <p:outputLabel for="Locale" value="Locale"/>
+                                 <p:selectOneMenu id="Locale" value="#{userProfile.sessionUser.locale}" 
+                                                     effect="fade" var="t"   style="width:160px;">
+                                     <f:selectItems value="#{userProfile.locale}" var="loc" itemLabel="#{loc}" itemValue="#{loc}" />
+                                        <p:column>
+                                            <h:outputText value="#{t}" />
+                                        </p:column>
+                                    </p:selectOneMenu>
+                                 <br></br>
+                                  <f:facet name="footer">
+                                        <p:toolbar>
+                                            <f:facet name="right">
+                                                <p:commandButton id="btnReport" value="Update" ajax="false" icon="ui-icon-disk fa fa-save"  style="max-width:150px;" action="#{adminController.updateUserProfile(userProfile.sessionUser)}" />
+                                            </f:facet>
+                                        </p:toolbar>
+                                    </f:facet>         
+                    
+                            </p:panelGrid>
+               
+                        </div>
+                           
+                    </div>
+                </div>
+       </div>
+            </h:form>
+        </div>
+    </ui:define>
+
+</ui:composition>
+

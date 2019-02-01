@@ -1,0 +1,45 @@
+$primaryColor:#0071bc;
+$primaryColorDarker:#205493;
+$primaryDarkerAlt:#1A4172;
+$primaryDarkest:#112e51;
+$primaryTextColor:#ffffff;
+
+/* Buttons */
+$buttonFocusOutlineColor:#aeb0b5;
+
+$primaryButtonBgColor:#0071bc;
+$primaryButtonHoverBgColor:#205493;
+$primaryButtonActiveBgColor:#122e51;
+$primaryButtonFocusBgColor:#aeb0b5;
+$primaryButtonTextColor:#ffffff;
+
+$primaryAltButtonBgColor:#00bfe7;
+$primaryAltButtonHoverBgColor:#00a6d2;
+$primaryAltButtonActiveBgColor:#046b99;
+$primaryAltButtonFocusBgColor:#aeb0b5;
+$primaryAltButtonTextColor:#ffffff;
+
+$secondaryButtonBgColor: #5b616b;
+$secondaryButtonHoverBgColor:#323a44;
+$secondaryButtonActiveBgColor:#212121;
+$secondaryButtonFocusBgColor:#5b616b;
+$secondaryButtonTextColor:#ffffff;
+
+$outlineButtonBgColor:transparent;
+$outlineButtonHoverBgColor:transparent;
+$outlineButtonActiveBgColor:transparent;
+$outlineButtonFocusBgColor:transparent;
+$outlineButtonBorderColor:#0872b9;
+$outlineButtonTextColor:#0872b9;
+$outlineButtonHoverBorderColor:#1f5593;
+$outlineButtonHoverTextColor:#1f5593;;
+$outlineButtonActiveBorderColor:#112e51;
+$outlineButtonActiveTextColor:#112e51;
+
+$menuitemHoverBgColor:#122e51;
+$menuitemTextColor:#122e51;
+$menuitemHoverTextColor:#ffffff;
+$carouselButtonHoverColor:#aeb0b5;
+$carouselPageLinksActiveColor:#122e51;
+
+@import '../sass/theme/_theme';

@@ -1,0 +1,132 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+
+            body .ui-widget .ui-widget
+            {
+                width: 180px;
+                min-width: 180px;
+            }
+
+        </style>
+    </ui:define>
+
+    <ui:define name="title">Contract Changes</ui:define>
+
+    <ui:define name="viewname">Contract Changes</ui:define>
+
+    <ui:define name="content">
+        <div style="min-height: calc(100vh - 235px);">
+            <h:form>
+                <div class="ui-fluid">
+                    <div class="ui-g">
+                        <div class="ui-g-12">
+                            <div class="card card-w-title">
+
+                                <p:graphicImage url="../images/Flowserve.svg.png" height="80" width="200" stream="false" style="margin-left:50px"/>
+                                <h4 style="float:right;margin-right: 160px">Contract Changes/Revisions Assessment</h4>
+                                <br></br>
+
+                                <br></br>
+                                <p:panelGrid columns="4" columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank form-group" style="border:0px none; background-color:transparent;margin-left: 50px">
+                                    <p:outputLabel  value="" />
+                                    <p:outputLabel  value="" />
+                                    <p:outputLabel  value="Prepared By:" />
+                                    <p:selectOneMenu  value="" style="width:180px">
+                                        <f:selectItem itemLabel="Select Prepared By" itemValue="" noSelectionOption="true" />
+                                        <f:selectItems value="" />
+                                    </p:selectOneMenu>
+
+                                </p:panelGrid>
+
+                                <p:panelGrid columns="4" columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank form-group" style="border:0px none; background-color:transparent;margin-left: 50px">
+                                    <p:outputLabel  value="Customer Name:" />
+
+                                    <p:selectOneMenu  value="" style="width:250px">
+                                        <f:selectItem itemLabel="Select Customer Name" itemValue="" noSelectionOption="true" />
+                                        <f:selectItems value="" />
+                                    </p:selectOneMenu>
+                                    <p:outputLabel  value="Revision #:" />
+                                    <p:inputText  />
+
+                                </p:panelGrid>
+
+                                <p:panelGrid columns="4" columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank form-group" style="border:0px none; background-color:transparent;margin-left: 50px">
+                                    <p:outputLabel  value="Customer PO#:" />
+
+                                    <p:selectOneMenu  value="" style="width:250px">
+                                        <f:selectItem itemLabel="Customer PO" itemValue="" noSelectionOption="true" />
+                                        <f:selectItems value="" />
+                                    </p:selectOneMenu>
+                                    <p:outputLabel  value="Revision Date:" />
+                                    <p:calendar id="popup" value=""  />
+
+                                </p:panelGrid>
+                                <br></br>
+                                <p:panelGrid columns="2" columnClasses="ui-grid-col-8,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank form-group" style="border:0px none; background-color:transparent;margin-left: 50px">
+                                    <p:outputLabel  value="Revision Amount-only include incremental amount associated with contract change/revision :"  />
+                                    <p:inputNumber value="0.00"/>
+
+                                    <p:outputLabel  value=""  />
+                                    <p:commandButton value="POb Changes/Revision"></p:commandButton>
+                                </p:panelGrid>
+
+                                <hr></hr>
+                                <p:panelGrid columns="2" columnClasses="ui-grid-col-8,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank form-group" style="border:0px none; background-color:transparent;margin-left: 50px">
+
+                                    <p:outputLabel  value="Does the revision/change add new items that represent distinct products or services (no remaining/unfilled performance obligations are removed or modified)?"  />
+                                    <p:selectOneMenu  value="" style="width:180px">
+                                        <f:selectItem itemLabel="No" itemValue="" noSelectionOption="true" />
+                                        <f:selectItems value="" />
+                                    </p:selectOneMenu>
+
+                                    <p:outputLabel  value="Does the price of the contract increase by an amount that reflects the standalone selling price ('SSP') of that distinct product or service?"  />
+                                    <p:selectOneMenu  value="" style="width:180px">
+                                        <f:selectItem itemLabel="No" itemValue="" noSelectionOption="true" />
+                                        <f:selectItems value="" />
+                                    </p:selectOneMenu>
+                                </p:panelGrid>
+                                <hr></hr>
+                                <p:panelGrid columns="2" columnClasses="ui-grid-col-8,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank form-group" style="border:0px none; background-color:transparent;margin-left: 50px">
+                                    <p:outputLabel  value="Are the remaining goods distinct from the delivered goods?"  />
+                                    <p:selectOneMenu  value="" style="width:180px">
+                                        <f:selectItem itemLabel="Yes" itemValue="" noSelectionOption="true" />
+                                        <f:selectItems value="" />
+                                    </p:selectOneMenu>
+                                </p:panelGrid>
+                                <hr></hr>
+                                <p:panelGrid columns="1" columnClasses="ui-grid-col-12" layout="grid" styleClass="ui-panelgrid-blank form-group" style="border:0px none; background-color:transparent;margin-left: 50px">
+                                    <p:outputLabel  value="Contract Changes/Revisions Actions"  style="font-weight: bold"/>
+                                    <p:outputLabel  value="Addition to Existing Contract/New Contract"  />
+                                    <p:inputTextarea style="width: 100%" />
+
+                                    <p:outputLabel  value="Restrospective/Prospective Treatment"  />
+                                    <p:inputTextarea style="width: 100%" />
+                                </p:panelGrid>
+
+                                <p:panelGrid columns="4" columnClasses="ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank form-group" style="border:0px none; background-color:transparent;margin-left: 50px">
+                                    <p:outputLabel  value="Add to Existing Contract"  />
+                                    <p:selectOneMenu  value="" style="width:180px">
+                                        <f:selectItem itemLabel="No" itemValue="" noSelectionOption="true" />
+                                        <f:selectItems value="" />
+                                    </p:selectOneMenu>
+                                    <p:outputLabel  value=""  />
+                                    <p:commandButton value="Close"></p:commandButton>
+                                </p:panelGrid>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+        </div>
+    </ui:define>
+
+</ui:composition>
+

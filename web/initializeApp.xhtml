@@ -1,0 +1,39 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:of="http://omnifaces.org/functions"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+
+        </style>
+    </ui:define>
+
+    <ui:define name="title">Initialize Application Database</ui:define>
+
+    <ui:define name="viewname">Initialize Application Database</ui:define>
+
+    <ui:define name="content">
+        <h:form id="form" style="min-height: calc(100vh - 235px);">
+            <div class="ui-g">
+
+                <div class="ui-g-12 ui-md-12 ui-lg-6">
+                    <div class="card card-w-title">
+                        <p:messages id="messages" showDetail="true" closable="true"/>
+                        <h1>Initialize Application Database</h1>
+
+                        <p:commandButton value="Initialize App" icon="ui-icon-disk" ajax="true" actionListener="#{initializeApp.initApp()}"
+                                         style="vertical-align: top; width: 180px;"/>
+                    </div>
+                </div>
+
+
+            </div>
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>

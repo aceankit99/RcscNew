@@ -1,0 +1,54 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+            body .ui-datatable .ui-paginator{
+                padding: 5px;
+            }
+        </style>
+    </ui:define>
+
+    <ui:define name="title">File Upload Message</ui:define>
+
+    <ui:define name="viewname">File Upload Message</ui:define>
+
+    <ui:define name="content">
+        <div style="min-height: calc(100vh - 235px);">
+            <h:form id="mainForm">
+                <p:growl id="messages" showDetail="true" />
+
+                <div class="ui-g">
+
+                    <div class="ui-g-12">
+                        <div class="card card-w-title">
+                            <h1>File Upload Messages</h1>
+                            <p:dataTable id="userTable" var="import" value="#{importMessageList.message}"  paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
+                                         paginator="true" rows="30" style="margin-bottom:20px">
+                                <f:facet name="{Exporters}" >
+
+                                    <h:commandLink style="float:right;" title="Export Table in Excel">
+                                        <p:graphicImage value="images/excel.png" width="28"/>
+                                        <p:dataExporter type="xlsx" target="userTable" fileName="Upload_Messages" />
+                                    </h:commandLink>
+                                </f:facet>
+                                <p:column headerText="Name" >
+                                    <h:outputText value="#{importMessageList.name}" />
+                                </p:column>
+
+                                <p:column headerText="Message" >
+                                    <h:outputText value="#{import}" />
+                                </p:column>
+                            </p:dataTable>
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+        </div>
+    </ui:define>
+
+</ui:composition>

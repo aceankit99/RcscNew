@@ -1,0 +1,97 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+
+        </style>
+    </ui:define>
+
+    <ui:define name="title">Metric Value Search</ui:define>
+
+    <ui:define name="viewname">Metric Value Search</ui:define>
+
+    <ui:define name="content" >
+        <div style="min-height: calc(100vh - 235px);">
+            <div class="ui-g">
+                <div class="ui-g-12">
+                    <div class="card card-w-title">
+                        <p:messages showDetail="true" />
+                        <h1>Metric Value Search</h1>
+                        <h:form id="metricForm">
+                            <h:panelGrid columns="7" style="margin-bottom:10px" cellpadding="5">
+                                <p:outputLabel for="metricID" value="Metric Types" />
+                                <p:selectOneMenu id="metricID" value="#{metricValueSearch.metricCode}" panelStyle="width:400px"
+                                                 effect="fade" var="t" style="width:225px"
+                                                 converter="metricConverter" filter="true" filterMatchMode="startsWith">
+                                    <f:selectItem itemLabel="Select Metric Type" itemValue="" />
+                                    <f:selectItems value="#{metricValueSearch.metricTypes}" var="metric" itemLabel="#{metric.code}" itemValue="#{metric}" />
+                                    <p:column>
+                                        <h:outputText value="#{t.code}" />
+                                    </p:column>
+                                </p:selectOneMenu>
+
+                                <p:outputLabel for="ruID" value="Reporting Units" />
+                                <p:selectOneMenu id="ruID" value="#{metricValueSearch.selectedRU}" panelStyle="width:400px"
+                                                 effect="fade" var="t" style="width:225px"
+                                                 converter="reportingUnitConverter" filter="true" filterMatchMode="startsWith">
+                                    <f:selectItem itemLabel="Select Reporting Unit" itemValue="" />
+                                    <f:selectItems value="#{metricValueSearch.reportingUnits}" var="ru" itemLabel="#{ru.name}" itemValue="#{ru}" />
+                                    <p:column>
+                                        <h:outputText value="#{t.name}" />
+                                    </p:column>
+                                </p:selectOneMenu>
+
+                                <p:outputLabel for="periodID" value="Financial Period" />
+                                <p:selectOneMenu id="periodID" value="#{metricValueSearch.selectedPeriod}" panelStyle="width:250px"
+                                                 effect="fade" var="t" style="width:225px"
+                                                 converter="periodConverter" filter="true" filterMatchMode="startsWith">
+                                    <f:selectItem itemLabel="Select Financial Period" itemValue="" />
+                                    <f:selectItems value="#{metricValueSearch.financialPeriods}" var="period" itemLabel="#{period.id}" itemValue="#{period}" />
+                                    <p:column>
+                                        <h:outputText value="#{t.id}" />
+                                    </p:column>
+                                </p:selectOneMenu>
+                                <p:commandButton id="search" value="Search" ajax="true" oncomplete="PF('meTable').filter()" icon="ui-icon-arrowrefresh-1-w" actionListener="#{metricValueSearch.search}" update="metricForm:metricTable" style="margin-left:10px" />
+                            </h:panelGrid>
+                            <p:dataTable id="metricTable" widgetVar="meTable" var="metric" value="#{metricValueSearch.metricList}"  paginator="true" rows="30">
+
+                                <p:column headerText="Code" >
+                                    <h:outputText value="#{metric[0]}"/>
+                                </p:column>
+
+                                <p:column headerText="Reporting Unit" sortBy="#{metric[1].name}" filterBy="#{metric[1].name}">
+                                    <h:outputText value="#{metric[1].name}"/>
+                                </p:column>
+
+                                <p:column headerText="Contract Name" sortBy="#{metric[2]}" filterBy="#{metric[2]}">
+                                    <h:outputText value="#{metric[2]}"/>
+                                </p:column>
+
+                                <p:column headerText="Financial Period" sortBy="#{metric[3].id}" filterBy="#{metric[3].id}" >
+                                    <h:outputText value="#{metric[3].id}"/>
+                                </p:column>
+
+                                <p:column headerText="CC Value" >
+                                    <h:outputText value="#{metric[4]}"/>
+                                </p:column>
+
+                                <p:column headerText="LC Value" >
+                                    <h:outputText value="#{metric[5]}"/>
+                                </p:column>
+
+
+                            </p:dataTable>
+
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ui:define>
+
+</ui:composition>

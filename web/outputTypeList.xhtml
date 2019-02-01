@@ -1,0 +1,72 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+
+        </style>
+    </ui:define>
+
+    <ui:define name="title">Output Type</ui:define>
+
+    <ui:define name="viewname">Output Type</ui:define>
+
+    <ui:define name="content">
+        <div style="min-height: calc(100vh - 235px);">
+            <h:form id="mainForm">
+                <div class="ui-g">
+
+                    <div class="ui-g-12">
+                        <div class="card card-w-title">
+                            <h1>Output Type</h1>
+                            <p:dataTable id="outputTable" var="outputType" value="#{outputTypeList.outputTypes}"  paginator="true" rows="30">
+
+                                <p:column headerText="Name" sortBy="#{outputType.name}">
+                                    <h:outputText value="#{outputType.name}" />
+                                </p:column>
+
+                                <p:column headerText="Group Name" sortBy="#{outputType.groupName}">
+                                    <h:outputText value="#{outputType.groupName}" />
+                                </p:column>
+
+                                <p:column headerText="Group Position" sortBy="#{outputType.groupPosition}">
+                                    <h:outputText value="#{outputType.groupPosition}" />
+                                </p:column>
+
+                                <p:column headerText="Owner Entity Type" sortBy="#{outputType.ownerEntityType}">
+                                    <h:outputText value="#{outputType.ownerEntityType}" />
+                                </p:column>
+
+                                <p:column headerText="Excel Sheet" sortBy="#{outputType.excelSheet}">
+                                    <h:outputText value="#{outputType.excelSheet}" />
+                                </p:column>
+
+                                <p:column headerText="Excel Col" sortBy="#{outputType.excelCol}">
+                                    <h:outputText value="#{outputType.excelCol}" />
+                                </p:column>
+
+                                <p:column headerText="Effective From Date" sortBy="#{outputType.effectiveFrom}">
+                                    <h:outputText value="#{outputType.effectiveFrom}" />
+                                </p:column>
+
+                                <p:column headerText="Effective To Date" sortBy="#{outputType.effectiveTo}">
+                                    <h:outputText value="#{outputType.effectiveTo}" />
+                                </p:column>
+
+                                <p:column headerText="Description" sortBy="#{outputType.description}">
+                                    <h:outputText value="#{outputType.description}" />
+                                </p:column>
+
+                            </p:dataTable>
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+        </div>
+    </ui:define>
+
+</ui:composition>

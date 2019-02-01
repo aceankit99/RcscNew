@@ -1,0 +1,68 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+
+        </style>
+    </ui:define>
+
+    <ui:define name="title">Account List</ui:define>
+
+    <ui:define name="viewname">Account List</ui:define>
+
+    <ui:define name="content">
+        <div style="min-height: calc(100vh - 235px);">
+            <h:form id="mainForm">
+                <p:growl id="messages" showDetail="true" />
+
+                <div class="ui-g">
+
+                    <div class="ui-g-12">
+                        <div class="card card-w-title">
+                            <h1>Account List</h1>
+
+                            <p:dataTable id="accounttable" var="ac" value="#{accountList.list}"  paginator="true" rows="30" tableStyle="table-layout:auto">
+
+                                <p:column headerText="Account ID" >
+                                    <h:outputText value="#{ac.id}" />
+                                </p:column>
+                             
+                                <p:column headerText="Name" >
+                                    <h:outputText value="#{ac.name}" />
+                                </p:column>
+
+                                <p:column headerText="Description" >
+                                    <h:outputText value="#{ac.description}" />
+                                </p:column>
+
+                                <p:column headerText="is CR Account" >
+                                    <h:outputText value="#{ac.creditAccount}" />
+                                </p:column>
+
+                                <p:column headerText="is DR Account" >
+                                    <h:outputText value="#{ac.debitAccount}" />
+                                </p:column>
+
+                                <p:column headerText="Offset Account" >
+                                    <h:outputText value="#{ac.offsetAccount.name}" />
+                                </p:column>
+
+                                <p:column headerText="Company" >
+                                    <h:outputText value="#{ac.company.id}" />
+                                </p:column>
+
+                            </p:dataTable>
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+        </div>
+    </ui:define>
+
+</ui:composition>
+

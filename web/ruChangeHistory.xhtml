@@ -1,0 +1,41 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">RU Changes History</ui:define>
+
+    <ui:define name="viewname">RU Changes History</ui:define>
+
+
+    <ui:define name="content">
+        <h:form id="form">
+            <div class="dashboard">
+                <div class="ui-g">
+                    <div class="ui-g-12">
+                        <div class="card card-w-title">
+                            <p:messages id="messages" showDetail="true" />
+                            <h1>#{ruChangeHistory.ru.name} Changes History</h1>
+                            <p:dataTable id="ruTable" style="margin-top: 10px;" value="#{ruChangeHistory.reportingUnitHistory}" var="history" paginator="true" rows="30"
+                                         tableStyle="table-layout:auto" >
+                                <f:facet name="header">
+                                    Changes History
+                                </f:facet>
+                                <p:column headerText="Action User" >
+                                    <h:outputText value="#{history.user.name}" style="white-space: nowrap;"/>
+                                </p:column>
+                                <p:column headerText="Action" sortBy="#{history.name} " filterBy="#{history.name}">
+                                    <h:outputText value="#{history.name}" style="white-space: nowrap;"/>
+                                </p:column>
+                                <p:column headerText="Action Date" >
+                                    <h:outputText value="#{history.actionDate}" >
+                                        <f:convertDateTime pattern="dd-MMM-yyyy hh:mm a" type="localDateTime" />
+                                    </h:outputText>
+                                </p:column>
+                            </p:dataTable>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

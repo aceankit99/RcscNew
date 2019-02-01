@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <f:facet name="first">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+            <meta name="apple-mobile-web-app-capable" content="yes" />
+        </f:facet>
+        <title>Revenue Compliance System</title>
+    </h:head>
+
+    <div class="login-topbar">
+        <h:link styleClass="logo">
+            <p:graphicImage name="images/logo.png" library="california-layout" />
+        </h:link>
+    </div>
+    <p:graphicImage styleClass="login-image" name="images/image-login.png" library="california-layout" />
+
+    <h:body styleClass="login-body">
+        <h:form>
+            <div class="login-panel ui-fluid">
+                <div class="ui-g">
+                    <div class="ui-g-12 login-icon-container">
+                        <p:graphicImage styleClass="login-icon" name="images/icon-login.png" library="california-layout" />
+                    </div>
+                    <div class="ui-g-12 ui-lg-12 ui-md-12 logo-container">
+                        <span class="login-summary">Sign in to RCS</span>
+                        <div class="login-detail">
+                            <span>Redirecitng to Flowserve login...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h:outputStylesheet name="css/layout-#{guestPreferences.theme}.css" library="california-layout" />
+        </h:form>
+    </h:body>
+
+</html>

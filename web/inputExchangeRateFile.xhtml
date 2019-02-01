@@ -1,0 +1,67 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:of="http://omnifaces.org/functions"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+
+        </style>
+    </ui:define>
+
+    <ui:define name="title">Currency Exchange Rates</ui:define>
+
+    <ui:define name="viewname">Currency Exchange Rates</ui:define>
+
+    <ui:define name="content">
+        <h:form id="form" style="min-height: calc(100vh - 235px);">
+            <div class="ui-g">
+
+                <div class="ui-g-12 ui-md-12 ui-lg-6">
+                    <div class="card card-w-title">
+                        <p:messages id="messages" showDetail="true" closable="true"/>
+                        <h1>Upload Exchange Rate</h1>
+                        <p:fileUpload fileUploadListener="#{inputExchangeRate.handleExchangeRates}" auto="true" dragDropSupport="true" label="Upload Template (or drag and drop)"
+                                      update="messages,tblupdate" multiple="false" sizeLimit="10000000" allowTypes="/(\.|\/)(xlsx)$/" style="width:75%" />
+                    </div>
+                </div>
+
+                <div class="ui-g-12">
+                    <div class="card card-w-title">
+                        <!--                        <p:messages id="tablemsg" showDetail="true" />-->
+
+                        <h1>Upload History</h1>
+                        <h4>Please click view detail for detail messages for each file import.</h4>
+
+                        <p:dataTable id="tblupdate" value="#{inputExchangeRate.dataImportFile}" var="importMSG">
+                            <f:facet name="header">
+                                Import Files List
+                            </f:facet>
+
+                            <p:column headerText="File Name" >
+                                <h:outputText value="#{importMSG.filename}" />
+                            </p:column>
+                            <p:column headerText="Company">
+                                <h:outputText value="#{importMSG.company.name}" />
+                            </p:column>
+
+                            <p:column headerText="Upload Date" sortBy="#{importMSG.uploadDate}">
+                                <h:outputText value="#{importMSG.uploadDate}" />
+                            </p:column>
+                            <p:column  headerText="Option" >
+                                <h:commandLink value="View Detail" action="#{adminController.detailMessage(importMSG)}" ></h:commandLink>
+                            </p:column>
+                        </p:dataTable>
+
+                    </div>
+                </div>
+
+            </div>
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>

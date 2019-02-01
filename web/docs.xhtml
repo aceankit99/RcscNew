@@ -1,0 +1,625 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">Documentation</ui:define>
+    
+    <ui:define name="head">
+        <style type="text/css">
+            .docs h1 {
+                margin-top: 30px;
+            }
+            
+            .docs pre {
+                font-family: monospace;
+                background-color: #0C2238;
+                color: #dddddd;
+                padding: 1em;
+                font-size: 14px;
+                border-radius: 3px;
+                overflow: auto;
+            }
+            
+            .video-container {
+                position: relative;
+                width: 100%;
+                height: 0;
+                padding-bottom: 56.25%;
+            }
+            .video-container iframe {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+        </style>
+    </ui:define>
+    
+    <ui:define name="viewname">Documentation</ui:define>
+
+    <ui:define name="content">
+    
+        <div class="ui-g">
+            <div class="ui-g-12">
+                <div class="card docs">
+                    <h1>Layout</h1>
+                    <p>California provides a main template.xhtml and additional <i>topbar</i>, <i>sidebar</i>, <i>right-sidebar</i>, <i>megamenu</i> and <i>footer</i> fragments for the base layout. 
+                        These xhtml files must be placed under WEB-INF folder and client pages should reference the template.xhtml as their template. 
+                        Provided empty.xhtml is a sample content page using the main template.xhtml that defines "content" as the main ui:define placeholder. By default template defines 3 placeholders 
+                        (page title, view name in breadcrumb and actual content)to insert content and you can add more as per your requirements.</p>
+                        
+                    <p>Sample page below uses the main template from California.</p>
+<pre>
+&lt;ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml"&gt;
+                
+    &lt;ui:define name="title"&gt;Test Page&lt;/ui:define&gt;
+
+    &lt;ui:define name="viewname"&gt;Test&lt;/ui:define&gt;
+
+    &lt;ui:define name="content"&gt;
+        Content goes here
+    &lt;/ui:define&gt;
+&lt;/ui:composition&gt;
+</pre>
+                    
+                    <p>Other required resources are the css, js and images that are located inside resources/california-layout folder, simply copy the california-layout folder to your %WEB-APP-FOLDER%/resources folder 
+                        so that final path would be %WEB-APP-FOLDER%/resources/california-layout/. Please refer to demo app or maven project of the demo app as the reference.</p>
+                    
+                    <h1>Theme</h1>    
+                    <p>California provides 20 PrimeFaces themes out of the box, setup of a theme simple as including the theme jar in your classpath and defining primefaces.THEME context parameter in web.xml such as "primefaces-california-green". Full list of 
+                    available themes are;</p>
+                    
+                    <ul>
+                        <li>primefaces-california-alive</li>
+                        <li>primefaces-california-ash</li>
+                        <li>primefaces-california-blue</li>
+                        <li>primefaces-california-bluegrey</li>
+                        <li>primefaces-california-cappucino</li>
+                        <li>primefaces-california-cyan</li>
+                        <li>primefaces-california-emerald</li>
+                        <li>primefaces-california-green</li>
+                        <li>primefaces-california-hollywood</li>
+                        <li>primefaces-california-mantle</li>
+                        <li>primefaces-california-montreal</li>
+                        <li>primefaces-california-noir</li>
+                        <li>primefaces-california-orange</li>
+                        <li>primefaces-california-peak</li>
+                        <li>primefaces-california-pink</li>
+                        <li>primefaces-california-predawn</li>
+                        <li>primefaces-california-purple</li>
+                        <li>primefaces-california-yellow</li>
+                    </ul>
+                    
+                    <p>A custom theme can be developed by the following steps.</p>
+                    <ul>
+                        <li>Choose a custom theme name such as primefaces-california-myown.</li>
+                        <li>Create a folder named primefaces-california-myown and place an empty theme.scss inside</li>
+                        <li>Copy the sass folder from the distribution to your application.</li>
+                        <li>Define the variables listed below and import the <i>/sass/theme/_theme.scss</i> file.</li>
+                        <li>Build the scss to generate css</li>
+                        <li>Set primefaces.THEME context parameter as <i>california-myown</i></li>
+                        <li>Either bundle the css in a jar file or serve from webapp/resources/primefaces-california-myown folder</li>
+                    </ul>
+                    
+                    <p>Here are the variables required to create a theme, you may need to change the last line according to the 
+                        relative path of the sass folder in your application.</p>
+                        
+<pre>
+$primaryColor:#4B6D7E;
+$primaryColorDarker:#365361;
+$primaryDarkerAlt:#384c56;
+$primaryDarkest:#233944;
+$primaryTextColor:#ffffff;
+
+/* Buttons */
+$buttonFocusOutlineColor:#aeb0b5;
+
+$primaryButtonBgColor:#4B6D7E;
+$primaryButtonHoverBgColor:#365361;
+$primaryButtonActiveBgColor:#233944;
+$primaryButtonFocusBgColor:#aeb0b5;
+$primaryButtonTextColor:#ffffff;
+
+$primaryAltButtonBgColor:#00bfe7;
+$primaryAltButtonHoverBgColor:#00a6d2;
+$primaryAltButtonActiveBgColor:#046b99;
+$primaryAltButtonFocusBgColor:#aeb0b5;
+$primaryAltButtonTextColor:#ffffff;
+
+$secondaryButtonBgColor: #5b616b;
+$secondaryButtonHoverBgColor:#323a44;
+$secondaryButtonActiveBgColor:#212121;
+$secondaryButtonFocusBgColor:#5b616b;
+$secondaryButtonTextColor:#ffffff;
+
+$outlineButtonBgColor:transparent;
+$outlineButtonHoverBgColor:transparent;
+$outlineButtonActiveBgColor:transparent;
+$outlineButtonFocusBgColor:transparent;
+$outlineButtonBorderColor:#4B6D7E;
+$outlineButtonTextColor:#4B6D7E;
+$outlineButtonHoverBorderColor:#365361;
+$outlineButtonHoverTextColor:#365361;;
+$outlineButtonActiveBorderColor:#233944;
+$outlineButtonActiveTextColor:#233944;
+
+$menuitemHoverBgColor:#233944;
+$menuitemTextColor:#212121;
+$menuitemHoverTextColor:#ffffff;
+$carouselButtonHoverColor:#b2b2b2;
+$carouselPageLinksActiveColor:#233944;
+
+@import '../sass/theme/_theme';
+        
+</pre> 
+                        
+                    <p> An example sass command to compile the css would be;</p>
+                        
+<pre>
+sass src/main/webapp/resources/primefaces-california-myown/theme.scss src/main/webapp/resources/primefaces-california-myown/theme.css  --sourcemap=none
+</pre> 
+
+                    <p>Watch mode is handy to avoid compiling everytime when a change is made, instead use the following command
+                    so that sass generates the file whenever you make a customization. This builds all css files whenever a change is made to any scss file.</p>
+<pre>
+sass -w src/main/webapp/resources/ --sourcemap=none
+</pre> 
+
+                    <p>Same can also be applied to layout itself;</p>
+                    <ul>
+                        <li>Choose a layout name such as layout-myown.</li>
+                        <li>Create an empty file named layout-myown.scss inside resources/california-layout/css folder.</li>
+                        <li>Define the variables listed below and import the <i>/sass/layout/_layout.scss</i> file.</li>
+                        <li>Build the scss to generate css</li>
+                        <li>Serve the css by importing it using a link tag or h:outputStylesheet.</li>
+                    </ul>
+                    
+                    <p>Here are the variables required to create a layout, you may need to change the last line according to the 
+                        relative path of the sass folder in your application.</p>
+                    
+<pre>
+$bodyBgColor:#f2f5fa;
+$topbarLeftBgColor:#CB356B;
+$topbarRightBgColor:#BD3F32;
+$topbarIconHoverBgColor:#A52754;
+$topbarTextColor:#ffffff;
+$sidebarBorderColor:#d6d7d9;
+$footerBgColor:#3E3438;
+$statsTopBorderColor:#85344E;
+$teamContentHoverBorderColor:#85344E;
+
+$sidebarBgColor:#ffffff;
+$sidebarMenuitemTextColor:#212121;
+$sidebarMenuitemDividerColor:#e4e2e0;
+$sidebarMenuitemIconColor:#5b616a;
+$sidebarMenuitemHoverBgColor:#f1f1f1;
+$sidebarMenuitemActiveBorderLeftColor:#CB356B;
+$sidebarMenuitemActiveTextColor:#CB356B;
+$sidebarMenuitemActiveIconColor:#CB356B;
+
+$darkSidebarBgColor:#3E3438;
+$darkSidebarMenuitemTextColor:#ffffff;
+$darkSidebarMenuitemDividerColor:rgba(255,255,255,.075);
+$darkSidebarMenuitemIconColor:#ffffff;
+$darkSidebarMenuitemHoverBgColor:rgba(255,255,255,.1);
+$darkSidebarMenuItemHoverTextColor:#EF5D91;
+$darkSidebarMenuitemActiveBorderLeftColor:#EF5D91;
+$darkSidebarMenuitemActiveTextColor:#EF5D91;
+$darkSidebarMenuitemActiveIconColor:#EF5D91;
+
+$gradientSidebarTopBgColor:#3E3438;
+$gradientSidebarBottomBgColor:#6E2D44;
+$gradientSidebarMenuitemTextColor:#ffffff;
+$gradientSidebarMenuitemDividerColor:rgba(255,255,255,.075);
+$gradientSidebarMenuitemIconColor:#ffffff;
+$gradientSidebarMenuitemHoverBgColor:rgba(255,255,255,.1);
+$gradientSidebarMenuItemHoverTextColor:#EF5D91;
+$gradientSidebarMenuitemActiveBorderLeftColor:#EF5D91;
+$gradientSidebarMenuitemActiveTextColor:#EF5D91;
+$gradientSidebarMenuitemActiveIconColor:#EF5D91;
+
+$megamenuButtonTextColor:#ffffff;
+$megamenuBgColor:#ffffff;
+$megamenuBorderColor:#d6d7d9;
+$megamenuTextColor:#5b616a;
+$megamenuHeaderColor:#272724;
+$megamenuIconColor:#5b616a;
+$megamenuHoverBgColor:#f1f1f1;
+$megamenuActiveTextColor:#EF5D91;
+$megamenuMobileBgColor:#CB356B;
+$megamenuMobileHoverBgColor:#A52754;
+
+$darkMegamenuBgColor:#3E3438;
+$darkMegamenuTextColor:#ffffff;
+$darkMegamenuHeaderShadowColor:#000000;
+$darkMegamenuIconColor:#ffffff;
+$darkMegamenuHoverBgColor:rgba(255,255,255,.1);
+$darkMegamenuHoverTextColor:#EF5D91;
+
+$gradientMegamenuTopBgColor:#3E3438;
+$gradientMegamenuBottomBgColor:#6E2D44;
+
+@import '../../sass/layout/_layout';
+</pre> 
+                    
+                    <p>For both cases, several .scss files such as _layout.scss, _theme.scss or _variables.scss has to be present relative to your scss files, these are available inside the sass folder in the distribution.</p>
+                    <p>In case you'd like to customize the global variables not just the colors, the _variables.scss is where the commom variables (e.g. font size, paddings) for the layout are defined.</p>
+
+                    <i>Global Variables</i>
+<pre>
+$fontFamily:"Source Sans Pro",Arial,sans-serif;
+$fontSize:14px;
+$borderRadius:0;
+$dividerColor:#d6d7d9;
+$textColor:#212121;
+$textSecondaryColor:#aeb0b5;
+$transitionDuration:.3s;
+</pre>        
+
+<i>Common Theme Variables</i>
+<pre>
+@import '../variables';
+
+$focusOutlineColor:#0071bc;
+
+/* Headers */
+$headerPadding:8px 16px;
+$inputListHeaderPadding:8px;
+$headerFontSize:16px;
+$headerBgColor:$primaryColor;
+$headerTextColor:$primaryTextColor;
+$headerLightBgColor:#f1f1f1;
+$headerLightTextColor:#212121;
+$headerLightHoverBgColor:#d6d7d9;
+$headerLightBorderColor:#d6d7d9;
+
+/* Contents */
+$contentPadding:16px;
+$contentBgColor:#ffffff;
+$contentBorderColor:#d6d7d9;
+$contentLighterBorderColor:#f1f1f1;
+
+/* Forms */
+$buttonBorderRadius:3px;
+$inputPadding:4px;
+$inputBgColor:#ffffff;
+$inputBorderColor:#aeb0b5;
+$inputHoverBorderColor:#5b616b;
+$inputInvalidBorderColor:#cd2026;
+$inputHeaderBgColor:#e4e2e0;
+$inputSwitchOffBgColor:#a8acb1;
+$inputSwitchOffTextColor:#ffffff;
+$iconActiveColor:#ffffff;
+$iconCloseColor:#212121;
+$inputTextHighlightColor:#ffffff;
+$ratingCancelIconColor:#000000;
+$ratingStarColor:#aeb0b5;
+$ratingStarHoverColor:#5b616b;
+$splitbuttonTextColor:#ffffff;
+$datepickerButtonTextColor:#ffffff;
+$keypadBgColor:#000000;
+
+/* Buttons */
+$buttonPadding:4px;
+
+$secondaryButtonBgColor: #5b616b;
+$secondaryButtonHoverBgColor:#323a44;
+$secondaryButtonActiveBgColor:#212121;
+$secondaryButtonFocusBgColor:#5b616b;
+$secondaryButtonTextColor:#ffffff;
+
+$blueButtonBgColor:#0071bc;
+$blueButtonHoverBgColor:#205493;
+$blueButtonActiveBgColor:#122e51;
+$blueButtonFocusBgColor:#aeb0b5;
+$blueButtonTextColor:#ffffff;
+
+$cyanButtonBgColor:#00bfe7;
+$cyanButtonHoverBgColor:#00a6d2;
+$cyanButtonActiveBgColor:#046b99;
+$cyanButtonFocusBgColor:#aeb0b5;
+$cyanButtonTextColor:#ffffff;
+
+$greenButtonBgColor:#4AA564;
+$greenButtonHoverBgColor:#378D4F;
+$greenButtonActiveBgColor:#1D6833;
+$greenButtonFocusBgColor:#aeb0b5;
+$greenButtonTextColor:#ffffff;
+
+$yellowButtonBgColor:#F9C642;
+$yellowButtonHoverBgColor:#FDB81E;
+$yellowButtonActiveBgColor:#EAA200;
+$yellowButtonFocusBgColor:#aeb0b5;
+$yellowButtonTextColor:#ffffff;
+
+$purpleButtonBgColor:#6A4AA5;
+$purpleButtonHoverBgColor:#4B2F7F;
+$purpleButtonActiveBgColor:#36215D;
+$purpleButtonFocusBgColor:#aeb0b5;
+$purpleButtonTextColor:#ffffff;
+
+$pinkButtonBgColor:#9f4488;
+$pinkButtonHoverBgColor:#8d3c79;
+$pinkButtonActiveBgColor:#692d5a;
+$pinkButtonFocusBgColor:#aeb0b5;
+$pinkButtonTextColor:#ffffff;
+
+$bluegreyButtonBgColor: #4B6D7E;
+$bluegreyButtonHoverBgColor:#365361;
+$bluegreyButtonActiveBgColor:#233944;
+$bluegreyButtonFocusBgColor:#aeb0b5;
+$bluegreyButtonTextColor:#ffffff;
+
+$tealButtonBgColor: #07A089;
+$tealButtonHoverBgColor:#067E6C;
+$tealButtonActiveBgColor:#04493F;
+$tealButtonFocusBgColor:#aeb0b5;
+$tealButtonTextColor:#ffffff;
+
+$orangeButtonBgColor: #fe875d;
+$orangeButtonHoverBgColor:#E26134;
+$orangeButtonActiveBgColor:#B34621;
+$orangeButtonFocusBgColor:#aeb0b5;
+$orangeButtonTextColor:#ffffff;
+
+$greyButtonBgColor: #5B616B;
+$greyButtonHoverBgColor:#43474E;
+$greyButtonActiveBgColor:#1B1E22;
+$greyButtonFocusBgColor:#aeb0b5;
+$greyButtonTextColor:#ffffff;
+
+/* List Items */
+$listItemPadding:4px 8px;
+$listItemHoverBgColor:#f1f1f1;
+$listItemHoverTextColor:$textColor;
+
+/* Messages */
+$infoMessageBgColor:#e1f3f8;
+$infoMessageTextColor:#212121;
+$warnMessageBgColor:#fff1d2;
+$warnMessageTextColor:#212121;
+$errorMessageBgColor:#f9dede;
+$errorMessageTextColor:#212121;
+$fatalMessageBgColor:#d6d7d9;
+$fatalMessageTextColor:#212121;
+$messageCloseIconColor:#5b616b;
+
+/* TabView */
+$headerTabBgColor:#ffffff;
+
+/* PanelGrid */
+$panelGridHeaderBorderColor:#ffffff;
+$panelGridCellBorderColor:#aeb0b5;
+$toolbarBorderColor:#dddddd;
+$tabsBgColor:#ffffff;
+$scrollpanelDragBgColor:#a8acb1;
+$scrollpanelTrackBgColor:#f0f3f5;
+$tooltipTextBgColor:#2d353c;
+$wizardBgColor:#ffffff;
+
+/*Overlay*/
+$dialogTitlebarIconHover:#aeb0b5;
+$overlayIconColor:#ffffff;
+$overlayIconHoverColor:#d6d7d9;
+
+/*misc*/
+$progressbarTextColor:#ffffff;
+$progressbarBgColor:#aeb0b5;
+
+/*Data*/
+$datatableCellPadding: 4px 8px 5px 8px;
+$paginatorBgColor:#ffffff;
+$panelHeaderTextColor:#999999;
+$paginatorTextColor:#999999;
+$tableHoverColor:#f1f1f1;
+$datatableEvenColor:#f8f8f8;
+$panelTitlebarBgColor:#f5f5f5;
+$carouselBorderColor:#aeb0b5;
+$carouselTextColor:#ffffff;
+$treeTextColor:#5b616a;
+$treetableActiveTextColor:#ffffff;
+$panelButtonBgColor:#ffffff;
+$scheduleHeaderButtonHoverColor:#5b616b;
+$scheduleHeaderButtonActiveColor:#122e51;
+$tableColumnHeaderBgFocus:#f0f3f5;
+$buttonHoverBorderColor:#ffffff;
+$tableColumnHeaderBgColor:#f0f3f5;
+
+/*Menu*/
+$menuitemPadding: 6px 8px;
+$menuListPadding: 6px 0;
+$breadcrumbBgColor:#ffffff;
+$breadcrumbTextColor:#5b616a;
+$breadcrumbBorderColor:#d6d7d9;
+$stepsItemHighlightBgColor:#e1f3f8;
+$stepsItemHighlightTextColor:#0071bb;
+$stepsItemDisabledBgColor:#ffffff;
+$stepsItemDisabledTextColor:#212121;
+$stepsItemBgColor:#e7f4e4;
+$stepsItemColor:#2e8540;
+$menuitemIconColor:#5b616a;
+$menuBgColor:#ffffff;   
+</pre>   
+
+<i>Common Layout Variables</i>
+<pre>
+@import '../variables';
+
+/*Badge*/
+$badgeBgColor:#4aa564;
+$badgeTextColor:#ffffff;
+
+/* RouteBar */
+$routeBarBgColor:#ffffff;
+$routeBarBorderColor:#d6d7d9;
+$routeBarIconColor:#5b616a;
+$routeBarIconHoverBgColor:#f1f1f1;
+</pre>   
+
+                    <h1>Menu</h1>    
+                    <p>Menu is a regular JSF component that supports PrimeFaces MenuModel API allowing both declarative and programmatic approaches. 
+                    State is saved via a cookie and to remove it define a widgetVar to the menu and call PF('yourwidgetvar').clearMenuState(). To use the menu
+                    add the primefaces-california-{version}.jar to your classpath and import the http://primefaces.org/california namespace.</p>
+<pre>
+xmlns:pp="http://primefaces.org/california">
+
+&lt;pc:menu&gt;
+&lt;/pc:menu&gt;
+</pre>  
+                    <p>Menu has 2 modes, static and overlay. Layout wrapper element in template.xhtml is used to define which mode to use by adding specific classes. List
+                    below indicates the style classes for each mode.</p>
+                    <ul>
+                        <li>Static: "layout-wrapper"</li>
+                        <li>Overlay: "layout-wrapper layout-wrapper-overlay-sidebar"</li>
+                    </ul>
+                    
+                    <p>For example to create an overlay menu, the div element should be in following form;</p>
+<pre>
+&lt;div class="layout-wrapper layout-wrapper-overlay-sidebar"&gt;
+    
+&lt;/div&gt;
+</pre>            
+                    
+                    <p>It is also possible to leave the choice to the user by keeping the preference at a bean and usign an EL expression to bind it so that user can switch between modes. Sample
+                    application has an example implementation of such use case.</p>          
+<pre>
+&lt;div class="layout-wrapper #{guestPreferences.menuLayout}"&gt;
+
+&lt;/div&gt;
+</pre>      
+
+                    <p>Sample bean below can be used to keep the layout configuration based on user preferences</p>
+<pre>
+public class GuestPreferences implements Serializable {
+
+    private String layout = "moody";
+
+    private String theme = "blue";
+
+    private boolean darkMenu = true;
+
+    private boolean gradientMenu = false;
+
+    private boolean darkMegaMenu = true;
+
+    private boolean gradientMegaMenu = false;
+
+    private String menuLayout = "static";
+
+    private String profileMode = "inline";
+
+    public String getTheme() {
+        return theme;
+    }
+
+    public void setTheme(String theme) {
+        this.theme = theme;
+    }
+
+    public String getLayout() {
+        return layout;
+    }
+
+    public void setLayout(String layout) {
+        this.layout = layout;
+    }
+
+    public boolean isDarkMenu() {
+        return this.darkMenu;
+    }
+
+    public boolean isGradientMenu() {
+        return this.gradientMenu;
+    }
+
+    public boolean isDarkMegaMenu() {
+        return this.darkMegaMenu;
+    }
+
+    public boolean isGradientMegaMenu() {
+        return this.gradientMegaMenu;
+    }
+
+    public void setMenuMode(boolean dark, boolean gradient, String theme) {
+        this.darkMenu = dark;
+        this.gradientMenu = gradient;
+        this.theme = theme;
+    }
+
+    public void setMegaMenuMode(boolean dark, boolean gradient) {
+        this.darkMegaMenu = dark;
+        this.gradientMegaMenu = gradient;
+    }
+
+    public String getMenuLayout() {
+        return menuLayout;
+    }
+
+    public void setMenuLayout(String menuLayout) {
+        this.menuLayout = menuLayout;
+    }
+
+    public String getProfileMode() {
+        return profileMode;
+    }
+
+    public void setProfileMode(String profileMode) {
+        this.profileMode = profileMode;
+    }
+}
+</pre>        
+                   
+                    <h1>Icons</h1>
+                    <p>California Layout uses font awesome icons for layout so enable font awesome support in PrimeFaces by setting primefaces.FONT_AWESOME context parameter in web.xml as true. If your PrimeFaces version 
+                    does not have the font awesome integration, include the font-awesome manually in your application.</p>
+
+                    <h1>Card</h1>
+                    <p>Card is a section to group content and layout provides a built-in css for it. Apply .card style class to your container to use it. If the
+                    card has a title defined with h1 tag, add card-w-title to adjust paddings.</p>
+<pre>
+&lt;div class="card"&gt;
+    Content here
+&lt;/div&gt;
+
+&lt;div class="card card-w-title"&gt;
+    &lt;h1&gt;Card with Title&lt;h1&gt;
+    Content here
+&lt;/div&gt;
+</pre>  
+
+
+                    <h1>Customizations and Updats</h1>
+                    <p>In order to avoid maintenance issues during an update it is suggested to add your customizations and overrides at _layout_styles.scss file for layout and at _theme_styles.scss for theme instead
+                        of changing the default sass files. This way, updating would be seamless by just replacing the sass files and your customizations will not be effected.
+                    </p>
+
+                    <h1>Tips</h1>
+                    <ul>
+                        <li>Familiarity with <a href="http://sass-lang.com/">SASS</a> is required to make customizations to the layout and theme.</li>
+                        <li>Demo application war and the maven project tag are included in distribution however you don't necessarily need them to install California, the actual artifacts required are the layout zip file and the theme jar.</li>
+                        <li>Sample demo application war includes the JSF libraries so it is suggested to remove them from the war file when you deploy to an appserver.</li>
+                        <li>When running the maven project, you need to build the sass with (sass --update src/main/webapp/resources/ --sourcemap=none) command.</li>
+                    </ul> 
+                    
+                    <h1>Migration Guide</h1>
+                    <p>1.0 to 1.0.1</p>
+                    <ul>
+                        <li>Update layout.js and layout css files</li>
+                        <li>Replace theme jar with new jar</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+    </ui:define>
+
+</ui:composition>

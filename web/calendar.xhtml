@@ -1,0 +1,34 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+           
+        </style>
+    </ui:define>
+
+    <ui:define name="title">Calendar</ui:define>
+
+    <ui:define name="viewname">Calendar</ui:define>
+
+    <ui:define name="content">
+        <div>
+            <h:form id="mainForm">
+
+                <div class="ui-g">
+
+                    <div class="ui-g-10 ">
+                        <p:panel header="Calendar" styleClass="schedule">
+                            <p:schedule id="schedule" value="#{calendar.eventModel}" locale="en" timeZone="UTC"/>
+                        </p:panel>
+                    </div>
+                </div>
+            </h:form>
+        </div>
+    </ui:define>
+
+</ui:composition>

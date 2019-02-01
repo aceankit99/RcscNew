@@ -1,0 +1,65 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+
+        </style>
+    </ui:define>
+
+    <ui:define name="title">Reporting Unit List</ui:define>
+
+    <ui:define name="viewname">Reporting Unit List</ui:define>
+
+    <ui:define name="content" >
+        <div style="min-height: calc(100vh - 235px);">
+            <div class="ui-g">
+                <div class="ui-g-12">
+                    <div class="card card-w-title">
+                        <p:messages showDetail="true" />
+                        <h1>Reporting Unit List</h1>
+                        <h:form id="reportForm">
+                            <p:focus for="searchString" />
+
+                            <p:inputText id="searchString" value="#{reportReportingUnitList.searchString}"/>
+
+                            <p:commandButton id="search" value="Search" ajax="true" icon="ui-icon-arrowrefresh-1-w" actionListener="#{reportReportingUnitList.search()}" update="reportForm:reportTable" style="margin-left:10px" />
+
+                            <p:ajaxStatus style="width:20px;height:20px;">
+                                <f:facet name="start">
+                                    <h:graphicImage value="images/loader.gif" style="width: 20px;"/>
+                                </f:facet>
+                                <f:facet name="complete">
+                                    <h:outputText value="" />
+                                </f:facet>
+                            </p:ajaxStatus>
+
+                            <p:defaultCommand target="search" />
+
+                            <p:dataTable id="reportTable" var="reportingUnit" value="#{reportReportingUnitList.reportingUnits}"  paginator="true" rows="30">
+
+                                <p:column headerText="Name" sortBy="#{reportingUnit.name}">
+                                    <h:commandLink value="#{reportingUnit.name}" action="#{adminController.generateReportReportingUnit(reportingUnit)}"></h:commandLink>
+                                </p:column>
+
+                                <p:column headerText="Code" sortBy="#{reportingUnit.Code}">
+                                    <h:outputText value="#{reportingUnit.code}" />
+                                </p:column>
+
+
+
+                            </p:dataTable>
+
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ui:define>
+
+</ui:composition>
+

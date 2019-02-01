@@ -1,0 +1,213 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+
+        </style>
+    </ui:define>
+
+    <ui:define name="title">#{reportingUnitEdit.editReporintgUnit.getId() == null ? "New" : "Edit" } Reporting Unit</ui:define>
+
+    <ui:define name="viewname">#{reportingUnitEdit.editReporintgUnit.getId() == null ? "New" : "Edit" } Reporting Unit</ui:define>
+
+    <ui:define name="content">
+        <div style="min-height: calc(100vh - 235px);">
+            <h:form id="mainForm">
+                <div class="ui-fluid">
+                    <div class="ui-g">
+                        <div class="ui-g-12 ui-md-12 ui-lg-6">
+                            <!--
+                            Setting to 12, 12, 6.  This will cause input area to switch to full width (12 cols) when screen size is small.  Large screen half-size (6 cols)
+                            ui-lg => number of columns for a large screen (screen width > 1024px)
+                            ui-md => number of columns for a medium screen (screen width < 1024px )
+                            ui-g = > number of columns by default (or screen width < 425px if lg and md columns are define)-->
+                            <div class="card card-w-title">
+                                <h1>#{reportingUnitEdit.editReporintgUnit.getId() == null ? "New" : "Edit" } Reporting Unit</h1>
+                                <!--  Only two cols, so only two col columnClasses.  I had to use 6 and 6 to get this layout properly-->
+                                <p:panelGrid columns="2" columnClasses="ui-grid-col-6,ui-grid-col-6" layout="grid" styleClass="ui-panelgrid-blank form-group" style="border:0px none; background-color:transparent;">
+                                    <p:outputLabel for="name" value="Name"/>
+                                    <p:inputText id="name" value="#{reportingUnitEdit.editReporintgUnit.name}"/>
+
+                                    <p:outputLabel for="code" value="Code"/>
+                                    <p:inputText id="code" value="#{reportingUnitEdit.editReporintgUnit.code}"/>
+
+                                    <p:outputLabel for="active" value="Active"/>
+                                    <p:selectBooleanCheckbox id="active" value="#{reportingUnitEdit.editReporintgUnit.active}" />
+
+                                    <p:outputLabel for="console" value="Country" />
+                                    <p:selectOneMenu id="console" value="#{reportingUnitEdit.editReporintgUnit.country}" panelStyle="width:180px"
+                                                     effect="fade" var="t" style="width:160px" converter="countryConverter">
+                                        <f:selectItems value="#{reportingUnitEdit.countries}" var="cnt" itemLabel="#{cnt.name}" itemValue="#{cnt}" />
+                                        <p:column>
+                                            <h:outputText value="#{t.name}" />
+                                        </p:column>
+                                    </p:selectOneMenu>
+
+                                    <p:outputLabel for="localCurrency" value="Local Currency" />
+                                    <p:selectOneMenu id="localCurrency" value="#{reportingUnitEdit.editReporintgUnit.localCurrency}" panelStyle="width:180px"
+                                                     effect="fade" style="width:160px" converter="currencyConverter">
+                                        <f:selectItems value="#{viewSupport.allCurrencies}" var="cur" itemLabel="#{cur.currencyCode}" itemValue="#{cur}" />
+                                        <p:column>
+                                            <h:outputText value="#{cur.currencyCode}" />
+                                        </p:column>
+                                    </p:selectOneMenu>
+                                    <p:outputLabel for="parentBusinessField" value="Business Unit"/>
+                                    <p:autoComplete
+                                        id="parentBusinessField"
+                                        var="buss"
+                                        maxResults="10"
+                                        required="#{false}"
+                                        forceSelection="#{true}"
+                                        value="#{reportingUnitEdit.editReporintgUnit.businessUnit}"
+                                        completeMethod="#{viewSupport.completeBusinessUnit}"
+                                        itemLabel="#{buss.name}"
+                                        itemValue="#{buss}"
+                                        converter="businessUnitConverter"
+                                        >
+                                        <h:outputText value="Begin typing business unit name"/>
+                                    </p:autoComplete>
+                                    <p:outputLabel for="preparers" value="Preparers" />
+                                    <p:panelGrid id="preparers" columns="1">
+                                        <p:dataTable id="preparersTable" style="margin-bottom: 10px;" var="preparer" value="#{reportingUnitEdit.editReporintgUnit.preparers}" >
+                                            <p:column headerText="Preparer Name">
+                                                <h:outputText value="#{preparer.name}" />
+                                            </p:column>
+                                            <p:column>
+                                                <p:commandLink title="Remove" ajax="true" actionListener="#{reportingUnitEdit.removePreparer(preparer)}" style="color: blue;" update=":mainForm:preparers" process="@this">
+                                                    <h:outputText value="Remove" />
+                                                </p:commandLink>
+                                            </p:column>
+                                        </p:dataTable>
+                                        <p:autoComplete
+                                            id="preparerField"
+                                            var="user"
+                                            maxResults="10"
+                                            required="#{false}"
+                                            forceSelection="#{true}"
+                                            value="#{reportingUnitEdit.completedPUser}"
+                                            completeMethod="#{viewSupport.completeUser}"
+                                            itemLabel="#{user.name}"
+                                            itemValue="#{user}"
+                                            converter="userConverter"
+                                            placeholder="Begin typing last name">
+                                        </p:autoComplete>
+                                        <p:commandButton value="Add Preparer" style="vertical-align:middle;" ajax="true" actionListener="#{reportingUnitEdit.addPreparer(reportingUnitEdit.completedPUser)}" update=":mainForm:preparers" process="@this, :mainForm:preparerField" />
+                                    </p:panelGrid>
+
+                                    <p:outputLabel for="approvers" value="Approvers" />
+                                    <p:panelGrid id="approvers" columns="1">
+                                        <p:dataTable id="approversTable" style="margin-bottom: 10px;" var="approver" value="#{reportingUnitEdit.editReporintgUnit.approvers}" >
+                                            <p:column headerText="Approver Name">
+                                                <h:outputText value="#{approver.name}" />
+                                            </p:column>
+                                            <p:column>
+                                                <p:commandLink title="Remove" ajax="true" actionListener="#{reportingUnitEdit.removeApprover(approver)}" style="color: blue;" update=":mainForm:approvers" process="@this">
+                                                    <h:outputText value="Remove" />
+                                                </p:commandLink>
+                                            </p:column>
+                                        </p:dataTable>
+                                        <p:autoComplete
+                                            id="approverField"
+                                            var="user"
+                                            maxResults="10"
+                                            required="#{false}"
+                                            forceSelection="#{true}"
+                                            value="#{reportingUnitEdit.completedUser}"
+                                            completeMethod="#{viewSupport.completeUser}"
+                                            itemLabel="#{user.name}"
+                                            itemValue="#{user}"
+                                            converter="userConverter"
+                                            placeholder="Begin typing last name">
+                                        </p:autoComplete>
+                                        <p:commandButton value="Add Approver" style="vertical-align:middle;" ajax="true" actionListener="#{reportingUnitEdit.addApprover(reportingUnitEdit.completedUser)}" update=":mainForm:approvers" process="@this, :mainForm:approverField" />
+                                    </p:panelGrid>
+                                    <p:outputLabel for="reviewers" value="Reviewers" />
+                                    <p:panelGrid id="reviewers" columns="1">
+                                        <p:dataTable id="reviewersTable" style="margin-bottom: 10px;" var="reviewer" value="#{reportingUnitEdit.editReporintgUnit.reviewers}" >
+                                            <p:column headerText="Reviewers Name">
+                                                <h:outputText value="#{reviewer.name}" />
+                                            </p:column>
+                                            <p:column>
+                                                <p:commandLink title="Remove" ajax="true" actionListener="#{reportingUnitEdit.removeReviewer(reviewer)}" style="color: blue;" update=":mainForm:reviewers" process="@this">
+                                                    <h:outputText value="Remove" />
+                                                </p:commandLink>
+                                            </p:column>
+                                        </p:dataTable>
+                                        <p:autoComplete
+                                            id="reviewerField"
+                                            var="user"
+                                            maxResults="10"
+                                            required="#{false}"
+                                            forceSelection="#{true}"
+                                            value="#{reportingUnitEdit.completedRUser}"
+                                            completeMethod="#{viewSupport.completeUser}"
+                                            itemLabel="#{user.name}"
+                                            itemValue="#{user}"
+                                            converter="userConverter"
+                                            placeholder="Begin typing last name">
+                                        </p:autoComplete>
+                                        <p:commandButton value="Add Reviewers" style="vertical-align:middle;" ajax="true" actionListener="#{reportingUnitEdit.addReviewer(reportingUnitEdit.completedRUser)}" update=":mainForm:reviewers" process="@this, :mainForm:reviewerField" />
+                                    </p:panelGrid>
+                                    <p:outputLabel for="viewers" value="Viewers" />
+                                    <p:panelGrid id="viewers" columns="1">
+                                        <p:dataTable id="viewersTable" style="margin-bottom: 10px;" var="viewer" value="#{reportingUnitEdit.editReporintgUnit.viewers}" >
+                                            <p:column headerText="Viewers Name">
+                                                <h:outputText value="#{viewer.name}" />
+                                            </p:column>
+                                            <p:column>
+                                                <p:commandLink title="Remove" ajax="true" actionListener="#{reportingUnitEdit.removeViewer(viewer)}" style="color: blue;" update=":mainForm:viewers" process="@this">
+                                                    <h:outputText value="Remove" />
+                                                </p:commandLink>
+                                            </p:column>
+                                        </p:dataTable>
+                                        <p:autoComplete
+                                            id="viewerField"
+                                            var="user"
+                                            maxResults="10"
+                                            required="#{false}"
+                                            forceSelection="#{true}"
+                                            value="#{reportingUnitEdit.completedVUser}"
+                                            completeMethod="#{viewSupport.completeUser}"
+                                            itemLabel="#{user.name}"
+                                            itemValue="#{user}"
+                                            converter="userConverter"
+                                            placeholder="Begin typing last name">
+                                        </p:autoComplete>
+                                        <p:commandButton value="Add Viewers" style="vertical-align:middle;" ajax="true" actionListener="#{reportingUnitEdit.addViewer(reportingUnitEdit.completedVUser)}" update=":mainForm:viewers" process="@this, :mainForm:viewerField" />
+                                    </p:panelGrid>
+                                    <p:outputLabel for="parentRU" value="Parent Reporting Unit"/>
+                                    <p:autoComplete
+                                        id="parentRU"
+                                        var="ru"
+                                        maxResults="10"
+                                        required="#{false}"
+                                        forceSelection="#{true}"
+                                        value="#{reportingUnitEdit.editReporintgUnit.parentReportingUnit}"
+                                        completeMethod="#{viewSupport.parentReportingUnit}"
+                                        itemLabel="#{ru.name}"
+                                        itemValue="#{ru}"
+                                        converter="reportingUnitConverter"
+                                        placeholder="Begin typing..">
+                                    </p:autoComplete>
+                                    <f:facet name="footer">
+                                        <p:toolbar>
+                                            <f:facet name="right">
+                                                <p:commandButton id="btnReport" value="#{reportingUnitEdit.editReporintgUnit.getId() == null ? 'Add' : 'Update' }" ajax="false" icon="ui-icon-disk fa fa-save" action="#{reportingUnitEdit.addUpdateCondition()}" style="max-width:150px;" process="@this"/>
+                                            </f:facet>
+                                        </p:toolbar>
+                                    </f:facet>
+                                </p:panelGrid>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+        </div>
+    </ui:define>
+
+</ui:composition>

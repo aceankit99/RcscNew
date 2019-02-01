@@ -1,0 +1,64 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+
+        </style>
+    </ui:define>
+
+    <ui:define name="title">Financial Periods</ui:define>
+
+    <ui:define name="viewname">Financial Periods</ui:define>
+
+    <ui:define name="content">
+        <div style="min-height: calc(100vh - 235px);">
+            <h:form id="mainForm">
+                <p:growl id="messages" showDetail="true" />
+
+                <div class="ui-g">
+
+                    <div class="ui-g-12">
+                        <div class="card card-w-title">
+                            <h1>Financial Periods</h1>
+                            <p:dataTable id="userTable" var="financialPeriod" value="#{financialPeriodSearch.financialPeriods}"  paginator="true" rows="20">
+
+                                <p:column headerText="Name" sortBy="#{businessUnit.name}">
+                                    <h:outputText value="#{financialPeriod.name}" />
+                                </p:column>
+
+                                <p:column  headerText="startDate" sortBy="#{financialPeriod.startDate}">
+                                    <h:outputText value="#{financialPeriod.startDate}" />
+                                </p:column>
+
+                                <p:column headerText="endDate" sortBy="#{financialPeriod.endDate}">
+                                    <h:outputText value="#{financialPeriod.endDate}" />
+                                </p:column>
+
+                                <p:column headerText="status" sortBy="#{financialPeriod.status}">
+                                    <h:outputText value="#{financialPeriod.status}" />
+                                </p:column>
+
+                                <p:column  headerText="Option" >
+                                    <h:commandLink value="Edit Financial Period" action="#{adminController.editFinancialPeriod(financialPeriod)}"></h:commandLink>
+                                </p:column>
+                            </p:dataTable>
+
+                            <p:toolbar>
+                                <f:facet name="right">
+                                    <p:commandButton update="userTable" ajax="false" icon="ui-icon-contact fa fa-plus" value="Create Next Period" action="#{financialPeriodSearch.createNextFinancialPeriod()}"></p:commandButton>
+                                </f:facet>
+                            </p:toolbar>
+
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+        </div>
+    </ui:define>
+
+</ui:composition>

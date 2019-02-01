@@ -1,0 +1,155 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:of="http://omnifaces.org/functions"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+
+        </style>
+    </ui:define>
+
+    <ui:define name="title">Reports List</ui:define>
+
+    <ui:define name="viewname">Reports List</ui:define>
+
+    <ui:define name="content">
+        <div style="min-height: calc(100vh - 235px);">
+            <h:form id="mainForm">
+                <p:growl id="messages" showDetail="true" />
+                <div class="ui-g">
+
+                    <div class="ui-g-12">
+                        <div class="card card-w-title">
+
+                            <h4 style="margin: 1px;float: left"><strong>#{webSession.currentPeriod.id} Calculation Review - #{reportsList.reportingUnit.name} - #{reportsList.reportingUnit.getWorkflowStatus(webSession.currentPeriod).description}</strong></h4>
+
+                            <p:panelGrid styleClass="ui-panelgrid-blank form-group" style="border: 0px none; margin-top: 10px; background-color:transparent;">
+                                <p:row>
+                                    <p:commandButton value="Download Report 1 - Inputs and Calcs" ajax="false" style="width:auto;float: right; font-size: 85%;margin-right: 5%;" icon="ui-icon-arrowthick-1-s">
+                                        <p:fileDownload value="#{reportsList.getReport1InputAndCalc()}" />
+                                    </p:commandButton>
+                                </p:row>
+                                <p:row>
+                                    <p:commandButton value="Download Report 1 Tab-2 - POC Outputs" ajax="false" style="width:auto;float: right; font-size: 85%;margin-right: 5%;" icon="ui-icon-arrowthick-1-s">
+                                        <p:fileDownload value="#{reportsList.getReport1Tab2PocOutputs()}" />
+                                    </p:commandButton>
+                                </p:row>
+                                <p:row>
+                                    <p:commandButton value="Download Admin Changes Log" ajax="false" style="width:auto;float: right; font-size: 85%;margin-right: 5%;" icon="ui-icon-arrowthick-1-s">
+                                        <p:fileDownload value="#{reportsList.getAdminChangeLog()}" />
+                                    </p:commandButton>
+                                </p:row>
+                            </p:panelGrid>
+                            <p:treeTable tableStyle="width:auto" style="padding-top: 30px;" value="#{reportsList.rootTreeNode}" var="pob" selectionMode="single" selection="#{reportsList.selectedNode}">
+                                <p:column headerText="Reporting Unit - Contract - POB" sortBy="#{pob.name}" >
+                                    <h:outputText value="#{pob.name}" title="#{pob.description}"/>
+                                </p:column>
+                                <p:column style="white-space:pre-line;" id="f1">
+                                    <f:facet name="header">
+                                        <h:outputText value="Contract Summary Contract Level" />
+                                        <p:tooltip value="Contract Summary Contract Level" for="f1" position="top" showEffect="slide" hideEffect="explode" />
+                                    </f:facet>
+                                    <p:commandButton value="Download" ajax="false" style="width:auto; font-size: 70%;" icon="ui-icon-arrowthick-1-s" rendered="#{of:isInstance('com.flowserve.system606.model.Contract', pob)}">
+                                        <p:fileDownload value="#{reportsReview.getContractSummaryReport(pob)}" />
+                                    </p:commandButton>
+                                </p:column>
+                                <p:column style="white-space:pre-line;" id="f12">
+                                    <f:facet name="header">
+                                        <h:outputText value="Contract Summary RU Level" />
+                                        <p:tooltip value="Contract Summary RU Level" for="f12" position="top" showEffect="slide" hideEffect="explode" />
+                                    </f:facet>
+                                    <p:commandButton value="Download" ajax="false" style="width:auto; font-size: 70%;" icon="ui-icon-arrowthick-1-s" rendered="#{of:isInstance('com.flowserve.system606.model.ReportingUnit', pob)}">
+                                        <p:fileDownload value="#{reportsReview.getContractSummaryReportingUnitLevelReport(pob)}" />
+                                    </p:commandButton>
+                                </p:column>
+                                <p:column style="white-space:pre-line;" id="f3">
+                                    <f:facet name="header">
+                                        <h:outputText value="Financial Report Contract Level" />
+                                        <p:tooltip value="Financial Report" for="f3" position="top" showEffect="slide" hideEffect="explode" />
+                                    </f:facet>
+                                    <p:commandButton value="Download" ajax="false" style="width:auto; font-size: 70%;" icon="ui-icon-arrowthick-1-s" rendered="#{of:isInstance('com.flowserve.system606.model.Contract', pob)}">
+                                        <p:fileDownload value="#{reportsReview.getFinancialSummaryReport(pob)}" />
+                                    </p:commandButton>
+                                </p:column>
+                                <p:column style="white-space:pre-line;" id="f4">
+                                    <f:facet name="header">
+                                        <h:outputText value="Financial Report RU Level" />
+                                        <p:tooltip value="Financial Report RU Level" for="f4" position="top" showEffect="slide" hideEffect="explode" />
+                                    </f:facet>
+                                    <p:commandButton value="Download" ajax="false" style="width:auto; font-size: 70%;" icon="ui-icon-arrowthick-1-s" rendered="#{of:isInstance('com.flowserve.system606.model.ReportingUnit', pob)}">
+                                        <p:fileDownload value="#{reportsReview.getRUFinancialSummaryReport(pob)}" />
+                                    </p:commandButton>
+                                </p:column>
+                                <p:column style="white-space:pre-line;" id="calc">
+                                    <f:facet name="header">
+                                        <h:outputText value="Report 1 Input and Calc " />
+                                        <p:tooltip value="Report 1 Input and Calc " for="calc" position="top" showEffect="slide" hideEffect="explode" />
+                                    </f:facet>
+                                    <p:commandButton value="Download" ajax="false" style="width:auto; font-size: 70%;" icon="ui-icon-arrowthick-1-s" rendered="#{of:isInstance('com.flowserve.system606.model.ReportingUnit', pob)}">
+                                        <p:fileDownload value="#{reportsList.getReport1InputAndCalcRULevel(pob)}" />
+                                    </p:commandButton>
+                                </p:column>
+                                <p:column style="white-space:pre-line;" id="pocOutput">
+                                    <f:facet name="header">
+                                        <h:outputText value="Report 1 POC Output " />
+                                        <p:tooltip value="Report 1 POC Output " for="pocOutput" position="top" showEffect="slide" hideEffect="explode" />
+                                    </f:facet>
+                                    <p:commandButton value="Download" ajax="false" style="width:auto; font-size: 70%;" icon="ui-icon-arrowthick-1-s" rendered="#{of:isInstance('com.flowserve.system606.model.ReportingUnit', pob)}">
+                                        <p:fileDownload value="#{reportsList.getReport1Tab2PocOutputsRULevel(pob)}" />
+                                    </p:commandButton>
+                                </p:column>
+                                <p:column style="white-space:pre-line;" id="ca">
+                                    <f:facet name="header">
+                                        <h:outputText value="Report 2 Contract Assets &amp; Liab " />
+                                        <p:tooltip value="Report 2 Contract Assets &amp; Liab " for="ca" position="top" showEffect="slide" hideEffect="explode" />
+                                    </f:facet>
+                                    <p:commandButton value="Download" ajax="false" style="width:auto; font-size: 70%;" icon="ui-icon-arrowthick-1-s" rendered="#{of:isInstance('com.flowserve.system606.model.ReportingUnit', pob)}">
+                                        <p:fileDownload value="#{reportsList.getReport2AssetsandLiab(pob)}" />
+                                    </p:commandButton>
+                                </p:column>
+
+                                <p:column style="white-space:pre-line;" id="dis">
+                                    <f:facet name="header">
+                                        <h:outputText value="Report 4 Disagg. Revenue Disclosure " />
+                                        <p:tooltip value="Report 4 Disagg. Revenue Disclosure " for="dis" position="top" showEffect="slide" hideEffect="explode" />
+                                    </f:facet>
+                                    <p:commandButton value="Download" ajax="false" style="width:auto; font-size: 70%;" icon="ui-icon-arrowthick-1-s" rendered="#{of:isInstance('com.flowserve.system606.model.ReportingUnit', pob)}">
+                                        <p:fileDownload value="#{reportsList.getReport4DisAggRevDisclosure(pob)}" />
+                                    </p:commandButton>
+                                </p:column>
+                                <p:column style="white-space:pre-line;" id="disTab2">
+                                    <f:facet name="header">
+                                        <h:outputText value="Report Backlog Rollfoward Disclosure " />
+                                        <p:tooltip value="Report Backlog Rollfoward Disclosure " for="disTab2" position="top" showEffect="slide" hideEffect="explode" />
+                                    </f:facet>
+                                    <p:commandButton value="Download" ajax="false" style="width:auto; font-size: 70%;" icon="ui-icon-arrowthick-1-s" rendered="#{of:isInstance('com.flowserve.system606.model.ReportingUnit', pob)}">
+                                        <p:fileDownload value="#{reportsList.getReportBacklogRollDisclosure(pob)}" />
+                                    </p:commandButton>
+                                </p:column>
+
+                                <p:column style="white-space:pre-line;" id="je1">
+                                    <f:facet name="header">
+                                        <h:outputText value="Journal Entry Report" />
+                                        <p:tooltip value="Journal Entry Report" for="je1" position="top" showEffect="slide" hideEffect="explode" />
+                                    </f:facet>
+                                    <p:commandButton value="Download" ajax="false" style="width:auto; font-size: 70%;" icon="ui-icon-arrowthick-1-s" rendered="#{of:isInstance('com.flowserve.system606.model.ReportingUnit', pob)}">
+                                        <p:fileDownload value="#{reportsReview.getJournalEntryReport(pob)}" />
+                                    </p:commandButton>
+                                </p:column>
+
+
+                            </p:treeTable>
+
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+        </div>
+    </ui:define>
+
+</ui:composition>
+

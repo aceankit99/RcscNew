@@ -1,0 +1,73 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+
+        </style>
+    </ui:define>
+
+    <ui:define name="title">MetricType Edit</ui:define>
+
+    <ui:define name="viewname">MetricType Edit</ui:define>
+
+    <ui:define name="content">
+        <div style="min-height: calc(100vh - 235px);">
+            <h:form>
+                <div class="ui-fluid">
+                    <div class="ui-g">
+                        <div class="ui-g-12">
+                            <div class="card card-w-title">
+                                <h1>MetricType Edit</h1>
+                                <p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank form-group" style="border:0px none; background-color:transparent;">
+                                   
+                                    <p:outputLabel for="name" value="Name:"/>
+                                    <p:inputText id="name" value="#{metricTypeEdit.metricType.name}"/>
+
+                                    <p:outputLabel for="description" value="Description:"/>
+                                    <p:inputText id="description" value="#{metricTypeEdit.metricType.description}"/>
+
+                                    <p:outputLabel for="code" value="Code:"/>
+                                    <p:outputLabel  id="code" value="#{metricTypeEdit.metricType.code}"/>
+                                    
+                                    <p:outputLabel for="group" value="Group Name:"/>
+                                    <p:outputLabel id="group" value="#{metricTypeEdit.metricType.groupName}"/>
+                                    
+                                    <p:outputLabel for="pos" value="Group Position:"/>
+                                    <p:outputLabel id="pos" value="#{metricTypeEdit.metricType.groupPosition}"/>
+                                    
+                                    <p:outputLabel for="metricclass" value="Metric Class:"/>
+                                    <p:outputLabel id="metricclass" value="#{metricTypeEdit.metricType.metricClass}"/>
+                                    
+                                    <p:outputLabel for="currency" value="Currency:"/>
+                                    <p:outputLabel id="currency" value="#{metricTypeEdit.metricType.currency}"/>
+                                    
+                                    <p:outputLabel for="excel" value="Excel Sheet:"/>
+                                    <p:outputLabel id="excel" value="#{metricTypeEdit.metricType.excelSheet}"/>
+                                    
+                                    <p:outputLabel for="excelcol" value="Excel Column:"/>
+                                    <p:outputLabel id="excelcol" value="#{metricTypeEdit.metricType.excelCol}"/>
+                                    
+                                    <p:outputLabel for="fromdate" value="Effective From Date:"/>
+                                    <p:outputLabel id="fromdate" value="#{metricTypeEdit.metricType.effectiveFrom}"/>
+                                    
+                                     <p:outputLabel for="todate" value="Effective To Date:"/>
+                                     <p:outputLabel id="todate" value="#{metricTypeEdit.metricType.effectiveTo}"/>
+                                    
+                                    <p:outputLabel for="btn" value="" />
+                                    <p:commandButton id="btn"  icon="ui-icon-edit" value="Update" action="#{adminController.updateMetricType(metricTypeEdit.metricType)}"  style="max-width:150px;" />
+                                </p:panelGrid>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+        </div>
+    </ui:define>
+
+</ui:composition>
+

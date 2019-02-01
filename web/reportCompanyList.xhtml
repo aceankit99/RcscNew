@@ -1,0 +1,51 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+
+        </style>
+    </ui:define>
+
+    <ui:define name="title">Company List</ui:define>
+
+    <ui:define name="viewname">Company List</ui:define>
+
+    <ui:define name="content" >
+        <div style="min-height: calc(100vh - 235px);">
+            <div class="ui-g">
+                <div class="ui-g-12">
+                    <div class="card card-w-title">
+                        <p:messages showDetail="true" />
+                        <h1>Company List</h1>
+                        <h:form id="reportForm">
+                           
+
+
+                            <p:dataTable id="reportTable" var="company" value="#{reportCompanyList.company}"  paginator="true" rows="30">
+
+                                <p:column headerText="Company Name" sortBy="#{company.name}">
+                                    <h:commandLink value="#{company.name}" action="#{adminController.generateReportCompany(company)}"></h:commandLink>
+                                </p:column>
+
+                                <p:column headerText="Company Code" sortBy="#{company.id}">
+                                    <h:outputText value="#{company.id}" />
+                                </p:column>
+
+
+
+                            </p:dataTable>
+
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ui:define>
+
+</ui:composition>
+

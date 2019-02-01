@@ -1,0 +1,75 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+
+        </style>
+    </ui:define>
+
+    <ui:define name="title">#{financialPeriodEdit.financialPeriod.getId() == null ? "New" : "Edit" } Financial Period</ui:define>
+
+    <ui:define name="viewname">#{financialPeriodEdit.financialPeriod.getId() == null ? "New" : "Edit" } Financial Period</ui:define>
+
+    <ui:define name="content">
+        <div style="min-height: calc(100vh - 235px);">
+            <h:form>
+                <p:growl id="messages" showDetail="true" sticky="true"/>
+                <div class="ui-fluid">
+                    <div class="ui-g">
+                        <div class="ui-g-12">
+                            <div class="card card-w-title">
+                                <h1>#{financialPeriodEdit.financialPeriod.getId() == null ? "New" : "Edit" } Financial Period</h1>
+                                <p:panelGrid columns="2" columnClasses="ui-grid-col-3,ui-grid-col-6,ui-grid-col-3,ui-grid-col-6" layout="grid" styleClass="ui-panelgrid-blank form-group" style="border:0px none; background-color:transparent;">
+                                    <p:outputLabel for="name" value="Name"/>
+                                    <p:outputLabel id="name" value="#{financialPeriodEdit.financialPeriod.name}" style="font-weight: bold;"/>
+
+                                    <p:outputLabel for="startDate" value="StartDate"/>
+                                    <p:outputLabel id="startDate" value="#{financialPeriodEdit.financialPeriod.startDate}"/>
+
+                                    <p:outputLabel for="endDate" value="EndDate"/>
+                                    <p:outputLabel id="endDate" value="#{financialPeriodEdit.financialPeriod.endDate}"/>
+
+                                    <p:outputLabel for="status" value="Status"/>
+                                    <p:outputLabel id="status" value="#{financialPeriodEdit.financialPeriod.status}"/>
+
+                                    <p:outputLabel for="local" value="Local Currency Conversion Rate Period"/>
+                                    <p:outputLabel id="local" value="#{financialPeriodEdit.financialPeriod.localCurrencyRatePeriod.id}"/>
+
+                                    <p:outputLabel for="report" value="Reporting Currency Conversion Rate Period"/>
+                                    <p:outputLabel id="report" value="#{financialPeriodEdit.financialPeriod.reportingCurrencyRatePeriod.id}"/>
+
+                                    <p:outputLabel for="actionUser" value="Action User"/>
+                                    <p:outputLabel id="actionUser" value="#{financialPeriodEdit.financialPeriod.lastUpdatedBy.name}"/>
+
+                                    <p:outputLabel for="actionDate" value="Action Date"/>
+                                    <p:outputLabel id="actionDate" value="#{financialPeriodEdit.financialPeriod.lastUpdateDate}">
+                                        <f:convertDateTime pattern="dd-MMM-yyyy hh:mm a" type="localDateTime" />
+                                    </p:outputLabel>
+                                </p:panelGrid>
+                                <p:toolbar>
+                                    <f:facet name="left">
+                                        <p:commandButton value="Back to Period List" ajax="false" action="financialPeriodList" style="max-width:150px;"/>
+                                    </f:facet>
+                                    <f:facet name="right">
+                                        <p:commandButton value="Approve Empty RUs" icon="ui-icon-check" ajax="false" action="#{financialPeriodEdit.approveEmptyRU(financialPeriodEdit.financialPeriod)}"  style="max-width:150px;"/>
+                                        <p:commandButton value="Open Period" icon="ui-icon-folder-open" ajax="false" action="#{financialPeriodEdit.openPeriod()}" style="max-width:150px;"/>
+                                        <p:commandButton value="User Freeze Period" icon="fa fa-fw fa-gg" ajax="false" action="#{financialPeriodEdit.freezePeriod()}" style="margin-left: 5px; max-width:175px;"/>
+                                        <p:commandButton value="Close Period" icon="fa fa-fw fa-sign-in" ajax="false" action="#{financialPeriodEdit.closePeriod()}" style="margin-left: 5px; max-width:150px;"/>
+                                    </f:facet>
+                                </p:toolbar>
+                                <p:commandButton value="Approve All RUs" icon="ui-icon-check" ajax="false" action="#{financialPeriodEdit.approveAllRUs(financialPeriodEdit.financialPeriod)}"  style="max-width:150px; margin-left: 18px;margin-top: 80px;"/>
+                                <p:commandButton value="Execute Business Rules for Period All RUs" icon="ui-icon-check" ajax="false" action="#{financialPeriodEdit.executeBusinessRules(financialPeriodEdit.financialPeriod)}"  style="width:250px; margin-left: 500px; margin-top: 80px;"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+        </div>
+    </ui:define>
+
+</ui:composition>

@@ -1,0 +1,71 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+
+        </style>
+    </ui:define>
+
+    <ui:define name="title">Subledger Line Lists</ui:define>
+
+    <ui:define name="viewname">Subledger Line Lists</ui:define>
+
+    <ui:define name="content">
+        <div style="min-height: calc(100vh - 235px);">
+            <h:form id="mainForm">
+                <p:growl id="messages" showDetail="true" />
+
+                <div class="ui-g">
+
+                    <div class="ui-g-12">
+                        <div class="card card-w-title">
+                            <h1>Subledger Line Lists</h1>
+                            <p:dataTable id="userTable" var="list" value="#{subledgerLineList.list}"  paginator="true" rows="30" tableStyle="table-layout:auto">
+
+                                <p:column headerText="ID"  >
+                                    <h:outputText value="#{list.id}" />
+                                </p:column>
+                                
+                                <p:column headerText="Accounted DR" >
+                                    <h:outputText value="#{list.accountedDr}" />
+                                </p:column>
+                                
+                                 <p:column headerText="Accounted CR" >
+                                     <h:outputText value="#{list.accountedCr}" />
+                                </p:column>
+                                
+                                 <p:column headerText="Currency" >
+                                     <h:outputText value="#{list.currency}" />
+                                </p:column>
+                             
+                                <p:column headerText="Date" >
+                                    <h:outputText value="#{list.accountingDate}"/>
+                                </p:column>
+                             
+                                <p:column headerText="Company" >
+                                    <h:outputText value="#{list.company.name}"/>
+                                </p:column>
+                                
+                                  <p:column headerText="SL Account" >
+                                      <h:outputText value="#{list.subledgerAccount.name}"/>
+                                </p:column>
+                                    
+                                 <p:column headerText="SL_BATCH ID" >
+                                     <h:outputText value="#{list.subledgerBatch}" />
+                                </p:column>
+                               
+                            </p:dataTable>
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+        </div>
+    </ui:define>
+
+</ui:composition>
+

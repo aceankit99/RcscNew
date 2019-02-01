@@ -1,0 +1,65 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+
+        </style>
+    </ui:define>
+
+    <ui:define name="title">Account Mapping List</ui:define>
+
+    <ui:define name="viewname">Account Mapping List</ui:define>
+
+    <ui:define name="content">
+        <div style="min-height: calc(100vh - 235px);">
+            <h:form id="mainForm">
+                <p:growl id="messages" showDetail="true" />
+
+                <div class="ui-g">
+
+                    <div class="ui-g-12">
+                        <div class="card card-w-title">
+                            <h1>Account Mapping List</h1>
+
+                            <p:dataTable id="accMaptable" var="ac" value="#{accountMappingList.list}"  paginator="true" rows="30" tableStyle="table-layout:auto">
+
+                                <p:column headerText="ID" >
+                                    <h:outputText value="#{ac.id}" />
+                                </p:column>
+                             
+                                <p:column headerText="Account ID" >
+                                    <h:outputText value="#{ac.account.id}" />
+                                </p:column>
+                                
+                                <p:column headerText="Is_Informational" >
+                                    <h:outputText value="#{ac.informational}" />
+                                </p:column>
+                                
+                                <p:column headerText="Entity Type" >
+                                    <h:outputText value="#{ac.ownerEntityType}" />
+                                </p:column>
+                                
+                                <p:column headerText="Metric Type" >
+                                    <h:outputText value="#{ac.metricType.code}" />
+                                </p:column>
+                                
+                                <p:column headerText="Revenue Method" >
+                                    <h:outputText value="#{ac.revenueMethod}" />
+                                </p:column>
+                                
+                            </p:dataTable>
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+        </div>
+    </ui:define>
+
+</ui:composition>
+
+

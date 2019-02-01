@@ -1,0 +1,66 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+
+            body .ui-widget .ui-widget
+            {
+                width: 180px;
+                min-width: 180px;
+            }
+
+        </style>
+    </ui:define>
+
+    <ui:define name="title">Customer Payments</ui:define>
+
+    <ui:define name="viewname">Customer Payments</ui:define>
+
+    <ui:define name="content">
+        <div style="min-height: calc(100vh - 235px);">
+            <h:form>
+                <div class="ui-fluid">
+                    <div class="ui-g">
+                        <div class="ui-g-12">
+                            <div class="card card-w-title">
+
+                                <p:graphicImage url="../images/Flowserve.svg.png" height="80" width="200" stream="false" style="margin-left:50px"/>
+                                <h4 style="float:right;margin-right: 300px">Customer Payments</h4>
+                                <br></br>
+
+                                <br></br>
+                                <p:panelGrid columns="2" columnClasses="ui-grid-col-6,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank form-group" style="border:0px none; background-color:transparent;margin-left: 50px">
+                                    <p:outputLabel  value="Customer PO# :"  />
+                                    <p:inputNumber padControl="false"/>
+
+                                    <p:outputLabel  value="Expected Payment to Customer Amount:" />
+                                    <p:inputNumber value="0.00"/>
+
+                                    <p:outputLabel  value="Fair Value Amount of the distinct products/services (USD):" />
+                                    <p:inputNumber value="0.00"/>
+
+                                    <p:outputLabel value="Reduction to Transaction Price"/>
+                                    <p:inputNumber value="0.00"/>
+                                </p:panelGrid>
+                                <hr></hr>
+                                <p:panelGrid columns="4"  layout="grid" styleClass="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4" style="border:0px none; background-color:transparent;margin-left: 50px">
+                                    <p:outputLabel  value=""  />
+                                    <p:outputLabel  value=""  />
+                                    <p:outputLabel  value=""  />
+                                    <p:commandButton value="Close"></p:commandButton>
+                                </p:panelGrid>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+        </div>
+    </ui:define>
+
+</ui:composition>
+

@@ -1,0 +1,377 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+            .stripped {
+  padding: 2.25em 1.6875em;
+  background-image: -webkit-repeating-linear-gradient(135deg, rgba(0,0,0,.3), rgba(0,0,0,.3) 1px, transparent 2px, transparent 2px, rgba(0,0,0,.3) 3px);
+  background-image: -moz-repeating-linear-gradient(135deg, rgba(0,0,0,.3), rgba(0,0,0,.3) 1px, transparent 2px, transparent 2px, rgba(0,0,0,.3) 3px);
+  background-image: -o-repeating-linear-gradient(135deg, rgba(0,0,0,.3), rgba(0,0,0,.3) 1px, transparent 2px, transparent 2px, rgba(0,0,0,.3) 3px);
+  background-image: repeating-linear-gradient(135deg, rgba(0,0,0,.3), rgba(0,0,0,.3) 1px, transparent 2px, transparent 2px, rgba(0,0,0,.3) 3px);
+  -webkit-background-size: 4px 4px;
+  -moz-background-size: 4px 4px;
+  background-size: 4px 4px;
+  }
+
+        </style>
+    </ui:define>
+
+    <ui:define name="title">Journal Entry Online</ui:define>
+
+    <ui:define name="viewname">Journal Entry Online</ui:define>
+
+    <ui:define name="content">
+        <div style="min-height: calc(100vh - 235px);">
+            <h:form id="mainForm">
+                <p:growl id="messages" showDetail="true" />
+
+                <div class="ui-g">
+
+                    <div class="ui-g-12">
+                        <div class="card card-w-title">
+                            <h1>Journal Entry Online</h1>
+
+                            <p:panelGrid style="margin-top:20px"  >
+                                <f:facet name="header">
+
+                                    <p:row>
+                                        <p:column colspan="30" style="text-align: left;font-weight: bold">Month End Journal Entry</p:column>
+
+                                    </p:row>
+                                    <p:row>
+                                        <p:column colspan="30" style="text-align: left;color: red;font-weight: bold">Journal Entry Presented as Debit and(Credit)</p:column>
+                                    </p:row>
+
+                                    <p:row  >
+                                        <p:column colspan="5" ></p:column>
+                                        <p:column colspan="26" style="font-weight: bold">Monthly Journal Entry Components - Debit/(Credits)</p:column></p:row>
+                                    <p:row>
+                                        <p:column colspan="5" >Reporting Month End</p:column>
+                                        <p:column colspan="10" style="background-color: #00a6d2;font-weight: bold">Income Statement</p:column>
+                                        <p:column colspan="16" style="background-color: #1D6833;font-weight: bold">Balance Sheet</p:column>
+
+                                    </p:row>
+
+                                    <p:row>
+                                        <p:column  colspan="5" style="text-align: left;"> 04.30.18</p:column>
+
+                                        <p:column  colspan="2" rowspan="2" style="background-color: #24C6DC"> Revenue</p:column>
+                                        <p:column  colspan="2" rowspan="2" style="background-color: #24C6DC"> LDs Penalty</p:column>
+                                        <p:column colspan="2" style="background-color: #24C6DC"> Cost of Goods Sold</p:column>
+                                        <p:column rowspan="2" colspan="2" style="background-color: #24C6DC">Commission Expense</p:column>
+                                        <p:column colspan="2" rowspan="2" style="background-color: #24C6DC">Fx (Gain)/Loss</p:column>
+                                        <p:column colspan="2" rowspan="2" style="background-color: #08b89e">AR Progress Billing</p:column>
+                                        <p:column colspan="2" rowspan="2" style="background-color: #08b89e">WIP</p:column>
+                                        <p:column colspan="2" rowspan="2" style="background-color: #08b89e">WIP Reserve</p:column>
+                                        <p:column colspan="2" rowspan="2" style="background-color: #08b89e">Gross Contract Asset</p:column>
+                                        <p:column colspan="2" rowspan="2" style="background-color: #08b89e">Contract Liability</p:column>
+                                        <p:column colspan="2" rowspan="2" style="background-color: #08b89e">Accured Liability Loss Reverse</p:column>
+                                        <p:column colspan="2" rowspan="2" style="background-color: #08b89e">Accured Liability TPCs</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column colspan="5"  > </p:column> 
+                                        <p:column style="background-color: #24C6DC" >Costs Incurred</p:column>
+                                        <p:column  style="background-color: #24C6DC">Loss Reserve Adjustment</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="font-weight: bold;text-align: left" rowspan="1" colspan="30">Contract Summary</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column colspan="5">Percentage-of-Completion POb's</p:column>
+                                        <p:column  colspan="2"></p:column>
+                                        <p:column  colspan="2"></p:column>
+                                        <p:column  colspan="1"></p:column>
+                                        <p:column  colspan="1"></p:column>
+                                        <p:column  colspan="2"></p:column>
+                                        <p:column  colspan="2"></p:column>
+                                        <p:column  colspan="2"></p:column>
+                                        <p:column  colspan="2"></p:column>
+                                        <p:column  colspan="2" ></p:column>
+                                        <p:column  colspan="2"  styleClass="stripped"></p:column>
+                                        <p:column  colspan="2" styleClass="stripped"></p:column>
+                                        <p:column  colspan="2"></p:column>
+                                        <p:column  colspan="2"></p:column>
+                                    </p:row>
+
+                                    <p:row >
+                                        <p:column colspan="5">Point-in-Time POb's</p:column>
+                                        <p:column  colspan="2"></p:column>
+                                        <p:column  colspan="2"></p:column>
+                                        <p:column  colspan="1"></p:column>
+                                        <p:column  colspan="1"></p:column>
+                                        <p:column  colspan="2"></p:column>
+                                        <p:column  colspan="2"></p:column>
+                                        <p:column  colspan="2"></p:column>
+                                        <p:column  colspan="2"></p:column>
+                                        <p:column  colspan="2"></p:column>
+                                        <p:column  colspan="2" styleClass="stripped"></p:column>
+                                        <p:column  colspan="2" styleClass="stripped"></p:column>
+                                        <p:column  colspan="2"></p:column>
+                                        <p:column  colspan="2"></p:column>
+                                    </p:row>
+
+                                    <p:row >
+                                        <p:column colspan="5">Straight-Line POb's</p:column>
+                                        <p:column  colspan="2"></p:column>
+                                        <p:column  colspan="2"></p:column>
+                                        <p:column  colspan="1"></p:column>
+                                        <p:column  colspan="1"></p:column>
+                                        <p:column  colspan="2"></p:column>
+                                        <p:column  colspan="2"></p:column>
+                                        <p:column  colspan="2"></p:column>
+                                        <p:column  colspan="2"></p:column>
+                                        <p:column  colspan="2"></p:column>
+                                        <p:column  colspan="2" styleClass="stripped"></p:column>
+                                        <p:column  colspan="2" styleClass="stripped"></p:column>
+                                        <p:column  colspan="2"></p:column>
+                                        <p:column  colspan="2"></p:column>
+                                    </p:row>
+
+                                    <p:row >
+                                        <p:column colspan="5">Third Party Commissions</p:column>
+                                        <p:column  colspan="2"></p:column>
+                                        <p:column  colspan="2"></p:column>
+                                        <p:column  colspan="1"></p:column>
+                                        <p:column  colspan="1"></p:column>
+                                        <p:column  colspan="2"></p:column>
+                                        <p:column  colspan="2"></p:column>
+                                        <p:column  colspan="2"></p:column>
+                                        <p:column  colspan="2"></p:column>
+                                        <p:column  colspan="2"></p:column>
+                                        <p:column  colspan="2" styleClass="stripped"></p:column>
+                                        <p:column  colspan="2" styleClass="stripped"></p:column>
+                                        <p:column  colspan="2"></p:column>
+                                        <p:column  colspan="2"></p:column>
+                                    </p:row>
+
+                                    <p:row >
+                                        <p:column colspan="5">Contract Billings</p:column>
+                                        <p:column  colspan="2"></p:column>
+                                        <p:column  colspan="2"></p:column>
+                                        <p:column  colspan="1"></p:column>
+                                        <p:column  colspan="1"></p:column>
+                                        <p:column  colspan="2"></p:column>
+                                        <p:column  colspan="2"></p:column>
+                                        <p:column  colspan="2"></p:column>
+                                        <p:column  colspan="2"></p:column>
+                                        <p:column  colspan="2"></p:column>
+                                        <p:column  colspan="2" styleClass="stripped"></p:column>
+                                        <p:column  colspan="2" styleClass="stripped"></p:column>
+                                        <p:column  colspan="2"></p:column>
+                                        <p:column  colspan="2"></p:column>
+                                    </p:row>
+
+                                    <p:row >
+                                        <p:column colspan="5"  style="font-weight: bold">Contract Totals</p:column>
+                                        <p:column  colspan="2"></p:column>
+                                        <p:column  colspan="2"></p:column>
+                                        <p:column  colspan="1"></p:column>
+                                        <p:column  colspan="1"></p:column>
+                                        <p:column  colspan="2"></p:column>
+                                        <p:column  colspan="2"></p:column>
+                                        <p:column  colspan="2"></p:column>
+                                        <p:column  colspan="2"></p:column>
+                                        <p:column  colspan="2"></p:column>
+                                        <p:column  colspan="2" ></p:column>
+                                        <p:column  colspan="2" ></p:column>
+                                        <p:column  colspan="2"></p:column>
+                                        <p:column  colspan="2"></p:column>
+                                    </p:row>
+
+                                    <p:row>
+                                        <p:column  colspan="30"></p:column>  
+                                    </p:row>
+
+                                    <p:row>
+                                        <p:column colspan="18" style="text-align:left;font-weight: bolder">Journal Entries</p:column>
+                                    </p:row>
+
+                                    <p:row>
+                                        <p:column colspan="6" style="font-weight: bold">Account Name</p:column>
+                                        <p:column colspan="6" style="font-weight: bold">Account Description</p:column>
+                                        <p:column colspan="3" style="font-weight: bold">Debit</p:column>
+                                        <p:column colspan="3" style="font-weight: bold">Credit</p:column>
+                                    </p:row>
+
+                                    <p:row>
+                                        <p:column colspan="18" style="text-align: left;font-weight: bold">Monthly Revenue, COS and SG&amp;A Entry</p:column>
+                                    </p:row>
+
+                                    <p:row>
+                                        <p:column style="text-align: left" colspan="6">SALESPOC.IN</p:column>
+                                        <p:column style="text-align: left" colspan="6">Sales_POC - In</p:column>
+                                        <p:column  colspan="3">-</p:column>
+                                        <p:column  colspan="3">-</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="text-align: left" colspan="6">SALESOC</p:column>
+                                        <p:column style="text-align: left" colspan="6">Sales - Outside Customers</p:column>
+                                        <p:column  colspan="3">-</p:column>
+                                        <p:column colspan="3">-</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="text-align: left" colspan="6">COSPOC.IN</p:column>
+                                        <p:column style="text-align: left" colspan="6">COS_POC - In</p:column>
+                                        <p:column  colspan="3">-</p:column>
+                                        <p:column   colspan="3">-</p:column>
+                                    </p:row>
+
+                                    <p:row>
+                                        <p:column style="text-align: left" colspan="6">COSOC</p:column>
+                                        <p:column style="text-align: left" colspan="6">Cost of Sales - Outside Customers</p:column>
+                                        <p:column  colspan="3">-</p:column>
+                                        <p:column   colspan="3">-</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="text-align: left" colspan="6">COMMISH.EXP</p:column>
+                                        <p:column style="text-align: left" colspan="6">Commissions - Expense External</p:column>
+                                        <p:column  colspan="3">-</p:column>
+                                        <p:column   colspan="3">-</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="text-align: left" colspan="6">OTHEXP.GLEXCH</p:column>
+                                        <p:column style="text-align: left" colspan="6">OthExp - (Gain) Loss on Foreign Exchange</p:column>
+                                        <p:column  colspan="3">-</p:column>
+                                        <p:column   colspan="3">-</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="text-align: left" colspan="6">INV.WIP</p:column>
+                                        <p:column style="text-align: left" colspan="6">Inventory - Work in Progress</p:column>
+                                        <p:column  colspan="3">-</p:column>
+                                        <p:column   colspan="3">-</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="text-align: left" colspan="6">ACCOTHEXP.ROYALTY</p:column>
+                                        <p:column style="text-align: left" colspan="6">AccLiab.OthExp - Accrued Royalties &amp; Commissions</p:column>
+                                        <p:column  colspan="3">-</p:column>
+                                        <p:column colspan="3">-</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="text-align: left" colspan="6">STCONTLIAB</p:column>
+                                        <p:column style="text-align: left" colspan="6">Current Contract Liability</p:column>
+                                        <p:column  colspan="3">-</p:column>
+                                        <p:column   colspan="3">-</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="text-align: left" colspan="12"></p:column>
+                                        <p:column  colspan="3">________</p:column>
+                                        <p:column   colspan="3">________</p:column>
+                                    </p:row>
+
+                                    <p:row>
+                                        <p:column style="text-align: left" colspan="12"></p:column>
+                                        <p:column  colspan="3">-</p:column>
+                                        <p:column   colspan="3">-</p:column>
+                                    </p:row>
+
+                                    <p:row>
+                                        <p:column colspan="18" style="text-align: left;font-weight: bold">Monthly Billing Entry</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="text-align: left" colspan="6">TRADEREC.TRADE</p:column>
+                                        <p:column style="text-align: left" colspan="6">RecNet.TradeRec - Trade Receivables</p:column>
+                                        <p:column  colspan="3">-</p:column>
+                                        <p:column   colspan="3">-</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="text-align: left" colspan="6">STCONTLIAB</p:column>
+                                        <p:column style="text-align: left" colspan="6">Current Contract Liability</p:column>
+                                        <p:column  colspan="3">-</p:column>
+                                        <p:column   colspan="3">-</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="text-align: left" colspan="12"></p:column>
+                                        <p:column  colspan="3">________</p:column>
+                                        <p:column   colspan="3">________</p:column>
+                                    </p:row>
+
+                                    <p:row>
+                                        <p:column style="text-align: left" colspan="12"></p:column>
+                                        <p:column  colspan="3">-</p:column>
+                                        <p:column   colspan="3">-</p:column>
+                                    </p:row>
+
+                                    <p:row>
+                                        <p:column colspan="18" style="text-align: left;font-weight: bold">Monthly Contract Loss Entry</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="text-align: left" colspan="6">GLVAR.INVADJ</p:column>
+                                        <p:column style="text-align: left" colspan="6">GLVariances - Inventory Adjustments</p:column>
+                                        <p:column  colspan="3">-</p:column>
+                                        <p:column   colspan="3">-</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="text-align: left" colspan="6">INVRESERVE</p:column>
+                                        <p:column style="text-align: left" colspan="6">Inventory - Inventory Reserves</p:column>
+                                        <p:column  colspan="3">-</p:column>
+                                        <p:column   colspan="3">-</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="text-align: left" colspan="6">ACCLOSSRES</p:column>
+                                        <p:column style="text-align: left" colspan="6">AccLiab.OthExp - Loss Reserve</p:column>
+                                        <p:column  colspan="3">-</p:column>
+                                        <p:column   colspan="3">-</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="text-align: left" colspan="12"></p:column>
+                                        <p:column  colspan="3">________</p:column>
+                                        <p:column   colspan="3">________</p:column>
+                                    </p:row>
+
+                                    <p:row>
+                                        <p:column style="text-align: left" colspan="12"></p:column>
+                                        <p:column  colspan="3">-</p:column>
+                                        <p:column   colspan="3">-</p:column>
+                                    </p:row>
+
+                                    <p:row>
+                                        <p:column colspan="18" style="text-align: left;font-weight: bold">Monthly Contract Asset / Liability Reclass</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="text-align: left" colspan="6">STCONTRACT.REC.GROSS</p:column>
+                                        <p:column style="text-align: left" colspan="6">Current Contract Asset - Gross</p:column>
+                                        <p:column  colspan="3">-</p:column>
+                                        <p:column   colspan="3">-</p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column style="text-align: left" colspan="6">STCONTLIAB</p:column>
+                                        <p:column style="text-align: left" colspan="6">Current Contract Liability</p:column>
+                                        <p:column  colspan="3">-</p:column>
+                                        <p:column   colspan="3">-</p:column>
+                                    </p:row>
+
+                                    <p:row>
+                                        <p:column style="text-align: left" colspan="12"></p:column>
+                                        <p:column  colspan="3">________</p:column>
+                                        <p:column   colspan="3">________</p:column>
+                                    </p:row>
+
+                                    <p:row>
+                                        <p:column style="text-align: left" colspan="12"></p:column>
+                                        <p:column  colspan="3">-</p:column>
+                                        <p:column   colspan="3">-</p:column>
+                                    </p:row>
+
+                                    <p:row>
+
+                                        <p:column colspan="12" style="text-align: right;font-weight: bold">All Entries Total=></p:column>
+                                        <p:column  colspan="3">-</p:column>
+                                        <p:column   colspan="3">-</p:column>
+                                    </p:row>
+                                </f:facet>
+                            </p:panelGrid>
+
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+        </div>
+    </ui:define>
+
+</ui:composition>
+

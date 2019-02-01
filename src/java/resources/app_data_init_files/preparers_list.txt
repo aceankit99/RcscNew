@@ -1,0 +1,1139 @@
+
+1015	Lisa Desmond	10156115	Ldesmond@flowserve.com	Preparer
+1015	Eric Oudine	10156873	Eoudine@flowserve.com	Preparer
+1015	Diane Brody 	10124700	dbrody@flowserve.com	Reviewer
+1015	Penny Hill	PeHill	pehill@flowserve.com	Approver
+1015	Gina Fleisher	GFleisher	gfleisher@flowserve.com	Viewer
+1015	Amy Hartman	ahartman	ahartman@flowserve.com	Viewer
+1015	Jamin Taube	jtaube	JTaube@flowserve.com	Viewer
+1015	Diana Moore	10145715	DiMoore@flowserve.com	Viewer
+1015	Frenika Roberts	10153074	FRoberts@flowserve.com	Viewer
+1015	Henry Rodis	10036129	HRodis@flowserve.com	Viewer
+1100				
+1100	Eric Wu	Ewu	ewu@flowserve.com	Approver
+1100	Isabel Seka	10157311	LSeka@flowserve.com	Reviewer
+1100	Troy Clapsaddle	10147325	TClapsaddle@Flowserve.com	Preparer
+1100	Joy Shifflett	10004600	jshifflett@Flowserve.com	Preparer
+1100	Charles Lei	10155632	clei@flowserve.com	Preparer
+1105				
+1105	Crystal Brown	CryBrown	crybrown@flowserve.com	Approver
+1105	Troy Clapsaddle	10147325	TClapsaddle@Flowserve.com	Reviewer
+1105	Kristan Freeburger	10151570	KFreeburger@flowserve.com	Preparer
+1200				
+1200	Vilma Gonzalez	10044713	vgonzalez@flowserve.com	Preparer
+1200	Barbara Ely	BEly	bely@flowserve.com	Reviewer
+1200	Cameron Byrd	CByrd	cbyrd@flowserve.com	Approver
+1200	Ana Alfaro	10151121	AnAlfaro@Flowserve.com	Preparer
+1200	Elvira Moran	10154285	EMoran@flowserve.com	Preparer
+1200	Shu Ching Yeh	10150310	SYeh@Flowserve.com	Preparer
+1200	Alice Lee	10152939	AlLee@flowserve.com	Preparer
+1205				
+1205	Vilma Gonzalez	10044713	vgonzalez@flowserve.com	Preparer
+1205	Barbara Ely	BEly	bely@flowserve.com	Reviewer
+1205	Cameron Byrd	CByrd	cbyrd@flowserve.com	Approver
+1205	Ana Alfaro	10151121	AnAlfaro@Flowserve.com	Preparer
+1205	Elvira Moran	10154285	EMoran@flowserve.com	Preparer
+1205	Shu Ching Yeh	10150310	SYeh@Flowserve.com	Preparer
+1205	Alice Lee	10152939	AlLee@flowserve.com	Preparer
+1225				
+1225	Vilma Gonzalez	10044713	vgonzalez@flowserve.com	Preparer
+1225	Barbara Ely	BEly	bely@flowserve.com	Reviewer
+1225	Cameron Byrd	CByrd	cbyrd@flowserve.com	Approver
+1225	Ana Alfaro	10151121	AnAlfaro@Flowserve.com	Preparer
+1225	Elvira Moran	10154285	EMoran@flowserve.com	Preparer
+1225	Shu Ching Yeh	10150310	SYeh@Flowserve.com	Preparer
+1225	Alice Lee	10152939	AlLee@flowserve.com	Preparer
+1320				
+1320	Syed Shah	10154761	syshah@flowserve.com	Approver
+1320	Syed Zia Jaffery	10157089	sjaffery@flowserve.com	Preparer
+1320	Isabel Seka	10157311	LSeka@flowserve.com	Reviewer
+1350				
+1350	Vilma Gonzalez	10044713	vgonzalez@flowserve.com	Preparer
+1350	Barbara Ely	BEly	bely@flowserve.com	Reviewer
+1350	Cameron Byrd	CByrd	cbyrd@flowserve.com	Approver
+1350	Ana Alfaro	10151121	AnAlfaro@Flowserve.com	Preparer
+1350	Elvira Moran	10154285	EMoran@flowserve.com	Preparer
+1350	Shu Ching Yeh	10150310	SYeh@Flowserve.com	Preparer
+1350	Alice Lee	10152939	AlLee@flowserve.com	Preparer
+1370				
+1370	Chiman Patel	10147046	CPatel@flowserve.com	Approver
+1370	Isabel Seka	10157311	LSeka@flowserve.com	Reviewer
+1370	Troy Clapsaddle	10147325	TClapsaddle@Flowserve.com	Preparer
+1405				
+1405	Allan Foley	AFoley	afoley@flowserve.com	Approver
+1405	Isabel Seka	10157311	LSeka@flowserve.com	Reviewer
+1405	Charmaine White	cwhite	cwhite@flowserve.com	Preparer
+1405	Jennifier Gardner	jegardner	jgardner@flowserve.com	Preparer
+1600				
+1600	Lisa Desmond	10156115	Ldesmond@flowserve.com	Preparer
+1600	Eric Oudine	10156873	Eoudine@flowserve.com	Preparer
+1600	Suzanne Jones	10145006	SuJones@flowserve.com	Reviewer
+1600	Tami Wilson	twilson	twilson@flowserve.com	Approver
+1600	Gina Fleisher	GFleisher	gfleisher@flowserve.com	Viewer
+1600	Amy Hartman	ahartman	ahartman@flowserve.com	Viewer
+1600	Jamin Taube	jtaube	JTaube@flowserve.com	Viewer
+1600	Diana Moore	10145715	DiMoore@flowserve.com	Viewer
+1600	Frenika Roberts	10153074	FRoberts@flowserve.com	Viewer
+1600	Henry Rodis	10036129	HRodis@flowserve.com	Viewer
+1610				
+1610	Lisa Desmond	10156115	Ldesmond@flowserve.com	Preparer
+1610	Eric Oudine	10156873	Eoudine@flowserve.com	Preparer
+1610	Diana Moore	10145715	DiMoore@flowserve.com	Reviewer
+1610	Tami Wilson	twilson	twilson@flowserve.com	Approver
+1610	Gina Fleisher	GFleisher	gfleisher@flowserve.com	Viewer
+1610	Amy Hartman	ahartman	ahartman@flowserve.com	Raed Only
+1610	Jamin Taube	jtaube	JTaube@flowserve.com	Viewer
+1610	Suzanne Jones	10145006	SuJones@flowserve.com	Viewer
+1610	Frenika Roberts	10153074	FRoberts@flowserve.com	Viewer
+1610	Henry Rodis	10036129	HRodis@flowserve.com	Viewer
+1615				
+1615	Lisa Desmond	10156115	Ldesmond@flowserve.com	Preparer
+1615	Eric Oudine	10156873	Eoudine@flowserve.com	Preparer
+1615	Gina Fleisher	GFleisher	gfleisher@flowserve.com	Reviewer
+1615	Tami Wilson	twilson	twilson@flowserve.com	Approver
+1615	Diana Moore	10145715	DiMoore@flowserve.com	Viewer
+1615	Amy Hartman	ahartman	ahartman@flowserve.com	Viewer
+1615	Jamin Taube	jtaube	JTaube@flowserve.com	Viewer
+1615	Suzanne Jones	10145006	SuJones@flowserve.com	Viewer
+1615	Frenika Roberts	10153074	FRoberts@flowserve.com	Viewer
+1615	Henry Rodis	10036129	HRodis@flowserve.com	Viewer
+1700				
+1700	Lisa Desmond	10156115	Ldesmond@flowserve.com	Preparer
+1700	Eric Oudine	10156873	Eoudine@flowserve.com	Preparer
+1700	Jamin Taube	jtaube	JTaube@flowserve.com	Reviewer
+1700	Tami Wilson	twilson	twilson@flowserve.com	Approver
+1700	Diana Moore	10145715	DiMoore@flowserve.com	Viewer
+1700	Amy Hartman	ahartman	ahartman@flowserve.com	Viewer
+1700	Gina Fleisher	GFleisher	gfleisher@flowserve.com	Viewer
+1700	Suzanne Jones	10145006	SuJones@flowserve.com	Viewer
+1700	Frenika Roberts	10153074	FRoberts@flowserve.com	Viewer
+1700	Henry Rodis	10036129	HRodis@flowserve.com	Viewer
+1705				
+1705	Lisa Desmond	10156115	Ldesmond@flowserve.com	Preparer
+1705	Eric Oudine	10156873	Eoudine@flowserve.com	Preparer
+1705	Suzanne Jones	10145006	SuJones@flowserve.com	Reviewer
+1705	Tami Wilson	twilson	twilson@flowserve.com	Approver
+1705	Diana Moore	10145715	DiMoore@flowserve.com	Viewer
+1705	Amy Hartman	ahartman	ahartman@flowserve.com	Viewer
+1705	Gina Fleisher	GFleisher	gfleisher@flowserve.com	Viewer
+1705	Jamin Taube	jtaube	JTaube@flowserve.com	Viewer
+1705	Frenika Roberts	10153074	FRoberts@flowserve.com	Viewer
+1705	Henry Rodis	10036129	HRodis@flowserve.com	Viewer
+1710				
+1710	Lisa Desmond	10156115	Ldesmond@flowserve.com	Preparer
+1710	Eric Oudine	10156873	Eoudine@flowserve.com	Preparer
+1710	Frenika Roberts	10153074	FRoberts@flowserve.com	Reviewer
+1710	Tami Wilson	twilson	twilson@flowserve.com	Approver
+1710	Diana Moore	10145715	DiMoore@flowserve.com	Viewer
+1710	Amy Hartman	ahartman	ahartman@flowserve.com	Viewer
+1710	Gina Fleisher	GFleisher	gfleisher@flowserve.com	Viewer
+1710	Jamin Taube	jtaube	JTaube@flowserve.com	Viewer
+1710	Suzanne Jones	10145006	SuJones@flowserve.com	Viewer
+1710	Henry Rodis	10036129	HRodis@flowserve.com	Viewer
+1720				
+1720	Lisa Desmond	10156115	Ldesmond@flowserve.com	Preparer
+1720	Eric Oudine	10156873	Eoudine@flowserve.com	Preparer
+1720	Amy Hartman	ahartman	ahartman@flowserve.com	Reviewer
+1720	Tami Wilson	twilson	twilson@flowserve.com	Approver
+1720	Diana Moore	10145715	DiMoore@flowserve.com	Viewer
+1720	Frenika Roberts	10153074	FRoberts@flowserve.com	Viewer
+1720	Gina Fleisher	GFleisher	gfleisher@flowserve.com	Viewer
+1720	Jamin Taube	jtaube	JTaube@flowserve.com	Viewer
+1720	Suzanne Jones	10145006	SuJones@flowserve.com	Viewer
+1720	Henry Rodis	10036129	HRodis@flowserve.com	Viewer
+1725				
+1725	Lisa Desmond	10156115	Ldesmond@flowserve.com	Preparer
+1725	Eric Oudine	10156873	Eoudine@flowserve.com	Preparer
+1725	Diana Moore	10145715	DiMoore@flowserve.com	Reviewer
+1725	Tami Wilson	twilson	twilson@flowserve.com	Approver
+1725	Amy Hartman	ahartman	ahartman@flowserve.com	Viewer
+1725	Frenika Roberts	10153074	FRoberts@flowserve.com	Viewer
+1725	Gina Fleisher	GFleisher	gfleisher@flowserve.com	Viewer
+1725	Jamin Taube	jtaube	JTaube@flowserve.com	Viewer
+1725	Suzanne Jones	10145006	SuJones@flowserve.com	Viewer
+1725	Henry Rodis	10036129	HRodis@flowserve.com	Viewer
+1727				
+1727	Lisa Desmond	10156115	Ldesmond@flowserve.com	Preparer
+1727	Eric Oudine	10156873	Eoudine@flowserve.com	Preparer
+1727	Frenika Roberts	10153074	FRoberts@flowserve.com	Reviewer
+1727	Tami Wilson	twilson	twilson@flowserve.com	Approver
+1727	Amy Hartman	ahartman	ahartman@flowserve.com	Viewer
+1727	Diana Moore	10145715	DiMoore@flowserve.com	Viewer
+1727	Gina Fleisher	GFleisher	gfleisher@flowserve.com	Viewer
+1727	Jamin Taube	jtaube	JTaube@flowserve.com	Viewer
+1727	Suzanne Jones	10145006	SuJones@flowserve.com	Viewer
+1727	Henry Rodis	10036129	HRodis@flowserve.com	Viewer
+1970				
+1970	Lisa Desmond	10156115	Ldesmond@flowserve.com	Preparer
+1970	Eric Oudine	10156873	Eoudine@flowserve.com	Preparer
+1970	Thomas Fath	TFath	tfath@flowserve.com	Reviewer
+1970	Tami Wilson	twilson	twilson@flowserve.com	Approver
+1972				
+1972	Lisa Desmond	10156115	Ldesmond@flowserve.com	Preparer
+1972	Eric Oudine	10156873	Eoudine@flowserve.com	Preparer
+1972	Thomas Fath	TFath	tfath@flowserve.com	Reviewer
+1972	Tami Wilson	twilson	twilson@flowserve.com	Approver
+3041				
+3041	Fernando Aguirre	FAguirre	FAguirre@flowserve.com	Approver
+3041	Mike Koenig	MKoenig	mkoenig@flowserve.com	Viewer
+3041	Sylvia Farmand	sfarmand	SFarmand@Flowserve.com	Preparer
+3041	Sylvia Farmand	sfarmand	SFarmand@Flowserve.com	Reviewer
+3090				
+3090	Fernando Aguirre	FAguirre	FAguirre@flowserve.com	Approver
+3090	Mike Koenig	MKoenig	mkoenig@flowserve.com	Viewer
+3090	Sylvia Farmand	sfarmand	SFarmand@Flowserve.com	Preparer
+3090	Sylvia Farmand	sfarmand	SFarmand@Flowserve.com	Reviewer
+3100				
+3100	Fernando Aguirre	FAguirre	FAguirre@flowserve.com	Approver
+3100	Mike Koenig	MKoenig	mkoenig@flowserve.com	Viewer
+3100	Sylvia Farmand	sfarmand	SFarmand@Flowserve.com	Preparer
+3100	Sylvia Farmand	sfarmand	SFarmand@Flowserve.com	Reviewer
+5000				
+5000	Gary Botcherby	GBotcherby	gbotcherby@flowserve.com	Viewer
+5000	Wendy Burk	10155422	WBurk@flowserve.com	Preparer
+5000	Wendy Burk	10155422	WBurk@flowserve.com	Reviewer
+5000	Yvonne Lukins	YLukins	ylukins@flowserve.com	Approver
+5020				
+5020	Gary Dowell	10137764	GDowell@flowserve.com	Approver
+5020	Wendy Burk	10155422	WBurk@flowserve.com	Preparer
+5020	Wendy Burk	10155422	WBurk@flowserve.com	Reviewer
+5030				
+5030	Gary Dowell	10137764	GDowell@flowserve.com	Approver
+5030	Wendy Burk	10155422	WBurk@flowserve.com	Preparer
+5030	Wendy Burk	10155422	WBurk@flowserve.com	Reviewer
+5042				
+5042	Gary Dowell	10137764	GDowell@flowserve.com	Approver
+5042	Wendy Burk	10155422	WBurk@flowserve.com	Preparer
+5042	Wendy Burk	10155422	WBurk@flowserve.com	Reviewer
+5045				
+5045	Gary Dowell	10137764	GDowell@flowserve.com	Approver
+5045	Wendy Burk	10155422	WBurk@flowserve.com	Preparer
+5045	Wendy Burk	10155422	WBurk@flowserve.com	Reviewer
+5050				
+5050	Santhanam Sriram	10135491	ssriram@Flowserve.com	Viewer
+5050	Nandakumar R	10151112	NR@Flowserve.com	Preparer
+5050	Sivaraman Rajendran	10118344	SRajendran@flowserve.com	Preparer
+5050	Srinivas Setty	SeSrinivas	sesrinivas@flowserve.com	Approver
+5050	Vijaykrishna Murali	10153040	ViMurali@flowserve.com	Preparer
+5050	Vijaykrishna Murali	10153040	ViMurali@flowserve.com	Reviewer
+5052				
+5052	Nandakumar R	10151112	NR@Flowserve.com	Preparer
+5052	Sivaraman Rajendran	10118344	SRajendran@flowserve.com	Preparer
+5052	Sivaraman Rajendran	10118344	SRajendran@flowserve.com	Reviewer
+5052	Srinivas Setty	SeSrinivas	sesrinivas@flowserve.com	Approver
+5062				
+5062	Alberto Riccardi	ARiccardi	ARiccardi@flowserve.com	Viewer
+5062	Rick Dodd	rdodd	rdodd@flowserve.com	Approver
+5062	Ryan Clark	10151309	RyClark@flowserve.com	Preparer
+5062	Wendy Burk	10155422	WBurk@flowserve.com	Preparer
+5062	Wendy Burk	10155422	WBurk@flowserve.com	Reviewer
+5085				
+5085	Gary Botcherby	GBotcherby	gbotcherby@flowserve.com	Viewer
+5085	Gary Dowell	10137764	GDowell@flowserve.com	Approver
+5085	Wendy Burk	10155422	WBurk@flowserve.com	Preparer
+5085	Wendy Burk	10155422	WBurk@flowserve.com	Reviewer
+5115				
+5115	Brenda Brown	BBrown	bbrown@flowserve.com	Preparer
+5115	Doug McKasson	DMcKasson	dmckasson@flowserve.com	Viewer
+5115	Greg Gunter	10153739	ggunter@flowserve.com	Viewer
+5115	Sherry Lynch	SLynch	SLynch@flowserve.com	Preparer
+5115	Sherry Lynch	SLynch	SLynch@flowserve.com	Reviewer
+5115	Ted Richardson	TRichardson	trichardson@flowserve.com	Approver
+5130				
+5130	David Moeller	50053175	Dmoeller@flowserve.com	Preparer
+5130	Lisa Desmond	10156115	Ldesmond@flowserve.com	Reviewer
+5130	Thomas Fath	TFath	tfath@flowserve.com	Approver
+5200				
+5200	Doug McKasson	DMcKasson	dmckasson@flowserve.com	Viewer
+5200	Dan Schwartz	DSchwartz	dschwartz@flowserve.com	Preparer
+5200	Erik Sockman	10150437	esockman@flowserve.com	Approver
+5200	Shane Brace	10142932	SBrace@flowserve.com	Reviewer
+5200	Ken Carberry	10006004	kcarberry@flowserve.com	Preparer
+5201				
+5201	Greg Gunter	10153739	ggunter@flowserve.com	Approver
+5201	Rebecca Todd	10155723	ReTodd@flowserve.com	Preparer
+5201	Rebecca Todd	10155723	ReTodd@flowserve.com	Reviewer
+5201	Sammy Sigei	10153562	SSigei@flowserve.com	Preparer
+5201	Wendy Burk	10155422	WBurk@flowserve.com	Preparer
+5205				
+5205	Alberto Riccardi	ARiccardi	ARiccardi@flowserve.com	Viewer
+5205	Rick Dodd	rdodd	rdodd@flowserve.com	Approver
+5205	Wendy Burk	10155422	WBurk@flowserve.com	Preparer
+5205	Wendy Burk	10155422	WBurk@flowserve.com	Reviewer
+5215				
+5215	Alberto Riccardi	ARiccardi	ARiccardi@flowserve.com	Viewer
+5215	Rick Dodd	rdodd	rdodd@flowserve.com	Approver
+5215	Ryan Clark	10151309	RyClark@flowserve.com	Preparer
+5215	Wendy Burk	10155422	WBurk@flowserve.com	Preparer
+5215	Wendy Burk	10155422	WBurk@flowserve.com	Reviewer
+5220				
+5220	Greg Gunter	10153739	ggunter@flowserve.com	Approver
+5220	Rebecca Todd	10155723	ReTodd@flowserve.com	Preparer
+5220	Rebecca Todd	10155723	ReTodd@flowserve.com	Reviewer
+5220	Sammy Sigei	10153562	SSigei@flowserve.com	Preparer
+7803				
+7803	Syed Zia Jaffery	10157089	sjaffery@flowserve.com	Preparer
+7803	Isabel Seka	10157311	LSeka@flowserve.com	Reviewer
+7803	Syed Shah	10154761	syshah@flowserve.com	Approver
+7809				
+7809	Bao Yuh Lim	10155654	balim@flowserve.com	Preparer
+7809	Bao Yuh Lim	10155654	balim@flowserve.com	Reviewer
+7809	Chee Meng Ng	cheeng	cheeng@flowserve.com	Approver
+7815				
+7815	Bao Yuh Lim	10155654	balim@flowserve.com	Preparer
+7815	Bao Yuh Lim	10155654	balim@flowserve.com	Reviewer
+7815	Chee Meng Ng	cheeng	cheeng@flowserve.com	Approver
+7818				
+7818	Bao Yuh Lim	10155654	balim@flowserve.com	Preparer
+7818	Bao Yuh Lim	10155654	balim@flowserve.com	Reviewer
+7818	Chee Meng Ng	cheeng	cheeng@flowserve.com	Approver
+7821				
+7821	Bao Yuh Lim	10155654	balim@flowserve.com	Preparer
+7821	Bao Yuh Lim	10155654	balim@flowserve.com	Reviewer
+7821	Chee Meng Ng	cheeng	cheeng@flowserve.com	Approver
+7830				
+7830	Bao Yuh Lim	10155654	balim@flowserve.com	Preparer
+7830	Bao Yuh Lim	10155654	balim@flowserve.com	Reviewer
+7830	Chee Meng Ng	cheeng	cheeng@flowserve.com	Approver
+7830	Shubin Zhang	10148876	ShuZhang@flowserve.com	Reviewer
+7866				
+7866	Andreas Schupfer	10149913	aschuepfer@flowserve.com	Approver
+7866	Eckhard Breit	10156488	ebreit@flowserve.com	Preparer
+7866	Eckhard Breit	10156488	ebreit@flowserve.com	Reviewer
+7866	Sascha Grohmann	10156942	SGrohmann@flowserve.com	Preparer
+7866	Jana Gorges	10149176	jgorges@flowserve.com	Preparer
+7881				
+7881	Antoinette Sapor	10150073	ASapor@flowserve.com	Approver
+7881	Eckhard Breit	10156488	ebreit@flowserve.com	Preparer
+7881	Eckhard Breit	10156488	ebreit@flowserve.com	Reviewer
+7881	Sascha Grohmann	10156942	SGrohmann@flowserve.com	Preparer
+7887				
+7887	Monica Hakvoort	10150703	MDankelman@flowserve.com	
+7887	Andreas Schupfer	10149913	aschuepfer@flowserve.com	Approver
+7887	Eckhard Breit	10156488	ebreit@flowserve.com	Preparer
+7887	Eckhard Breit	10156488	ebreit@flowserve.com	Reviewer
+7887	Sascha Grohmann	10156942	SGrohmann@flowserve.com	Preparer
+7890				
+7890	Juan Javier Perez	10149131	JuPerez@flowserve.com	Approver
+7890	Santiago Navarro	Santiago Soto Navarro	SNavarro@flowserve.com	Preparer
+7890	Daniel Arnaltes Corral	darnaltes	darnaltes@flowserve.com	Reviewer
+7890	Ivan Mahir Atabay	iatabay	iatabay@flowserve.com	Preparer
+7890	Eckhard Breit	10156488	ebreit@flowserve.com	Preparer
+7890	Sascha Grohmann	10156942	SGrohmann@flowserve.com	Preparer
+7899				
+7899	Eckhard Breit	10156488	ebreit@flowserve.com	Preparer
+7899	Eckhard Breit	10156488	ebreit@flowserve.com	Reviewer
+7899	Sascha Grohmann	10156942	SGrohmann@flowserve.com	Preparer
+7899	Bernd Ofteringer	10153218	BOfteringer@flowserve.com	Approver
+7908				
+7908	Andreas Schupfer	10149913	aschuepfer@flowserve.com	Approver
+7908	Eckhard Breit	10156488	ebreit@flowserve.com	Preparer
+7908	Eckhard Breit	10156488	ebreit@flowserve.com	Reviewer
+7908	Sascha Grohmann	10156942	SGrohmann@flowserve.com	Preparer
+7908	Evelien Neukermans	10148949	ENeukermans@flowserve.com	Preparer
+7914				
+7914	Andreas Schupfer	10149913	aschuepfer@flowserve.com	Approver
+7914	Eckhard Breit	10156488	ebreit@flowserve.com	Preparer
+7914	Eckhard Breit	10156488	ebreit@flowserve.com	Reviewer
+7914	Sascha Grohmann	10156942	SGrohmann@flowserve.com	Preparer
+7914	Drazenka Isik	10149001	DIsik@flowserve.com	Preparer
+7917				
+7917	Eckhard Breit	10156488	ebreit@flowserve.com	Preparer
+7917	Eckhard Breit	10156488	ebreit@flowserve.com	Reviewer
+7917	Sascha Grohmann	10156942	SGrohmann@flowserve.com	Preparer
+7917	Paul Bull	10148736	PBull@flowserve.com	Approver
+7923				
+7923	Andreas Schupfer	10149913	aschuepfer@flowserve.com	Approver
+7923	Eckhard Breit	10156488	ebreit@flowserve.com	Preparer
+7923	Eckhard Breit	10156488	ebreit@flowserve.com	Reviewer
+7923	Sascha Grohmann	10156942	SGrohmann@flowserve.com	Preparer
+7926				
+7926	Andreas Schupfer	10149913	aschuepfer@flowserve.com	Approver
+7926	Eckhard Breit	10156488	ebreit@flowserve.com	Preparer
+7926	Eckhard Breit	10156488	ebreit@flowserve.com	Reviewer
+7926	Sascha Grohmann	10156942	SGrohmann@flowserve.com	Preparer
+7929				
+7929	Andreas Schupfer	10149913	aschuepfer@flowserve.com	Approver
+7929	Eckhard Breit	10156488	ebreit@flowserve.com	Preparer
+7929	Eckhard Breit	10156488	ebreit@flowserve.com	Reviewer
+7929	Sascha Grohmann	10156942	SGrohmann@flowserve.com	Preparer
+7932				
+7932	Andreas Schupfer	10149913	aschuepfer@flowserve.com	Approver
+7932	Eckhard Breit	10156488	ebreit@flowserve.com	Preparer
+7932	Eckhard Breit	10156488	ebreit@flowserve.com	Reviewer
+7932	Sascha Grohmann	10156942	SGrohmann@flowserve.com	Preparer
+7935				
+7935	Andreas Schupfer	10149913	aschuepfer@flowserve.com	Approver
+7935	Eckhard Breit	10156488	ebreit@flowserve.com	Preparer
+7935	Eckhard Breit	10156488	ebreit@flowserve.com	Reviewer
+7935	Sascha Grohmann	10156942	SGrohmann@flowserve.com	Preparer
+8000				
+8000	Lorena Martinez Caparros	10135153	lmartinezcaparros@flowserve.com	Approver
+8000	Cameron Byrd	CByrd	cbyrd@flowserve.com	Viewer
+8000	Anabel Orozco	10134730	AOrozco@flowserve.com	Reviewer
+8000	Guido Calderon	gcalderon	gcalderon@flowserve.com	Preparer
+8000	Daniel Arnaltes Corral	darnaltes	darnaltes@flowserve.com	Preparer
+8000	Ivan Mahir Atabay	iatabay	iatabay@flowserve.com	Preparer
+8050				
+8050	Lorena Martinez Caparros	10135153	lmartinezcaparros@flowserve.com	Approver
+8050	Cameron Byrd	CByrd	cbyrd@flowserve.com	Viewer
+8050	Anabel Orozco	10134730	AOrozco@flowserve.com	Reviewer
+8050	Guido Calderon	gcalderon	gcalderon@flowserve.com	Preparer
+8050	Daniel Arnaltes Corral	darnaltes	darnaltes@flowserve.com	Preparer
+8050	Ivan Mahir Atabay	iatabay	iatabay@flowserve.com	Preparer
+8002				
+8002	Lorena Martinez Caparros	10135153	lmartinezcaparros@flowserve.com	Approver
+8002	Cameron Byrd	CByrd	cbyrd@flowserve.com	Viewer
+8002	Anabel Orozco	10134730	AOrozco@flowserve.com	Reviewer
+8002	Guido Calderon	gcalderon	gcalderon@flowserve.com	Preparer
+8002	Daniel Arnaltes Corral	darnaltes	darnaltes@flowserve.com	Preparer
+8002	Ivan Mahir Atabay	iatabay	iatabay@flowserve.com	Preparer
+8052				
+8052	Lorena Martinez Caparros	10135153	lmartinezcaparros@flowserve.com	Approver
+8052	Cameron Byrd	CByrd	cbyrd@flowserve.com	Viewer
+8052	Anabel Orozco	10134730	AOrozco@flowserve.com	Reviewer
+8052	Guido Calderon	gcalderon	gcalderon@flowserve.com	Preparer
+8052	Daniel Arnaltes Corral	darnaltes	darnaltes@flowserve.com	Preparer
+8052	Ivan Mahir Atabay	iatabay	iatabay@flowserve.com	Preparer
+8005				
+8005	Mike Koenig	MKoenig	mkoenig@flowserve.com	Viewer
+8005	Lorena Martinez Caparros	10135153	lmartinezcaparros@flowserve.com	Approver
+8005	Cameron Byrd	CByrd	cbyrd@flowserve.com	Viewer
+8005	Anabel Orozco	10134730	AOrozco@flowserve.com	Reviewer
+8005	Guido Calderon	gcalderon	gcalderon@flowserve.com	Preparer
+8005	Daniel Arnaltes Corral	darnaltes	darnaltes@flowserve.com	Preparer
+8005	Ivan Mahir Atabay	iatabay	iatabay@flowserve.com	Preparer
+8053				
+8053	Mike Koenig	MKoenig	mkoenig@flowserve.com	Viewer
+8053	Lorena Martinez Caparros	10135153	lmartinezcaparros@flowserve.com	Approver
+8053	Cameron Byrd	CByrd	cbyrd@flowserve.com	Viewer
+8053	Anabel Orozco	10134730	AOrozco@flowserve.com	Reviewer
+8053	Guido Calderon	gcalderon	gcalderon@flowserve.com	Preparer
+8053	Daniel Arnaltes Corral	darnaltes	darnaltes@flowserve.com	Preparer
+8053	Ivan Mahir Atabay	iatabay	iatabay@flowserve.com	Preparer
+8010				
+8010	Mike Koenig	MKoenig	mkoenig@flowserve.com	Viewer
+8010	Lorena Martinez Caparros	10135153	lmartinezcaparros@flowserve.com	Approver
+8010	Cameron Byrd	CByrd	cbyrd@flowserve.com	Viewer
+8010	Anabel Orozco	10134730	AOrozco@flowserve.com	Reviewer
+8010	Guido Calderon	gcalderon	gcalderon@flowserve.com	Preparer
+8010	Daniel Arnaltes Corral	darnaltes	darnaltes@flowserve.com	Preparer
+8010	Ivan Mahir Atabay	iatabay	iatabay@flowserve.com	Preparer
+8054				
+8054	Mike Koenig	MKoenig	mkoenig@flowserve.com	Viewer
+8054	Lorena Martinez Caparros	10135153	lmartinezcaparros@flowserve.com	Approver
+8054	Cameron Byrd	CByrd	cbyrd@flowserve.com	Viewer
+8054	Anabel Orozco	10134730	AOrozco@flowserve.com	Reviewer
+8054	Guido Calderon	gcalderon	gcalderon@flowserve.com	Preparer
+8054	Daniel Arnaltes Corral	darnaltes	darnaltes@flowserve.com	Preparer
+8054	Ivan Mahir Atabay	iatabay	iatabay@flowserve.com	Preparer
+8015				
+8015	Gary Botcherby	GBotcherby	gbotcherby@flowserve.com	Viewer
+8015	Ian Fletcher	10122021	IFletcher@flowserve.com	Reviewer
+8015	Ian Fletcher	10122021	IFletcher@flowserve.com	Preparer
+8015	Paul Bowden	PaBowden	pabowden@flowserve.com	Approver
+8020				
+8020	Yanti Octavia Tjoa	10135474	YOctaviaTjoa@flowserve.com	Approver
+8020	Ian Fletcher	10122021	IFletcher@flowserve.com	Reviewer
+8020	Ian Fletcher	10122021	IFletcher@flowserve.com	Preparer
+8025				
+8025	Erich Horvath	EHorvath	ehorvath@flowserve.com	Approver
+8025	Judith Koeller	10140654	JKoeller@flowserve.com	Reviewer
+8025	Judith Koeller	10140654	JKoeller@flowserve.com	Preparer
+8025	Alejandro Verdin Cardenas	10001118	acardenas@flowserve.com	Preparer
+8031				
+8031	Christine Lackner	10132559	chlackner@flowserve.com	Reviewer
+8031	Elke Ingrid Bucher	10151287	EBucher@Flowserve.com	Preparer
+8031	Gary Botcherby	GBotcherby	gbotcherby@flowserve.com	Viewer
+8031	Gerald Peukert	50051774	GPeukert@flowserve.com	Preparer
+8031	Robert Hobel	EHobel	rhobel@flowserve.com	Approver
+8033				
+8033	Doug McKasson	DMcKasson	dmckasson@flowserve.com	Viewer
+8033	Eric Soeters	ESoeters	esoeters@flowserve.com	Approver
+8033	Olga Koop	okoop	OKoop@flowserve.com	Preparer
+8033	Sandra de Jongh	10138172	sjongh@flowserve.com	Reviewer
+8033	Sandra de Jongh	10138172	sjongh@flowserve.com	Preparer
+8034				
+8034	Doug McKasson	DMcKasson	dmckasson@flowserve.com	Viewer
+8034	Eric Soeters	ESoeters	esoeters@flowserve.com	Approver
+8034	Olga Koop	okoop	OKoop@flowserve.com	Preparer
+8034	Sandra de Jongh	10138172	sjongh@flowserve.com	Reviewer
+8034	Sandra de Jongh	10138172	sjongh@flowserve.com	Preparer
+8035				
+8035	Hans Boeken	10135268	HBoeken@flowserve.com	Approver
+8035	Eloy de Vet	EVet	evet@flowserve.com	Preparer
+8035	Eloy de Vet	EVet	evet@flowserve.com	Reviewer
+8035	Linda Dons- van de Par	ldons	ldons@flowserve.com	Preparer
+8035	Selwyn Broekaart	50046133	Sbroekaart@Flowserve.com	Preparer
+8035	Teun Sadee	TSadee	tsadee@flowserve.com	Preparer
+8045				
+8045	Frank Claassens	FClaassens	FClaassens@flowserve.com	Viewer
+8045	Hans Boeken	10135268	HBoeken@flowserve.com	Approver
+8045	Eloy de Vet	EVet	evet@flowserve.com	Preparer
+8045	Eloy de Vet	EVet	evet@flowserve.com	Reviewer
+8045	Linda Dons- van de Par	ldons	ldons@flowserve.com	Preparer
+8045	Selwyn Broekaart	50046133	Sbroekaart@Flowserve.com	Preparer
+8045	Teun Sadee	TSadee	tsadee@flowserve.com	Preparer
+8057				
+8057	Mike Koenig	MKoenig	mkoenig@flowserve.com	Viewer
+8057	Lorena Martinez Caparros	10135153	lmartinezcaparros@flowserve.com	Approver
+8057	Cameron Byrd	CByrd	cbyrd@flowserve.com	Viewer
+8057	Anabel Orozco	10134730	AOrozco@flowserve.com	Reviewer
+8057	Guido Calderon	gcalderon	gcalderon@flowserve.com	Preparer
+8057	Daniel Arnaltes Corral	darnaltes	darnaltes@flowserve.com	Preparer
+8057	Ivan Mahir Atabay	iatabay	iatabay@flowserve.com	Preparer
+8059				
+8059	Mike Koenig	MKoenig	mkoenig@flowserve.com	Viewer
+8059	Lorena Martinez Caparros	10135153	lmartinezcaparros@flowserve.com	Approver
+8059	Cameron Byrd	CByrd	cbyrd@flowserve.com	Viewer
+8059	Anabel Orozco	10134730	AOrozco@flowserve.com	Reviewer
+8059	Guido Calderon	gcalderon	gcalderon@flowserve.com	Preparer
+8059	Daniel Arnaltes Corral	darnaltes	darnaltes@flowserve.com	Preparer
+8059	Ivan Mahir Atabay	iatabay	iatabay@flowserve.com	Preparer
+8061				
+8061	Adilson Lasso	10136480	ALasso@flowserve.com	Approver
+8061	Doug McKasson	DMcKasson	dmckasson@flowserve.com	Viewer
+8061	Anabel Orozco	10134730	AOrozco@flowserve.com	Reviewer
+8061	Guido Calderon	gcalderon	gcalderon@flowserve.com	Preparer
+8061	Daniel Arnaltes Corral	darnaltes	darnaltes@flowserve.com	Preparer
+8061	Ivan Mahir Atabay	iatabay	iatabay@flowserve.com	Preparer
+8065				
+8065	Adilson Lasso	10136480	ALasso@flowserve.com	Viewer
+8065	Mike Koenig	MKoenig	mkoenig@flowserve.com	Viewer
+8065	Lorena Martinez Caparros	10135153	lmartinezcaparros@flowserve.com	Approver
+8065	Cameron Byrd	CByrd	cbyrd@flowserve.com	Viewer
+8065	Anabel Orozco	10134730	AOrozco@flowserve.com	Reviewer
+8065	Guido Calderon	gcalderon	gcalderon@flowserve.com	Preparer
+8065	Daniel Arnaltes Corral	darnaltes	darnaltes@flowserve.com	Preparer
+8065	Ivan Mahir Atabay	iatabay	iatabay@flowserve.com	Preparer
+8067				
+8067	Mike Koenig	MKoenig	mkoenig@flowserve.com	Viewer
+8067	Lorena Martinez Caparros	10135153	lmartinezcaparros@flowserve.com	Approver
+8067	Cameron Byrd	CByrd	cbyrd@flowserve.com	Viewer
+8067	Anabel Orozco	10134730	AOrozco@flowserve.com	Reviewer
+8067	Guido Calderon	gcalderon	gcalderon@flowserve.com	Preparer
+8067	Daniel Arnaltes Corral	darnaltes	darnaltes@flowserve.com	Preparer
+8067	Ivan Mahir Atabay	iatabay	iatabay@flowserve.com	Preparer
+8075				
+8075	Susan Du	10150905	sdu@flowserve.com	Approver
+8075	Wendy Burk	10155422	WBurk@flowserve.com	Reviewer
+8075	Wendy Burk	10155422	WBurk@flowserve.com	Preparer
+8079				
+8079	Fernando Aguirre	FAguirre	FAguirre@flowserve.com	Approver
+8079	Sylvia Farmand	sfarmand	SFarmand@Flowserve.com	Preparer
+8079	Sylvia Farmand	sfarmand	SFarmand@Flowserve.com	Reviewer
+8080				
+8080	Fernando Aguirre	FAguirre	FAguirre@flowserve.com	Approver
+8080	Sylvia Farmand	sfarmand	SFarmand@Flowserve.com	Preparer
+8080	Sylvia Farmand	sfarmand	SFarmand@Flowserve.com	Reviewer
+8090				
+8090	Lisa Desmond	10156115	Ldesmond@flowserve.com	Preparer
+8090	Eric Oudine	10156873	Eoudine@flowserve.com	Preparer
+8090	Henry Rodis	10036129	HRodis@flowserve.com	Reviewer
+8090	Tami Wilson	twilson	twilson@flowserve.com	Approver
+8090	Amy Hartman	ahartman	ahartman@flowserve.com	Viewer
+8090	Diana Moore	10145715	DiMoore@flowserve.com	Viewer
+8090	Gina Fleisher	GFleisher	gfleisher@flowserve.com	Viewer
+8090	Jamin Taube	jtaube	JTaube@flowserve.com	Viewer
+8090	Suzanne Jones	10145006	SuJones@flowserve.com	Viewer
+8090	Frenika Roberts	10153074	FRoberts@flowserve.com	Viewer
+8095				
+8095	Lisa Desmond	10156115	Ldesmond@flowserve.com	Preparer
+8095	Eric Oudine	10156873	Eoudine@flowserve.com	Preparer
+8095	Henry Rodis	10036129	HRodis@flowserve.com	Reviewer
+8095	Tami Wilson	twilson	twilson@flowserve.com	Approver
+8095	Amy Hartman	ahartman	ahartman@flowserve.com	Viewer
+8095	Diana Moore	10145715	DiMoore@flowserve.com	Viewer
+8095	Gina Fleisher	GFleisher	gfleisher@flowserve.com	Viewer
+8095	Jamin Taube	jtaube	JTaube@flowserve.com	Viewer
+8095	Suzanne Jones	10145006	SuJones@flowserve.com	Viewer
+8095	Frenika Roberts	10153074	FRoberts@flowserve.com	Viewer
+8115				
+8115	Lisa Desmond	10156115	Ldesmond@flowserve.com	Preparer
+8115	Eric Oudine	10156873	Eoudine@flowserve.com	Preparer
+8115	Diane Brody 	10124700	dbrody@flowserve.com	Reviewer
+8115	Penny Hill	PeHill	pehill@flowserve.com	Approver
+8115	Amy Hartman	ahartman	ahartman@flowserve.com	Viewer
+8115	Diana Moore	10145715	DiMoore@flowserve.com	Viewer
+8115	Gina Fleisher	GFleisher	gfleisher@flowserve.com	Viewer
+8115	Jamin Taube	jtaube	JTaube@flowserve.com	Viewer
+8115	Frenika Roberts	10153074	FRoberts@flowserve.com	Viewer
+8115	Frenika Roberts	10153074	FRoberts@flowserve.com	Viewer
+8115	Henry Rodis	10036129	HRodis@flowserve.com	Viewer
+8120				
+8120	Alejandro Valdes Araya	10131723	avaldesaraya@flowserve.com	Preparer
+8120	Lupicinia (Alejandra) Perez	alperez	alperez@flowserve.com	Preparer
+8120	Mike Koenig	MKoenig	mkoenig@flowserve.com	Viewer
+8120	Cameron Byrd	CByrd	cbyrd@flowserve.com	Viewer
+8120	Lorena Martinez Caparros	10135153	lmartinezcaparros@flowserve.com	Approver
+8120	Anabel Orozco	10134730	AOrozco@flowserve.com	Reviewer
+8120	Guido Calderon	gcalderon	gcalderon@flowserve.com	Preparer
+8120	Daniel Arnaltes Corral	darnaltes	darnaltes@flowserve.com	Preparer
+8120	Ivan Mahir Atabay	iatabay	iatabay@flowserve.com	Preparer
+8125				
+8125	Alejandro Valdes Araya	10131723	avaldesaraya@flowserve.com	Preparer
+8125	Mike Koenig	MKoenig	mkoenig@flowserve.com	Viewer
+8125	Cameron Byrd	CByrd	cbyrd@flowserve.com	Viewer
+8125	Lorena Martinez Caparros	10135153	lmartinezcaparros@flowserve.com	Approver
+8125	Anabel Orozco	10134730	AOrozco@flowserve.com	Reviewer
+8125	Guido Calderon	gcalderon	gcalderon@flowserve.com	Preparer
+8125	Daniel Arnaltes Corral	darnaltes	darnaltes@flowserve.com	Preparer
+8125	Ivan Mahir Atabay	iatabay	iatabay@flowserve.com	Preparer
+8129				
+8129	Edmundo Villarroel	10132361	evillarroel@flowserve.com	Approver
+8129	Johnny Batista	10135569	JBatista@flowserve.com	Preparer
+8129	Mike Koenig	MKoenig	mkoenig@flowserve.com	Viewer
+8129	Cameron Byrd	CByrd	cbyrd@flowserve.com	Viewer
+8129	Anabel Orozco	10134730	AOrozco@flowserve.com	Reviewer
+8129	Guido Calderon	gcalderon	gcalderon@flowserve.com	Preparer
+8129	Daniel Arnaltes Corral	darnaltes	darnaltes@flowserve.com	Preparer
+8129	Ivan Mahir Atabay	iatabay	iatabay@flowserve.com	Preparer
+8130				
+8130	Edmundo Villarroel	10132361	evillarroel@flowserve.com	Approver
+8130	Johnny Batista	10135569	JBatista@flowserve.com	Preparer
+8130	Mike Koenig	MKoenig	mkoenig@flowserve.com	Viewer
+8130	Cameron Byrd	CByrd	cbyrd@flowserve.com	Viewer
+8130	Anabel Orozco	10134730	AOrozco@flowserve.com	Reviewer
+8130	Guido Calderon	gcalderon	gcalderon@flowserve.com	Preparer
+8130	Daniel Arnaltes Corral	darnaltes	darnaltes@flowserve.com	Preparer
+8130	Ivan Mahir Atabay	iatabay	iatabay@flowserve.com	Preparer
+8132				
+8132	Edmundo Villarroel	10132361	evillarroel@flowserve.com	Approver
+8132	Johnny Batista	10135569	JBatista@flowserve.com	Preparer
+8132	Cameron Byrd	CByrd	cbyrd@flowserve.com	Viewer
+8132	Anabel Orozco	10134730	AOrozco@flowserve.com	Reviewer
+8132	Guido Calderon	gcalderon	gcalderon@flowserve.com	Preparer
+8132	Daniel Arnaltes Corral	darnaltes	darnaltes@flowserve.com	Preparer
+8132	Ivan Mahir Atabay	iatabay	iatabay@flowserve.com	Preparer
+8135				
+8135	Olivier Roger	10155976	ORoger@flowserve.com	Viewer
+8135	Jérome DE LANGLADE	cst_jdelanglade	cst_jdelanglade@flowserve.com	Approver
+8135	Mirko Goeddertz	10145507	mgoeddertz@flowserve.com	Reviewer
+8135	Mirko Goeddertz	10145507	mgoeddertz@flowserve.com	Preparer
+8135	Pascale Raimbault	Praimbault	praimbault@flowserve.com	Preparer
+8135	Sherry Paling	10135278	SPaling@flowserve.com	Preparer
+8140				
+8140	Frank Claassens	FClaassens	FClaassens@flowserve.com	Approver
+8140	Mirko Goeddertz	10145507	mgoeddertz@flowserve.com	Reviewer
+8140	Mirko Goeddertz	10145507	mgoeddertz@flowserve.com	Preparer
+8140	Pascale Raimbault	Praimbault	praimbault@flowserve.com	Preparer
+8140	Sherry Paling	10135278	SPaling@flowserve.com	Preparer
+8141				
+8141	Frank Claassens	FClaassens	FClaassens@flowserve.com	Approver
+8141	Mirko Goeddertz	10145507	mgoeddertz@flowserve.com	Reviewer
+8141	Mirko Goeddertz	10145507	mgoeddertz@flowserve.com	Preparer
+8141	Pascale Raimbault	Praimbault	praimbault@flowserve.com	Preparer
+8141	Sherry Paling	10135278	SPaling@flowserve.com	Preparer
+8165				
+8165	Jérome DE LANGLADE	cst_jdelanglade	cst_jdelanglade@flowserve.com	Approver
+8165	Mirko Goeddertz	10145507	mgoeddertz@flowserve.com	Reviewer
+8165	Mirko Goeddertz	10145507	mgoeddertz@flowserve.com	Preparer
+8165	Pascale Raimbault	Praimbault	praimbault@flowserve.com	Preparer
+8165	Sherry Paling	10135278	SPaling@flowserve.com	Preparer
+8179				
+8179	Bernd Schultze	10155606	bschultze@flowserve.com	Approver
+8179	Claudia Lieback	CLieback	clieback@flowserve.com	Preparer
+8179	Gerald Peukert	50051774	GPeukert@flowserve.com	Preparer
+8179	Stefanie Dreher	10157140	SDreher@flowserve.com	Preparer
+8179	Uwe Berggoetz	10111598	uberggoetz@flowserve.com	Preparer
+8179	Federica Di Sarno	10122281	fdisarno@flowserve.com	Reviewer
+8190				
+8190	Marcel Mallinckrodt-Kleefass	10081974	mmallinckrodt@flowserve.com	Approver
+8190	Maren Brungert	10153480	MBrungert@flowserve.com	Preparer
+8190	Martin Doepper	10140897	MDoepper@flowserve.com	Preparer
+8190	Christine Lackner	10132559	chlackner@flowserve.com	Reviewer
+8190	Elke Ingrid Bucher	10151287	EBucher@Flowserve.com	Preparer
+8190	Gerald Peukert	50051774	GPeukert@flowserve.com	Preparer
+8191				
+8191	Marcel Mallinckrodt-Kleefass	10081974	mmallinckrodt@flowserve.com	Approver
+8191	Maren Brungert	10153480	MBrungert@flowserve.com	Preparer
+8191	Christine Lackner	10132559	chlackner@flowserve.com	Reviewer
+8191	Elke Ingrid Bucher	10151287	EBucher@Flowserve.com	Preparer
+8191	Gerald Peukert	50051774	GPeukert@flowserve.com	Preparer
+8195				
+8195	Andrea Holt	aholt	aholt@flowserve.com	Approver
+8195	Eckhard Breit	10156488	ebreit@flowserve.com	Preparer
+8195	Mirko Goeddertz	10145507	mgoeddertz@flowserve.com	Reviewer
+8195	Mirko Goeddertz	10145507	mgoeddertz@flowserve.com	Preparer
+8200				
+8200	Gary Botcherby	GBotcherby	gbotcherby@flowserve.com	Approver
+8200	Maik Fraesdorf	mfraesdorf	mfraesdorf@flowserve.com	Preparer
+8200	Christine Lackner	10132559	chlackner@flowserve.com	Reviewer
+8200	Elke Ingrid Bucher	10151287	EBucher@Flowserve.com	Preparer
+8200	Gerald Peukert	50051774	GPeukert@flowserve.com	Preparer
+8205				
+8205	Frank Claassens	FClaassens	FClaassens@flowserve.com	Approver
+8205	Katrin Burgmann	kburgmann	kburgmann@flowserve.com	Preparer
+8205	Christine Lackner	10132559	chlackner@flowserve.com	Reviewer
+8205	Elke Ingrid Bucher	10151287	EBucher@Flowserve.com	Preparer
+8205	Gerald Peukert	50051774	GPeukert@flowserve.com	Preparer
+8210				
+8210	Frank Claassens	FClaassens	FClaassens@flowserve.com	Approver
+8210	Katrin Burgmann	kburgmann	kburgmann@flowserve.com	Preparer
+8210	Christine Lackner	10132559	chlackner@flowserve.com	Reviewer
+8210	Elke Ingrid Bucher	10151287	EBucher@Flowserve.com	Preparer
+8210	Gerald Peukert	50051774	GPeukert@flowserve.com	Preparer
+8225				
+8225	Claudio Cappellari	CCappellari	CCappellari@flowserve.com	Viewer
+8225	Eloy de Vet	EVet	evet@flowserve.com	Preparer
+8225	Eloy de Vet	EVet	evet@flowserve.com	Reviewer
+8225	Gertjan de Heer	10130759	gheer@flowserve.com	Approver
+8225	Linda Dons- van de Par	ldons	ldons@flowserve.com	Preparer
+8225	Selwyn Broekaart	50046133	Sbroekaart@Flowserve.com	Preparer
+8225	Teun Sadee	TSadee	tsadee@flowserve.com	Preparer
+8227				
+8227	Frank Claassens	FClaassens	FClaassens@flowserve.com	Viewer
+8227	Jeroen Dun	JDun	jedun@flowserve.com	Preparer
+8227	Richard Veeken	RVeeken	rveeken@flowserve.com	Approver
+8227	Eloy de Vet	EVet	evet@flowserve.com	Reviewer
+8227	Linda Dons- van de Par	ldons	ldons@flowserve.com	Preparer
+8227	Selwyn Broekaart	50046133	Sbroekaart@Flowserve.com	Preparer
+8227	Teun Sadee	TSadee	tsadee@flowserve.com	Preparer
+8237				
+8237	Hans Boeken	10135268	HBoeken@flowserve.com	Approver
+8237	Rutger Slabbekoorn	10138007	RSlabbekoorn@flowserve.com	Preparer
+8237	Eloy de Vet	EVet	evet@flowserve.com	Reviewer
+8237	Linda Dons- van de Par	ldons	ldons@flowserve.com	Preparer
+8237	Selwyn Broekaart	50046133	Sbroekaart@Flowserve.com	Preparer
+8237	Teun Sadee	TSadee	tsadee@flowserve.com	Preparer
+8247				
+8247	Mike Koenig	MKoenig	mkoenig@flowserve.com	Approver
+8247	Eloy de Vet	EVet	evet@flowserve.com	Reviewer
+8247	Linda Dons- van de Par	ldons	ldons@flowserve.com	Preparer
+8247	Selwyn Broekaart	50046133	Sbroekaart@Flowserve.com	Preparer
+8247	Teun Sadee	TSadee	tsadee@flowserve.com	Preparer
+8255				
+8255	Maikel Nagtzaam	mnagtzaam	mnagtzaam@flowserve.com	Reviewer
+8255	Maikel Nagtzaam	mnagtzaam	mnagtzaam@flowserve.com	Preparer
+8255	Mike Koenig	MKoenig	mkoenig@flowserve.com	Viewer
+8255	Richard Veeken	RVeeken	rveeken@flowserve.com	Approver
+8265				
+8265	Abul Hussain	10132300	AbHussain@flowserve.com	Preparer
+8265	Nandakumar R	10151112	NR@Flowserve.com	Preparer
+8265	Narayanan H.	10138160	NarayananH@flowserve.com	Viewer
+8265	Ponramar Sabarinathan	10101806	PSabarinathan@flowserve.com	Approver
+8265	Senthilkumar Nataraj	10125344	nsenthilkumar@flowserve.com	Preparer
+8265	Sivaraman Rajendran	10118344	SRajendran@flowserve.com	Reviewer
+8271				
+8271	Nagbhushan Rao	10113858	narao@flowserve.com	Approver
+8271	Nandakumar R	10151112	NR@Flowserve.com	Preparer
+8271	Narayanan H.	10138160	NarayananH@flowserve.com	Viewer
+8271	Sivaraman Rajendran	10118344	SRajendran@flowserve.com	Preparer
+8271	Sivaraman Rajendran	10118344	SRajendran@flowserve.com	Reviewer
+8275				
+8275	Nandakumar R	10151112	NR@Flowserve.com	Preparer
+8275	Vivekanand Nayak	vnayak	vnayak@flowserve.com	Preparer
+8275	Ponramar Sabarinathan	10101806	PSabarinathan@flowserve.com	Approver
+8275	Sivaraman Rajendran	10118344	SRajendran@flowserve.com	Preparer
+8275	Sivaraman Rajendran	10118344	SRajendran@flowserve.com	Reviewer
+8279				
+8279	Abul Hussain	10132300	AbHussain@flowserve.com	Preparer
+8279	Balasubramani K	10156695	BalaK@flowserve.com	Preparer
+8279	Chee Meng Ng	cheeng	cheeng@flowserve.com	Viewer
+8279	Nandakumar R	10151112	NR@Flowserve.com	Preparer
+8279	Sivaraman Rajendran	10118344	SRajendran@flowserve.com	Reviewer
+8279	Ponramar Sabarinathan	10101806	PSabarinathan@flowserve.com	Approver
+8280				
+8280	Nandakumar R	10151112	NR@Flowserve.com	Preparer
+8280	Narayanan H.	10138160	NarayananH@flowserve.com	Viewer
+8280	Vivekanand Nayak	vnayak	vnayak@flowserve.com	Approver
+8282				
+8282	Adeline Yuh Huah Lim	10142650	AdLim@flowserve.com	Preparer
+8282	Bao Yuh Lim	10155654	balim@flowserve.com	Preparer
+8282	Chieng Poon Pang	10154186	CPang@flowserve.com	Preparer
+8282	Shiow Chyong May Pong	MPong	mpong@flowserve.com	Reviewer
+8282	Yanti Octavia Tjoa	10135474	YOctaviaTjoa@flowserve.com	Approver
+8285				
+8285	Adeline Yuh Huah Lim	10142650	AdLim@flowserve.com	Preparer
+8285	Bao Yuh Lim	10155654	balim@flowserve.com	Preparer
+8285	Chieng Poon Pang	10154186	CPang@flowserve.com	Preparer
+8285	Shiow Chyong May Pong	MPong	mpong@flowserve.com	Reviewer
+8285	Yanti Octavia Tjoa	10135474	YOctaviaTjoa@flowserve.com	Approver
+8291				
+8291	Alberto Riccardi	ARiccardi	ARiccardi@flowserve.com	Approver
+8291	Greg Gunter	10153739	ggunter@flowserve.com	Viewer
+8291	Marzia Mallia	MMallia	mmallia@flowserve.com	Preparer
+8291	Alessandra Spata	10132400	aspata@flowserve.com	Preparer
+8291	Federica Di Sarno	10122281	fdisarno@flowserve.com	Reviewer
+8291	Tiziana Focacci	TFocacci	tfocacci@flowserve.com	Preparer
+8291	Ludovica Bellini	lbellini	lbellini@flowserve.com	Preparer
+8293				
+8293	Alberto Riccardi	ARiccardi	ARiccardi@flowserve.com	Approver
+8293	Alessandra Spata	10132400	aspata@flowserve.com	Preparer
+8293	Federica Di Sarno	10122281	fdisarno@flowserve.com	Reviewer
+8293	Federica Di Sarno	10122281	fdisarno@flowserve.com	Preparer
+8293	Ludovica Bellini	TFocacci	tfocacci@flowserve.com	Preparer
+8293	Tiziana Focacci	TFocacci	tfocacci@flowserve.com	Preparer
+8293	Ludovica Bellini	lbellini	lbellini@flowserve.com	Preparer
+8295				
+8295	Alberto Riccardi	ARiccardi	ARiccardi@flowserve.com	Approver
+8295	Marzia Mallia	MMallia	mmallia@flowserve.com	Preparer
+8295	Alessandra Spata	10132400	aspata@flowserve.com	Preparer
+8295	Federica Di Sarno	10122281	fdisarno@flowserve.com	Reviewer
+8295	Tiziana Focacci	TFocacci	tfocacci@flowserve.com	Preparer
+8295	Ludovica Bellini	lbellini	lbellini@flowserve.com	Preparer
+8310				
+8310	Alessandro Porta	10148437	aporta@flowserve.com	Preparer
+8310	Parravicini, Elena	10075053	eparravicini@flowserve.com	Reviewer
+8310	Claudio Cappellari	CCappellari	CCappellari@flowserve.com	Approver
+8310	Domenico Pesce	Dpesce	DPesce@flowserve.com	Preparer
+8310	Domenico Pesce	Dpesce	DPesce@flowserve.com	Preparer
+8310	Nadia Casiraghi	10156483	ncasiraghi@flowserve.com	Preparer
+8315				
+8315	Frank Claassens	FClaassens	FClaassens@flowserve.com	Approver
+8315	Alessandra Spata	10132400	aspata@flowserve.com	Preparer
+8315	Federica Di Sarno	10122281	fdisarno@flowserve.com	Reviewer
+8315	Tiziana Focacci	TFocacci	tfocacci@flowserve.com	Preparer
+8315	Ludovica Bellini	lbellini	lbellini@flowserve.com	Preparer
+8320				
+8320	Adeline Yuh Huah Lim	10142650	AdLim@flowserve.com	Preparer
+8320	Bao Yuh Lim	10155654	balim@flowserve.com	Preparer
+8320	Ikue Kaihara	10138942	IKaihara@flowserve.com	Preparer
+8320	Asagi Akada	10152110	AAkada@flowserve.com	Reviewer
+8320	Shiow Chyong May Pong	MPong	mpong@flowserve.com	Approver
+8321				
+8321	Asagi Akada	10152110	AAkada@flowserve.com	Preparer
+8321	Asagi Akada	10152110	AAkada@flowserve.com	Reviewer
+8321	Yoshiki Murata	10156887	YMurata@flowserve.com	Approver
+8325				
+8325	Bao Yuh Lim	10155654	balim@flowserve.com	Reviewer
+8325	Bao Yuh Lim	10155654	balim@flowserve.com	Preparer
+8325	Adeline Yuh Huah Lim	10142650	AdLim@flowserve.com	Approver
+8328				
+8328	Bao Yuh Lim	10155654	balim@flowserve.com	Reviewer
+8328	Bao Yuh Lim	10155654	balim@flowserve.com	Preparer
+8328	Adeline Yuh Huah Lim	10142650	AdLim@flowserve.com	Approver
+8329				
+8329	Bao Yuh Lim	10155654	balim@flowserve.com	Reviewer
+8329	Bao Yuh Lim	10155654	balim@flowserve.com	Preparer
+8329	Adeline Yuh Huah Lim	10142650	AdLim@flowserve.com	Approver
+8330				
+8330	Cesar Cardone	10130206	ccardone@flowserve.com	Approver
+8330	Eduardo Agustin Cisneros	ecisneros	ecisneros@flowserve.com	Viewer
+8330	Rene Enrique Urdaneta	10155670	rurdaneta@flowserve.com	Reviewer
+8330	Monica Hidalgo	10156269	MHidalgo@flowserve.com	Preparer
+8330	Maria del Carmen Mondragon	50039950	MaMondragon@flowserve.com	Preparer
+8334				
+8334	Mike Koenig	MKoenig	mkoenig@flowserve.com	Viewer
+8334	Cesar Cardone	10130206	ccardone@flowserve.com	Viewer
+8334	Eduardo Agustin Cisneros	ecisneros	ecisneros@flowserve.com	Approver
+8334	Monica Hidalgo	10156269	MHidalgo@flowserve.com	Reviewer
+8334	Monica Hidalgo	10156269	MHidalgo@flowserve.com	Preparer
+8334	Maria del Carmen Mondragon	50039950	MaMondragon@flowserve.com	Preparer
+8335				
+8335	Mike Koenig	MKoenig	mkoenig@flowserve.com	Viewer
+8335	Cesar Cardone	10130206	ccardone@flowserve.com	Viewer
+8335	Eduardo Agustin Cisneros	ecisneros	ecisneros@flowserve.com	Approver
+8335	Monica Hidalgo	10156269	MHidalgo@flowserve.com	Reviewer
+8335	Monica Hidalgo	10156269	MHidalgo@flowserve.com	Preparer
+8335	Maria del Carmen Mondragon	50039950	MaMondragon@flowserve.com	Preparer
+8336				
+8336	Cesar Cardone	10130206	ccardone@flowserve.com	Viewer
+8336	Eduardo Agustin Cisneros	ecisneros	ecisneros@flowserve.com	Approver
+8336	Monica Hidalgo	10156269	MHidalgo@flowserve.com	Reviewer
+8336	Monica Hidalgo	10156269	MHidalgo@flowserve.com	Preparer
+8336	Maria del Carmen Mondragon	50039950	MaMondragon@flowserve.com	Preparer
+8337				
+8337	Cesar Cardone	10130206	ccardone@flowserve.com	Viewer
+8337	Eduardo Agustin Cisneros	ecisneros	ecisneros@flowserve.com	Reviewer
+8337	Mike Koenig	MKoenig	mkoenig@flowserve.com	Viewer
+8337	Monica Hidalgo	10156269	MHidalgo@flowserve.com	Reviewer
+8337	Monica Hidalgo	10156269	MHidalgo@flowserve.com	Preparer
+8337	Maria del Carmen Mondragon	50039950	MaMondragon@flowserve.com	Preparer
+8341				
+8341	Eduardo Agustin Cisneros	ecisneros	ecisneros@flowserve.com	Approver
+8341	Mike Koenig	MKoenig	mkoenig@flowserve.com	Viewer
+8341	Monica Hidalgo	10156269	MHidalgo@flowserve.com	Reviewer
+8341	Monica Hidalgo	10156269	MHidalgo@flowserve.com	Preparer
+8341	Maria del Carmen Mondragon	50039950	MaMondragon@flowserve.com	Preparer
+8345				
+8345	Eduardo Agustin Cisneros	ecisneros	ecisneros@flowserve.com	Approver
+8345	Mike Koenig	MKoenig	mkoenig@flowserve.com	Viewer
+8345	Monica Hidalgo	10156269	MHidalgo@flowserve.com	Reviewer
+8345	Monica Hidalgo	10156269	MHidalgo@flowserve.com	Preparer
+8345	Maria del Carmen Mondragon	50039950	MaMondragon@flowserve.com	Preparer
+8348				
+8348	Frank Claassens	FClaassens	FClaassens@flowserve.com	Approver
+8348	Federica Di Sarno	10122281	fdisarno@flowserve.com	Reviewer
+8348	Tiziana Focacci	TFocacci	tfocacci@flowserve.com	Preparer
+8348	Ludovica Bellini	lbellini	lbellini@flowserve.com	Preparer
+8351				
+8351	Mike Koenig	MKoenig	mkoenig@flowserve.com	Viewer
+8351	Lorena Martinez Caparros	10135153	lmartinezcaparros@flowserve.com	Approver
+8351	Anabel Orozco	10134730	AOrozco@flowserve.com	Reviewer
+8351	Guido Calderon	gcalderon	gcalderon@flowserve.com	Preparer
+8351	Daniel Arnaltes Corral	darnaltes	darnaltes@flowserve.com	Preparer
+8351	Ivan Mahir Atabay	iatabay	iatabay@flowserve.com	Preparer
+8354				
+8354	Natasa Haarbeck	nhaarbeck	nhaarbeck@flowserve.com	Approver
+8354	Eloy de Vet	EVet	evet@flowserve.com	Reviewer
+8354	Linda Dons- van de Par	ldons	ldons@flowserve.com	Preparer
+8354	Selwyn Broekaart	50046133	Sbroekaart@Flowserve.com	Preparer
+8354	Teun Sadee	TSadee	tsadee@flowserve.com	Preparer
+8355				
+8355	Afaq Ahmed	10141854	AfAhmed@flowserve.com	Preparer
+8355	Nandakumar R	10151112	NR@Flowserve.com	Preparer
+8355	Saqib Siddiqui	10144086	SSiddiqui@flowserve.com	Approver
+8355	Sivaraman Rajendran	10118344	SRajendran@flowserve.com	Reviewer
+8356				
+8356	Cedric Nathaniel	10137628	CNathaniel@flowserve.com	Approver
+8356	Gary Botcherby	GBotcherby	gbotcherby@flowserve.com	Viewer
+8356	Nandakumar R	10151112	NR@Flowserve.com	Preparer
+8356	Shahrukh Khalil	10111418	skhalil@flowserve.com	Preparer
+8356	Sivaraman Rajendran	10118344	SRajendran@flowserve.com	Reviewer
+8357				
+8357	Mahesh Neelakantan	nmahesh	nmahesh@flowserve.com	Preparer
+8357	Mirza Inamullah	minamullah	MInamullah@flowserve.com	Approver
+8357	Nandakumar R	10151112	NR@Flowserve.com	Preparer
+8357	Sivaraman Rajendran	10118344	SRajendran@flowserve.com	Reviewer
+8358				
+8358	M Thajdheen	10156342	mthajdheen1@flowserve.com	Preparer
+8358	Mohammed Asif	10148134	MAsif@flowserve.com	Approver
+8358	Prakasha Jarappa	pjarappa	pjarappa@flowserve.com	Preparer
+8358	Prakasha Jarappa	pjarappa	pjarappa@flowserve.com	Reviewer
+8359				
+8359	Frank Claassens	FClaassens	FClaassens@flowserve.com	Approver
+8359	Nandakumar R	10151112	NR@Flowserve.com	Preparer
+8359	Rizwan Ali	10121162	Riali@flowserve.com	Preparer
+8359	Sivaraman Rajendran	10118344	SRajendran@flowserve.com	Reviewer
+8365				
+8365	Bao Yuh Lim	10155654	balim@flowserve.com	Reviewer
+8365	Chee Meng Ng	cheeng	cheeng@flowserve.com	Approver
+8365	Gary Botcherby	GBotcherby	gbotcherby@flowserve.com	Viewer
+8365	Geok Theng Cheng	10140005	gcheng@flowserve.com	Preparer
+8365	Lee San Mei	10115679	lmei@flowserve.com	Preparer
+8370				
+8370	Adeline Yuh Huah Lim	10142650	AdLim@flowserve.com	Preparer
+8370	Bao Yuh Lim	10155654	balim@flowserve.com	Preparer
+8370	Chieng Poon Pang	10154186	CPang@flowserve.com	Preparer
+8370	Shiow Chyong May Pong	MPong	mpong@flowserve.com	Reviewer
+8370	Yanti Octavia Tjoa	10135474	YOctaviaTjoa@flowserve.com	Approver
+8375				
+8375	Bao Yuh Lim	10155654	balim@flowserve.com	Reviewer
+8375	Bao Yuh Lim	10155654	balim@flowserve.com	Preparer
+8375	Chun-Mei Pai	epai	epai@flowserve.com	Preparer
+8375	Cindy Fang	10137327	cfang@flowserve.com	Preparer
+8375	Yanti Octavia Tjoa	10135474	YOctaviaTjoa@flowserve.com	Approver
+8377				
+8377	Bao Yuh Lim	10155654	balim@flowserve.com	Reviewer
+8377	Bao Yuh Lim	10155654	balim@flowserve.com	Preparer
+8377	Yanti Octavia Tjoa	10135474	YOctaviaTjoa@flowserve.com	Approver
+8377	Chun-Mei Pai	epai	epai@flowserve.com	Preparer
+8380				
+8380	Bao Yuh Lim	10155654	balim@flowserve.com	Reviewer
+8380	Bao Yuh Lim	10155654	balim@flowserve.com	Preparer
+8380	Shiow Chyong May Pong	MPong	mpong@flowserve.com	Approver
+8380	Xueyun Toh	10142351	XToh@flowserve.com	Preparer
+8389				
+8389	Frank Claassens	FClaassens	FClaassens@flowserve.com	Viewer
+8389	Yvette Beukes	ybeukes	ybeukes@flowserve.com	Approver
+	Washingtone Zimbwa	10150293	wzimbwa@flowserve.com	Preparer
+8389	Federica Di Sarno	10122281	fdisarno@flowserve.com	Reviewer
+8389	Tiziana Focacci	TFocacci	tfocacci@flowserve.com	Preparer
+8389	Ludovica Bellini	lbellini	lbellini@flowserve.com	Preparer
+8390				
+8390	Yvette Beukes	ybeukes	ybeukes@flowserve.com	Approver
+8390	Federica Di Sarno	10122281	fdisarno@flowserve.com	Reviewer
+8390	Tiziana Focacci	TFocacci	tfocacci@flowserve.com	Preparer
+8390	Ludovica Bellini	lbellini	lbellini@flowserve.com	Preparer
+8395				
+8395	Daniel Arnaltes Corral	darnaltes	darnaltes@flowserve.com	Reviewer
+8395	Daniel Arnaltes Corral	darnaltes	darnaltes@flowserve.com	Preparer
+8395	Ivan Mahir Atabay	iatabay	iatabay@flowserve.com	Preparer
+8395	Lorena Martinez Caparros	10135153	lmartinezcaparros@flowserve.com	Approver
+8405				
+8405	Cristian GonzalezRUiz-Peinado	10148219	CrGonzalezRuiz-Peinado@Flowserve.com	Preparer
+8405	Daniel Arnaltes Corral	darnaltes	darnaltes@flowserve.com	Reviewer
+8405	Daniel Arnaltes Corral	darnaltes	darnaltes@flowserve.com	Preparer
+8405	Ivan Mahir Atabay	iatabay	iatabay@flowserve.com	Preparer
+8405	Lorena Martinez Caparros	10135153	lmartinezcaparros@flowserve.com	Approver
+8405	Miriam Fuentes Romero	mfuentes	mfuentes@flowserve.com	Preparer
+8405	Victor Perez Blanco	10095497	vblanco@flowserve.com	Preparer
+8410				
+8410	Marisa Molero	MMolero	mmolero@flowserve.com	Approver
+8410	Miriam Basterra Sanz	10136613	MBasterraSanz@flowserve.com	Preparer
+8410	Daniel Arnaltes Corral	darnaltes	darnaltes@flowserve.com	Reviewer
+8410	Ivan Mahir Atabay	iatabay	iatabay@flowserve.com	Preparer
+8416				
+8416	Doug McKasson	DMcKasson	dmckasson@flowserve.com	Viewer
+8416	Jens Karlsson	10135850	JKarlsson@flowserve.com	Preparer
+8416	Karin Jensen	KJensen	kjensen@flowserve.com	Approver
+8416	Federica Di Sarno	10122281	fdisarno@flowserve.com	Reviewer
+8418				
+8418	Christina Lundberg	CLundberg	CLundberg@flowserve.com	Preparer
+8418	Greg Gunter	10153739	ggunter@flowserve.com	Approver
+8418	Eckhard Breit	10156488	ebreit@flowserve.com	Preparer
+8418	Eckhard Breit	10156488	ebreit@flowserve.com	Reviewer
+8418	Sascha Grohmann	10156942	SGrohmann@flowserve.com	Preparer
+8421				
+8421	Gerald Straussberger	10135383	GStraussberger@flowserve.com	Approver
+8421	Eloy de Vet	EVet	evet@flowserve.com	Reviewer
+8421	Judith Koeller	10140654	JKoeller@flowserve.com	Reviewer
+8421	Judith Koeller	10140654	JKoeller@flowserve.com	Preparer
+8421	Alejandro Verdin Cardenas	10001118	acardenas@flowserve.com	Preparer
+8435				
+8435	Bao Yuh Lim	10155654	balim@flowserve.com	Reviewer
+8435	Bao Yuh Lim	10155654	balim@flowserve.com	Preparer
+8435	Pongpat Kulpatwattana	10131458	pkulpatwattana@flowserve.com	Preparer
+8435	Yanti Octavia Tjoa	10135474	YOctaviaTjoa@flowserve.com	Approver
+8436				
+8436	Bao Yuh Lim	10155654	balim@flowserve.com	Reviewer
+8436	Bao Yuh Lim	10155654	balim@flowserve.com	Preparer
+8436	Pongpat Kulpatwattana	10131458	pkulpatwattana@flowserve.com	Preparer
+8436	Yanti Octavia Tjoa	10135474	YOctaviaTjoa@flowserve.com	Approver
+8438				
+8438	Chee Meng Ng	cheeng	cheeng@flowserve.com	Approver
+8438	Geok Theng Cheng	10140005	gcheng@flowserve.com	Preparer
+8438	Bao Yuh Lim	10155654	balim@flowserve.com	Reviewer
+8438	Bao Yuh Lim	10155654	balim@flowserve.com	Preparer
+8440				
+8440	Bao Yuh Lim	10155654	balim@flowserve.com	Reviewer
+8440	Bao Yuh Lim	10155654	balim@flowserve.com	Preparer
+8440	Chun-Mei Pai	epai	epai@flowserve.com	Preparer
+8440	Yanti Octavia Tjoa	10135474	YOctaviaTjoa@flowserve.com	Approver
+8449				
+8449	Frank Claassens	FClaassens	FClaassens@flowserve.com	Viewer
+8449	Marisa Molero	MMolero	mmolero@flowserve.com	Approver
+8449	Daniel Arnaltes Corral	darnaltes	darnaltes@flowserve.com	Reviewer
+8449	Ivan Mahir Atabay	iatabay	iatabay@flowserve.com	Preparer
+8455				
+8455	Harry Slabbekoorn	HSlabbekoorn	hslabbekoorn@flowserve.com	Viewer
+8455	Kay Morgan	KMorgan	kmorgan@flowserve.com	Preparer
+8455	Jaime-Leigh Pacey	10157312	JPacey@flowserve.com	Preparer
+8455	Federica Di Sarno	10122281	fdisarno@flowserve.com	Reviewer
+8455	Christian Lawrence	10094038	CLawrence@flowserve.com	Approver
+8458				
+8458	Agatha Griffith	10153736	agriffith@flowserve.com	Preparer
+8458	Alberto Riccardi	ARiccardi	ARiccardi@flowserve.com	Approver
+8458	David Rap	10156724	Drap@Flowserve.com	Preparer
+8458	Federica Di Sarno	10122281	fdisarno@flowserve.com	Reviewer
+8458	Martin Edwards	Maedwards	MaEdwards@flowserve.com	Approver
+8458	Otelo Tavares de Melo	10135021	otavaresdemelo@flowserve.com	Preparer
+8459				
+8459	Agatha Griffith	10153736	agriffith@flowserve.com	Preparer
+8459	David Rap	10156724	Drap@Flowserve.com	Preparer
+8459	Doug McKasson	DMcKasson	dmckasson@flowserve.com	Approver
+8459	Martin Edwards	Maedwards	MaEdwards@flowserve.com	Approver
+8459	Federica Di Sarno	10122281	fdisarno@flowserve.com	Reviewer
+8459	Otelo Tavares de Melo	10135021	otavaresdemelo@flowserve.com	Preparer
+8459	Samuel Chambers	SChambers	SChambers@flowserve.com	Preparer
+8460				
+8460	Frank Claassens	FClaassens	FClaassens@flowserve.com	
+8460	Federica Di Sarno	10122281	fdisarno@flowserve.com	Reviewer
+8460	Tiziana Focacci	TFocacci	tfocacci@flowserve.com	Preparer
+8460	Ludovica Bellini	lbellini	lbellini@flowserve.com	Preparer
+8470				
+8470	Deborah Coleman	10008892	DColeman@Flowserve.com	Preparer
+8470	Christian Lawrence	10094038	CLawrence@flowserve.com	Approver
+8470	Federica Di Sarno	10122281	fdisarno@flowserve.com	Reviewer
+8482				
+8482	Edmundo Villarroel	10132361	evillarroel@flowserve.com	Approver
+8482	Johnny Batista	10135569	JBatista@flowserve.com	Preparer
+8482	Mike Koenig	MKoenig	mkoenig@flowserve.com	Viewer
+8482	Anabel Orozco	10134730	AOrozco@flowserve.com	Reviewer
+8492				
+8492	Edmundo Villarroel	10132361	evillarroel@flowserve.com	Approver
+8492	Johnny Batista	10135569	JBatista@flowserve.com	Preparer
+8492	Mike Koenig	MKoenig	mkoenig@flowserve.com	Viewer
+8492	Anabel Orozco	10134730	AOrozco@flowserve.com	Reviewer
+8494				
+8494	Shiow Chyong May Pong	MPong	mpong@flowserve.com	Approver
+8494	Bao Yuh Lim	10155654	balim@flowserve.com	Reviewer
+8494	Bao Yuh Lim	10155654	balim@flowserve.com	Preparer
+8500				
+8500	Dinar Ibragimov	10140581	DIbragimov@flowserve.com	Approver
+8500	Eloy de Vet	EVet	evet@flowserve.com	Reviewer
+8500	Linda Dons- van de Par	ldons	ldons@flowserve.com	Preparer
+8500	Selwyn Broekaart	50046133	Sbroekaart@Flowserve.com	Preparer
+8500	Teun Sadee	TSadee	tsadee@flowserve.com	Preparer
+8503				
+8503	Dinar Ibragimov	10140581	DIbragimov@flowserve.com	Approver
+8503	Eloy de Vet	EVet	evet@flowserve.com	Reviewer
+8503	Linda Dons- van de Par	ldons	ldons@flowserve.com	Preparer
+8503	Selwyn Broekaart	50046133	Sbroekaart@Flowserve.com	Preparer
+8503	Teun Sadee	TSadee	tsadee@flowserve.com	Preparer
+8520				
+8520	Edmundo Villarroel	10132361	evillarroel@flowserve.com	Approver
+8520	Johnny Batista	10135569	JBatista@flowserve.com	Preparer
+8520	Mike Koenig	MKoenig	mkoenig@flowserve.com	Viewer
+8520	Anabel Orozco	10134730	AOrozco@flowserve.com	Reviewer
+8525				
+8525	Edmundo Villarroel	10132361	evillarroel@flowserve.com	Approver
+8525	Johnny Batista	10135569	JBatista@flowserve.com	Preparer
+8525	Mike Koenig	MKoenig	mkoenig@flowserve.com	Viewer
+8525	Anabel Orozco	10134730	AOrozco@flowserve.com	Reviewer
+8681				
+8681	Harry Slabbekoorn	HSlabbekoorn	hslabbekoorn@flowserve.com	Approver
+8681	Eloy de Vet	EVet	evet@flowserve.com	Reviewer
+8681	Linda Dons- van de Par	ldons	ldons@flowserve.com	Preparer
+8681	Selwyn Broekaart	50046133	Sbroekaart@Flowserve.com	Preparer
+8681	Teun Sadee	TSadee	tsadee@flowserve.com	Preparer
+8701				
+8701	Eric Wang	10119621	ewang@flowserve.com	Approver
+8701	Rong (Grace) Wang	10136429	rwang@flowserve.com	Reviewer
+8701	Rong (Grace) Wang	10136429	rwang@flowserve.com	Preparer
+8702				
+8702	Eric Wang	10119621	ewang@flowserve.com	Approver
+8702	Rong (Grace) Wang	10136429	rwang@flowserve.com	Reviewer
+8702	Rong (Grace) Wang	10136429	rwang@flowserve.com	Preparer
+8709				
+8709	Daniel Su	10141424	DanSu@flowserve.com	Approver
+8709	Ping Wu	10135111	PWu@flowserve.com	Preparer
+8709	Yan (Ellen) Zhu	ZYan	zyan@flowserve.com	Preparer
+8709	Rong (Grace) Wang	10136429	rwang@flowserve.com	Reviewer
+8711				
+8711	Daniel Su	10141424	DanSu@flowserve.com	Viewer
+8711	Shiow Chyong May Pong	MPong	mpong@flowserve.com	Approver
+8711	Yi Ju Lei	YLei	ylei@flowserve.com	Preparer
+8711	Rong (Grace) Wang	10136429	rwang@flowserve.com	Reviewer
+8713				
+8713	Daniel Su	10141424	DanSu@flowserve.com	Viewer
+8713	Shiow Chyong May Pong	MPong	mpong@flowserve.com	Approver
+8713	Yan (Ellen) Zhu	ZYan	zyan@flowserve.com	Preparer
+8713	Rong (Grace) Wang	10136429	rwang@flowserve.com	Reviewer
+8714				
+8714	Chun-Mei Pai	epai	epai@flowserve.com	Preparer
+8714	Daniel Su	10141424	DanSu@flowserve.com	Approver
+8714	Rong (Grace) Wang	10136429	rwang@flowserve.com	Reviewer
+8715				
+8715	Chee Meng Ng	cheeng	cheeng@flowserve.com	Viewer
+8715	Daniel Su	10141424	DanSu@flowserve.com	Approver
+8715	Yan (Ellen) Zhu	ZYan	zyan@flowserve.com	Preparer
+8715	Rong (Grace) Wang	10136429	rwang@flowserve.com	Reviewer
+8724				
+8724	Eric Wang	10119621	ewang@flowserve.com	Approver
+8724	Rong (Grace) Wang	10136429	rwang@flowserve.com	Reviewer
+8724	Rong (Grace) Wang	10136429	rwang@flowserve.com	Preparer
+8830				
+8830	Bernd Schultze	10155606	bschultze@flowserve.com	Approver
+8830	Christian Albertz	CAlbertz	calbertz@flowserve.com	Preparer
+8830	Doug McKasson	DMcKasson	dmckasson@flowserve.com	Viewer
+8830	Christine Lackner	10132559	chlackner@flowserve.com	Reviewer
+8830	Elke Ingrid Bucher	10151287	EBucher@Flowserve.com	Preparer
+8830	Gerald Peukert	50051774	GPeukert@flowserve.com	Preparer
+8832				
+8832	Eric Wang	10119621	ewang@flowserve.com	Approver
+8832	Rong (Grace) Wang	10136429	rwang@flowserve.com	Reviewer
+8832	Rong (Grace) Wang	10136429	rwang@flowserve.com	Preparer
+8833				
+8833	Eric Wang	10119621	ewang@flowserve.com	Approver
+8833	Rong (Grace) Wang	10136429	rwang@flowserve.com	Reviewer
+8833	Rong (Grace) Wang	10136429	rwang@flowserve.com	Preparer
+8910				
+8910	Chee Meng Ng	cheeng	cheeng@flowserve.com	Approver
+8910	Ian Fletcher	10122021	IFletcher@flowserve.com	Reviewer
+8910	Ian Fletcher	10122021	IFletcher@flowserve.com	Preparer
+8910	Phillip Kirley	10130900	pkirley@flowserve.com	Preparer
+8941				
+8941	Mike Koenig	MKoenig	mkoenig@flowserve.com	Viewer
+8941	Lorena Martinez Caparros	10135153	lmartinezcaparros@flowserve.com	Approver
+8941	Anabel Orozco	10134730	AOrozco@flowserve.com	Reviewer
+8941	Guido Calderon	gcalderon	gcalderon@flowserve.com	Preparer
+8941	Daniel Arnaltes Corral	darnaltes	darnaltes@flowserve.com	Preparer
+8941	Ivan Mahir Atabay	iatabay	iatabay@flowserve.com	Preparer
+8943				
+8943	Andreas Schupfer	10149913	aschuepfer@flowserve.com	Approver
+8943	Mirko Goeddertz	10145507	mgoeddertz@flowserve.com	Preparer
+8943	Eckhard Breit	10156488	ebreit@flowserve.com	Preparer
+8943	Eckhard Breit	10156488	ebreit@flowserve.com	Reviewer
+8943	Sascha Grohmann	10156942	SGrohmann@flowserve.com	Preparer

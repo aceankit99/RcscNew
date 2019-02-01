@@ -1,0 +1,45 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:of="http://omnifaces.org/functions"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+
+        </style>
+    </ui:define>
+
+    <ui:define name="title">POB Download</ui:define>
+
+    <ui:define name="viewname">POB Download</ui:define>
+
+    <ui:define name="content">
+        <h:form id="form" style="min-height: calc(100vh - 235px);">
+            <div class="ui-g">
+
+                <div class="ui-g-12 ui-md-12 ui-lg-6">
+                    <div class="card card-w-title">
+                        <p:messages id="messages" showDetail="true" />
+                        <h1>POB Download</h1>
+                        <p:toolbar>
+                            <f:facet name="left">
+                                <p:commandButton value="Download " ajax="false" style="width:auto;" icon="ui-icon-arrowthick-1-s">
+                                    <p:fileDownload value="#{pobOutput.file}" />
+                                </p:commandButton>
+                            </f:facet>
+                        </p:toolbar>
+
+                    </div>
+                </div>
+
+
+
+            </div>
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>

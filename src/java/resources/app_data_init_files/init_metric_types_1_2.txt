@@ -1,0 +1,12 @@
+OUTPUT|CONTRACT_STATUS|Contract||StringMetric||NonConvertible|Contract Status|Contract Status|POC Contract Metrics||Group1|1||
+INPUT|CONTRACT_CLOSURE_DATE|Contract||DateMetric||NonConvertible|Contract Closure Date|Contract Closure Date|POC Contract Metrics||Group1|1||
+INPUT|CONTRACT_COMPLETION_DATE|Contract||DateMetric||NonConvertible|Contract Completion Date|Contract Completion Date|POC Contract Metrics||Group1|1||
+OUTPUT|IMPUTED_FX_RATE_BILLINGS_CTD|Contract||DecimalMetric||NonConvertible|Imputed Fx Rate Billings|Imputed Fx Rate Billings|POC POB Outputs|H|Group1|1||
+OUTPUT|IMPUTED_FX_RATE_REVENUE_CTD|Contract||DecimalMetric||NonConvertible|Imputed Fx Rate Revenue|Imputed Fx Rate Revenue|POC POB Outputs|H|Group1|1||
+OUTPUT|IMPUTED_FX_RATE_DELTA|Contract||DecimalMetric||NonConvertible|Imputed Fx Rate Delta|Imputed Fx Rate Delta|POC POB Outputs|H|Group1|1||
+OUTPUT|CONTRACT_POSITION_CTD_LC|Contract||CurrencyMetric|LC|NonConvertible|Contract Position CTD||POC Contract Metrics||Group1|1||
+OUTPUT|CONTRACT_ASSET_FX_ADJ_CTD_LC|Contract||CurrencyMetric|LC|NonConvertible|Contract Asset Fx Adjustment CTD||POC Contract Metrics||Group1|1||
+OUTPUT|CONTRACT_LIABILITY_FX_ADJ_CTD_LC|Contract||CurrencyMetric|LC|NonConvertible|Contract Liability Fx Adjustment CTD||POC Contract Metrics||Group1|1||
+OUTPUT|CONTRACT_ASSET_FX_ADJ_PERIOD_LC|Contract||CurrencyMetric|LC|NonConvertible|Contract Asset Fx Adjustment Period||POC Contract Metrics||Group1|1||
+OUTPUT|CONTRACT_LIABILITY_FX_ADJ_PERIOD_LC|Contract||CurrencyMetric|LC|NonConvertible|Contract Liability Fx Adjustment Period||POC Contract Metrics||Group1|1||
+OUTPUT|CONTRACT_TOTAL_FX_ADJ_PERIOD_LC|Contract||CurrencyMetric|LC|NonConvertible|Contract Total Fx Adjustment Period||POC Contract Metrics||Group1|1||

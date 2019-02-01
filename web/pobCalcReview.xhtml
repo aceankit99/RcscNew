@@ -1,0 +1,251 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:of="http://omnifaces.org/functions"
+                template="/WEB-INF/template.xhtml"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <ui:define name="head">
+        <style type="text/css">
+            body .ui-inputfield {
+                padding: 0px 2px;
+                width: 95%;
+            }
+            body .ui-treetable .ui-treetable-data tr td {
+                padding: 4px 4px;
+            }
+            input[type="text"]:disabled {
+                border: none;
+                color: black;
+                font-style: italic;
+                font-weight: bold;
+            }
+            body .ui-selectonemenu .ui-selectonemenu-trigger .ui-icon-triangle-1-s {
+                margin-top: 2px;
+            }
+            .ui-treetable-scrollable-header-box {
+                margin-right: 0px !important;
+            }
+        </style>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                ruRecalc();
+            });
+        </script>
+    </ui:define>
+
+    <ui:define name="title">RCS Calculation Review</ui:define>
+
+    <ui:define name="viewname">RCS Calculation Review</ui:define>
+
+    <ui:define name="content">
+        <h:form id="form">
+            <p:growl id="messages" showDetail="true" />
+
+
+            <div class="ui-g">
+                <div class="ui-g-12">
+                    <div class="card card-w-title">
+
+                        <h4 style="margin: 1px;"><strong>#{webSession.currentPeriod.id} Calculation Review - #{pobCalcReview.reportingUnit.name} - <p:graphicImage value="#{pobCalcReview.workflowStatus.icon}" width="30px" height="20px" style="vertical-align: sub; margin-right: 2px;"/> #{pobCalcReview.workflowStatus.description}</strong></h4>
+
+                        <p:panelGrid styleClass="ui-panelgrid-blank form-group" style="border: 0px none; margin-top: 10px; background-color:transparent;">
+                            <p:row>
+                                <p:column>
+                                    <h:outputLabel style="vertical-align: middle; white-space: nowrap;" value="Switch RU: "/>
+                                </p:column>
+                                <p:column>
+                                    <p:autoComplete
+                                        id="ru"
+                                        var="ru"
+                                        maxResults="10"
+                                        placeholder="start typing..."
+                                        required="#{false}"
+                                        forceSelection="#{true}"
+                                        onclick="this.value = ''"
+                                        value="#{webSession.currentReportingUnit}"
+                                        completeMethod="#{viewSupport.completeReportingUnit}"
+                                        itemLabel="#{ru.name}"
+                                        itemValue="#{ru}"
+                                        converter="reportingUnitConverter"
+                                        style="width: 300px; vertical-align: middle; "
+                                        >
+                                        <p:ajax event="itemSelect" listener="#{pobCalcReview.onReportingUnitSelect}" update=":form" />
+                                    </p:autoComplete>
+                                </p:column>
+                                <p:column>
+                                    <h:outputLabel style="vertical-align: middle; white-space: nowrap;" value="Switch Period: "/>
+                                </p:column>
+                                <p:column>
+                                    <p:selectOneMenu style="" id="period" value="#{webSession.currentPeriod}" converter="periodConverter">
+                                        <p:ajax event="change" update=":form" process="@this" listener="#{pobCalcReview.switchPeriod(webSession.currentPeriod)}"/>
+                                        <f:selectItems var="period" value="#{viewSupport.allPeriods}" itemLabel="#{period.id}"/>
+                                    </p:selectOneMenu>
+                                </p:column>
+                            </p:row>
+                            <p:row>
+                                <p:column>
+                                    <h:outputText value="Search within list:" />
+                                </p:column>
+                                <p:column>
+                                    <p:inputText id="globalFilterText" value="#{webSession.filterText}" style="width:150px;"/>
+                                    <p:commandButton id="globalFilter" style="font-size: 80%; margin-left: 10px;" value="Search" actionListener="#{pobCalcReview.filterByContractText()}" update=":form:topLevelTabView"/>
+                                </p:column>
+                                <p:column>
+                                    <h:outputText value="Filter list by contract:" style=""/>
+                                </p:column>
+                                <p:column>
+                                    <p:selectCheckboxMenu id="contracts" showHeader="false" label="Contracts" value="#{webSession.selectedContracts}" converter="contractConverter" style="width:150px;">
+                                        <p:ajax event="change" update=":form:topLevelTabView" process="@this" listener="#{pobCalcReview.filterByContracts()}"/>
+                                        <f:selectItems var="contract" value="#{pobCalcReview.contracts}" itemLabel="#{contract.name}"/>
+                                    </p:selectCheckboxMenu>
+                                    <p:commandButton id="globalFilterClear2" style="font-size: 80%; margin-left: 10px;" value="Clear All Filters" actionListener="#{pobCalcReview.clearFilterByContractText()}" update=":form:topLevelTabView, :form:globalFilterText, :form:contracts"/>
+                                    <p:commandButton id="pobfilter" style="font-size: 80%; margin-left: 10px;" value="Expand POBs" ajax="false" actionListener="#{pobCalcReview.viewAllPObs()}" action="#{pobCalcReview.refresh()}" rendered="#{pobCalcReview.pobsExpandable}"/>
+                                    <p:commandButton id="hidefilter" style="font-size: 80%; margin-left: 10px;" value="Collapse POBs" ajax="false" actionListener="#{pobCalcReview.hideAllPObs}" action="#{pobCalcReview.refresh()}" rendered="#{pobCalcReview.pobsExpandable}"/>
+                                </p:column>
+                            </p:row>
+                        </p:panelGrid>
+
+
+                        <p:tabView id="topLevelTabView" dynamic="true">
+                            <c:forEach items="#{pobCalcReview.dynamicTabs}" var="dynamicTab" >
+                                <p:tab title="#{dynamicTab.groupName}">
+                                    <p:treeTable tableStyle="width:fixed" value="#{pobCalcReview.rootTreeNode}" var="pob" selectionMode="single" selection="#{pobCalcReview.selectedNode}" scrollable="true" scrollHeight="550">
+
+                                        <p:ajax event="expand" listener="#{viewSupport.onNodeExpand}"/>
+                                        <p:ajax event="collapse" listener="#{viewSupport.onNodeCollapse}"/>
+
+                                        <p:columnGroup type="header">
+                                            <p:row>
+                                                <p:column colspan="1" headerText="" style="width: 250px;"/>
+                                                <p:column colspan="#{pobCalcReview.getColSpanCCMetric(dynamicTab.groupName)}" style="background-color: #43C86F; color: #ffffff; white-space:pre-line;"
+                                                          headerText="Contract Currency" rendered="#{pobCalcReview.isCCMetricAvail(dynamicTab.groupName)}"/>
+                                                <p:column colspan="#{pobCalcReview.getColSpanNonCurrencyMetric(dynamicTab.groupName)}" headerText="" rendered="#{pobCalcReview.isNonCurrencyMetricAvail(dynamicTab.groupName)}"/>
+                                                <p:column colspan="1" headerText="" rendered="#{pobCalcReview.isCCMetricAvail(dynamicTab.groupName) and pobCalcReview.isLCMetricAvail(dynamicTab.groupName)}"/>
+                                                <p:column colspan="#{pobCalcReview.getColSpanLCMetric(dynamicTab.groupName)}" style="background-color: #5aa3d4; color: #ffffff; white-space:pre-line;"
+                                                          headerText="Local Currency" rendered="#{pobCalcReview.isLCMetricAvail(dynamicTab.groupName)}"/>
+                                            </p:row>
+                                            <p:row>
+                                                <p:column sortBy="#{pob.name}" style="white-space:pre-line;width: 250px;" id="ruHead">
+                                                    <f:facet name="header">
+                                                        <h:outputText value="Reporting Unit - Contract" />
+                                                        <p:tooltip  for="ruHead" value="Reporting Unit - Contract"  showEffect="clip" hideEffect="clip" position="top"/>
+                                                    </f:facet>
+                                                </p:column>
+
+                                                <p:column rendered="#{pobCalcReview.isCCMetricAvail(dynamicTab.groupName)}" style="white-space:pre-line;" id="contractCurr">
+                                                    <f:facet name="header">
+                                                        <h:outputText value="Currency" />
+                                                        <p:tooltip  for="contractCurr" value="Contract Currency"  showEffect="clip" hideEffect="clip" position="top"/>
+                                                    </f:facet>
+                                                </p:column>
+
+                                                <c:forEach items="#{pobCalcReview.getContractMetric(dynamicTab.groupName)}" var="contractColumn" varStatus="loop" >
+                                                    <p:column colspan="1" style="white-space:pre-line;" id="Contract#{loop.index}">
+                                                        <f:facet name="header">
+                                                            <h:outputText  value="#{pobCalcReview.getHeaderText(contractColumn)}"/>
+                                                            <p:tooltip  for="Contract#{loop.index}" value="#{pobCalcReview.getHeaderDescription(contractColumn)}" style="white-space:pre-line;max-width: 450px;"  showEffect="clip" hideEffect="clip" position="top"/>
+                                                        </f:facet>
+                                                    </p:column>
+                                                </c:forEach>
+
+                                                <c:forEach items="#{pobCalcReview.getNonCurrencyMetric(dynamicTab.groupName)}" var="nonCurrencyColumn" varStatus="loop" >
+                                                    <p:column colspan="1" style="white-space:pre-line;" id="other#{loop.index}" >
+                                                        <f:facet name="header">
+                                                            <h:outputText  value="#{pobCalcReview.getHeaderText(nonCurrencyColumn)}" />
+                                                            <p:tooltip  for="other#{loop.index}" value="#{pobCalcReview.getHeaderDescription(nonCurrencyColumn)}" style="white-space:pre-line;max-width: 450px;"  showEffect="clip" hideEffect="clip" position="top"/>
+                                                        </f:facet>
+                                                    </p:column>
+                                                </c:forEach>
+                                                <p:column id="fxRate" rendered="#{pobCalcReview.isCCMetricAvail(dynamicTab.groupName) and pobCalcReview.isLCMetricAvail(dynamicTab.groupName)}" style="white-space:pre-line;">
+                                                    <f:facet name="header" >
+                                                        <h:outputText value="Period FX Rate" />
+                                                        <p:tooltip  for="fxRate" value="Period FX Rate"  showEffect="clip" hideEffect="clip" position="top"/>
+                                                    </f:facet>
+                                                </p:column>
+                                                <p:column rendered="#{pobCalcReview.isLCMetricAvail(dynamicTab.groupName)}" style="white-space:pre-line;" id="localCurr">
+                                                    <f:facet name="header">
+                                                        <h:outputText value="Currency" />
+                                                        <p:tooltip  for="localCurr" value="Local Currency"  showEffect="clip" hideEffect="clip" position="top"/>
+                                                    </f:facet>
+                                                </p:column>
+                                                <c:forEach items="#{pobCalcReview.getLocalMetric(dynamicTab.groupName)}" var="localColumn" varStatus="loop">
+                                                    <p:column colspan="1" style="white-space:pre-line; " id="Local#{loop.index}">
+                                                        <f:facet name="header">
+                                                            <h:outputText  value="#{pobCalcReview.getHeaderText(localColumn)}" />
+                                                            <p:tooltip for="Local#{loop.index}"  value="#{pobCalcReview.getHeaderDescription(localColumn)}" style="white-space:pre-line;max-width: 450px;"  showEffect="clip" hideEffect="clip" position="top"/>
+                                                        </f:facet>
+                                                    </p:column>
+                                                </c:forEach>
+                                            </p:row>
+                                        </p:columnGroup>
+
+                                        <p:column sortBy="#{pob.name}" style="width: 250px;" id="ru">
+                                            <h:outputText value="#{pob.name}" title="#{pob.description}"/>
+                                        </p:column>
+                                        <p:column rendered="#{pobCalcReview.isCCMetricAvail(dynamicTab.groupName)}">
+                                            <h:outputText value="#{pob.contractCurrency.currencyCode}" style="#{viewSupport.getTextStyle(pob)}"
+                                                          rendered="#{pobCalcReview.isCurrencyCode(pob)}"/>
+                                        </p:column>
+                                        <p:columns value="#{pobCalcReview.getContractMetric(dynamicTab.groupName)}" style="white-space:pre-line;" var="column" >
+
+                                            <h:outputText value="#{pobCalcReview.getCurrencyMetric(column, pob).ccValue}" style="#{viewSupport.getTextStyle(pob)}"
+                                                          rendered="#{pobCalcReview.isContractCurrencyValue(column, pob)}">
+                                                <f:convertNumber type="currency" currencySymbol=""/>
+                                            </h:outputText>
+                                        </p:columns>
+
+                                        <p:columns value="#{pobCalcReview.getNonCurrencyMetric(dynamicTab.groupName)}" style="white-space:pre-line;" var="column">
+                                            <h:outputText value="#{viewSupport.getDecimalMetric(column.code, pob).value}"
+                                                          rendered="#{pobCalcReview.isDecimalValue(pob)}"
+                                                          style="#{viewSupport.getTextStyle(pob)}">
+                                                <f:convertNumber type="percent" minFractionDigits="1" maxFractionDigits="1"/>
+                                            </h:outputText>
+                                        </p:columns>
+                                        <p:column rendered="#{pobCalcReview.isCCMetricAvail(dynamicTab.groupName) and pobCalcReview.isLCMetricAvail(dynamicTab.groupName)}">
+                                            <h:outputText value="#{viewSupport.getCCtoLCExchangeRate(pob.contract)}" style="#{viewSupport.getTextStyle(pob)}"
+                                                          rendered="#{pobCalcReview.isFXRate(pob)}"
+                                                          title="#{viewSupport.getCCtoLCExchangeRate(pob.contract)}">
+                                                <f:convertNumber maxFractionDigits="2" />
+                                            </h:outputText>
+                                        </p:column>
+
+                                        <p:column rendered="#{pobCalcReview.isLCMetricAvail(dynamicTab.groupName)}">
+                                            <h:outputText value="#{pob.localCurrency.currencyCode}" style="#{viewSupport.getTextStyle(pob)}"
+                                                          rendered="#{pobCalcReview.isCurrencyCode(pob)}"/>
+                                        </p:column>
+                                        <p:columns value="#{pobCalcReview.getLocalMetric(dynamicTab.groupName)}" style="white-space:pre-line;" var="column">
+
+                                            <h:outputText value="#{pobCalcReview.getCurrencyMetric(column, pob).lcValue}" style="#{viewSupport.getTextStyle(pob)}">
+                                                <f:convertNumber type="currency" currencySymbol=""/>
+                                            </h:outputText>
+                                        </p:columns>
+                                    </p:treeTable>
+                                </p:tab>
+                            </c:forEach>
+                        </p:tabView>
+                        <p:toolbar>
+                            <f:facet name="left">
+                                <p:commandButton value="Recalculate RU Current Period" icon="ui-icon-check" style="margin-left: 10px;" update=":form:topLevelTabView"
+                                                 ajax="false" actionListener="#{pobCalcReview.calculateAndSaveCurrentPeriod}"
+                                                 action="#{calcReviewController.reviewCalculations(pobCalcReview.reportingUnit)}"
+                                                 rendered="#{viewSupport.recalcable}"/>
+                                <p:commandButton value="Convert RU Currency" icon="ui-icon-check" style="margin-left: 10px;"
+                                                 ajax="false" actionListener="#{pobCalcReview.convertRCValueAndSaveCurrentPeriod}"
+                                                 action="#{calcReviewController.reviewCalculations(pobCalcReview.reportingUnit)}"
+                                                 rendered="#{viewSupport.recalcable}"/>
+                            </f:facet>
+                            <f:facet name="right">
+                                <p:commandButton value="Back to Dashboard" icon="ui-icon-arrowthick-1-w" ajax="false" action="#{inputController.inputDashboard}"/>
+                                <p:commandButton value="Back to Inputs" icon="ui-icon-arrowthick-1-w" ajax="false" action="#{inputController.returnToOnlineEntry()}"/>
+                                <p:commandButton value="Reports Review" ajax="false" icon="ui-icon-arrowthick-1-e" action="#{calcReviewController.reviewReports()}"/>
+                            </f:facet>
+                        </p:toolbar>
+                    </div>
+                </div>
+            </div>
+        </h:form>
+    </ui:define>
+</ui:composition>

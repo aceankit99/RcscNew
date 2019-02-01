@@ -1,0 +1,67 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+
+        </style>
+    </ui:define>
+
+    <ui:define name="title">Contract List</ui:define>
+
+    <ui:define name="viewname">Contract List</ui:define>
+
+    <ui:define name="content" >
+        <div style="min-height: calc(100vh - 235px);">
+            <div class="ui-g">
+                <div class="ui-g-12">
+                    <div class="card card-w-title">
+                        <p:messages showDetail="true" />
+                        <h1>Contract List</h1>
+                        <h:form id="contractForm">
+                            <p:focus for="searchString" />
+
+                            <p:inputText id="searchString" value="#{contractList.searchString}"/>
+
+                            <p:commandButton id="search" value="Search" ajax="true" icon="ui-icon-arrowrefresh-1-w" actionListener="#{contractList.search()}" update="contractForm:contractTable" style="margin-left:10px" />
+
+                            <p:ajaxStatus style="width:20px;height:20px;">
+                                <f:facet name="start">
+                                    <h:graphicImage value="images/loader.gif" style="width: 20px;"/>
+                                </f:facet>
+                                <f:facet name="complete">
+                                    <h:outputText value="" />
+                                </f:facet>
+                            </p:ajaxStatus>
+
+                            <p:defaultCommand target="search" />
+
+                            <p:dataTable id="contractTable" var="contract" value="#{contractList.contracts}"  paginator="true" rows="30" >
+
+                                <p:column headerText="Contract Name" sortBy="#{contract.name}" >
+                                    <h:commandLink value="#{contract.name}" action="#{adminController.generateReport(contract)}" title="Download Report"></h:commandLink>
+                                </p:column>
+                                <p:column headerText="Sales Order Number" sortBy="#{contract.salesOrderNumber}" >
+                                    <h:outputText value="#{contract.salesOrderNumber}" ></h:outputText>
+                                </p:column>
+                                <p:column headerText="Reporting Unit Name" sortBy="#{contract.reportingUnit.name}">
+                                    <h:outputText value="#{contract.reportingUnit.name}" />
+                                </p:column>
+                                <!--                                <p:column  headerText="Option" >
+                                                                    <h:commandLink value="Contract Summary" action="#{adminController.generateReport(contract)}"></h:commandLink>
+                                                                </p:column>-->
+                            </p:dataTable>
+
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ui:define>
+
+</ui:composition>
+

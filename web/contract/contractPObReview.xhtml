@@ -1,0 +1,137 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+
+            body .ui-widget .ui-widget
+            {
+                width: 180px;
+                min-width: 180px;
+            }
+
+        </style>
+    </ui:define>
+
+    <ui:define name="title">Performance Obligation Review</ui:define>
+
+    <ui:define name="viewname">Performance Obligation Review</ui:define>
+
+    <ui:define name="content">
+        <div style="min-height: calc(100vh - 235px);">
+            <h:form>
+                <div class="ui-fluid">
+                    <div class="ui-g">
+                        <div class="ui-g-12">
+                            <div class="card card-w-title">
+
+                                <p:graphicImage url="../images/Flowserve.svg.png" height="80" width="200" stream="false" style="margin-left:50px"/>
+                                <h4 style="float:right;margin-right: 160px">Product&amp;Services Listing for Performance Obligation Review</h4>
+                                <br></br>
+
+                                <br></br>
+
+                                <p:panelGrid columns="4" columnClasses="ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank form-group" style="border:0px none; background-color:transparent;margin-left: 50px">
+                                    <p:outputLabel  value="Customer PO# :"  />
+                                    <p:inputNumber padControl="false"/>
+                                    <p:outputLabel  value="Revision/Change# :"  />
+                                    <p:inputNumber padControl="false"/>
+
+                                    <p:outputLabel  value="POb Name :"  />
+                                    <p:inputText/>
+                                    <p:outputLabel  value="Capable of Being Distinct :"  />
+                                    <p:inputText/>
+
+                                    <p:outputLabel value="Distinct in the Context of Contract:"/>
+                                    <p:inputText/>
+                                    <p:outputLabel value="Series Provision"/>
+                                    <p:inputText/>
+
+                                    <p:outputLabel value="SSP:"/>
+                                    <p:inputNumber value="0.00"/>
+                                    <p:outputLabel value="Method of Determination"/>
+                                    <p:selectOneMenu id="car" >
+                                        <f:selectItem itemLabel="Select One" itemValue="" />
+                                        <f:selectItem itemLabel="Directly Observe" itemValue="Directly Observe"/>
+                                    </p:selectOneMenu>
+
+                                    <p:outputLabel value="Assigned Variable:"/>
+                                    <p:inputNumber value="0.00"/>
+                                    <p:outputLabel value="Lead Time:"/>
+                                    <p:inputNumber value="0" padControl="false"/>
+
+                                    <p:outputLabel value="Transaction Price for Allocation :"/>
+                                    <p:inputNumber value="0.00"/>
+                                    <p:outputLabel value="Total Potential Variable Consideration :"/>
+                                    <p:inputNumber value="0.00"/>
+
+                                    <p:outputLabel value="Transaction Price :"/>
+                                    <p:inputNumber value="0.00"/>
+                                    <p:outputLabel value="Relative % :"/>
+                                    <p:inputNumber value="0.00" symbol="%" symbolPosition="s" emptyValue="sign"/>
+
+                                    <p:outputLabel value="Allocated Transaction Price :"/>
+                                    <p:inputNumber value="0.00"/>
+                                    <p:outputLabel value="Value of Assigned Discount:"/>
+                                    <p:inputNumber value="0.00" />
+
+                                    <p:outputLabel value="Allocated Discounted Transaction Price :"/>
+                                    <p:inputNumber value="0.00"/>
+                                    <p:outputLabel value="Revenue Recognition Amount:"/>
+                                    <p:inputNumber value="0.00" />
+
+                                    <p:outputLabel value="Revenue Method :"/>
+                                    <p:selectOneMenu  >
+                                        <f:selectItem itemLabel="Select One" itemValue="" />
+                                    </p:selectOneMenu>
+                                    <p:outputLabel value="Criterion Met:"/>
+                                    <p:selectOneMenu  >
+                                        <f:selectItem itemLabel="Yes" itemValue="" />
+                                    </p:selectOneMenu>
+
+
+                                    <p:outputLabel value="Initial Cost EAC :"/>
+                                    <p:inputNumber value="0.00" padControl="false"/>
+                                    <p:outputLabel value="ASC 605 Method:"/>
+                                    <p:inputText/>
+
+                                    <p:outputLabel value="Product Line:"/>
+                                    <p:inputText/>
+                                    <p:outputLabel value="Product has no alternative use for Floseserve?"/>
+                                    <p:selectOneMenu  >
+                                        <f:selectItem itemLabel="No" itemValue="" />
+                                    </p:selectOneMenu>
+                                </p:panelGrid>
+                                <hr></hr>
+                                <p:panelGrid columns="1" columnClasses="ui-grid-col-12" layout="grid" styleClass="ui-panelgrid-blank form-group" style="border:0px none; background-color:transparent;margin-left: 50px">
+                                    <p:outputLabel value="Transfer of Risk Paragraph :"/>
+                                    <p:inputTextarea style="width:100%"/>
+                                </p:panelGrid>
+                                <hr></hr>
+                                <p:panelGrid columns="1" columnClasses="ui-grid-col-12" layout="grid" styleClass="ui-panelgrid-blank form-group" style="border:0px none; background-color:transparent;margin-left: 50px">
+                                    <p:outputLabel value="Termination for Convention Paragraph :"/>
+                                    <p:inputTextarea style="width:100%"/>
+                                </p:panelGrid>
+                                <hr></hr>
+                                <p:panelGrid columns="4"  layout="grid" styleClass="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4" style="border:0px none; background-color:transparent;margin-left: 50px">
+                                    <p:outputLabel  value=""  />
+                                    <p:outputLabel  value=""  />
+                                    <p:outputLabel  value=""  />
+                                    <p:commandButton value="Close"></p:commandButton>
+                                </p:panelGrid>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+        </div>
+    </ui:define>
+
+</ui:composition>
+
+
+

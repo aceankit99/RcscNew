@@ -1,0 +1,26 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:of="http://omnifaces.org/functions"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">Calculate Initial Load</ui:define>
+    <ui:define name="viewname">Calculate Initial Load</ui:define>
+    <ui:define name="content">
+        <h:form id="form" style="min-height: calc(100vh - 235px);">
+            <div class="ui-g">
+                <div class="ui-g-12 ui-md-12 ui-lg-6">
+                    <div class="card card-w-title">
+                        <p:messages id="messages" showDetail="true" />
+                        <h1>Calculate</h1>
+                        <p:commandButton style="margin-top: 30px; margin-bottom: 50px;" value="Calc All Relevant Test RUs NOV-17" icon="ui-icon-disk" ajax="false" action="#{calculateInitialDataSet.calcAllNov17()}"/>
+                        <h1>Calculate</h1>
+                        <p:commandButton style="margin-top: 30px;" value="Calc All RUs NOV-17" icon="ui-icon-disk" ajax="false" action="#{calculateInitialDataSet.calcAllReportingUnitsNov17()}"/>
+                    </div>
+                </div>
+            </div>
+        </h:form>
+    </ui:define>
+</ui:composition>

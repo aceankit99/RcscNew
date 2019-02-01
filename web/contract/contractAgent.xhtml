@@ -1,0 +1,87 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+
+            body .ui-widget .ui-widget
+            {
+                width: 180px;
+                min-width: 180px;
+            }
+
+        </style>
+    </ui:define>
+
+    <ui:define name="title">Variable Consideration</ui:define>
+
+    <ui:define name="viewname">Variable Consideration</ui:define>
+
+    <ui:define name="content">
+        <div style="min-height: calc(100vh - 235px);">
+            <h:form>
+                <div class="ui-fluid">
+                    <div class="ui-g">
+                        <div class="ui-g-12">
+                            <div class="card card-w-title">
+
+                                <p:graphicImage url="../images/Flowserve.svg.png" height="80" width="200" stream="false" style="margin-left:50px"/>
+                                <h4 style="float:right;margin-right: 160px">Principal/Agent Consideration</h4>
+                                <br></br>
+
+                                <br></br>
+
+
+
+                                <p:panelGrid columns="2" columnClasses="ui-grid-col-6,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank form-group" style="border:0px none; background-color:transparent;margin-left: 50px">
+
+                                    <p:outputLabel  value="Customer PO# :"  />
+                                    <p:inputNumber padControl="false"/>
+
+                                    <p:outputLabel  value="Does Flowserve obtain control of the item from the third party?"/>
+                                    <p:selectOneMenu  >
+                                        <f:selectItem itemLabel="No" itemValue="" />
+                                    </p:selectOneMenu>
+
+                                    <p:outputLabel  value="Does Flowserve have the ability to direct the third party?"/>
+                                    <p:selectOneMenu  >
+                                        <f:selectItem itemLabel="No" itemValue="" />
+                                    </p:selectOneMenu>
+
+                                    <p:outputLabel  value="Does Flowserve obtain the item and combine/integrate into the POb?"/>
+                                    <p:selectOneMenu  >
+                                        <f:selectItem itemLabel="No" itemValue="" />
+                                    </p:selectOneMenu>
+
+                                    <p:outputLabel value="Flowserve is acting as an agent"/>
+                                    <p:inputText value="False"/>
+
+                                    <p:outputLabel value="Third Party/Agent Commission/Margin"/>
+                                    <p:inputNumber value="0.00"/>
+                                </p:panelGrid>
+
+                                <hr></hr>
+                                <p:panelGrid columns="4"  layout="grid" styleClass="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4" style="border:0px none; background-color:transparent;margin-left: 50px">
+                                    <p:outputLabel  value=""  />
+                                    <p:outputLabel  value=""  />
+                                    <p:outputLabel  value=""  />
+                                    <p:commandButton value="Close"></p:commandButton>
+                                </p:panelGrid>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+        </div>
+    </ui:define>
+
+</ui:composition>
+
+
+
+
+

@@ -1,0 +1,23 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pc="http://primefaces.org/california">
+
+    <h:form >
+        <div id="layout-megamenu" class="ui-g-12 layout-megamenu #{guestPreferences.darkMegaMenu ? 'layout-megamenu-dark' : ''} #{guestPreferences.gradientMegaMenu ? 'layout-megamenu-gradient' : ''}">
+            <div class="ui-g-12 ui-md-6 ui-lg-3 layout-megamenu-submenu">
+                <pc:menu widgetVar="me">
+                    <p:submenu id="om_customization" label="Menu Modes" icon="fa fa-fw fa-bars">
+                    </p:submenu>
+                    <p:submenu label="Reports" icon="fa fa-fw fa-gg">
+                    </p:submenu>
+                    <p:submenu label="Administration" icon="fa fa-fw fa-gg">
+                    </p:submenu>
+                </pc:menu>
+            </div>
+        </div>
+    </h:form>
+
+</ui:composition>

@@ -1,0 +1,69 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+
+        </style>
+    </ui:define>
+
+    <ui:define name="title">User Search</ui:define>
+
+    <ui:define name="viewname">User Search</ui:define>
+
+    <ui:define name="content">
+        <div style="min-height: calc(100vh - 235px);">
+            <h:form id="mainForm">
+                <div class="ui-g">
+
+                    <div class="ui-g-12">
+                        <div class="card card-w-title">
+                            <p:messages showDetail="true"/>
+                            <h1>Users</h1>
+                            <p:focus for="searchString" />
+
+                            <p:inputText id="searchString" value="#{userSearch.searchString}"/>
+
+                            <p:commandButton id="search" value="Search" ajax="true" icon="ui-icon-arrowrefresh-1-w" actionListener="#{userSearch.search}" update="mainForm:userTable" style="margin-left:10px" />
+                            <p:commandButton id="add" value="Add User"  icon="ui-icon-contact fa fa-plus" style="margin-left:10px" action="#{adminController.newUser()}" />
+                            <p:ajaxStatus style="width:20px;height:20px;">
+                                <f:facet name="start">
+                                    <h:graphicImage value="images/loader.gif" style="width: 20px;"/>
+                                </f:facet>
+                                <f:facet name="complete">
+                                    <h:outputText value="" />
+                                </f:facet>
+                            </p:ajaxStatus>
+                            <p:defaultCommand target="search" />                            
+                            <p:dataTable id="userTable" var="user" value="#{userSearch.users}"  paginator="true" rows="30">
+
+                                <p:column headerText="Name" sortBy="#{user.name}">
+                                    <h:outputText value="#{user.name}" />
+                                </p:column>
+
+                                <p:column headerText="ID" sortBy="#{user.flsId}">
+                                    <h:outputText value="#{user.flsId}" />
+                                </p:column>
+
+                                <p:column headerText="Email" sortBy="#{user.emailAddress}">
+                                    <h:outputText value="#{user.emailAddress}" />
+                                </p:column>
+                                <p:column  headerText="Option" >
+                                    <h:commandLink value="Edit User" action="#{adminController.editUser(user)}"></h:commandLink>
+                                </p:column>
+                                <p:column  headerText="Assume Identity" >
+                                    <h:commandLink value="Assume Identity" action="#{adminController.assumeIdentity(user)}"></h:commandLink>
+                                </p:column>
+                            </p:dataTable>
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+        </div>
+    </ui:define>
+
+</ui:composition>

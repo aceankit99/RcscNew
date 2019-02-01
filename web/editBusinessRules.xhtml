@@ -1,0 +1,40 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:of="http://omnifaces.org/functions"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+
+        </style>
+    </ui:define>
+
+    <ui:define name="title">Input Summary 1</ui:define>
+
+    <ui:define name="viewname">Input Summary 1</ui:define>
+
+    <ui:define name="content">
+        <h:form id="form">
+            <div class="ui-g">
+
+                <div class="ui-g-12">
+                    <div class="card card-w-title">
+                        <p:messages id="messages" showDetail="true" />
+
+                        <h1>Business Rules and Calculations</h1>
+                        <h4>Rules are read-only for phase 1.</h4>
+
+                        <p:inputTextarea style="width: 90%; overflow-y: scroll;" value="#{editBusinessRules.businessRule}" readonly="true"/>
+                    </div>
+                </div>
+
+
+            </div>
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>

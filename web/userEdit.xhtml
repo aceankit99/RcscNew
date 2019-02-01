@@ -1,0 +1,87 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+
+        </style>
+    </ui:define>
+
+    <ui:define name="title">#{userEdit.editUser.id == null ? "New" : "Edit" } User</ui:define>
+
+    <ui:define name="viewname">#{userEdit.editUser.id == null ? "New" : "Edit" } User</ui:define>
+
+    <ui:define name="content">
+        <div style="min-height: calc(100vh - 235px);">
+            <h:form>
+                <div class="ui-fluid">
+                    <div class="ui-g">
+                        <div class="ui-g-12 ui-md-12 ui-lg-6">
+                            <!--
+                            Setting to 12, 12, 6.  This will cause input area to switch to full width (12 cols) when screen size is small.  Large screen half-size (6 cols)
+                            ui-lg => number of columns for a large screen (screen width > 1024px)
+                            ui-md => number of columns for a medium screen (screen width < 1024px )
+                            ui-g = > number of columns by default (or screen width < 425px if lg and md columns are define)-->
+                            <div class="card card-w-title">
+                                <h1>#{userEdit.editUser.id == null ? "New" : "Edit" } User</h1>
+                                <!--  Only two cols, so only two col columnClasses.  I had to use 6 and 6 to get this layout properly-->
+                                <p:panelGrid columns="2" columnClasses="ui-grid-col-6,ui-grid-col-6" layout="grid" styleClass="ui-panelgrid-blank form-group" style="border:0px none; background-color:transparent;">
+                                    <p:outputLabel for="name" value="Name"/>
+                                    <p:inputText id="name" value="#{userEdit.editUser.name}"/>
+                                    <p:outputLabel for="dispname" value="Display Name"/>
+                                    <p:inputText id="dispname" value="#{userEdit.editUser.displayName}"/>
+                                    <p:outputLabel for="id" value="ID"/>
+                                    <p:inputText id="id" value="#{userEdit.editUser.flsId}"/>
+                                    <p:outputLabel for="email" value="Email ID"/>
+                                    <p:inputText id="email" value="#{userEdit.editUser.emailAddress}"/>
+                                    <p:outputLabel for="common" value="Comman Name LDAP"/>
+                                    <p:inputText id="common" value="#{userEdit.editUser.commonNameLDAP}"/>
+                                    <p:outputLabel for="office" value="Office Name"/>
+                                    <p:inputText id="office" value="#{userEdit.editUser.officeName}"/>
+                                    <p:outputLabel for="title" value="Title"/>
+                                    <p:inputText id="title" value="#{userEdit.editUser.title}"/>
+                                    <p:outputLabel for="orglevel" value="Organization Level"/>
+                                    <p:inputText id="orglevel" value="#{userEdit.editUser.orgLevel}"/>
+                                    <p:outputLabel for="supervisor" value="Supervisor"/>
+                                    <p:autoComplete
+                                        id="supervisor"
+                                        var="user"
+                                        maxResults="10"
+                                        required="#{false}"
+                                        forceSelection="#{true}"
+                                        value="#{userEdit.editUser.supervisor}"
+                                        completeMethod="#{viewSupport.completeUser}"
+                                        itemLabel="#{user.name}"
+                                        itemValue="#{user}"
+                                        converter="userConverter">
+                                        <h:outputText value="Begin typing last name to find a user"/>
+                                    </p:autoComplete>
+                                    <p:outputLabel for="admin" value="Administrator"/>
+                                    <p:selectBooleanCheckbox id="admin" value="#{userEdit.editUser.admin}"/>
+                                    <p:outputLabel for="globalViewer" value="Global Viewer"/>
+                                    <p:selectBooleanCheckbox id="globalViewer" value="#{userEdit.editUser.globalViewer}"/>
+                                    <!-- Use p:toolbar for nicely stlyed command button area -->
+                                    <f:facet name="footer">
+                                        <p:toolbar>
+                                            <f:facet name="right">
+                                                <p:commandButton id="btn" value="#{userEdit.editUser.id == null ?'Add' : 'Update' }" action="#{userEdit.addUpdateCondition()}" style="max-width:150px;"/>
+                                            </f:facet>
+                                            <f:facet name="left">
+                                                <p:commandButton id="btn2" value="Cancel"  style="max-width:150px;" action="#{userEdit.cancelSave()}"/>
+                                            </f:facet>
+                                        </p:toolbar>
+                                    </f:facet>
+                                </p:panelGrid>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+        </div>
+    </ui:define>
+
+</ui:composition>

@@ -1,0 +1,50 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+
+        </style>
+    </ui:define>
+
+    <ui:define name="title">Reporting Unit Level Reports</ui:define>
+    <ui:define name="viewname">Reporting Unit Level Reports</ui:define>
+
+    <ui:define name="content">
+        <h:form id="form" style="min-height: calc(100vh - 235px);">
+
+            <div class="ui-g">
+
+                <div class="ui-g-12">
+                    <div class="card card-w-title">
+                        <p:messages showDetail="true" />
+
+                        <h2><strong>#{reportReportingUnit.ru.name}</strong></h2>
+
+
+
+                        <p:toolbar>
+
+                            <f:facet name="left">
+                                <p:panelGrid columns="2" style="width:auto" >
+                                <h5>Journal Entry Reports</h5>
+                                 <p:commandButton value="Download  Report" ajax="false" style="width:auto;" icon="ui-icon-arrowthick-1-s">
+                                     <p:fileDownload value="#{reportReportingUnit.fileJournalEntry}" />
+                                </p:commandButton>
+                        
+                                </p:panelGrid>
+                            </f:facet>
+                            
+                          
+                        </p:toolbar>
+                    </div>
+                </div>
+            </div>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

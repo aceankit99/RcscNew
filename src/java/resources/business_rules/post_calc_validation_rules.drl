@@ -1,0 +1,19 @@
+dialect "mvel"
+
+import java.math.BigDecimal;
+import com.flowserve.system606.model.PerformanceObligation;
+import com.flowserve.system606.model.PerformanceObligationGroup;
+import com.flowserve.system606.model.Contract;
+import com.flowserve.system606.model.ReportingUnit;
+import java.util.logging.Logger;
+global Logger logger;
+
+rule "Post calc validation rule test"
+    when
+        pob : PerformanceObligation(valid == true)
+    then
+       //modify (pob) { valid = false };
+       logger.info("Post calc validation rule worked");
+end
+
+

@@ -1,0 +1,1 @@
+INPUT|BILLING_EVENT_CC|Contract||CurrencyEvent|CC|NonConvertible|Billing Event||Contract Events|O|Group1|2||

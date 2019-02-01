@@ -1,0 +1,572 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+
+        </style>
+    </ui:define>
+
+    <ui:define name="title">Contract Summary-2</ui:define>
+
+    <ui:define name="viewname">Contract Summary-2</ui:define>
+
+    <ui:define name="content">
+        <div style="min-height: calc(100vh - 235px);">
+            <h:form id="mainForm">
+                <p:growl id="messages" showDetail="true" />
+
+                <div class="ui-g">
+
+                    <div class="ui-g-12">
+                        <div class="card card-w-title">
+                            <h1>Contract Summary-2</h1>
+
+                            <p:panelGrid style="margin-top:20px">
+                                <f:facet name="header">
+
+                                    <p:row>
+                                        <p:column colspan="28" style="text-align: left;font-weight: bold">Contract Summary by Pob</p:column>
+                                    </p:row>
+
+                                    <p:row>
+                                        <p:column colspan="28" style="text-align: left;font-weight: bold">Reporting Month End</p:column>
+                                    </p:row>
+
+                                    <p:row>
+                                        <p:column colspan="4" style="text-align: left;font-weight: bold;background-color: #FDB81E">04/30/2018</p:column>
+                                        <p:column colspan="8" style="font-weight: bold; background-color: #88a6bd">Monthly Income Statement Impact</p:column>     
+                                        <p:column colspan="8" style="font-weight: bold;background-color: #88a6bd">Quarterly Income Statement Impact</p:column>
+                                        <p:column colspan="8" style="font-weight: bold;background-color: #88a6bd">Annual Income Statement Impact</p:column>
+                                    </p:row>
+
+                                    <p:row>
+                                        <p:column colspan="28" style="text-align: left;font-weight: bold">Formula</p:column>
+                                    </p:row>  
+
+                                    <p:row>
+                                        <p:column colspan="28" style="text-align: left;font-weight: bold">Column Number</p:column>
+                                    </p:row>
+
+                                    <p:row>
+                                        <p:column colspan="4" style="font-weight: bold"></p:column>
+                                        <p:column colspan="8" style="font-weight: bold;background-color:  #a59aab">Current Reporting Month</p:column>
+                                        <p:column colspan="8" style="font-weight: bold;background-color:  #a59aab">Current Quarter Totals</p:column>
+                                        <p:column colspan="8" style="font-weight: bold;background-color:  #a59aab">Current Quarter Totals</p:column>
+                                    </p:row>
+
+                                    <p:row>
+                                        <p:column colspan="4" style="font-weight: bold"></p:column>
+                                        <p:column colspan="2" style="font-weight: bold;background-color: #c1a1e6">Net Revenue</p:column>
+                                        <p:column colspan="2" style="font-weight: bold;background-color: #c1a1e6">COGS</p:column>
+                                        <p:column colspan="1" rowspan="2" style="font-weight: bold;background-color: #c1a1e6">Gross Profit</p:column>
+                                        <p:column colspan="2" style="font-weight: bold;background-color: #c1a1e6">TPCs</p:column>
+                                        <p:column colspan="1" rowspan="2" style="font-weight: bold;background-color: #c1a1e6">Operating Income</p:column>
+
+
+                                        <p:column colspan="2" style="font-weight: bold;background-color: #c1a1e6">Net Revenue</p:column>
+                                        <p:column colspan="2" style="font-weight: bold;background-color: #c1a1e6">COGS</p:column>
+                                        <p:column colspan="1" rowspan="2" style="font-weight: bold;background-color: #c1a1e6">Gross Profit</p:column>
+                                        <p:column colspan="2" style="font-weight: bold;background-color: #c1a1e6">TPCs</p:column>
+                                        <p:column colspan="1" rowspan="2" style="font-weight: bold;background-color: #c1a1e6">Operating Income</p:column>
+
+                                        <p:column colspan="2" style="font-weight: bold;background-color: #c1a1e6">Net Revenue</p:column>
+                                        <p:column colspan="2" style="font-weight: bold;background-color: #c1a1e6">COGS</p:column>
+                                        <p:column colspan="1" rowspan="2" style="font-weight: bold;background-color: #c1a1e6">Gross Profit</p:column>
+                                        <p:column colspan="2" style="font-weight: bold;background-color: #c1a1e6">TPCs</p:column>
+                                        <p:column colspan="1" rowspan="2" style="font-weight: bold;background-color: #c1a1e6">Operating Income</p:column>
+
+
+                                    </p:row>
+
+                                    <p:row>
+                                        <p:column colspan="4" style="font-weight: bold;"></p:column>
+                                        <p:column colspan="1" style="font-weight: bold;background-color: #d7c5eb">Revenue</p:column>
+                                        <p:column colspan="1" style="font-weight: bold;background-color: #d7c5eb">LDs</p:column>
+                                        <p:column colspan="1" style="font-weight: bold;background-color: #d7c5eb">Cost Incurred</p:column>
+                                        <p:column colspan="1" style="font-weight: bold;background-color: #d7c5eb">LCM ADJ</p:column>
+                                        <p:column colspan="1" style="font-weight: bold;background-color: #d7c5eb">TPC Incurred</p:column>
+                                        <p:column colspan="1" style="font-weight: bold;background-color: #d7c5eb">Accelerated</p:column>
+
+                                        <p:column colspan="1" style="font-weight: bold;background-color: #d7c5eb">Revenue</p:column>
+                                        <p:column colspan="1" style="font-weight: bold;background-color: #d7c5eb">LDs</p:column>
+                                        <p:column colspan="1" style="font-weight: bold;background-color: #d7c5eb">Cost Incurred</p:column>
+                                        <p:column colspan="1" style="font-weight: bold;background-color: #d7c5eb">LCM ADJ</p:column>
+                                        <p:column colspan="1" style="font-weight: bold;background-color: #d7c5eb">TPC Incurred</p:column>
+                                        <p:column colspan="1" style="font-weight: bold;background-color: #d7c5eb">Accelerated</p:column>
+
+                                        <p:column colspan="1" style="font-weight: bold;background-color: #d7c5eb">Revenue</p:column>
+                                        <p:column colspan="1" style="font-weight: bold;background-color: #d7c5eb">LDs</p:column>
+                                        <p:column colspan="1" style="font-weight: bold;background-color: #d7c5eb">Cost Incurred</p:column>
+                                        <p:column colspan="1" style="font-weight: bold;background-color: #d7c5eb">LCM ADJ</p:column>
+                                        <p:column colspan="1" style="font-weight: bold;background-color: #d7c5eb">TPC Incurred</p:column>
+                                        <p:column colspan="1" style="font-weight: bold;background-color: #d7c5eb">Accelerated</p:column>
+                                    </p:row> 
+
+
+                                </f:facet>
+
+
+                                <p:row>
+                                    <p:column colspan="4" style="font-weight: bold">Contract Summary</p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                </p:row>
+
+                                <p:row>
+                                    <p:column colspan="4" style="">Percentage-of-Completion Pob's</p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                </p:row>
+
+                                <p:row>
+                                    <p:column colspan="4" style="">Point-in-Time Pob's</p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                </p:row>
+
+                                <p:row>
+                                    <p:column colspan="4" style="">Straight Line POb's</p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                </p:row>
+
+                                <p:row>
+                                    <p:column colspan="4" style="">Third Party Commissions</p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                </p:row>
+
+                                <p:row>
+                                    <p:column colspan="4" style="">Billings to Date</p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                </p:row>
+
+                                <p:row>
+                                    <p:column colspan="4" style="font-weight: bold">Contract Summary Totals</p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                </p:row>
+
+                                <p:row>
+                                    <p:column colspan="4" style="font-weight: bold"></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                </p:row>
+
+                                <p:row>
+                                    <p:column colspan="4" style="font-weight: bold">Percentage of Completion POb's</p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                </p:row>
+
+                                <p:row>
+                                    <p:column colspan="4" style="font-weight: bold">Percentage of Completion POb Total</p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                </p:row>
+
+                                <p:row>
+                                    <p:column colspan="4" style="font-weight: bold"></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                </p:row>
+
+                                <p:row>
+                                    <p:column colspan="4" style="font-weight: bold">Point in Time POb's</p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                </p:row>
+
+                                <p:row>
+                                    <p:column colspan="4" style="font-weight: bold">Point in Time POb Totals</p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                </p:row>
+
+                                <p:row>
+                                    <p:column colspan="4" style="font-weight: bold"></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                </p:row>
+
+                                <p:row>
+                                    <p:column colspan="4" style="font-weight: bold">Straight Line POb's</p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                </p:row>
+
+                                <p:row>
+                                    <p:column colspan="4" style="font-weight: bold">Straight Line POb Total</p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                    <p:column colspan="1"></p:column>     
+                                    <p:column colspan="1" ></p:column>
+                                </p:row>
+
+                            </p:panelGrid>
+
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+        </div>
+    </ui:define>
+
+</ui:composition>
+

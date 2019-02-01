@@ -1,0 +1,144 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">RCS Dashboard</ui:define>
+
+    <ui:define name="viewname">RCS Dashboard</ui:define>
+
+    <ui:define name="head">
+        <style type="text/css">
+            .main-content {
+                padding: 0;
+            }
+        </style>
+    </ui:define>
+
+    <ui:define name="content">
+        <h:form id="form">
+            <div class="dashboard">
+                <div class="ui-g">
+                    <div class="ui-g-12 ui-md-12 ui-lg-4">
+                        <p:commandLink disabled="#{viewSupport.menuClickable}"  action="inputOnlineEntry.xhtml" >
+                            <div class="overview-box monthly-sales">
+                                <div class="overview-title"><strong>INPUTS</strong></div>
+                                <i class="fa fa-arrow-circle-up" />
+                                <p:graphicImage name="images/icon-sales.png" library="california-layout" />
+                            </div>
+                        </p:commandLink>
+
+                    </div>
+                    <div class="ui-g-12 ui-md-12 ui-lg-4">
+                        <p:commandLink disabled="#{viewSupport.menuClickable}"  action="pobCalculationReview.xhtml" >
+                            <div class="overview-box monthly-views">
+                                <div class="overview-title"><strong>CALCULATIONS</strong>
+                                    <i class="fa fa-arrow-circle-down" />
+                                </div>
+                                <p:graphicImage name="images/icon-views.png" library="california-layout" />
+                            </div>
+                        </p:commandLink>
+                    </div>
+                    <div class="ui-g-12 ui-md-12 ui-lg-4">
+                        <p:commandLink disabled="#{viewSupport.menuClickable}"  action="reportsReview?faces-redirect=true" >
+                            <div class="overview-box monthly-users">
+                                <div class="overview-title"><strong>REPORTS</strong>
+                                    <i class="fa fa-arrow-circle-up" />
+                                </div>
+                                <p:graphicImage name="images/icon-users.png" library="california-layout" />
+                            </div>
+                        </p:commandLink>
+                    </div>
+
+                    <div class="ui-g-12">
+                        <div class="card card-w-title">
+                            <p:messages id="messages" showDetail="true" />
+                            <p:panelGrid styleClass="ui-panelgrid-blank form-group" style="float: right; border:0px none; background-color:transparent;">
+                                <p:row>
+                                    <p:column>
+                                        <h:outputLabel style="vertical-align: sub; white-space: nowrap;" value="Switch RU: " rendered="#{webSession.user.admin or webSession.user.globalViewer}"/>
+                                    </p:column>
+                                    <p:column>
+                                        <p:autoComplete
+                                            id="ru"
+                                            var="ru"
+                                            style="width: 100%;"
+                                            maxResults="10"
+                                            minQueryLength="2"
+                                            size="50"
+                                            required="#{false}"
+                                            forceSelection="#{true}"
+                                            onclick="this.value = ''"
+                                            placeholder="start typing.."
+                                            value="#{webSession.currentReportingUnit}"
+                                            completeMethod="#{viewSupport.completeReportingUnit}"
+                                            itemLabel="#{ru.name}"
+                                            itemValue="#{ru}"
+                                            converter="reportingUnitConverter" >
+                                            <p:ajax event="itemSelect" listener="#{dashboard.onReportingUnitSelect}" update=":form" />
+                                            <p:ajax event="clear" listener="#{dashboard.clearTextReportingUnit(event)}" update=":form" />
+                                        </p:autoComplete>
+                                    </p:column>
+                                    <p:column>
+                                        <h:outputLabel style="margin-left: 20px; text-align: right; vertical-align: sub; white-space: nowrap;" value="Switch Period: "/>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectOneMenu style="margin-left: 30px; margin-top: 0px; text-align: right;" id="period" value="#{webSession.currentPeriod}" converter="periodConverter">
+                                            <p:ajax event="change" update=":form" process="@this" listener="#{webSession.switchPeriod(webSession.currentPeriod)}"/>
+                                            <f:selectItems var="period" value="#{viewSupport.allPeriods}" itemLabel="#{period.id}"/>
+                                        </p:selectOneMenu>
+                                    </p:column>
+                                </p:row>
+                            </p:panelGrid>
+                            <p:commandLink value="SAVE and TEST" style="text-decoration: underline; font-weight: bold;" ajax="false" action="#{dashboard.SaveAndTest()}"/>
+                            <h1>#{webSession.currentPeriod.id} Reporting Units</h1>
+
+                            <p:dataTable tableStyle="width: auto" style="margin-top: 10px;" value="#{dashboard.relevantReportingUnits}" var="ru" >
+                                <f:facet name="header">
+                                    Reporting Units
+                                </f:facet>
+                                <p:column headerText="Reporting Unit" sortBy="#{ru.name} ">
+                                    <h:outputText value="#{ru.name} #{ru.businessUnit.name}" style="white-space: nowrap;"/>
+                                </p:column>
+                                <p:column headerText="Your Role">
+                                    <h:outputText value="#{viewSupport.getRole(ru)}" />
+                                </p:column>
+                                <p:column headerText="Workflow Status">
+                                    <!--<i class="#{dashboard.getWorkflowStatus(ru).icon}" style="#{dashboard.getWorkflowStatus(ru).style}"></i>-->
+                                    <p:graphicImage value="#{dashboard.getWorkflowStatus(ru).icon}" width="25px" height="15px" style="float: left; margin-top: 2px; margin-right: 2px;"/>
+                                    <h:outputText value="#{dashboard.getWorkflowStatus(ru).description}" />
+                                </p:column>
+                                <p:column headerText="Last Action">
+                                    <h:outputText value="#{viewSupport.getLastWorkflowActionName(ru)}" />
+                                </p:column>
+                                <p:column headerText="Last Action User">
+                                    <h:outputText value="#{viewSupport.getLastWorkflowActionUsername(ru)}" />
+                                </p:column>
+                                <p:column headerText="Last Action Date">
+                                    <h:outputText value="#{viewSupport.getLastWorkflowActionDate(ru)}" >
+                                        <f:convertDateTime pattern="dd-MMM-yyyy hh:mm a" type="localDateTime" />
+                                    </h:outputText>
+                                </p:column>
+                                <p:column headerText="Contracts">
+                                    <h:outputText value="#{ru.contractCount}" />
+                                </p:column>
+                                <p:column headerText="Total POB Count">
+                                    <h:outputText value="#{ru.pobCount}" />
+                                </p:column>
+                                <p:column headerText="POB Input Required Count">
+                                    <h:outputText value="#{ru.pobInputRequiredCount}" />
+                                </p:column>
+                                <p:column headerText="Actions">
+                                    <span style="white-space: nowrap;">
+                                        <p:commandLink value="Inputs" style="text-decoration: underline; font-weight: bold;" ajax="false" actionListener="#{webSession.setCurrentReportingUnit(ru)}" action="#{inputController.proceedToOnlineEntry()}"/>
+                                        <p:commandLink value="Calculations" style="margin-left: 20px; text-decoration: underline; font-weight: bold;" ajax="false" actionListener="#{webSession.setCurrentReportingUnit(ru)}" action="#{calcReviewController.reviewCalculations(ru)}"/>
+                                        <p:commandLink value="Reports" style="margin-left: 20px; text-decoration: underline; font-weight: bold;" ajax="false" actionListener="#{webSession.setCurrentReportingUnit(ru)}" action="#{calcReviewController.reviewReports()}"/>
+                                    </span>
+                                </p:column>
+                            </p:dataTable>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

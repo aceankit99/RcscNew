@@ -1,0 +1,79 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+
+            body .ui-widget .ui-widget
+            {
+                width: 180px;
+                min-width: 180px;
+            }
+
+        </style>
+    </ui:define>
+
+    <ui:define name="title">Financing Component</ui:define>
+
+    <ui:define name="viewname">Financing Component</ui:define>
+
+    <ui:define name="content">
+        <div style="min-height: calc(100vh - 235px);">
+            <h:form>
+                <div class="ui-fluid">
+                    <div class="ui-g">
+                        <div class="ui-g-12">
+                            <div class="card card-w-title">
+
+                                <p:graphicImage url="../images/Flowserve.svg.png" height="80" width="200" stream="false" style="margin-left:50px"/>
+                                <h4 style="float:right;margin-right: 300px">Financing Component</h4>
+                                <br></br>
+
+                                <br></br>
+                                <p:panelGrid columns="2" columnClasses="ui-grid-col-8,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank form-group" style="border:0px none; background-color:transparent;margin-left: 50px">
+                                    <p:outputLabel  value="Customer PO# :"  />
+                                    <p:inputNumber padControl="false"/>
+
+                                    <p:outputLabel  value="Does the contract contain general payment terms (other than retention) where more than 10% of the contract price is beyond 365 days from the transfer date of the products/services?" />
+                                    <p:selectOneMenu  >
+                                        <f:selectItem itemLabel="No" itemValue="" />
+                                    </p:selectOneMenu>
+
+                                    <p:outputLabel  value="Does the contract contain retention payment terms where more than 10% of the contract price is due beyond 365 days from the transfer of products/services and the payment terms do not appear to be structured for the purpose of protecting the customer?" />
+                                    <p:selectOneMenu  >
+                                        <f:selectItem itemLabel="No" itemValue="" />
+                                    </p:selectOneMenu>
+
+                                    <p:outputLabel value="Does the contract contain a stated interest rate or interest component applicable to the customer's payment?"/>
+                                    <p:selectOneMenu  >
+                                        <f:selectItem itemLabel="No" itemValue="" />
+                                    </p:selectOneMenu>
+                                </p:panelGrid>
+                                <hr></hr>
+                                <p:panelGrid columns="2" columnClasses="ui-grid-col-8,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank form-group" style="border:0px none; background-color:transparent;margin-left: 50px">
+                                    <p:outputLabel value="There is a potential financing component associated with this contract. Consult Platform Controller and Treasury for assistance."/>
+                                    <p:inputText value="False"/>
+                                </p:panelGrid>
+                                <hr></hr>
+                                <p:panelGrid columns="4"  layout="grid" styleClass="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4" style="border:0px none; background-color:transparent;margin-left: 50px">
+                                    <p:outputLabel  value=""  />
+                                    <p:outputLabel  value=""  />
+                                    <p:outputLabel  value=""  />
+                                    <p:commandButton value="Close"></p:commandButton>
+                                </p:panelGrid>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+        </div>
+    </ui:define>
+
+</ui:composition>
+
+
+

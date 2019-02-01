@@ -1,0 +1,296 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:of="http://omnifaces.org/functions"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+            .ui-treetable-scrollable-header-box {
+                margin-right: 0px !important;
+            }
+        </style>
+        <script type="text/javascript">
+            function showStatus() {
+                PF('statusDialog').show();
+            }
+            function hideStatus() {
+                PF('statusDialog').hide();
+            }
+        </script>
+    </ui:define>
+
+    <ui:define name="title">RCS Reports Review</ui:define>
+    <ui:define name="viewname">RCS Reports Review</ui:define>
+
+    <ui:define name="content">
+        <div style="min-height: calc(100vh - 235px);">
+            <h:form id="mainForm">
+                <p:growl id="messages" showDetail="true" sticky="true" />
+
+                <div class="ui-g">
+
+                    <div class="ui-g-12">
+                        <div class="card card-w-title">
+                            <p:confirmDialog widgetVar="review"  message="Are you sure you want to submit the JE for review?" header="Confirmation" width="350px" style="font-size: 14px">
+                                <p:commandButton value="Yes" style="width: 100px"  icon="ui-icon-check" action="#{inputController.submitForReview(pobCalculationReview.reportingUnit)}" onclick="PF('review').hide()" />
+                                <p:commandButton value="No"  style="width: 100px;background-color: red" icon="ui-icon-close" onclick="PF('review').hide()" />
+                            </p:confirmDialog>
+
+                            <p:confirmDialog widgetVar="approval"  message="Are you sure you want to submit the JE for approval?" header="Confirmation" width="350px" style="font-size: 14px">
+                                <p:commandButton value="Yes" style="width: 100px"  icon="ui-icon-check" action="#{inputController.submitForApproval(pobCalculationReview.reportingUnit)}" onclick="PF('approval').hide()" />
+                                <p:commandButton value="No"  style="width: 100px;background-color: red" icon="ui-icon-close" onclick="PF('approval').hide()" />
+                            </p:confirmDialog>
+
+                            <p:confirmDialog widgetVar="approve"  message="Are you sure you want to approve the JE?" header="Confirmation" width="350px" style="font-size: 14px">
+                                <p:commandButton value="Yes" style="width: 100px"  icon="ui-icon-check" action="#{inputController.approve(pobCalculationReview.reportingUnit)}" onclick="PF('approve').hide()" />
+                                <p:commandButton value="No"  style="width: 100px;background-color: red" icon="ui-icon-close" onclick="PF('approve').hide()" />
+                            </p:confirmDialog>
+
+                            <p:confirmDialog widgetVar="reject"  message="Are you sure you want to reject the JE?" header="Confirmation" width="350px" style="font-size: 14px">
+                                <p:commandButton value="Yes" style="width: 100px"  icon="ui-icon-check" action="#{inputController.reject(pobCalculationReview.reportingUnit)}" onclick="PF('reject').hide()" />
+                                <p:commandButton value="No"  style="width: 100px;background-color: red" icon="ui-icon-close" onclick="PF('reject').hide()" />
+                            </p:confirmDialog>
+
+                            <p:dialog modal="true" widgetVar="statusDialog" header="Preparing Download..." draggable="false" closable="false">
+                                <p:graphicImage value="/images/pbar-ani.gif" style="height: 30px; width: 300px;"/>
+                            </p:dialog>
+
+
+
+                            <h4 style="margin: 1px;"><strong>#{webSession.currentPeriod.id} Reports and Workflow - #{reportsReview.reportingUnit.name} - <p:graphicImage value="#{reportsReview.workflowStatus.icon}" width="30px" height="20px" style="vertical-align: sub; margin-right: 2px;"/> #{reportsReview.workflowStatus.description}</strong></h4>
+
+                            <p:panelGrid styleClass="ui-panelgrid-blank form-group" style="border: 0px none; margin-top: 10px; background-color:transparent;">
+                                <p:row>
+                                    <p:column>
+                                        <h:outputLabel style="vertical-align: middle; white-space: nowrap;" value="Switch RU: "/>
+                                    </p:column>
+                                    <p:column>
+                                        <p:autoComplete
+                                            id="ru"
+                                            var="ru"
+                                            maxResults="10"
+                                            placeholder="start typing..."
+                                            required="#{false}"
+                                            forceSelection="#{true}"
+                                            onclick="this.value = ''"
+                                            value="#{webSession.currentReportingUnit}"
+                                            completeMethod="#{viewSupport.completeReportingUnit}"
+                                            itemLabel="#{ru.name}"
+                                            itemValue="#{ru}"
+                                            converter="reportingUnitConverter"
+                                            style="width: 300px; vertical-align: middle; "
+                                            >
+                                            <p:ajax event="itemSelect" listener="#{reportsReview.onReportingUnitSelect}"  process="@this" update=":mainForm" />
+                                        </p:autoComplete>
+                                    </p:column>
+                                    <p:column>
+                                        <h:outputLabel style="vertical-align: middle; white-space: nowrap;" value="Switch Period: "/>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectOneMenu style="margin-top: 0px; vertical-align: middle; " id="period" value="#{webSession.currentPeriod}" converter="periodConverter">
+                                            <p:ajax event="change" update=":mainForm" process="@this" listener="#{reportsReview.switchPeriod(webSession.currentPeriod)}"/>
+                                            <f:selectItems var="period" value="#{viewSupport.allPeriods}" itemLabel="#{period.id}"/>
+                                        </p:selectOneMenu>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <h:outputText value="Search within list:" />
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText id="globalFilterText" value="#{webSession.filterText}" style="width:150px;"/>
+                                        <p:commandButton id="globalFilter" style="font-size: 80%; margin-left: 10px;" value="Search" actionListener="#{reportsReview.filterByContractText()}" update=":mainForm"/>
+                                    </p:column>
+                                    <p:column>
+                                        <h:outputText value="Filter list by contract:"/>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectCheckboxMenu id="contracts" showHeader="false" label="Contracts" value="#{webSession.selectedContracts}" converter="contractConverter" style="width:150px;">
+                                            <p:ajax event="change" update=":mainForm" process="@this" listener="#{reportsReview.filterByContracts()}"/>
+                                            <f:selectItems var="contract" value="#{reportsReview.contracts}" itemLabel="#{contract.name}"/>
+                                        </p:selectCheckboxMenu>
+                                        <p:commandButton id="globalFilterClear2" style="font-size: 80%; margin-left: 10px;" value="Clear All Filters" actionListener="#{reportsReview.clearFilterByContractText()}" update=":mainForm"/>
+                                    </p:column>
+                                </p:row>
+                            </p:panelGrid>
+
+                            <br></br>
+
+                            <p:tabView id="topLevelTabView" dynamic="true" style="margin-top: 15px;">
+                                <p:tab title="Reports">
+                                    <p:treeTable tableStyle="width: fixed" value="#{reportsReview.rootTreeNode}" var="pob" scrollable="true" scrollHeight="500">
+
+                                        <p:column headerText="Reporting Unit - Contract - POB" style="width: 500px;">
+                                            <h:outputText value="#{pob.name}" title="#{pob.description}"/>
+                                        </p:column>
+                                        <p:column style="white-space:pre-line;" id="f1">
+                                            <f:facet name="header">
+                                                <h:outputText value="Contract Summary Contract Level" />
+                                                <p:tooltip value="Contract Summary Contract Level" for="f1" position="top" showEffect="slide" hideEffect="explode" />
+                                            </f:facet>
+                                            <p:commandButton value="Download" ajax="false" style="width:auto; font-size: 70%;" icon="ui-icon-arrowthick-1-s"
+                                                             rendered="#{of:isInstance('com.flowserve.system606.model.Contract', pob)}" onclick="PrimeFaces.monitorDownload(showStatus, hideStatus)">
+                                                <p:fileDownload value="#{reportsReview.getContractSummaryReport(pob)}" />
+                                            </p:commandButton>
+                                        </p:column>
+                                        <p:column style="white-space:pre-line;" id="f12">
+                                            <f:facet name="header">
+                                                <h:outputText value="Contract Summary - RU Level" />
+                                                <p:tooltip value="Contract Summary RU Level" for="f12" position="top" showEffect="slide" hideEffect="explode" />
+                                            </f:facet>
+                                            <p:commandButton value="Download" ajax="false" style="width:auto; font-size: 70%;" icon="ui-icon-arrowthick-1-s"
+                                                             rendered="#{of:isInstance('com.flowserve.system606.model.ReportingUnit', pob)}" onclick="PrimeFaces.monitorDownload(showStatus, hideStatus)">
+                                                <p:fileDownload value="#{reportsReview.getContractSummaryReportingUnitLevelReport(pob)}" />
+                                            </p:commandButton>
+                                        </p:column>
+                                        <p:column style="white-space:pre-line;" id="f3">
+                                            <f:facet name="header">
+                                                <h:outputText value="Financial Report Contract Level" />
+                                                <p:tooltip value="Financial Report" for="f3" position="top" showEffect="slide" hideEffect="explode" />
+                                            </f:facet>
+                                            <p:commandButton value="Download" ajax="false" style="width:auto; font-size: 70%;" icon="ui-icon-arrowthick-1-s"
+                                                             rendered="#{of:isInstance('com.flowserve.system606.model.Contract', pob)}" onclick="PrimeFaces.monitorDownload(showStatus, hideStatus)">
+                                                <p:fileDownload value="#{reportsReview.getFinancialSummaryReport(pob)}" />
+                                            </p:commandButton>
+                                        </p:column>
+                                        <p:column style="white-space:pre-line;" id="f4">
+                                            <f:facet name="header">
+                                                <h:outputText value="Financial Report - RU Level" />
+                                                <p:tooltip value="Financial Report RU Level" for="f4" position="top" showEffect="slide" hideEffect="explode" />
+                                            </f:facet>
+                                            <p:commandButton value="Download" ajax="false" style="width:auto; font-size: 70%;" icon="ui-icon-arrowthick-1-s"
+                                                             rendered="#{of:isInstance('com.flowserve.system606.model.ReportingUnit', pob)}" onclick="PrimeFaces.monitorDownload(showStatus, hideStatus)">
+                                                <p:fileDownload value="#{reportsReview.getRUFinancialSummaryReport(pob)}" />
+                                            </p:commandButton>
+                                        </p:column>
+                                        <p:column style="white-space:pre-line;" id="je1">
+                                            <f:facet name="header">
+                                                <h:outputText value="Journal Entry Report" />
+                                                <p:tooltip value="Journal Entry Report" for="je1" position="top" showEffect="slide" hideEffect="explode" />
+                                            </f:facet>
+                                            <p:commandButton value="Download" ajax="false" style="width:auto; font-size: 70%;" icon="ui-icon-arrowthick-1-s"
+                                                             rendered="#{of:isInstance('com.flowserve.system606.model.ReportingUnit', pob)}" onclick="PrimeFaces.monitorDownload(showStatus, hideStatus)">
+                                                <p:fileDownload value="#{reportsReview.getJournalEntryReport(pob)}" />
+                                            </p:commandButton>
+                                        </p:column>
+                                        <p:column style="white-space:pre-line;" id="ca">
+                                            <f:facet name="header">
+                                                <h:outputText value="Contract Assets &amp; Liab Report" />
+                                                <p:tooltip value="Contract Assets &amp; Liab Report" for="ca" position="top" showEffect="slide" hideEffect="explode" />
+                                            </f:facet>
+                                            <p:commandButton value="Download" ajax="false" style="width:auto; font-size: 70%;" icon="ui-icon-arrowthick-1-s" rendered="#{of:isInstance('com.flowserve.system606.model.ReportingUnit', pob)}">
+                                                <p:fileDownload value="#{reportsReview.getReport2AssetsandLiab(pob)}" />
+                                            </p:commandButton>
+                                        </p:column>
+                                    </p:treeTable>
+                                </p:tab>
+
+                                <p:tab title="All Periods Reports">
+                                    <p:treeTable tableStyle="width: fixed" value="#{reportsReview.rootTreeNode}" var="pob" scrollable="true" scrollHeight="500">
+
+                                        <p:column headerText="Reporting Unit - Contract - POB" style="width: 500px;">
+                                            <h:outputText value="#{pob.name}" title="#{pob.description}"/>
+                                        </p:column>
+                                        <p:column style="white-space:pre-line;" id="calc">
+                                            <f:facet name="header">
+                                                <h:outputText value="All Periods - Input and Calcs Report" />
+                                                <p:tooltip value="All Periods - Input and Calcs Report" for="calc" position="top" showEffect="slide" hideEffect="explode" />
+                                            </f:facet>
+                                            <p:commandButton value="Download" ajax="false" style="width:auto; font-size: 70%;" icon="ui-icon-arrowthick-1-s" rendered="#{of:isInstance('com.flowserve.system606.model.ReportingUnit', pob)}">
+                                                <p:fileDownload value="#{reportsReview.getReport1InputAndCalcRULevel(pob)}" />
+                                            </p:commandButton>
+                                        </p:column>
+                                        <p:column style="white-space:pre-line;" id="pocOutput">
+                                            <f:facet name="header">
+                                                <h:outputText value="All Periods - POC Output Report" />
+                                                <p:tooltip value="All Periods - POC Output Report" for="pocOutput" position="top" showEffect="slide" hideEffect="explode" />
+                                            </f:facet>
+                                            <p:commandButton value="Download" ajax="false" style="width:auto; font-size: 70%;" icon="ui-icon-arrowthick-1-s" rendered="#{of:isInstance('com.flowserve.system606.model.ReportingUnit', pob)}">
+                                                <p:fileDownload value="#{reportsReview.getReport1Tab2PocOutputsRULevel(pob)}" />
+                                            </p:commandButton>
+                                        </p:column>
+                                        <p:column style="white-space:pre-line;" id="dis">
+                                            <f:facet name="header">
+                                                <h:outputText value="All Periods - Disagg. Revenue Disclosure Report" />
+                                                <p:tooltip value="All Periods - Disagg. Revenue Disclosure Report" for="dis" position="top" showEffect="slide" hideEffect="explode" />
+                                            </f:facet>
+                                            <p:commandButton value="Download" ajax="false" style="width:auto; font-size: 70%;" icon="ui-icon-arrowthick-1-s" rendered="#{of:isInstance('com.flowserve.system606.model.ReportingUnit', pob)}">
+                                                <p:fileDownload value="#{reportsReview.getReport4DisAggRevDisclosure(pob)}" />
+                                            </p:commandButton>
+                                        </p:column>
+                                        <p:column style="white-space:pre-line;" id="disTab2">
+                                            <f:facet name="header">
+                                                <h:outputText value="All Periods - Backlog Rollfoward Data Report" />
+                                                <p:tooltip value="All Periods - Backlog Rollfoward Data Report" for="disTab2" position="top" showEffect="slide" hideEffect="explode" />
+                                            </f:facet>
+                                            <p:commandButton value="Download" ajax="false" style="width:auto; font-size: 70%;" icon="ui-icon-arrowthick-1-s" rendered="#{of:isInstance('com.flowserve.system606.model.ReportingUnit', pob)}">
+                                                <p:fileDownload value="#{reportsReview.getReportBacklogRollDisclosure(pob)}" />
+                                            </p:commandButton>
+                                        </p:column>
+
+                                    </p:treeTable>
+                                </p:tab>
+
+                                <p:tab title="Workflow History">
+                                    <p:dataTable tableStyle="width:fixed" id="workflowTree" value="#{reportsReview.workflowActions}" var="action" scrollable="true" scrollHeight="500">
+                                        <f:facet name="header">
+                                            #{reportsReview.reportingUnit.name}  Current Status: #{reportsReview.reportingUnit.getWorkflowStatus(webSession.currentPeriod).description}
+                                        </f:facet>
+
+                                        <p:column style="white-space:pre-line; width: 250px;">
+                                            <f:facet name="header">
+                                                <h:outputText value="Workflow Action" />
+                                            </f:facet>
+                                            <h:outputText value="#{action.name}" rendered="#{of:isInstance('com.flowserve.system606.model.WorkflowAction', action)}"/>
+                                        </p:column>
+
+                                        <p:column style="white-space:pre-line;">
+                                            <f:facet name="header">
+                                                <h:outputText value="Action User" />
+                                            </f:facet>
+                                            <h:outputText value="#{action.user.name}" rendered="#{of:isInstance('com.flowserve.system606.model.WorkflowAction', action)}"/>
+                                        </p:column>
+
+                                        <p:column style="white-space:pre-line;">
+                                            <f:facet name="header">
+                                                <h:outputText value="Action Date" />
+                                            </f:facet>
+                                            <h:outputText value="#{action.actionDate}" rendered="#{of:isInstance('com.flowserve.system606.model.WorkflowAction', action)}">
+                                                <f:convertDateTime pattern="dd-MMM-yyyy hh:mm a" type="localDateTime" />
+                                            </h:outputText>
+                                        </p:column>
+
+                                        <p:column style="white-space:pre-line;">
+                                            <f:facet name="header">
+                                                <h:outputText value="Comments" />
+                                            </f:facet>
+                                            <h:outputText value="#{action.comments}" rendered="#{of:isInstance('com.flowserve.system606.model.WorkflowAction', action)}"/>
+                                        </p:column>
+                                    </p:dataTable>
+                                </p:tab>
+                            </p:tabView>
+
+                            <p:toolbar>
+                                <f:facet name="right">
+                                    <p:commandButton value="Back to Dashboard" icon="ui-icon-arrowthick-1-w" ajax="false" action="#{inputController.inputDashboard}"/>
+                                    <p:commandButton value="Back to Inputs" icon="ui-icon-arrowthick-1-w" ajax="false" action="#{inputController.returnToOnlineEntry()}"/>
+                                    <p:commandButton value="Back to Calculation Review" style="margin-right: 40px;;" icon="ui-icon-arrowthick-1-w" ajax="false"  action="pobCalculationReview.xhtml"/>
+                                    <p:commandButton value="Submit for Review" style="background-color: #43C86F;" icon="ui-icon-check"  onclick="PF('review').show()" rendered="#{pobCalculationReview.submittableForReview}"/>
+                                    <p:commandButton value="Submit for Approval" style="background-color: #43C86F;" icon="ui-icon-check" onclick="PF('approval').show()"  rendered="#{pobCalculationReview.submittableForApproval}"/>
+                                    <p:commandButton value="Approve" style="background-color: #43C86F;" icon="ui-icon-check"  onclick="PF('approve').show()"  rendered="#{pobCalculationReview.approvable}"/>
+                                    <p:commandButton value="Reject" style="background-color: #FF5733;" icon="ui-icon-cancel" onclick="PF('reject').show()"   rendered="#{pobCalculationReview.rejectable}"/>
+                                </f:facet>
+                            </p:toolbar>
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+        </div>
+    </ui:define>
+
+</ui:composition>
+
+
