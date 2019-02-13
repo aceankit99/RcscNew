@@ -33,6 +33,8 @@ public class AppInitializeService {
     @Inject
     private MetricService metricService;
     @Inject
+    private AttributeService attributeService;
+    @Inject
     private EventService eventService;
     @Inject
     private CalculationService calculationService;
@@ -73,7 +75,7 @@ public class AppInitializeService {
             adminService.initAccounts();
             metricService.initMetricTypes();
             metricService.initMetricTypes_1_2();
-            metricService.initAttributeTypes();
+            attributeService.initAttributeTypes();
             adminService.initAccountsMapping();
             eventService.initEventTypes();
             adminService.initCountries();
@@ -82,6 +84,7 @@ public class AppInitializeService {
             adminService.initCoEtoParentRU();
             adminService.initCompaniesInRUs();
             metricGroupService.initMetricGroups();
+            calculationService.initBusinessRules();
             //calculationVersionService.saveTest();
             /**
              * We'll probably rely on the initReportingUnits() above instead of this one, but need to decide.

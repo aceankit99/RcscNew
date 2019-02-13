@@ -18,11 +18,11 @@ import javax.persistence.Entity;
 @Entity
 @DiscriminatorValue("DATE")
 @AttributeOverride(name = "value", column = @Column(name = "DATE_VALUE"))
-public class DateMetricVersion extends Attribute<LocalDate> {
+public class DateAttribute extends Attribute<LocalDate> {
 
     private LocalDate value;
 
-    public DateMetricVersion() {
+    public DateAttribute() {
     }
 
     public LocalDate getValue() {

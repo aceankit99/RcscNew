@@ -10,15 +10,15 @@ import com.flowserve.system606.model.AttributeSet;
 import com.flowserve.system606.model.AttributeType;
 import com.flowserve.system606.model.Contract;
 import com.flowserve.system606.model.ContractVersion;
-import com.flowserve.system606.model.CurrencyMetricVersion;
-import com.flowserve.system606.model.DateMetricVersion;
-import com.flowserve.system606.model.DecimalMetricVersion;
+import com.flowserve.system606.model.CurrencyAttribute;
+import com.flowserve.system606.model.DateAttribute;
+import com.flowserve.system606.model.DecimalAttribute;
 import com.flowserve.system606.model.ExchangeRate;
 import com.flowserve.system606.model.FinancialPeriod;
 import com.flowserve.system606.model.Measurable;
 import com.flowserve.system606.model.MetricStore;
 import com.flowserve.system606.model.PerformanceObligation;
-import com.flowserve.system606.model.StringMetricVersion;
+import com.flowserve.system606.model.StringAttribute;
 import com.flowserve.system606.model.TransientMeasurable;
 import com.flowserve.system606.web.WebSession;
 import java.math.BigDecimal;
@@ -57,6 +57,8 @@ public class CalculationVersionService {
     private AdminService adminService;
     @Inject
     private MetricService metricService;
+    @Inject
+    private AttributeService attributeService;
     @Inject
     private WebSession webSession;
     @Inject
@@ -99,24 +101,24 @@ public class CalculationVersionService {
     }
 
     private Attribute getMetric(String attributeCode, Measurable measurable) {
-        return intelliGetMetric(metricService.getAttributeTypeByCode(attributeCode), measurable);
+        return intelliGetMetric(attributeService.getAttributeTypeByCode(attributeCode), measurable);
     }
 
-    public StringMetricVersion getStringMetric(String attributeTypeId, PerformanceObligation pob) {
-        return (StringMetricVersion) getMetric(attributeTypeId, pob);
+    public StringAttribute getStringMetric(String attributeTypeId, PerformanceObligation pob) {
+        return (StringAttribute) getMetric(attributeTypeId, pob);
     }
 
-    public DecimalMetricVersion getDecimalMetric(String attributeTypeId, Measurable measurable) {
-        return (DecimalMetricVersion) getMetric(attributeTypeId, measurable);
+    public DecimalAttribute getDecimalMetric(String attributeTypeId, Measurable measurable) {
+        return (DecimalAttribute) getMetric(attributeTypeId, measurable);
     }
 
-    public DateMetricVersion getDateMetric(String attributeTypeId, Measurable measurable, ContractVersion contractVersion) {
-        return (DateMetricVersion) getMetric(attributeTypeId, measurable);
+    public DateAttribute getDateMetric(String attributeTypeId, Measurable measurable, ContractVersion contractVersion) {
+        return (DateAttribute) getMetric(attributeTypeId, measurable);
     }
 
-    public CurrencyMetricVersion getCurrencyMetric(String attributeCode, Measurable measurable) throws Exception {
+    public CurrencyAttribute getCurrencyMetric(String attributeCode, Measurable measurable) throws Exception {
         if (measurable instanceof MetricStore) {
-            CurrencyMetricVersion currencyMetricVersion = (CurrencyMetricVersion) getMetric(attributeCode, measurable);
+            CurrencyAttribute currencyMetricVersion = (CurrencyAttribute) getMetric(attributeCode, measurable);
             if (currencyMetricVersion != null || measurable instanceof PerformanceObligation) {
                 return currencyMetricVersion;
             }
@@ -125,8 +127,8 @@ public class CalculationVersionService {
         return getAccumulatedCurrencyMetric(attributeCode, measurable);
     }
 
-    private CurrencyMetricVersion getAccumulatedCurrencyMetric(String attributeCode, Measurable measurable) throws Exception {
-        AttributeType attributeType = metricService.getAttributeTypeByCode(attributeCode);
+    private CurrencyAttribute getAccumulatedCurrencyMetric(String attributeCode, Measurable measurable) throws Exception {
+        AttributeType attributeType = attributeService.getAttributeTypeByCode(attributeCode);
 
         if (attributeType.isConvertible() && measurable.getContractCurrency() != null && measurable.getLocalCurrency() != null) {
             return getAccumulatedConvertibleCurrencyMetric(attributeType, measurable);
@@ -135,12 +137,12 @@ public class CalculationVersionService {
         }
     }
 
-    private CurrencyMetricVersion getAccumulatedNonConvertibleCurrencyMetric(AttributeType attributeType, Measurable measurable) throws Exception {
+    private CurrencyAttribute getAccumulatedNonConvertibleCurrencyMetric(AttributeType attributeType, Measurable measurable) throws Exception {
         BigDecimal ccValueSum = BigDecimal.ZERO;
         BigDecimal lcValueSum = BigDecimal.ZERO;
         BigDecimal rcValueSum = BigDecimal.ZERO;
 
-        CurrencyMetricVersion attribute = new CurrencyMetricVersion();
+        CurrencyAttribute attribute = new CurrencyAttribute();
         // attribute.setContractVersion(contractVersion);
         attribute.setMetricType(attributeType);
         attribute.setCcValue(ccValueSum);
@@ -152,7 +154,7 @@ public class CalculationVersionService {
         }
 
         if (isMetricStoredAtMeasurable(attributeType, measurable)) {
-            CurrencyMetricVersion rootCurrencyMetric = (CurrencyMetricVersion) getMetric(attributeType.getCode(), measurable);
+            CurrencyAttribute rootCurrencyMetric = (CurrencyAttribute) getMetric(attributeType.getCode(), measurable);
             if (rootCurrencyMetric == null) {
                 return attribute;
             }
@@ -215,9 +217,9 @@ public class CalculationVersionService {
         return false;
     }
 
-    private CurrencyMetricVersion getAccumulatedConvertibleCurrencyMetric(AttributeType attributeType, Measurable measurable) throws Exception {
+    private CurrencyAttribute getAccumulatedConvertibleCurrencyMetric(AttributeType attributeType, Measurable measurable) throws Exception {
         BigDecimal valueSum = BigDecimal.ZERO;
-        CurrencyMetricVersion attribute = new CurrencyMetricVersion();
+        CurrencyAttribute attribute = new CurrencyAttribute();
         //attribute.setContractVersion(contractVersion);
         attribute.setMetricType(attributeType);
         attribute.setValue(valueSum);
@@ -227,7 +229,7 @@ public class CalculationVersionService {
         }
 
         if (isMetricStoredAtMeasurable(attributeType, measurable)) {
-            CurrencyMetricVersion rootCurrencyMetric = (CurrencyMetricVersion) getMetric(attributeType.getCode(), measurable);
+            CurrencyAttribute rootCurrencyMetric = (CurrencyAttribute) getMetric(attributeType.getCode(), measurable);
             if (rootCurrencyMetric == null) {
                 return attribute;
             }
@@ -259,14 +261,14 @@ public class CalculationVersionService {
     }
 
     public void convertCurrency(Attribute attribute, Measurable measurable) throws Exception {
-        if (!(attribute instanceof CurrencyMetricVersion)) {
+        if (!(attribute instanceof CurrencyAttribute)) {
             return;
         }
         if (!attribute.getMetricType().isConvertible()) {
             return;
         }
 
-        CurrencyMetricVersion currencyMetricVersion = (CurrencyMetricVersion) attribute;
+        CurrencyAttribute currencyMetricVersion = (CurrencyAttribute) attribute;
         FinancialPeriod period = webSession.getCurrentPeriod();
 
         if (currencyMetricVersion.getLcValue() == null && currencyMetricVersion.getCcValue() == null) {

@@ -16,7 +16,10 @@
             .tagsize{
                 width: 180px;
             }
-
+            body .ui-chkbox .ui-chkbox-box {
+                width: 20px;
+                min-width: 20px;
+            }
         </style>
     </ui:define>
 
@@ -37,6 +40,20 @@
                                         <h1>New Contract Entry</h1>
                                     </div>
                                 </div>
+                                <p:breadCrumb style="margin-top: 20px;">
+                                    <p:menuitem value="Dashboard" url="contract_dashboard.xhtml" />
+                                    <p:menuitem value="New" url="#" />
+                                    <p:menuitem value="Validation Booking" url="#" />
+                                    <p:menuitem value="Contract Considerations" url="#" />
+                                    <p:menuitem value="Variable Considerations" url="#" />
+                                    <p:menuitem value="Line Items" url="#" />
+                                    <p:menuitem value="Pobs" url="#" />
+                                    <p:menuitem value="Price Allocation" url="#" />
+                                    <p:menuitem value="Review" url="#" />
+                                    <p:menuitem value="Complete" url="#" />
+                                    <p:menuitem value=""  />
+                                </p:breadCrumb>
+                                <hr />
                                 <h3 style="margin-left: 55px;">General Information</h3>
                                 <p:panelGrid columns="4" columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank form-group" style="border:0px none; background-color:transparent;margin-left: 50px">
 
@@ -84,7 +101,7 @@
                                         </p:column>
                                     </p:selectOneMenu>
                                 </p:panelGrid>
-
+                                <hr />
                                 <h3 style="margin-left: 55px;">Contract Header</h3>
                                 <p:panelGrid columns="4" columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank form-group" style="border:0px none; background-color:transparent;margin-left: 50px">
 
@@ -144,7 +161,7 @@
 
 
                                 </p:panelGrid>
-
+                                <hr />
                                 <p:panelGrid columns="6" columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank form-group" style="border:0px none;margin-top: 40px; background-color:transparent;margin-left: 50px">
 
                                     <p:outputLabel  value="Contract Currency : "/>
@@ -170,6 +187,61 @@
                                     <p:outputLabel  value="Stated Contract Price(Local Currency) : "/>
                                     <p:inputNumber style="width: 180px" />
 
+                                </p:panelGrid>
+                                <hr />
+
+                                <p:panelGrid columns="3" columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank form-group" style="border:0px none; background-color:transparent;margin-left: 50px">
+
+                                    <p:selectBooleanCheckbox />
+                                    <p:outputLabel value="Executed Purchase Order?Sales Order/Contract: " />
+                                    <p:fileUpload  mode="simple" skinSimple="true"/>
+
+                                    <p:selectBooleanCheckbox />
+                                    <p:outputLabel value="Terms and Conditions/Master Sales Agreement: " />
+                                    <p:fileUpload  mode="simple" skinSimple="true"/>
+
+                                    <p:selectBooleanCheckbox />
+                                    <p:outputLabel value="Order Acknowledgement: " />
+                                    <p:fileUpload  mode="simple" skinSimple="true"/>
+
+                                    <p:selectBooleanCheckbox />
+                                    <p:outputLabel value="Standalone Selling Price Basis: " />
+                                    <p:fileUpload  mode="simple" skinSimple="true"/>
+
+                                    <p:selectBooleanCheckbox />
+                                    <p:outputLabel value="Contract Line Detail Margin Analysis (SAP Form): " />
+                                    <p:fileUpload  mode="simple" skinSimple="true"/>
+
+                                </p:panelGrid>
+                                <p:panelGrid columns="4" columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank form-group" style="border:0px none; background-color:transparent;margin-left: 50px">
+                                    <p:selectBooleanCheckbox />
+                                    <p:outputLabel value="Other (specify and attach): " />
+                                    <p:inputText  value=""/>
+                                    <p:fileUpload  mode="simple" skinSimple="true"/>
+                                </p:panelGrid>
+                                <hr/>
+                                <h3 style="margin-left: 55px;">Wholly Unperformed</h3>
+                                <p:panelGrid columns="7" columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank form-group" style="border:0px none;margin-top: 40px; background-color:transparent;margin-left: 50px">
+                                    <p:outputLabel  value="Cost Incurred : "/>
+                                    <p:inputNumber style="width: 180px" />
+                                    <p:selectOneMenu id="currency" value="#{contractAdd.addContractVersion.contractCurrency}"
+                                                     effect="fade" style="width:180px" converter="currencyConverter">
+                                        <f:selectItem itemLabel="Select Currency" itemValue="" />
+                                        <f:selectItems value="#{viewSupport.allCurrencies}" var="cur" itemLabel="#{cur.currencyCode}" itemValue="#{cur}" />
+                                        <p:column>
+                                            <h:outputText value="#{cur.currencyCode}" />
+                                        </p:column>
+                                    </p:selectOneMenu>
+                                    <p:outputLabel  value="Payments Received : "/>
+                                    <p:inputNumber style="width: 180px" />
+                                    <p:selectOneMenu id="payment" value="#{contractAdd.addContractVersion.contractCurrency}"
+                                                     effect="fade" style="width:180px" converter="currencyConverter">
+                                        <f:selectItem itemLabel="Select Currency" itemValue="" />
+                                        <f:selectItems value="#{viewSupport.allCurrencies}" var="cur" itemLabel="#{cur.currencyCode}" itemValue="#{cur}" />
+                                        <p:column>
+                                            <h:outputText value="#{cur.currencyCode}" />
+                                        </p:column>
+                                    </p:selectOneMenu>
                                 </p:panelGrid>
 
                                 <p:toolbar style="margin-top: 50px;">

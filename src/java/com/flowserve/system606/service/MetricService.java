@@ -100,23 +100,6 @@ public class MetricService {
         return metricType;
     }
 
-    public AttributeType getAttributeTypeByCode(String attributeCode) {
-        if (attributeCodeCache.get(attributeCode) != null) {
-            return attributeCodeCache.get(attributeCode);
-        }
-
-        return findAttributeTypeByCode(attributeCode);
-    }
-
-    public AttributeType findAttributeTypeByCode(String attributeCode) {
-        Query query = em.createQuery("SELECT it FROM AttributeType it WHERE it.code = :IN");
-        query.setParameter("IN", attributeCode);
-        AttributeType attributeType = (AttributeType) query.getSingleResult();
-        attributeCodeCache.put(attributeCode, attributeType);
-
-        return attributeType;
-    }
-
     public void initMetricTypes() throws Exception {
 
         logger.info("Initializing MetricTypes");
@@ -213,55 +196,6 @@ public class MetricService {
 
         reader.close();
         logger.info("Finished initializing MetricTypes 1.2.");
-    }
-
-    public void initAttributeTypes() throws Exception {
-
-        logger.info("Initializing AttributeTypes");
-        BufferedReader reader = new BufferedReader(new InputStreamReader(AppInitializeService.class.getResourceAsStream("/resources/app_data_init_files/init_attribute_types.txt"), "UTF-8"));
-        String metricCurrencyType = null;
-        int count = 0;
-        String line = null;
-        while ((line = reader.readLine()) != null) {
-            if (line.trim().length() == 0) {
-                continue;
-            }
-
-            count = 0;
-            String[] values = line.split("\\|", 16);
-
-            AttributeType attributeType = new AttributeType();
-            attributeType.setDirection(MetricDirection.valueOf(values[count++]));
-            attributeType.setCode(values[count++]);
-            try {
-                if (getAttributeTypeByCode(attributeType.getCode()) != null) {
-                    continue;
-                }
-            } catch (Exception e) {
-                Logger.getLogger(MetricService.class.getName()).log(Level.FINE, "Adding MetricType: " + line);
-            }
-
-            attributeType.setOwnerEntityType(values[count++]);
-            attributeType.setRequired("REQUIRED".equals(values[count++]));
-            attributeType.setMetricClass(values[count++] + "Version");
-            metricCurrencyType = values[count++];
-            attributeType.setMetricCurrencyType(metricCurrencyType == null || "".equals(metricCurrencyType) ? null : CurrencyType.fromShortName(metricCurrencyType));
-            attributeType.setConvertible("Convertible".equals(values[count++]));
-            attributeType.setName(values[count++]);
-            attributeType.setDescription(values[count++]);
-            attributeType.setExcelSheet(values[count++]);
-            attributeType.setExcelCol(values[count++]);
-            attributeType.setGroupName(values[count++]);
-            attributeType.setGroupPosition(Integer.parseInt(values[count++]));
-            attributeType.setEffectiveFrom(LocalDate.now());
-            attributeType.setActive(true);
-            //metricType.setAccount(adminService.findAccountById(values[count++]));
-            logger.info("Creating attributeType: " + attributeType.getName());
-            adminService.persist(attributeType);
-        }
-
-        reader.close();
-        logger.info("Finished initializing attributeType.");
     }
 
     public List<MetricType> findMetricType() throws Exception {  // Need an application exception type defined.
