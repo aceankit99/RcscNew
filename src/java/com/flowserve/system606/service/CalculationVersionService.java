@@ -6,19 +6,14 @@
 package com.flowserve.system606.service;
 
 import com.flowserve.system606.model.Attribute;
-import com.flowserve.system606.model.AttributeSet;
 import com.flowserve.system606.model.AttributeType;
 import com.flowserve.system606.model.Contract;
-import com.flowserve.system606.model.ContractVersion;
-import com.flowserve.system606.model.CurrencyMetricVersion;
-import com.flowserve.system606.model.DateMetricVersion;
-import com.flowserve.system606.model.DecimalMetricVersion;
+import com.flowserve.system606.model.CurrencyAttribute;
 import com.flowserve.system606.model.ExchangeRate;
 import com.flowserve.system606.model.FinancialPeriod;
 import com.flowserve.system606.model.Measurable;
 import com.flowserve.system606.model.MetricStore;
 import com.flowserve.system606.model.PerformanceObligation;
-import com.flowserve.system606.model.StringMetricVersion;
 import com.flowserve.system606.model.TransientMeasurable;
 import com.flowserve.system606.web.WebSession;
 import java.math.BigDecimal;
@@ -58,6 +53,8 @@ public class CalculationVersionService {
     @Inject
     private MetricService metricService;
     @Inject
+    private AttributeService attributeService;
+    @Inject
     private WebSession webSession;
     @Inject
     private CurrencyCache currencyCache;
@@ -80,6 +77,7 @@ public class CalculationVersionService {
         }
 
         return false;
+
     }
 
     private boolean isEmptyTransientMesaurable(Measurable measurable) {
@@ -91,14 +89,14 @@ public class CalculationVersionService {
     }
 
     public void convertCurrency(Attribute attribute, Measurable measurable) throws Exception {
-        if (!(attribute instanceof CurrencyMetricVersion)) {
+        if (!(attribute instanceof CurrencyAttribute)) {
             return;
         }
         if (!attribute.getMetricType().isConvertible()) {
             return;
         }
 
-        CurrencyMetricVersion currencyMetricVersion = (CurrencyMetricVersion) attribute;
+        CurrencyAttribute currencyMetricVersion = (CurrencyAttribute) attribute;
         FinancialPeriod period = webSession.getCurrentPeriod();
 
         if (currencyMetricVersion.getLcValue() == null && currencyMetricVersion.getCcValue() == null) {

@@ -8,11 +8,11 @@ import javax.persistence.Entity;
 @Entity
 @DiscriminatorValue("STRING")
 @AttributeOverride(name = "value", column = @Column(name = "STRING_VALUE"))
-public class StringMetricVersion extends Attribute<String> {
+public class StringAttribute extends Attribute<String> {
 
     private String value;
 
-    public StringMetricVersion() {
+    public StringAttribute() {
     }
 
     public String getValue() {

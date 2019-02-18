@@ -5,7 +5,6 @@
  */
 package com.flowserve.system606.view;
 
-import com.flowserve.system606.model.Contract;
 import com.flowserve.system606.model.ReportingUnit;
 import com.flowserve.system606.model.User;
 import com.flowserve.system606.model.WorkflowStatus;
@@ -19,7 +18,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
@@ -76,16 +74,6 @@ public class Dashboard implements Serializable {
 
         if (webSession.getCurrentReportingUnit() == null) {
             determineDefaultReportingUnit();
-        }
-    }
-
-    public void SaveAndTest() throws Exception {
-        Contract ru = webSession.getCurrentReportingUnit().getContracts().get(0);
-        Logger.getLogger(Dashboard.class.getName()).log(Level.INFO, "message : " + ru.getWorkflowStatus());
-        if (ru.getWorkflowStatus() == WorkflowStatus.COMPLETED) {
-            Logger.getLogger(Dashboard.class.getName()).log(Level.INFO, "true");
-        } else {
-            Logger.getLogger(Dashboard.class.getName()).log(Level.INFO, "false");
         }
     }
 

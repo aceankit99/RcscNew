@@ -20,11 +20,13 @@ import com.flowserve.system606.model.Measurable;
 import com.flowserve.system606.model.MetricStore;
 import com.flowserve.system606.model.PerformanceObligation;
 import com.flowserve.system606.model.ReportingUnit;
+import com.flowserve.system606.model.StringAttribute;
 import com.flowserve.system606.model.StringMetric;
 import com.flowserve.system606.model.User;
 import com.flowserve.system606.model.WorkflowAction;
 import com.flowserve.system606.model.WorkflowStatus;
 import com.flowserve.system606.service.AdminService;
+import com.flowserve.system606.service.AttributeService;
 import com.flowserve.system606.service.CalculationService;
 import com.flowserve.system606.service.ContractService;
 import com.flowserve.system606.service.CurrencyService;
@@ -90,6 +92,8 @@ public class ViewSupport implements Serializable {
     private ContractService contractService;
     @Inject
     private ReportingUnitService reportingUnitService;
+    @Inject
+    private AttributeService attributeService;
 
     private List<FinancialPeriod> allPeriods = new ArrayList<FinancialPeriod>();
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");

@@ -11,9 +11,9 @@ import javax.persistence.Entity;
 @Entity
 @DiscriminatorValue("CURRENCY")
 @AttributeOverride(name = "value", column = @Column(name = "DECIMAL_VALUE", precision = 38, scale = 14))
-public class CurrencyMetricVersion extends Attribute<BigDecimal> {
+public class CurrencyAttribute extends Attribute<BigDecimal> {
 
-    private static final Logger logger = Logger.getLogger(CurrencyMetricVersion.class.getName());
+    private static final Logger logger = Logger.getLogger(CurrencyAttribute.class.getName());
 
     private BigDecimal value;
     @Column(name = "LC_VALUE", precision = 38, scale = 14)
@@ -23,7 +23,7 @@ public class CurrencyMetricVersion extends Attribute<BigDecimal> {
     @Column(name = "RC_VALUE", precision = 38, scale = 14)
     private BigDecimal rcValue;
 
-    public CurrencyMetricVersion() {
+    public CurrencyAttribute() {
     }
 
     public BigDecimal getValue() {
@@ -35,7 +35,7 @@ public class CurrencyMetricVersion extends Attribute<BigDecimal> {
             case REPORTING:
                 return rcValue;
             default:
-                Logger.getLogger(CurrencyMetricVersion.class.getName()).log(Level.INFO, "Error: Metric type: " + getMetricType().getId() + " CurrencyType: " + getMetricType().getMetricCurrencyType());
+                Logger.getLogger(CurrencyAttribute.class.getName()).log(Level.INFO, "Error: Metric type: " + getMetricType().getId() + " CurrencyType: " + getMetricType().getMetricCurrencyType());
                 throw new IllegalArgumentException("Invalid CurrencyMetricVersion");
         }
     }
@@ -52,7 +52,7 @@ public class CurrencyMetricVersion extends Attribute<BigDecimal> {
                 rcValue = value;
                 return;
             default:
-                Logger.getLogger(CurrencyMetricVersion.class.getName()).log(Level.INFO, "Error: Metric type: " + getMetricType().getId() + " CurrencyType: " + getMetricType().getMetricCurrencyType());
+                Logger.getLogger(CurrencyAttribute.class.getName()).log(Level.INFO, "Error: Metric type: " + getMetricType().getId() + " CurrencyType: " + getMetricType().getMetricCurrencyType());
                 throw new IllegalArgumentException("Invalid CurrencyType");
         }
     }

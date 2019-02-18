@@ -132,7 +132,6 @@ public class ContractAdd implements Serializable {
              }
              
             FacesMessage msg = new FacesMessage("Succesful", event.getFile().getFileName() + " is uploaded.");
-            logger.log(Level.SEVERE, "Error"+purcahseAttachment.getAttachment().toString());
             FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (Exception e) {
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Error handleInitialContractUpload: " + e.getMessage());
