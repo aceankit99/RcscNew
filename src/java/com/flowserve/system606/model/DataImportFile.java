@@ -35,7 +35,7 @@ public class DataImportFile implements Comparable<DataImportFile>, Serializable 
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "IMPORT_FILE_SEQ")
     @SequenceGenerator(name = "IMPORT_FILE_SEQ", sequenceName = "IMPORT_FILE_SEQ", allocationSize = 50)
     @Column(name = "DATA_IMPORT_ID")
-    private String id;
+    private Long id;
     @Column(name = "FILE_NAME")
     private String filename;
     @OneToOne
@@ -58,11 +58,11 @@ public class DataImportFile implements Comparable<DataImportFile>, Serializable 
     public DataImportFile() {
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

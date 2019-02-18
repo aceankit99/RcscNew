@@ -1,0 +1,290 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+
+            body .ui-widget .ui-widget
+            {
+                width: 180px;
+                min-width: 180px;
+            }
+            .tagsize{
+                width: 180px;
+            }
+            body .ui-chkbox .ui-chkbox-box {
+                width: 20px;
+                min-width: 20px;
+            }
+        </style>
+    </ui:define>
+
+    <ui:define name="title">Contract Booking</ui:define>
+
+    <ui:define name="viewname">Contract Booking</ui:define>
+
+    <ui:define name="content">
+        <div style="min-height: calc(100vh - 235px);">
+            <h:form>
+                <div class="ui-fluid">
+                    <div class="ui-g">
+                        <div class="ui-g-12">
+                            <div class="card card-w-title">
+                                <div style="display: flex;">
+                                    <p:graphicImage url="images/Flowserve.svg.png" height="80" width="200" stream="false" style="float: left;margin-left:50px"/>
+                                    <div style="margin: 0 auto;">
+                                        <h1>Contract Booking</h1>
+                                    </div>
+                                </div>
+                                <p:breadCrumb style="margin-top: 20px;">
+                                    <p:menuitem value="Dashboard" url="contract_dashboard.xhtml" />
+                                    <p:menuitem value="New" url="contractAdd.xhtml" />
+                                    <p:menuitem value="Validate Booking" url="#" />
+                                    <p:menuitem value="Contract Considerations" url="#" />
+                                    <p:menuitem value="Variable Considerations" url="#" />
+                                    <p:menuitem value="Line Items" url="#" />
+                                    <p:menuitem value="Pobs" url="#" />
+                                    <p:menuitem value="Price Allocation" url="#" />
+                                    <p:menuitem value="Review" url="#" />
+                                    <p:menuitem value="Complete" url="#" />
+                                    <p:menuitem value=""  />
+                                </p:breadCrumb>
+                                <hr />
+                                <h3 style="margin-left: 55px;">General Information</h3>
+                                <p:panelGrid columns="2" columnClasses="ui-grid-col-6,ui-grid-col-6" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;margin-left: 50px">
+                                    <p:panel style="width:100%;border: none">
+                                        <p:panelGrid columns="4">
+                                            <p:outputLabel  value="Submitted By:"/>
+                                            <p:autoComplete
+                                                id="submittedBy"
+                                                var="user"
+                                                maxResults="10"
+                                                required="#{false}"
+                                                forceSelection="#{true}"
+                                                value="#{contractBooking.completedUser}"
+                                                completeMethod="#{viewSupport.completeUser}"
+                                                itemLabel="#{user.name}"
+                                                itemValue="#{user}"
+                                                converter="userConverter"
+                                                placeholder="Search User" size="20">
+                                            </p:autoComplete>
+
+                                            <p:outputLabel  value="Reporting Unit:"/>
+                                            <p:autoComplete
+                                                id="searchRU"
+                                                var="ru"
+                                                maxResults="10"
+                                                required="#{false}"
+                                                forceSelection="#{true}"
+                                                value="#{contractBooking.contract.reportingUnit}"
+                                                completeMethod="#{viewSupport.getCompleteReportingUnit}"
+                                                itemLabel="#{ru.name}"
+                                                itemValue="#{ru}"
+                                                converter="reportingUnitConverter"
+                                                placeholder="Search RUs..">
+                                            </p:autoComplete>
+
+
+                                            <p:outputLabel  value="Entry Date : "/>
+                                            <p:calendar id="entryDate" converter="localDateConverter" style="width: 100%;"  pattern="MM/dd/yyyy" requiredMessage="Please Select a Date" >
+                                            </p:calendar>
+
+                                            <p:outputLabel  value="Platform : "/>
+                                            <p:selectOneMenu id="console" value="#{contractBooking.contract.businessUnit}"
+                                                             effect="fade" var="t" style="width:180px" converter="businessUnitConverter">
+                                                <f:selectItem itemLabel="Select Platform" itemValue="" />
+                                                <f:selectItems value="#{contractBooking.businessUnits}" var="cnt" itemLabel="#{cnt.name}" itemValue="#{cnt}" />
+                                                <p:column>
+                                                    <h:outputText value="#{t.name}" />
+                                                </p:column>
+                                            </p:selectOneMenu>
+                                        </p:panelGrid>
+
+                                        <hr />
+                                        <h3 style="margin-left: 55px;">Contract Header</h3>
+                                        <p:panelGrid columns="4"  >
+
+                                            <p:outputLabel  value="Customer Name : "/>
+                                            <p:autoComplete
+                                                id="customername"
+                                                var="customer"
+                                                maxResults="10"
+                                                required="#{false}"
+                                                forceSelection="#{true}"
+                                                value="#{contractBooking.completeCustomer}"
+                                                completeMethod="#{viewSupport.completeCustomer}"
+                                                itemLabel="#{customer.name}"
+                                                itemValue="#{customer}"
+                                                converter="customerConverter"
+                                                placeholder="Search Customer">
+                                            </p:autoComplete>
+
+                                            <p:outputLabel  value="Customer PO# : "/>
+                                            <p:inputText  value="#{contractBooking.contract.customerPurchaseOrderNumber}"/>
+
+                                            <p:outputLabel  value="Legal Customer Name : "/>
+                                            <p:autoComplete
+                                                id="leagalname"
+                                                var="customer"
+                                                maxResults="10"
+                                                required="#{false}"
+                                                forceSelection="#{true}"
+                                                value="#{contractBooking.completeCustomer}"
+                                                completeMethod="#{viewSupport.completeCustomer}"
+                                                itemLabel="#{customer.legalName}"
+                                                itemValue="#{customer}"
+                                                converter="customerConverter"
+                                                placeholder="Search Customer">
+                                            </p:autoComplete>
+
+                                            <p:outputLabel  value="FLS Sales Order# : "/>
+                                            <p:inputText  value="#{contractBooking.contract.salesOrderNumber}"/>
+
+                                            <p:outputLabel  value=""/>
+                                            <p:inputText value=""/>
+
+                                            <p:outputLabel  value="SAP# : "/>
+                                            <p:inputText  value="#{contractBooking.contract.flsSAPNumber}"/>
+
+                                            <p:outputLabel  value="Purchase Order Date "/>
+                                            <p:calendar id="orderDate" value="#{contractBooking.contract.bookingDate}" converter="localDateConverter" style="width: 100%;"  pattern="MM/dd/yyyy" required="true" requiredMessage="Please Select a Date" >
+                                            </p:calendar>
+                                            <p:outputLabel  value=""/>
+                                            <p:outputLabel  value=""/>
+
+                                            <p:outputLabel  value="Date FLS sent acceptance "/>
+                                            <p:calendar id="flsSentDate" value="#{contractBooking.contract.bookingDate}" converter="localDateConverter" style="width: 100%;"  pattern="MM/dd/yyyy" required="true" requiredMessage="Please Select a Date" >
+                                            </p:calendar>
+                                            <p:outputLabel  value=""/>
+                                            <p:outputLabel  value=""/>
+
+
+                                        </p:panelGrid>
+                                    </p:panel> 
+                                    <p:panel  style="width:100%">
+                                        <f:facet name="header">
+                                            Attachment Viewer
+                                        </f:facet>
+                                        <p:outputLabel for="attachedfile" value="Select File:" />
+                                        <p:selectOneMenu id="attachedfile"  style="width:125px">
+                                            <f:selectItem itemLabel="File1" itemValue="File1" />
+                                            <f:selectItem itemLabel="File2" itemValue="File2" />
+                                            <f:selectItem itemLabel="File3" itemValue="File3" />
+                                        </p:selectOneMenu>
+     
+                                        <p:media value="/images/sample.pdf" width="100%" height="435px" style="margin-top:5px" >
+                                            Your browser can't display pdf, <h:outputLink value="/images/sample.pdf">click</h:outputLink> to download pdf instead.
+                                        </p:media>
+                                    </p:panel>
+                                </p:panelGrid>
+                                <hr />
+                                <p:panelGrid columns="4" columnClasses="ui-grid-col-3,ui-grid-col-3,ui-grid-col-3,ui-grid-col-3" layout="grid" styleClass="ui-panelgrid-blank form-group" style="border:0px none;margin-top: 40px; background-color:transparent;margin-left: 50px">
+
+                                    <p:outputLabel  value="Contract Currency : "/>
+                                    <p:selectOneMenu id="contractCurrency" value="#{contractBooking.contract.contractCurrency}"
+                                                     effect="fade" style="width:180px" converter="currencyConverter">
+                                        <f:selectItem itemLabel="Select Currency" itemValue="" />
+                                        <f:selectItems value="#{viewSupport.allCurrencies}" var="cur" itemLabel="#{cur.currencyCode}" itemValue="#{cur}" />
+                                        <p:column>
+                                            <h:outputText value="#{cur.currencyCode}" />
+                                        </p:column>
+                                    </p:selectOneMenu>
+
+
+                                    <p:outputLabel  value="Stated Contract Price : "/>
+                                    <p:inputNumber style="width: 180px" />
+
+                                    <p:outputLabel  value="Stated Contract Price(USD) : "/>
+                                    <p:inputNumber style="width: 180px" />
+
+                                    <p:outputLabel  value="Stated Contract Price(Local Currency) : "/>
+                                    <p:inputNumber style="width: 180px" />
+
+                                </p:panelGrid>
+
+                                <hr/>
+                                <h3 style="margin-left: 55px;">Wholly Unperformed</h3>
+                                <p:panelGrid columns="3" columnClasses="ui-grid-col-3,ui-grid-col-3,ui-grid-col-3" layout="grid" styleClass="ui-panelgrid-blank " style="border:0px none;margin-top: 40px; background-color:transparent;margin-left: 50px">
+                                    <p:outputLabel  value="Cost Incurred : "/>
+                                    <p:inputNumber style="width: 180px" />
+                                    <p:selectOneMenu id="currency" value="#{contractBooking.contract.contractCurrency}"
+                                                     effect="fade" style="width:180px" converter="currencyConverter">
+                                        <f:selectItem itemLabel="Select Currency" itemValue="" />
+                                        <f:selectItems value="#{viewSupport.allCurrencies}" var="cur" itemLabel="#{cur.currencyCode}" itemValue="#{cur}" />
+                                        <p:column>
+                                            <h:outputText value="#{cur.currencyCode}" />
+                                        </p:column>
+                                    </p:selectOneMenu>
+                                    <p:outputLabel  value="Payments Received : "/>
+                                    <p:inputNumber style="width: 180px" />
+                                    <p:selectOneMenu id="payment" value="#{contractBooking.contract.contractCurrency}"
+                                                     effect="fade" style="width:180px" converter="currencyConverter">
+                                        <f:selectItem itemLabel="Select Currency" itemValue="" />
+                                        <f:selectItems value="#{viewSupport.allCurrencies}" var="cur" itemLabel="#{cur.currencyCode}" itemValue="#{cur}" />
+                                        <p:column>
+                                            <h:outputText value="#{cur.currencyCode}" />
+                                        </p:column>
+                                    </p:selectOneMenu>
+                                </p:panelGrid>
+
+
+                                <hr />
+
+                                <p:panelGrid columns="1"  layout="grid"  styleClass="ui-panelgrid-blank form-group" style="border:0px none;margin-top: 40px; background-color:transparent;margin-left: 50px">
+
+                                    <p:selectBooleanCheckbox  itemLabel="Flowserve standard terms and conditions" style="width:450px" />  
+                                </p:panelGrid>
+
+                                <p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-8" layout="grid" styleClass="ui-panelgrid-blank form-group" style="border:0px none;margin-top: 5px; background-color:transparent;margin-left: 80px">
+                                    <p:outputLabel value="Warranty Paragraph :"/> 
+                                    <p:inputTextarea style="width:100%" />
+
+                                    <p:outputLabel value="Payment Paragraph :"/> 
+                                    <p:inputTextarea  style="width:100%"/>
+
+                                    <p:outputLabel value="Cancellation Paragraph :"/> 
+                                    <p:inputTextarea  style="width:100%"/>
+
+                                    <p:outputLabel value="Termination Paragraph :"/> 
+                                    <p:inputTextarea  style="width:100%"/>
+
+                                </p:panelGrid>
+
+                                <p:panelGrid columns="1"  layout="grid"  styleClass="ui-panelgrid-blank form-group" style="border:0px none;margin-top: 40px; background-color:transparent;margin-left: 50px">
+
+                                    <p:selectBooleanCheckbox  itemLabel="Contract has been approved and commited by both parties" style="width:450px" />  
+                                </p:panelGrid>
+
+                                <p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank form-group" style="border:0px none;margin-top: 5px; background-color:transparent;margin-left: 80px">
+                                    <p:outputLabel for="contractType" value="Form of Contract :"/> 
+                                    <p:selectOneMenu id="contractType"  style="width:220px">
+                                        <f:selectItem itemLabel="Electronic Order" itemValue="Electronic Order" />
+                                        <f:selectItem itemLabel="PAAF-Leter of Acknowledgment" itemValue="PAAF-Leter of Acknowledgment"  />
+                                        <f:selectItem itemLabel="PAAF-Letter of Award" itemValue="PAAF-Letter of Award" />
+                                    </p:selectOneMenu>
+
+                                </p:panelGrid>
+
+
+                                <p:toolbar style="margin-top: 50px;">
+                                    <f:facet name="right">
+                                        <p:commandButton id="btnAnalysis" value="Submit for Analysis"  ajax="false" icon="ui-icon-disk fa fa-save" style="width: 215px;"/>
+                                        <p:commandButton id="btnSave" value="Save" ajax="false" icon="ui-icon-disk fa fa-save" />
+                                    </f:facet>
+                                </p:toolbar>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+        </div>
+    </ui:define>
+
+</ui:composition>
+
+

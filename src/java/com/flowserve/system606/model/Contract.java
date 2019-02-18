@@ -20,6 +20,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -28,6 +30,7 @@ import javax.persistence.MapKeyJoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.OrderBy;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import static javax.persistence.TemporalType.TIMESTAMP;
@@ -41,6 +44,8 @@ public class Contract extends BaseEntity<Long> implements MetricStore, EventStor
     private static final Logger LOG = Logger.getLogger(Contract.class.getName());
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CONTRACT_SEQ")
+    @SequenceGenerator(name = "CONTRACT_SEQ", sequenceName = "CONTRACT_SEQ", allocationSize = 50)
     @Column(name = "CONTRACT_ID")
     private Long id;
     @Column(name = "NAME")
@@ -51,6 +56,8 @@ public class Contract extends BaseEntity<Long> implements MetricStore, EventStor
     private String description;
     @Column(name = "CONTRACT_TYPE_ID")
     private ContractType contractType;
+    @Column(name = "CURRENT_VERSION")
+    private String currentVersion;
     @ManyToOne
     @JoinColumn(name = "REPORTING_UNIT_ID")
     private ReportingUnit reportingUnit;
@@ -58,12 +65,16 @@ public class Contract extends BaseEntity<Long> implements MetricStore, EventStor
     @JoinColumn(name = "CUSTOMER_ID")
     private Customer customer;
     @OneToOne
-    @JoinColumn(name = "BUSINESS_PLATFORM_ID")
-    private BusinessPlatform businessPlatform;
+    @JoinColumn(name = "BUSINESS_UNIT_ID")
+    private BusinessUnit businessUnit;
     @Column(name = "CUSOTMER_PURCHASE_ORDER_NUM")
     private String customerPurchaseOrderNumber;
     @Column(name = "SALES_ORDER_NUM")
     private String salesOrderNumber;
+    @Column(name = "FLS_SALES_ORDER_NUM")
+    private String flsSalesOrderNumber;
+    @Column(name = "FLS_SAP_NUMBER")
+    private String flsSAPNumber;
     @Column(name = "TOTAL_TRANSACTION_PRICE")
     private BigDecimal totalTransactionPrice;
     @Column(name = "CONTRACT_CURRENCY")
@@ -113,52 +124,17 @@ public class Contract extends BaseEntity<Long> implements MetricStore, EventStor
     @MapKeyJoinColumn(name = "PERIOD_ID")
     private Map<FinancialPeriod, WorkflowContext> periodApprovalRequestMap = new HashMap<FinancialPeriod, WorkflowContext>();
 
-//    @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, orphanRemoval = true)
-//    @JoinTable(name = "CONTRACT_ATTRIBUTE_SET", joinColumns = @JoinColumn(name = "CONTRACT_ID"), inverseJoinColumns = @JoinColumn(name = "ATTRIBUTE_SET_ID"))
-//    @MapKeyJoinColumn(name = "CONTRACT_VERSION_ID")
-//    private Map<ContractVersion, AttributeSet> contractVersionAttributeSetMap = new HashMap<ContractVersion, AttributeSet>();
-    @OneToOne
-    @JoinColumn(name = "ATTRIBUTE_SET_ID")
-    private AttributeSet attributeSet;
-
-    public Contract() {
-    }
-
-    //
-    public boolean attributeExistsForVersion(AttributeType attributeType) {
-        return attributeSet.getTypeMetricMap().get(attributeType) != null;
-    }
-
-    public Attribute getVersionAttribute(AttributeType attributeType) {
-        return attributeSet.getTypeMetricMap().get(attributeType);
-    }
-
-    public Attribute initializeAttributeForVersion(AttributeType attributeType) {
-        Attribute attribute = null;
-        try {
-            if (attributeType.isContractLevel()) {
-                Class<?> clazz = Class.forName(MetricType.PACKAGE_PREFIX + attributeType.getMetricClass());
-                attribute = (Attribute) clazz.newInstance();
-                attribute.setMetricType(attributeType);
-                attribute.setCreationDate(LocalDateTime.now());
-                attribute.setValid(true);
-                //attribute.setContractVersion(contractVersion);
-                attribute.setAttributeSet(attributeSet);
-                attributeSet.getTypeMetricMap().put(attributeType, attribute);
-                //contractVersionAttributeSetMap.get(contractVersion).getTypeMetricMap().put(attributeType, attribute);
-            }
-        } catch (Exception e) {
-            Logger.getLogger(Contract.class.getName()).log(Level.SEVERE, "Severe exception initializing metricTypeId: " + attributeType.getId(), e);
-            throw new IllegalStateException("Severe exception initializing metricTypeId: " + attributeType.getId(), e);
-        }
-
-        if (attribute == null) {
-            Logger.getLogger(Contract.class.getName()).log(Level.FINER, "Null metric at contract level!:  " + attributeType.getCode());
-        }
-        return attribute;
-    }
-
-    //
+   @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, orphanRemoval = true)
+   @JoinTable(name = "CONTRACT_VERSIONS", joinColumns = @JoinColumn(name = "CONTRACT_ID"), inverseJoinColumns = @JoinColumn(name = "VERSION_ID"))
+   private Map<String, ContractVersion> contractVersionMap = new HashMap<String, ContractVersion>();
+    
+   public Contract(){
+   }
+   
+   public Contract(String contractVersion){
+       this.currentVersion = contractVersion;
+   }
+   
     @Override
     public int compareTo(Contract obj) {
         return this.id.compareTo(obj.getId());
@@ -174,6 +150,26 @@ public class Contract extends BaseEntity<Long> implements MetricStore, EventStor
         }
 
         return pobs;
+    }
+    
+    public List<ContractAttachment> getContractAttachments(){
+        return contractVersionMap.get(this.currentVersion).getContractAttachment();
+    }
+    
+    public List<VariableConsideration> getVariableConsiderations(){
+        return contractVersionMap.get(this.currentVersion).getVariableConsideration();
+    }
+    
+    public List<ContractConsideration> getContractConsiderations(){
+        return contractVersionMap.get(this.currentVersion).getContractConsideration();
+    }
+    
+    public List<LineItems> getLineItems(){
+        return contractVersionMap.get(this.currentVersion).getLineItems();
+    }
+    
+    public List<ContractPerformanceObligation> getContractPerformanceObligations(){
+        return contractVersionMap.get(this.currentVersion).getContractPerformanceObligation();
     }
 
     public List<Event> getAllEventsByEventType(EventType eventType) {
@@ -223,7 +219,15 @@ public class Contract extends BaseEntity<Long> implements MetricStore, EventStor
 
         return events;
     }
+    
+    public Map<String, ContractVersion> getContractVersionMap() {
+        return contractVersionMap;
+    }
 
+    public void setContractVersionMap(Map<String, ContractVersion> contractVersionMap) {
+        this.contractVersionMap = contractVersionMap;
+    }
+    
     public WorkflowContext getPeriodApprovalRequest(FinancialPeriod period) {
         return periodApprovalRequestMap.get(period);
     }
@@ -325,12 +329,12 @@ public class Contract extends BaseEntity<Long> implements MetricStore, EventStor
         this.name = name;
     }
 
-    public BusinessPlatform getBusinessPlatform() {
-        return businessPlatform;
+    public BusinessUnit getBusinessUnit() {
+        return businessUnit;
     }
 
-    public void setBusinessPlatform(BusinessPlatform businessPlatform) {
-        this.businessPlatform = businessPlatform;
+    public void setBusinessUnit(BusinessUnit businessUnit) {
+        this.businessUnit = businessUnit;
     }
 
     public String getCustomerPurchaseOrderNumber() {
@@ -475,13 +479,30 @@ public class Contract extends BaseEntity<Long> implements MetricStore, EventStor
     public void setBookingDate(LocalDate bookingDate) {
         this.bookingDate = bookingDate;
     }
-
-    public AttributeSet getAttributeSet() {
-        return attributeSet;
+    
+    
+    public String getCurrentVersion() {
+        return currentVersion;
     }
 
-    public void setAttributeSet(AttributeSet attributeSet) {
-        this.attributeSet = attributeSet;
+    public void setCurrentVersion(String currentVersion) {
+        this.currentVersion = currentVersion;
+    }
+
+    public String getFlsSalesOrderNumber() {
+        return flsSalesOrderNumber;
+    }
+
+    public void setFlsSalesOrderNumber(String flsSalesOrderNumber) {
+        this.flsSalesOrderNumber = flsSalesOrderNumber;
+    }
+
+    public String getFlsSAPNumber() {
+        return flsSAPNumber;
+    }
+
+    public void setFlsSAPNumber(String flsSAPNumber) {
+        this.flsSAPNumber = flsSAPNumber;
     }
 
 }

@@ -32,12 +32,5 @@ public interface Measurable {
 
     public boolean metricExistsForPeriod(FinancialPeriod period, MetricType metricType);
 
-    public Attribute getVersionAttribute(AttributeType attributeType);
-
-    //public AttributeSet initializeAttributeSetForVersion(ContractVersion contractVersion);
-    public Attribute initializeAttributeForVersion(AttributeType attributeType);
-
-    //public boolean attributeSetExistsForVersion(ContractVersion contractVersion);
-    public boolean attributeExistsForVersion(AttributeType attributeType);
 
 }

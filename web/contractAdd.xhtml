@@ -16,7 +16,10 @@
             .tagsize{
                 width: 180px;
             }
-
+            body .ui-chkbox .ui-chkbox-box {
+                width: 20px;
+                min-width: 20px;
+            }
         </style>
     </ui:define>
 
@@ -31,12 +34,27 @@
                     <div class="ui-g">
                         <div class="ui-g-12">
                             <div class="card card-w-title">
+                                <p:messages id="messages" showDetail="true" />
                                 <div style="display: flex;">
                                     <p:graphicImage url="images/Flowserve.svg.png" height="80" width="200" stream="false" style="float: left;margin-left:50px"/>
                                     <div style="margin: 0 auto;">
                                         <h1>New Contract Entry</h1>
                                     </div>
                                 </div>
+                                <p:breadCrumb style="margin-top: 20px;">
+                                    <p:menuitem value="Dashboard" url="contract_dashboard.xhtml" />
+                                    <p:menuitem value="New" url="#" />
+                                    <p:menuitem value="Validation Booking" url="contractBooking.xhtml" />
+                                    <p:menuitem value="Contract Considerations" url="#" />
+                                    <p:menuitem value="Variable Considerations" url="#" />
+                                    <p:menuitem value="Line Items" url="#" />
+                                    <p:menuitem value="Pobs" url="#" />
+                                    <p:menuitem value="Price Allocation" url="#" />
+                                    <p:menuitem value="Review" url="#" />
+                                    <p:menuitem value="Complete" url="#" />
+                                    <p:menuitem value=""  />
+                                </p:breadCrumb>
+                                <hr />
                                 <h3 style="margin-left: 55px;">General Information</h3>
                                 <p:panelGrid columns="4" columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank form-group" style="border:0px none; background-color:transparent;margin-left: 50px">
 
@@ -47,7 +65,7 @@
                                         maxResults="10"
                                         required="#{false}"
                                         forceSelection="#{true}"
-                                        value="#{contractAdd.completedUser}"
+                                        value="#{contractAdd.contractVersion.submittedBy}"
                                         completeMethod="#{viewSupport.completeUser}"
                                         itemLabel="#{user.name}"
                                         itemValue="#{user}"
@@ -62,7 +80,7 @@
                                         maxResults="10"
                                         required="#{false}"
                                         forceSelection="#{true}"
-                                        value="#{contractAdd.addContractVersion.reportingUnit}"
+                                        value="#{contractAdd.contract.reportingUnit}"
                                         completeMethod="#{viewSupport.getCompleteReportingUnit}"
                                         itemLabel="#{ru.name}"
                                         itemValue="#{ru}"
@@ -71,11 +89,11 @@
                                     </p:autoComplete>
 
                                     <p:outputLabel  value="Entry Date : "/>
-                                    <p:calendar id="entryDate" converter="localDateConverter" style="width: 100%;"  pattern="MM/dd/yyyy" requiredMessage="Please Select a Date" >
+                                    <p:calendar id="entryDate" value="#{contractAdd.contractVersion.contractEntryDate}" converter="localDateConverter" style="width: 100%;"  pattern="MM/dd/yyyy" requiredMessage="Please Select a Date" >
                                     </p:calendar>
 
                                     <p:outputLabel  value="Platform : "/>
-                                    <p:selectOneMenu id="console" value="#{contractAdd.addContractVersion.businessUnit}"
+                                    <p:selectOneMenu id="console" value="#{contractAdd.contract.businessUnit}"
                                                      effect="fade" var="t" style="width:180px" converter="businessUnitConverter">
                                         <f:selectItem itemLabel="Select Platform" itemValue="" />
                                         <f:selectItems value="#{contractAdd.businessUnits}" var="cnt" itemLabel="#{cnt.name}" itemValue="#{cnt}" />
@@ -84,7 +102,7 @@
                                         </p:column>
                                     </p:selectOneMenu>
                                 </p:panelGrid>
-
+                                <hr />
                                 <h3 style="margin-left: 55px;">Contract Header</h3>
                                 <p:panelGrid columns="4" columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank form-group" style="border:0px none; background-color:transparent;margin-left: 50px">
 
@@ -104,7 +122,7 @@
                                     </p:autoComplete>
 
                                     <p:outputLabel  value="Customer PO# : "/>
-                                    <p:inputText  value="#{contractAdd.addContractVersion.customerPurchaseOrderNumber}"/>
+                                    <p:inputText  value="#{contractAdd.contract.customerPurchaseOrderNumber}"/>
 
                                     <p:outputLabel  value="Legal Customer Name : "/>
                                     <p:autoComplete
@@ -122,33 +140,33 @@
                                     </p:autoComplete>
 
                                     <p:outputLabel  value="FLS Sales Order# : "/>
-                                    <p:inputText  value="#{contractAdd.addContractVersion.salesOrderNumber}"/>
+                                    <p:inputText  value="#{contractAdd.contract.flsSalesOrderNumber}"/>
 
-                                    <p:outputLabel  value="Project Name : "/>
-                                    <p:inputText value="#{contractAdd.addContractVersion.projectName}"/>
+                                    <p:outputLabel  value=""/>
+                                    <p:inputText value=""/>
 
-                                    <p:outputLabel  value="SAP# : "/>
-                                    <p:inputText  value="#{contractAdd.addContractVersion.sapNumber}"/>
+                                    <p:outputLabel  value="SAP# "/>
+                                    <p:inputText  value="#{contractAdd.contract.flsSAPNumber}"/>
 
                                     <p:outputLabel  value="Purchase Order Date : "/>
-                                    <p:calendar id="orderDate" value="#{contractAdd.addContractVersion.purchaseOrderDate}" converter="localDateConverter" style="width: 100%;"  pattern="MM/dd/yyyy" required="true" requiredMessage="Please Select a Date" >
+                                    <p:calendar id="orderDate" value="#{contractAdd.contract.bookingDate}" converter="localDateConverter" style="width: 100%;"  pattern="MM/dd/yyyy" required="true" requiredMessage="Please Select a Date" >
                                     </p:calendar>
                                     <p:outputLabel  value=""/>
                                     <p:outputLabel  value=""/>
 
                                     <p:outputLabel  value="Date FLS sent acceptance : "/>
-                                    <p:calendar id="flsSentDate" value="#{contractAdd.addContractVersion.flsSentDate}" converter="localDateConverter" style="width: 100%;"  pattern="MM/dd/yyyy" required="true" requiredMessage="Please Select a Date" >
+                                    <p:calendar id="flsSentDate" value="#{contractAdd.contract.bookingDate}" converter="localDateConverter" style="width: 100%;"  pattern="MM/dd/yyyy" required="true" requiredMessage="Please Select a Date" >
                                     </p:calendar>
                                     <p:outputLabel  value=""/>
                                     <p:outputLabel  value=""/>
 
 
                                 </p:panelGrid>
-
+                                <hr />
                                 <p:panelGrid columns="6" columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank form-group" style="border:0px none;margin-top: 40px; background-color:transparent;margin-left: 50px">
 
                                     <p:outputLabel  value="Contract Currency : "/>
-                                    <p:selectOneMenu id="contractCurrency" value="#{contractAdd.addContractVersion.contractCurrency}"
+                                    <p:selectOneMenu id="contractCurrency" value="#{contractAdd.contract.contractCurrency}"
                                                      effect="fade" style="width:180px" converter="currencyConverter">
                                         <f:selectItem itemLabel="Select Currency" itemValue="" />
                                         <f:selectItems value="#{viewSupport.allCurrencies}" var="cur" itemLabel="#{cur.currencyCode}" itemValue="#{cur}" />
@@ -171,10 +189,83 @@
                                     <p:inputNumber style="width: 180px" />
 
                                 </p:panelGrid>
+                                <hr />
+                                
+
+                                <p:panelGrid columns="3" columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank form-group" style="border:0px none; background-color:transparent;margin-left: 50px">
+
+                                    <p:selectBooleanCheckbox />
+                                    <p:outputLabel value="#{contractAdd.purcahseAttachment.description}" />
+                                    <p:fileUpload fileUploadListener="#{contractAdd.handleFileUpload}" mode="advanced" skinSimple="true"
+                                                  update="messages" auto="true" sizeLimit="5000000" allowTypes="/(\.|\/)(pdf)$/" style="width: 300px;">
+                                        <f:attribute name="fileAttachment" value="purchase" />
+                                    </p:fileUpload>
+
+                                    <p:selectBooleanCheckbox />
+                                    <p:outputLabel value="#{contractAdd.tncAttachment.description}" />
+                                     <p:fileUpload fileUploadListener="#{contractAdd.handleFileUpload}" mode="advanced"
+                                                  update="messages" auto="true" sizeLimit="5000000" allowTypes="/(\.|\/)(pdf)$/" style="width: 300px;">
+                                        <f:attribute name="fileAttachment" value="tnc" />
+                                    </p:fileUpload>
+
+                                    <p:selectBooleanCheckbox />
+                                    <p:outputLabel value="#{contractAdd.acknowledgementAttachment.description}" />
+                                    <p:fileUpload fileUploadListener="#{contractAdd.handleFileUpload}" mode="advanced"
+                                                  update="messages" auto="true" sizeLimit="5000000" allowTypes="/(\.|\/)(pdf)$/" style="width: 300px;">
+                                        <f:attribute name="fileAttachment" value="acknowledgement" />
+                                    </p:fileUpload>
+
+                                    <p:selectBooleanCheckbox />
+                                    <p:outputLabel value="#{contractAdd.sspAttachment.description}" />
+                                    <p:fileUpload fileUploadListener="#{contractAdd.handleFileUpload}" mode="advanced"
+                                                  update="messages" auto="true" sizeLimit="5000000" allowTypes="/(\.|\/)(pdf)$/" style="width: 300px;">
+                                        <f:attribute name="fileAttachment" value="ssp" />
+                                    </p:fileUpload>
+
+                                    <p:selectBooleanCheckbox />
+                                    <p:outputLabel value="#{contractAdd.contractLineAttachment.description}" />
+                                    <p:fileUpload fileUploadListener="#{contractAdd.handleFileUpload}" mode="advanced"
+                                                  update="messages" auto="true" sizeLimit="5000000" allowTypes="/(\.|\/)(pdf)$/" style="width: 300px;">
+                                        <f:attribute name="fileAttachment" value="contractLine" />
+                                    </p:fileUpload>
+                                </p:panelGrid>
+                                <p:panelGrid columns="4" columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank form-group" style="border:0px none; background-color:transparent;margin-left: 50px">
+                                    <p:selectBooleanCheckbox />
+                                    <p:outputLabel value="Other (specify and attach): " />
+                                    <p:inputText  value="#{contractAdd.otherAttachment.description}"/>
+                                    <p:fileUpload fileUploadListener="#{contractAdd.handleFileUpload}" mode="advanced"
+                                                  update="messages" auto="true" sizeLimit="5000000" allowTypes="/(\.|\/)(pdf)$/" style="width: 300px;">
+                                        <f:attribute name="fileAttachment" value="other" />
+                                    </p:fileUpload>
+                                </p:panelGrid>
+                                <hr/>
+                                <h3 style="margin-left: 55px;">Wholly Unperformed</h3>
+                                <p:panelGrid columns="7" columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank form-group" style="border:0px none;margin-top: 40px; background-color:transparent;margin-left: 50px">
+                                    <p:outputLabel  value="Cost Incurred : "/>
+                                    <p:inputNumber style="width: 180px" />
+                                    <p:selectOneMenu id="currency" value="#{contractAdd.contract.contractCurrency}"
+                                                     effect="fade" style="width:180px" converter="currencyConverter">
+                                        <f:selectItem itemLabel="Select Currency" itemValue="" />
+                                        <f:selectItems value="#{viewSupport.allCurrencies}" var="cur" itemLabel="#{cur.currencyCode}" itemValue="#{cur}" />
+                                        <p:column>
+                                            <h:outputText value="#{cur.currencyCode}" />
+                                        </p:column>
+                                    </p:selectOneMenu>
+                                    <p:outputLabel  value="Payments Received : "/>
+                                    <p:inputNumber style="width: 180px" />
+                                    <p:selectOneMenu id="payment" value="#{contractAdd.contract.contractCurrency}"
+                                                     effect="fade" style="width:180px" converter="currencyConverter">
+                                        <f:selectItem itemLabel="Select Currency" itemValue="" />
+                                        <f:selectItems value="#{viewSupport.allCurrencies}" var="cur" itemLabel="#{cur.currencyCode}" itemValue="#{cur}" />
+                                        <p:column>
+                                            <h:outputText value="#{cur.currencyCode}" />
+                                        </p:column>
+                                    </p:selectOneMenu>
+                                </p:panelGrid>
 
                                 <p:toolbar style="margin-top: 50px;">
                                     <f:facet name="right">
-                                        <p:commandButton id="btnAnalysis" value="Submit for Analysis" action="#{contractAdd.saveNewContractVersion(contractAdd.addContractVersion)}" ajax="false" icon="ui-icon-disk fa fa-save" style="width: 215px;"/>
+                                        <p:commandButton id="btnAnalysis" value="Submit for Analysis" action="#{contractAdd.saveNewContractVersion(contractAdd.contract)}" ajax="false" icon="ui-icon-disk fa fa-save" style="width: 215px;"/>
                                         <p:commandButton id="btnSave" value="Save" ajax="false" icon="ui-icon-disk fa fa-save" />
                                     </f:facet>
                                 </p:toolbar>
