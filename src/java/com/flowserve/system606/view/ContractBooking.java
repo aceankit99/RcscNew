@@ -7,28 +7,31 @@ package com.flowserve.system606.view;
 
 import com.flowserve.system606.model.BusinessUnit;
 import com.flowserve.system606.model.Contract;
-import com.flowserve.system606.model.ContractVersion;
+import com.flowserve.system606.model.ContractAttachment;
 import com.flowserve.system606.model.Customer;
 import com.flowserve.system606.model.User;
 import com.flowserve.system606.service.AdminService;
+import java.io.ByteArrayInputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
-import javax.faces.view.ViewScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import org.primefaces.model.DefaultStreamedContent;
+import org.primefaces.model.StreamedContent;
+
+
 
 /**
  *
  * @author user
  */
 @Named(value = "contractBooking")
-@ViewScoped
+@SessionScoped
 public class ContractBooking implements Serializable{
     
     @Inject
@@ -39,35 +42,25 @@ public class ContractBooking implements Serializable{
     List<BusinessUnit> businessUnits = new ArrayList<BusinessUnit>();
     private User completedUser;
     private Customer completeCustomer;
-
-
-
+    List<String> attachmentName =new ArrayList<String>();
+    String fileName;
+    StreamedContent content;
+    byte[] tempFile;
+    
     @PostConstruct
     public void init() {
 
         try {
             businessUnits = adminService.allBusinessUnit();
+            attachmentName = adminService.allAttachment();
+            content=getPDF(attachmentName.get(0));
+           //just for initilizing the pdf viewer on page load
         } catch (Exception ex) {
             Logger.getLogger(ReportingUnitEdit.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
 
-//    public String saveNewContractVersion(ContractVersion cv) throws Exception {
-//        FacesContext context = FacesContext.getCurrentInstance();
-//
-//        try {
-//            adminService.persist(cv);
-//        } catch (Exception e) {
-//            logger.log(Level.SEVERE, e.getMessage(), e);
-//            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Error saving", e.getMessage()));
-//            return null;
-//        }
-//
-//        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Contract Version saved", ""));
-//
-//        return "contractAdd";
-//    }
 
     public Contract getContract() {
         return Contract;
@@ -102,5 +95,41 @@ public class ContractBooking implements Serializable{
     public void setCompleteCustomer(Customer completeCustomer) {
         this.completeCustomer = completeCustomer;
     }
+
+    public List<String> getAttachmentName() {
+        return attachmentName;
+    }
+
+    public void setAttachmentName(List<String> attachmentName) {
+        this.attachmentName = attachmentName;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
     
+   
+    public StreamedContent getPDF(String name) {
+        
+        tempFile = adminService.getAttachmentByDesc(name);
+        ByteArrayInputStream bytearrayContent = new ByteArrayInputStream(tempFile);
+        content = new DefaultStreamedContent(bytearrayContent, "application/pdf");
+        
+        return content;
+
+    }
+
+    public StreamedContent getContent() {
+        return content;
+    }
+
+    public void setContent(StreamedContent content) {
+        this.content = content;
+    }
+  
+  
 }

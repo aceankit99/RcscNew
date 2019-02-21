@@ -12,6 +12,7 @@ import com.flowserve.system606.model.BusinessRule;
 import com.flowserve.system606.model.BusinessUnit;
 import com.flowserve.system606.model.Company;
 import com.flowserve.system606.model.Contract;
+import com.flowserve.system606.model.ContractAttachment;
 import com.flowserve.system606.model.Country;
 import com.flowserve.system606.model.CurrencyEvent;
 import com.flowserve.system606.model.Customer;
@@ -28,6 +29,7 @@ import com.flowserve.system606.model.WorkflowContext;
 import com.flowserve.system606.model.WorkflowStatus;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.Currency;
 import java.util.List;
@@ -1110,4 +1112,24 @@ public class AdminService {
 
     }
 
+    //the version_id is null currently so its just for a testing perpose of the pdf viewer
+    public List<String> allAttachment() throws Exception {
+        Query query = em.createQuery("SELECT c.description  FROM ContractAttachment c ");
+
+        return (List<String>) query.getResultList();
+    }
+    //the version_id is null currently so its just for a testing perpose of the pdf viewer
+    public byte[] getAttachmentByDesc(String desc){
+    
+    Query query = em.createQuery("SELECT c.attachment FROM ContractAttachment c where c.description=:desc");
+    query.setParameter("desc", desc);
+        
+        List<byte[]> am = query.getResultList();
+        
+        if (am.size() > 0) {
+            return am.get(0);
+        }
+        return null;
+    }
+    
 }

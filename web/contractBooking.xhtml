@@ -165,19 +165,18 @@
 
                                         </p:panelGrid>
                                     </p:panel> 
-                                    <p:panel  style="width:100%">
+                                    <p:panel id="viewer"  style="width:100%">
                                         <f:facet name="header">
                                             Attachment Viewer
                                         </f:facet>
                                         <p:outputLabel for="attachedfile" value="Select File:" />
-                                        <p:selectOneMenu id="attachedfile"  style="width:125px">
-                                            <f:selectItem itemLabel="File1" itemValue="File1" />
-                                            <f:selectItem itemLabel="File2" itemValue="File2" />
-                                            <f:selectItem itemLabel="File3" itemValue="File3" />
+                                        <p:selectOneMenu id="attachedfile"  style="width:125px" value="#{contractBooking.fileName}">
+                                            <p:ajax event="change" update="viewer" listener="#{contractBooking.getPDF(contractBooking.fileName)}"/>
+                                            <f:selectItems value="#{contractBooking.attachmentName}"   var="file" itemLabel="#{file}" itemValue="#{file}" />
                                         </p:selectOneMenu>
      
-                                        <p:media value="/images/sample.pdf" width="100%" height="435px" style="margin-top:5px" >
-                                            Your browser can't display pdf, <h:outputLink value="/images/sample.pdf">click</h:outputLink> to download pdf instead.
+                                        <p:media cache="false"  player="pdf" id="pdf"  value="#{contractBooking.content}" width="100%" height="435px" style="margin-top:5px" >
+                                            Your browser can't display pdf, <h:outputLink value="#{contractBooking.content}">click</h:outputLink> to download pdf instead.
                                         </p:media>
                                     </p:panel>
                                 </p:panelGrid>
