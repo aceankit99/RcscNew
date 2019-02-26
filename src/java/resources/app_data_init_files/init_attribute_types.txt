@@ -1,79 +1,80 @@
-INPUT|REVENUE_RECOGNITION_METHOD|POB||StringMetric||NonConvertible|Revenue Recognition Method|Revenue Recognition Method|POC POB Metrics|H|Group1|1||
-INPUT|TRANSACTION_PRICE_CC|POB|REQUIRED|CurrencyMetric|CC|Convertible|Transaction Price excl LD|Review the transaction price and revise for any changes in the contract since prior month.  This transaction price should exclude any associated Liquidated Damages Penalty. (If a revision is needed, please enter the new amount in contract currency).|POC POB Metrics|O|Group1|2||
-INPUT|LIQUIDATED_DAMAGES_CTD_CC|POB|REQUIRED|CurrencyMetric|CC|Convertible|Estimated Liquidated Damages Penalty|Have any events or circumstances occured since last month that would impact the amount of the Estimated Liquidated Damages Penalty considered probable?  Are delivery dates still expected to be met? Are materials requisitions arriving timely? etc.  (If a revision is needed, please be sure to enter the new amount in contract currency).|POC POB Metrics|P|Group1|2||
-INPUT|ESTIMATED_COST_AT_COMPLETION_LC|POB|REQUIRED|CurrencyMetric|LC|Convertible|Estimated Costs at Completion|Have any events or circumstances occured since last month that would impact the amount of the Estimated Costs at Completion needed to finish work on the POb?  (If a revision is needed, please be sure to enter the new amount in local currency).|POC POB Metrics|Q|Group1|3||
-INPUT|LOCAL_COSTS_CTD_LC|POB||CurrencyMetric|LC|Convertible|Costs Incurred Locally  Materials Received|This should be the standard costs incurred to date for materials and labor (excluding contract loss expense).  For Historical balances, all costs are included here.  No historical balances for Third Party Progress or Intercompany Progress were loaded into RCS. |POC POB Metrics|S|Group1|4||
-INPUT|THIRD_PARTY_COSTS_CTD_LC|POB||CurrencyMetric|LC|Convertible|Third Party Progress Not Received|Enter your Third Party Progress for the month here. No historical balances for Third Party Progress or Intercompany Progress were loaded into RCS.|POC POB Metrics|U|Group1|6||
-INPUT|INTERCOMPANY_COSTS_CTD_LC|POB||CurrencyMetric|LC|Convertible|Intercompany Progress Not Received|Intercompany Progress Not Received-Enter all Intercompany Progress for the month here.  No historical balances for Third Party Progress or Intercompany Progress were loaded into RCS.|POC POB Metrics|T|Group1|5||
-INPUT|DELIVERY_DATE|POB||DateMetric||NonConvertible|Delivery Date|Actual Shipment / Delivery Date-Enter the Shipment/Delivery Date for completed work on POb's here|POC POB Metrics|W|Group1|7||
-INPUT|PARTIAL_SHIPMENT_COSTS_LC|POB||CurrencyMetric|LC|Convertible|Partial Shipment Standard Costs|If the Shipment/Delivery Date represents a partial shipment of a POb, enter the related standard costs of the product that was shipped. |POC POB Metrics|X|Group1|8||
-INPUT|BOOKING_DATE|Contract||DateMetric||NonConvertible|Booking Date (LoA)|Booking Date (LoA)|POC POB Metrics|L|Group1|19||
-INPUT|THIRD_PARTY_COMMISSION_CTD_LC|Contract||CurrencyMetric|LC|Convertible|Total Estimated Third Party Commissions|Total Estimated Third Party Commissions-This amount reflects the prior month input and will only require an update when there is a contract revision or a change in the estimated costs at completion|POC Contract Metrics|AE|Group1|10||
-INPUT|SALES_DESTINATION|POB||StringMetric||NonConvertible|Sales Destination|Sales Destination-If not populated, add the sales destination for the Pob here|POC POB Metrics||Group1|1||
-INPUT|OEAM_DISAGG|POB||StringMetric||NonConvertible|OE/AM Disaggregation|OE/AM Disaggregation-If not populated, add the disaggregated revenue category (OE or AM) here.|POC POB Metrics||Group1|1||
-INPUT|SL_START_DATE|POB||DateMetric||NonConvertible|Straight-Line POb Revenue Start Date|Straight-Line POb Revenue Start Date-For PObs using straight-line recognition, enter the start and end date for revenue recognition|POC POB Metrics||Group1|1||
-INPUT|SL_END_DATE|POB||DateMetric||NonConvertible|Straight-Line POb Revenue End Date|Straight-Line POb Revenue End Date-For PObs using straight-line recognition, enter the start and end date for revenue recognition|POC POB Metrics||Group1|1||
-OUTPUT|THIRD_PARTY_COMMISSION_TO_RECOGNIZE_CTD_LC|Contract||CurrencyMetric|LC|Convertible|Third Party Commissions To Recognize CTD||POC Contract Metrics|AE|Group1|10||
-OUTPUT|THIRD_PARTY_COMMISSION_TO_RECOGNIZE_PERIOD_LC|Contract||CurrencyMetric|LC|Convertible|Third Party Commissions To Recognize Current Period|Third Party Commissions To Recognize Current Period|POC Contract Metrics||Group1|1||
-OUTPUT|PROJECT_GAIN_LOSS_INCL_TPC_BACKLOG_LC|Contract||CurrencyMetric|LC|Convertible|Projected Gain (Loss) in Backlog incl TPC|Projected Gain (Loss) in Backlog incl TPC|POC Contract Metrics||Group1|1||
-OUTPUT|ESTIMATED_GROSS_PROFIT_LC|POB||CurrencyMetric|LC|Convertible|Estimated Gross Profit|Estimated Gross Profit|POC POB Outputs|H|Group1|1||
-OUTPUT|GROSS_PROFIT_CTD_LC|ALL||CurrencyMetric|LC|Convertible|Gross Profit CTD|Gross Profit CTD|POC POB Outputs|H|Group1|1||
-OUTPUT|GROSS_PROFIT_PERIOD_LC|ALL||CurrencyMetric|LC|Convertible|Gross Profit (Loss) Current Period|Gross Proft (Loss) Current Period = Total Sales Net Current Period - Cost of Sales Std Current Period - Contract Loss Reserve Adjustment|POC POB Outputs|H|Group1|1||
+INPUT|REVENUE_RECOGNITION_METHOD|POB||StringAttribute||NonConvertible|Revenue Recognition Method|Revenue Recognition Method|POC POB Metrics|H|Group1|1||
+INPUT|TRANSACTION_PRICE_CC|POB|REQUIRED|CurrencyAttribute|CC|Convertible|Transaction Price excl LD|Review the transaction price and revise for any changes in the contract since prior month.  This transaction price should exclude any associated Liquidated Damages Penalty. (If a revision is needed, please enter the new amount in contract currency).|POC POB Metrics|O|Group1|2||
+INPUT|LIQUIDATED_DAMAGES_CTD_CC|POB|REQUIRED|CurrencyAttribute|CC|Convertible|Estimated Liquidated Damages Penalty|Have any events or circumstances occured since last month that would impact the amount of the Estimated Liquidated Damages Penalty considered probable?  Are delivery dates still expected to be met? Are materials requisitions arriving timely? etc.  (If a revision is needed, please be sure to enter the new amount in contract currency).|POC POB Metrics|P|Group1|2||
+INPUT|ESTIMATED_COST_AT_COMPLETION_LC|POB|REQUIRED|CurrencyAttribute|LC|Convertible|Estimated Costs at Completion|Have any events or circumstances occured since last month that would impact the amount of the Estimated Costs at Completion needed to finish work on the POb?  (If a revision is needed, please be sure to enter the new amount in local currency).|POC POB Metrics|Q|Group1|3||
+INPUT|LOCAL_COSTS_CTD_LC|POB||CurrencyAttribute|LC|Convertible|Costs Incurred Locally  Materials Received|This should be the standard costs incurred to date for materials and labor (excluding contract loss expense).  For Historical balances, all costs are included here.  No historical balances for Third Party Progress or Intercompany Progress were loaded into RCS. |POC POB Metrics|S|Group1|4||
+INPUT|THIRD_PARTY_COSTS_CTD_LC|POB||CurrencyAttribute|LC|Convertible|Third Party Progress Not Received|Enter your Third Party Progress for the month here. No historical balances for Third Party Progress or Intercompany Progress were loaded into RCS.|POC POB Metrics|U|Group1|6||
+INPUT|INTERCOMPANY_COSTS_CTD_LC|POB||CurrencyAttribute|LC|Convertible|Intercompany Progress Not Received|Intercompany Progress Not Received-Enter all Intercompany Progress for the month here.  No historical balances for Third Party Progress or Intercompany Progress were loaded into RCS.|POC POB Metrics|T|Group1|5||
+INPUT|DELIVERY_DATE|POB||DateAttribute||NonConvertible|Delivery Date|Actual Shipment / Delivery Date-Enter the Shipment/Delivery Date for completed work on POb's here|POC POB Metrics|W|Group1|7||
+INPUT|PARTIAL_SHIPMENT_COSTS_LC|POB||CurrencyAttribute|LC|Convertible|Partial Shipment Standard Costs|If the Shipment/Delivery Date represents a partial shipment of a POb, enter the related standard costs of the product that was shipped. |POC POB Metrics|X|Group1|8||
+INPUT|BOOKING_DATE|Contract||DateAttribute||NonConvertible|Booking Date (LoA)|Booking Date (LoA)|POC POB Metrics|L|Group1|19||
+INPUT|THIRD_PARTY_COMMISSION_CTD_LC|Contract||CurrencyAttribute|LC|Convertible|Total Estimated Third Party Commissions|Total Estimated Third Party Commissions-This amount reflects the prior month input and will only require an update when there is a contract revision or a change in the estimated costs at completion|POC Contract Metrics|AE|Group1|10||
+INPUT|SALES_DESTINATION|POB||StringAttribute||NonConvertible|Sales Destination|Sales Destination-If not populated, add the sales destination for the Pob here|POC POB Metrics||Group1|1||
+INPUT|OEAM_DISAGG|POB||StringAttribute||NonConvertible|OE/AM Disaggregation|OE/AM Disaggregation-If not populated, add the disaggregated revenue category (OE or AM) here.|POC POB Metrics||Group1|1||
+INPUT|SL_START_DATE|POB||DateAttribute||NonConvertible|Straight-Line POb Revenue Start Date|Straight-Line POb Revenue Start Date-For PObs using straight-line recognition, enter the start and end date for revenue recognition|POC POB Metrics||Group1|1||
+INPUT|SL_END_DATE|POB||DateAttribute||NonConvertible|Straight-Line POb Revenue End Date|Straight-Line POb Revenue End Date-For PObs using straight-line recognition, enter the start and end date for revenue recognition|POC POB Metrics||Group1|1||
+OUTPUT|THIRD_PARTY_COMMISSION_TO_RECOGNIZE_CTD_LC|Contract||CurrencyAttribute|LC|Convertible|Third Party Commissions To Recognize CTD||POC Contract Metrics|AE|Group1|10||
+OUTPUT|THIRD_PARTY_COMMISSION_TO_RECOGNIZE_PERIOD_LC|Contract||CurrencyAttribute|LC|Convertible|Third Party Commissions To Recognize Current Period|Third Party Commissions To Recognize Current Period|POC Contract Metrics||Group1|1||
+OUTPUT|PROJECT_GAIN_LOSS_INCL_TPC_BACKLOG_LC|Contract||CurrencyAttribute|LC|Convertible|Projected Gain (Loss) in Backlog incl TPC|Projected Gain (Loss) in Backlog incl TPC|POC Contract Metrics||Group1|1||
+OUTPUT|ESTIMATED_GROSS_PROFIT_LC|POB||CurrencyAttribute|LC|Convertible|Estimated Gross Profit|Estimated Gross Profit|POC POB Outputs|H|Group1|1||
+OUTPUT|GROSS_PROFIT_CTD_LC|ALL||CurrencyAttribute|LC|Convertible|Gross Profit CTD|Gross Profit CTD|POC POB Outputs|H|Group1|1||
+OUTPUT|GROSS_PROFIT_PERIOD_LC|ALL||CurrencyAttribute|LC|Convertible|Gross Profit (Loss) Current Period|Gross Proft (Loss) Current Period = Total Sales Net Current Period - Cost of Sales Std Current Period - Contract Loss Reserve Adjustment|POC POB Outputs|H|Group1|1||
 OUTPUT|ESTIMATED_GROSS_MARGIN|ALL||DecimalMetric||NonConvertible|Estimated Gross Margin|Estimated Gross Margin|POC POB Outputs|H|Group1|1||
 OUTPUT|GROSS_MARGIN_CTD|ALL||DecimalMetric||NonConvertible|Gross Margin CTD|Gross Margin CTD|POC POB Outputs|H|Group1|1||
 OUTPUT|GROSS_MARGIN_PERIOD|ALL||DecimalMetric||NonConvertible|Gross Margin Period|Gross Margin Period|POC POB Outputs|H|Group1|1||
 OUTPUT|PERCENT_COMPLETE|ALL||DecimalMetric|LC|NonConvertible|Percent Complete|Percent Complete|POC POB Outputs|H|Group1|1||
-OUTPUT|COST_TO_COMPLETE_LC|POB||CurrencyMetric|LC|Convertible|Cost to Complete|Cost to Complete-Remaining Estimate to Complete = Estimated Costs at Completion - Costs Incurred to Date|POC POB Outputs|H|Group1|1||
-OUTPUT|CONTRACT_BILLINGS_CTD_CC|Contract||CurrencyMetric|CC|NonConvertible|Billings CTD||POC POB Outputs|H|Group1|1||
-OUTPUT|CONTRACT_BILLINGS_PERIOD_CC|Contract||CurrencyMetric|CC|NonConvertible|Period Billings||POC POB Outputs|H|Group1|1||
-OUTPUT|CONTRACT_ASSET_CTD_LC|Contract||CurrencyMetric|LC|Convertible|Revenue in Excess|Revenue in Excess|POC POB Outputs|H|Group1|1||
-OUTPUT|CONTRACT_ASSET_PERIOD_LC|Contract||CurrencyMetric|LC|Convertible|Contract Asset Period|Contract Asset Period|POC POB Outputs|H|Group1|1||
-OUTPUT|CONTRACT_LIABILITY_CTD_LC|Contract||CurrencyMetric|LC|Convertible|Billings in Excess|Billings in Excess|POC POB Outputs|H|Group1|1||
-OUTPUT|CONTRACT_LIABILITY_PERIOD_LC|Contract||CurrencyMetric|LC|Convertible|Contract Liability Period|Contract Liability Period|POC POB Outputs|H|Group1|1||
-OUTPUT|COST_OF_GOODS_SOLD_CTD_LC|POB||CurrencyMetric|LC|Convertible|COGS CTD|Costs Incurred To Date = Cost Incurred Locally  Materials Received + Third Party Progress Not Received + Intercompany Progress Not Received|POC POB Outputs|O|Group1|2||
-OUTPUT|COSTS_INCURRED_CTD_LC|POB||CurrencyMetric|LC|Convertible|Costs Incurred To Date|Costs Incurred To Date = Cost Incurred Locally  Materials Received + Third Party Progress Not Received + Intercompany Progress Not Received|POC POB Outputs|O|Group1|2||
-OUTPUT|COST_OF_GOODS_SOLD_PERIOD_LC|POB||CurrencyMetric|LC|Convertible|Cost Of Sales Std Current Period|COST_OF_GOODS_SOLD_LC - COST_OF_GOODS_SOLD_LC PRIOR_PERIOD|POC POB Outputs|O|Group1|2||
-OUTPUT|COST_GOODS_SOLD_BACKLOG_LC|POB||CurrencyMetric|LC|Convertible|COGS in Backlog|COGS in Backlog = Estimated Costs at Completion - COGS CTD|POC POB Outputs|O|Group1|2||
-OUTPUT|CHANGE_IN_EAC_LC|POB||CurrencyMetric|LC|Convertible|Change in EAC|Change in EAC = Estimated Costs at Completion - Estimated Costs at Completion Prior Period|POC POB Outputs|O|Group1|2||
-OUTPUT|REVENUE_TO_RECOGNIZE_CTD_CC|POB||CurrencyMetric|CC|NonConvertible|CTD Revenue Recognized|CTD Revenue Recognized|POC POB Outputs|O|Group1|2||
-OUTPUT|CONTRACT_REVENUE_TO_RECOGNIZE_CTD_CC|Contract||CurrencyMetric|CC|NonConvertible|CTD Revenue to Recognize|CTD Revenue To Recognize = Percent Complete x Transaction Price excl LD|POC POB Outputs|O|Group1|2||
-OUTPUT|CONTRACT_REVENUE_TO_RECOGNIZE_PERIOD_CC|Contract||CurrencyMetric|CC|Convertible|Contract Revenue to Recognize Period||POC POB Outputs|O|Group1|2||
-OUTPUT|REVENUE_TO_RECOGNIZE_PERIOD_CC|POB||CurrencyMetric|CC|Convertible|Period Revenue To Recognize|Period Revenue To Recognize = CTD Revenue Recognized - CTD Revenue Recognized Prior Period|POC POB Outputs|O|Group1|2||
-OUTPUT|LIQUIDATED_DAMAGES_TO_RECOGNIZE_CTD_CC|POB||CurrencyMetric|CC|NonConvertible|Liquidated Damages Penalties Recognized|Liquidated Damages Penalties Recognized = Percent Complete x Estimated Liquidated Damages Penalty|POC POB Outputs|O|Group1|2||
-OUTPUT|LIQUIDATED_DAMAGES_TO_RECOGNIZE_PERIOD_CC|POB||CurrencyMetric|CC|Convertible|Liquidated Damages To Recognize In Current Period|Liquidated Damages To Recognize In Current Period-Liquidated Damages To Recognize In Current Period = Liquidated Damages Penalties To Recognize - Liquidated Damages Penalties Recognized Prior Period|POC POB Outputs|O|Group1|2||
-OUTPUT|LIQUIDATED_DAMAGES_BACKLOG_CC|POB||CurrencyMetric|CC|Convertible|LD Penalties in Backlog|LD Penalties in Backlog = Estimated Liquidated Damages Penalty -  Liquidated Damages Penalties Recognized|POC POB Outputs|O|Group1|2||
-OUTPUT|NET_PERIOD_SALES_CC|POB||CurrencyMetric|CC|Convertible|Total Sales Net Current Period|Total Sales Net Current Period = Period Revenue To Recognize - Liquidated Damages To Recognize in Current Period|POC POB Outputs|O|Group1|2||
-OUTPUT|TRANSACTION_PRICE_BACKLOG_CC|POB||CurrencyMetric|CC|Convertible|Revenue in Backlog|Revenue in Backlog = Transaction Price excl LD - CTD Revenue Recognized|POC POB Outputs|O|Group1|2||
-OUTPUT|TRANSACTION_PRICE_NET_LD_LC|POB||CurrencyMetric|LC|Convertible|Total Transaction Price Net of Liquidated Damages|Total Transaction Price Net of Liquidated Damages|POC POB Outputs|O|Group1|2||
-OUTPUT|TRANSACTION_PRICE_ADJ_LC|POB||CurrencyMetric|LC|Convertible|Adjusted Transaction Price|Adjusted Transaction Price|POC POB Outputs|O|Group1|2||
-OUTPUT|REMAINING_ESTIMATE_COMPLETE_LC|POB||CurrencyMetric|LC|Convertible|Remaining Estimate to Complete |Remaining Estimate to Complete = Estimated Costs at Completion - Costs Incurred to Date |POC POB Outputs|O|Group1|2||
-OUTPUT|PROJECTED_GAIN_LOSS_LC|POB||CurrencyMetric|LC|Convertible|Projected Gain(Loss) |Projected Gain(Loss)|POC POB Outputs|O|Group1|2||
-OUTPUT|PROJECTED_GAIN_LOSS_BACKLOG_LC|POB||CurrencyMetric|LC|Convertible|Projected Gain(Loss) in Backlog|Projected Gain (Loss) in Backlog = Revenue in Backlog (Local Currency) - LD Penalties in Backlog (Local Currency) - COGS in Backlog|POC POB Outputs|O|Group1|2||
-OUTPUT|TOTAL_COST_GOODS_SOLD_LC|Contract||CurrencyMetric|LC|Convertible|Total Cost of Goods Sold|Total Cost of Goods Sold|POC POB Outputs|O|Group1|2||
-OUTPUT|LOSS_RESERVE_CTD_LC|Contract||CurrencyMetric|LC|Convertible|Contract Loss Reserve CTD||POC POB Outputs|O|Group1|2||
-OUTPUT|LOSS_RESERVE_PERIOD_ADJ_LC|Contract||CurrencyMetric|LC|Convertible|Contract Loss Reserve Adjustment|Contract Loss Reserve Adjustment-Contract Loss Reserve Adjustment = Projected Gain (Loss) in Backlog - Contract Loss Reserve CTD Prior Period (Watch for contracts that flip between profit and loss)|POC POB Outputs|O|Group1|2||
-OUTPUT|TPC_TO_ACCEL_PERIOD_LC|Contract||CurrencyMetric|LC|Convertible|Accelerated Third Party Commissions Current Period||POC Contract Metrics||Group1|1||
-OUTPUT|TPC_TOTAL_EXPENSE_PERIOD_LC|Contract||CurrencyMetric|LC|Convertible|Third Party Commissions Total Expense Current Period||POC Contract Metrics||Group1|1||
-OUTPUT|TPC_TOTAL_EXPENSE_CTD_LC|Contract||CurrencyMetric|LC|Convertible|Third Party Commissions Total Expense CTD||POC Contract Metrics||Group1|1||
-OUTPUT|TPC_TO_ACCEL_CTD_LC|Contract||CurrencyMetric|LC|Convertible|Accelerated Third Party Commissions CTD||POC Contract Metrics||Group1|1||
-OUTPUT|TPC_NET_ACCEL_LOSS_CTD_LC|Contract||CurrencyMetric|LC|Convertible|TPC Net of Accelerated Loss CTD||POC Contract Metrics||Group1|1||
-OUTPUT|TPC_TOTAL_ACCEL_RECOGNIZED_CTD_LC|Contract||CurrencyMetric|LC|Convertible|Total Cumulative TPCs Recognized||POC Contract Metrics||Group1|1||
-OUTPUT|TPC_TO_ACCEL_PERIOD_ADJ_LC|Contract||CurrencyMetric|LC|Convertible|TPCs Recognition Acceleration Adjustment||POC Contract Metrics||Group1|1||
-OUTPUT|TPC_BACKLOG_LC|Contract||CurrencyMetric|LC|Convertible|TPC Backlog||POC Contract Metrics||Group1|1||
-OUTPUT|CONTRACT_POSITION_LC|Contract||CurrencyMetric|LC|Convertible|Contract Position||POC Contract Metrics||Group1|1||
-OUTPUT|FX_GAIN_LOSS_PERIOD_LC|Contract||CurrencyMetric|LC|Convertible|Fx Gain Loss||POC Contract Metrics||Group1|1||
-OUTPUT|OPERATING_INCOME_PERIOD_LC|Contract||CurrencyMetric|LC|Convertible|Operating Net Income Period||POC Contract Metrics||Group1|1||
-OUTPUT|NET_INCOME_PERIOD_LC|Contract||CurrencyMetric|LC|Convertible|Net Income Period||POC Contract Metrics||Group1|1||
-OUTPUT|RETAINED_EARNINGS_LC|Contract||CurrencyMetric|LC|Convertible|Retained Earnings||POC Contract Metrics||Group1|1||
-OUTPUT|CONTRACT_STATUS|Contract||StringMetric||NonConvertible|Contract Status|Contract Status|POC Contract Metrics||Group1|1||
-INPUT|CONTRACT_CLOSURE_DATE|Contract||DateMetric||NonConvertible|Contract Closure Date|Contract Closure Date|POC Contract Metrics||Group1|1||
-INPUT|CONTRACT_COMPLETION_DATE|Contract||DateMetric||NonConvertible|Contract Completion Date|Contract Completion Date|POC Contract Metrics||Group1|1||
+OUTPUT|COST_TO_COMPLETE_LC|POB||CurrencyAttribute|LC|Convertible|Cost to Complete|Cost to Complete-Remaining Estimate to Complete = Estimated Costs at Completion - Costs Incurred to Date|POC POB Outputs|H|Group1|1||
+OUTPUT|CONTRACT_BILLINGS_CTD_CC|Contract||CurrencyAttribute|CC|NonConvertible|Billings CTD||POC POB Outputs|H|Group1|1||
+OUTPUT|CONTRACT_BILLINGS_PERIOD_CC|Contract||CurrencyAttribute|CC|NonConvertible|Period Billings||POC POB Outputs|H|Group1|1||
+OUTPUT|CONTRACT_ASSET_CTD_LC|Contract||CurrencyAttribute|LC|Convertible|Revenue in Excess|Revenue in Excess|POC POB Outputs|H|Group1|1||
+OUTPUT|CONTRACT_ASSET_PERIOD_LC|Contract||CurrencyAttribute|LC|Convertible|Contract Asset Period|Contract Asset Period|POC POB Outputs|H|Group1|1||
+OUTPUT|CONTRACT_LIABILITY_CTD_LC|Contract||CurrencyAttribute|LC|Convertible|Billings in Excess|Billings in Excess|POC POB Outputs|H|Group1|1||
+OUTPUT|CONTRACT_LIABILITY_PERIOD_LC|Contract||CurrencyAttribute|LC|Convertible|Contract Liability Period|Contract Liability Period|POC POB Outputs|H|Group1|1||
+OUTPUT|COST_OF_GOODS_SOLD_CTD_LC|POB||CurrencyAttribute|LC|Convertible|COGS CTD|Costs Incurred To Date = Cost Incurred Locally  Materials Received + Third Party Progress Not Received + Intercompany Progress Not Received|POC POB Outputs|O|Group1|2||
+OUTPUT|COSTS_INCURRED_CTD_LC|POB||CurrencyAttribute|LC|Convertible|Costs Incurred To Date|Costs Incurred To Date = Cost Incurred Locally  Materials Received + Third Party Progress Not Received + Intercompany Progress Not Received|POC POB Outputs|O|Group1|2||
+OUTPUT|COST_OF_GOODS_SOLD_PERIOD_LC|POB||CurrencyAttribute|LC|Convertible|Cost Of Sales Std Current Period|COST_OF_GOODS_SOLD_LC - COST_OF_GOODS_SOLD_LC PRIOR_PERIOD|POC POB Outputs|O|Group1|2||
+OUTPUT|COST_GOODS_SOLD_BACKLOG_LC|POB||CurrencyAttribute|LC|Convertible|COGS in Backlog|COGS in Backlog = Estimated Costs at Completion - COGS CTD|POC POB Outputs|O|Group1|2||
+OUTPUT|CHANGE_IN_EAC_LC|POB||CurrencyAttribute|LC|Convertible|Change in EAC|Change in EAC = Estimated Costs at Completion - Estimated Costs at Completion Prior Period|POC POB Outputs|O|Group1|2||
+OUTPUT|REVENUE_TO_RECOGNIZE_CTD_CC|POB||CurrencyAttribute|CC|NonConvertible|CTD Revenue Recognized|CTD Revenue Recognized|POC POB Outputs|O|Group1|2||
+OUTPUT|CONTRACT_REVENUE_TO_RECOGNIZE_CTD_CC|Contract||CurrencyAttribute|CC|NonConvertible|CTD Revenue to Recognize|CTD Revenue To Recognize = Percent Complete x Transaction Price excl LD|POC POB Outputs|O|Group1|2||
+OUTPUT|CONTRACT_REVENUE_TO_RECOGNIZE_PERIOD_CC|Contract||CurrencyAttribute|CC|Convertible|Contract Revenue to Recognize Period||POC POB Outputs|O|Group1|2||
+OUTPUT|REVENUE_TO_RECOGNIZE_PERIOD_CC|POB||CurrencyAttribute|CC|Convertible|Period Revenue To Recognize|Period Revenue To Recognize = CTD Revenue Recognized - CTD Revenue Recognized Prior Period|POC POB Outputs|O|Group1|2||
+OUTPUT|LIQUIDATED_DAMAGES_TO_RECOGNIZE_CTD_CC|POB||CurrencyAttribute|CC|NonConvertible|Liquidated Damages Penalties Recognized|Liquidated Damages Penalties Recognized = Percent Complete x Estimated Liquidated Damages Penalty|POC POB Outputs|O|Group1|2||
+OUTPUT|LIQUIDATED_DAMAGES_TO_RECOGNIZE_PERIOD_CC|POB||CurrencyAttribute|CC|Convertible|Liquidated Damages To Recognize In Current Period|Liquidated Damages To Recognize In Current Period-Liquidated Damages To Recognize In Current Period = Liquidated Damages Penalties To Recognize - Liquidated Damages Penalties Recognized Prior Period|POC POB Outputs|O|Group1|2||
+OUTPUT|LIQUIDATED_DAMAGES_BACKLOG_CC|POB||CurrencyAttribute|CC|Convertible|LD Penalties in Backlog|LD Penalties in Backlog = Estimated Liquidated Damages Penalty -  Liquidated Damages Penalties Recognized|POC POB Outputs|O|Group1|2||
+OUTPUT|NET_PERIOD_SALES_CC|POB||CurrencyAttribute|CC|Convertible|Total Sales Net Current Period|Total Sales Net Current Period = Period Revenue To Recognize - Liquidated Damages To Recognize in Current Period|POC POB Outputs|O|Group1|2||
+OUTPUT|TRANSACTION_PRICE_BACKLOG_CC|POB||CurrencyAttribute|CC|Convertible|Revenue in Backlog|Revenue in Backlog = Transaction Price excl LD - CTD Revenue Recognized|POC POB Outputs|O|Group1|2||
+OUTPUT|TRANSACTION_PRICE_NET_LD_LC|POB||CurrencyAttribute|LC|Convertible|Total Transaction Price Net of Liquidated Damages|Total Transaction Price Net of Liquidated Damages|POC POB Outputs|O|Group1|2||
+OUTPUT|TRANSACTION_PRICE_ADJ_LC|POB||CurrencyAttribute|LC|Convertible|Adjusted Transaction Price|Adjusted Transaction Price|POC POB Outputs|O|Group1|2||
+OUTPUT|REMAINING_ESTIMATE_COMPLETE_LC|POB||CurrencyAttribute|LC|Convertible|Remaining Estimate to Complete |Remaining Estimate to Complete = Estimated Costs at Completion - Costs Incurred to Date |POC POB Outputs|O|Group1|2||
+OUTPUT|PROJECTED_GAIN_LOSS_LC|POB||CurrencyAttribute|LC|Convertible|Projected Gain(Loss) |Projected Gain(Loss)|POC POB Outputs|O|Group1|2||
+OUTPUT|PROJECTED_GAIN_LOSS_BACKLOG_LC|POB||CurrencyAttribute|LC|Convertible|Projected Gain(Loss) in Backlog|Projected Gain (Loss) in Backlog = Revenue in Backlog (Local Currency) - LD Penalties in Backlog (Local Currency) - COGS in Backlog|POC POB Outputs|O|Group1|2||
+OUTPUT|TOTAL_COST_GOODS_SOLD_LC|Contract||CurrencyAttribute|LC|Convertible|Total Cost of Goods Sold|Total Cost of Goods Sold|POC POB Outputs|O|Group1|2||
+OUTPUT|LOSS_RESERVE_CTD_LC|Contract||CurrencyAttribute|LC|Convertible|Contract Loss Reserve CTD||POC POB Outputs|O|Group1|2||
+OUTPUT|LOSS_RESERVE_PERIOD_ADJ_LC|Contract||CurrencyAttribute|LC|Convertible|Contract Loss Reserve Adjustment|Contract Loss Reserve Adjustment-Contract Loss Reserve Adjustment = Projected Gain (Loss) in Backlog - Contract Loss Reserve CTD Prior Period (Watch for contracts that flip between profit and loss)|POC POB Outputs|O|Group1|2||
+OUTPUT|TPC_TO_ACCEL_PERIOD_LC|Contract||CurrencyAttribute|LC|Convertible|Accelerated Third Party Commissions Current Period||POC Contract Metrics||Group1|1||
+OUTPUT|TPC_TOTAL_EXPENSE_PERIOD_LC|Contract||CurrencyAttribute|LC|Convertible|Third Party Commissions Total Expense Current Period||POC Contract Metrics||Group1|1||
+OUTPUT|TPC_TOTAL_EXPENSE_CTD_LC|Contract||CurrencyAttribute|LC|Convertible|Third Party Commissions Total Expense CTD||POC Contract Metrics||Group1|1||
+OUTPUT|TPC_TO_ACCEL_CTD_LC|Contract||CurrencyAttribute|LC|Convertible|Accelerated Third Party Commissions CTD||POC Contract Metrics||Group1|1||
+OUTPUT|TPC_NET_ACCEL_LOSS_CTD_LC|Contract||CurrencyAttribute|LC|Convertible|TPC Net of Accelerated Loss CTD||POC Contract Metrics||Group1|1||
+OUTPUT|TPC_TOTAL_ACCEL_RECOGNIZED_CTD_LC|Contract||CurrencyAttribute|LC|Convertible|Total Cumulative TPCs Recognized||POC Contract Metrics||Group1|1||
+OUTPUT|TPC_TO_ACCEL_PERIOD_ADJ_LC|Contract||CurrencyAttribute|LC|Convertible|TPCs Recognition Acceleration Adjustment||POC Contract Metrics||Group1|1||
+OUTPUT|TPC_BACKLOG_LC|Contract||CurrencyAttribute|LC|Convertible|TPC Backlog||POC Contract Metrics||Group1|1||
+OUTPUT|CONTRACT_POSITION_LC|Contract||CurrencyAttribute|LC|Convertible|Contract Position||POC Contract Metrics||Group1|1||
+OUTPUT|FX_GAIN_LOSS_PERIOD_LC|Contract||CurrencyAttribute|LC|Convertible|Fx Gain Loss||POC Contract Metrics||Group1|1||
+OUTPUT|OPERATING_INCOME_PERIOD_LC|Contract||CurrencyAttribute|LC|Convertible|Operating Net Income Period||POC Contract Metrics||Group1|1||
+OUTPUT|NET_INCOME_PERIOD_LC|Contract||CurrencyAttribute|LC|Convertible|Net Income Period||POC Contract Metrics||Group1|1||
+OUTPUT|RETAINED_EARNINGS_LC|Contract||CurrencyAttribute|LC|Convertible|Retained Earnings||POC Contract Metrics||Group1|1||
+OUTPUT|CONTRACT_STATUS|Contract||StringAttribute||NonConvertible|Contract Status|Contract Status|POC Contract Metrics||Group1|1||
+INPUT|CONTRACT_CLOSURE_DATE|Contract||DateAttribute||NonConvertible|Contract Closure Date|Contract Closure Date|POC Contract Metrics||Group1|1||
+INPUT|CONTRACT_COMPLETION_DATE|Contract||DateAttribute||NonConvertible|Contract Completion Date|Contract Completion Date|POC Contract Metrics||Group1|1||
 OUTPUT|IMPUTED_FX_RATE_BILLINGS_CTD|Contract||DecimalMetric||NonConvertible|Imputed Fx Rate Billings|Imputed Fx Rate Billings|POC POB Outputs|H|Group1|1||
 OUTPUT|IMPUTED_FX_RATE_REVENUE_CTD|Contract||DecimalMetric||NonConvertible|Imputed Fx Rate Revenue|Imputed Fx Rate Revenue|POC POB Outputs|H|Group1|1||
 OUTPUT|IMPUTED_FX_RATE_DELTA|Contract||DecimalMetric||NonConvertible|Imputed Fx Rate Delta|Imputed Fx Rate Delta|POC POB Outputs|H|Group1|1||
-OUTPUT|CONTRACT_POSITION_CTD_LC|Contract||CurrencyMetric|LC|NonConvertible|Contract Position CTD||POC Contract Metrics||Group1|1||
-OUTPUT|CONTRACT_ASSET_FX_ADJ_CTD_LC|Contract||CurrencyMetric|LC|NonConvertible|Contract Asset Fx Adjustment CTD||POC Contract Metrics||Group1|1||
-OUTPUT|CONTRACT_LIABILITY_FX_ADJ_CTD_LC|Contract||CurrencyMetric|LC|NonConvertible|Contract Liability Fx Adjustment CTD||POC Contract Metrics||Group1|1||
-OUTPUT|CONTRACT_ASSET_FX_ADJ_PERIOD_LC|Contract||CurrencyMetric|LC|NonConvertible|Contract Asset Fx Adjustment Period||POC Contract Metrics||Group1|1||
-OUTPUT|CONTRACT_LIABILITY_FX_ADJ_PERIOD_LC|Contract||CurrencyMetric|LC|NonConvertible|Contract Liability Fx Adjustment Period||POC Contract Metrics||Group1|1||
-OUTPUT|CONTRACT_TOTAL_FX_ADJ_PERIOD_LC|Contract||CurrencyMetric|LC|NonConvertible|Contract Total Fx Adjustment Period||POC Contract Metrics||Group1|1||
+OUTPUT|CONTRACT_POSITION_CTD_LC|Contract||CurrencyAttribute|LC|NonConvertible|Contract Position CTD||POC Contract Metrics||Group1|1||
+OUTPUT|CONTRACT_ASSET_FX_ADJ_CTD_LC|Contract||CurrencyAttribute|LC|NonConvertible|Contract Asset Fx Adjustment CTD||POC Contract Metrics||Group1|1||
+OUTPUT|CONTRACT_LIABILITY_FX_ADJ_CTD_LC|Contract||CurrencyAttribute|LC|NonConvertible|Contract Liability Fx Adjustment CTD||POC Contract Metrics||Group1|1||
+OUTPUT|CONTRACT_ASSET_FX_ADJ_PERIOD_LC|Contract||CurrencyAttribute|LC|NonConvertible|Contract Asset Fx Adjustment Period||POC Contract Metrics||Group1|1||
+OUTPUT|CONTRACT_LIABILITY_FX_ADJ_PERIOD_LC|Contract||CurrencyAttribute|LC|NonConvertible|Contract Liability Fx Adjustment Period||POC Contract Metrics||Group1|1||
+OUTPUT|CONTRACT_TOTAL_FX_ADJ_PERIOD_LC|Contract||CurrencyAttribute|LC|NonConvertible|Contract Total Fx Adjustment Period||POC Contract Metrics||Group1|1||
+INPUT|SUBMITTED_BY|Contract||StringAttribute||NonConvertible|Revenue Recognition Method|Revenue Recognition Method|POC POB Metrics|H|Group1|1||

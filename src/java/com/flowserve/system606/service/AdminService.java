@@ -13,6 +13,7 @@ import com.flowserve.system606.model.BusinessUnit;
 import com.flowserve.system606.model.Company;
 import com.flowserve.system606.model.Contract;
 import com.flowserve.system606.model.ContractAttachment;
+import com.flowserve.system606.model.ContractVersion;
 import com.flowserve.system606.model.Country;
 import com.flowserve.system606.model.CurrencyEvent;
 import com.flowserve.system606.model.Customer;
@@ -29,7 +30,6 @@ import com.flowserve.system606.model.WorkflowContext;
 import com.flowserve.system606.model.WorkflowStatus;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.Currency;
 import java.util.List;
@@ -122,6 +122,14 @@ public class AdminService {
         em.persist(object);
     }
 
+    public void persist(ContractVersion contractVersion) {
+        em.persist(contractVersion);
+    }
+
+    public void persist(ContractAttachment contractAttachment) {
+        em.persist(contractAttachment);
+    }
+
     public void persist(WorkflowAction action) {
         em.persist(action);
     }
@@ -174,6 +182,11 @@ public class AdminService {
     public Customer findCustomerById(Long id) {
 
         return em.find(Customer.class, id);
+    }
+
+    public ContractAttachment findContractAttachmentById(Long id) {
+
+        return em.find(ContractAttachment.class, id);
     }
 
     public ReportingUnit findReportingUnitById(Long id) {
@@ -372,6 +385,10 @@ public class AdminService {
 
     public void update(Country country) throws Exception {
         em.merge(country);
+    }
+
+    public void update(ContractVersion contractVersion) throws Exception {
+        em.merge(contractVersion);
     }
 
     public List<ReportingUnit> searchReportingUnits(String searchString) throws Exception {  // Need an application exception type defined.
@@ -1112,24 +1129,36 @@ public class AdminService {
 
     }
 
+    public Contract findContractbyID(Long id) throws Exception {
+
+        Query query = em.createQuery("SELECT c FROM Contract c WHERE c.id = :ID", Contract.class);
+        query.setParameter("ID", id);
+        List<Contract> contract = query.getResultList();
+        if (contract.size() > 0) {
+            return contract.get(0);
+        }
+        return null;
+    }
+
     //the version_id is null currently so its just for a testing perpose of the pdf viewer
     public List<String> allAttachment() throws Exception {
         Query query = em.createQuery("SELECT c.description  FROM ContractAttachment c ");
 
         return (List<String>) query.getResultList();
     }
+
     //the version_id is null currently so its just for a testing perpose of the pdf viewer
-    public byte[] getAttachmentByDesc(String desc){
-    
-    Query query = em.createQuery("SELECT c.attachment FROM ContractAttachment c where c.description=:desc");
-    query.setParameter("desc", desc);
-        
+    public byte[] getAttachmentByDesc(String desc) {
+
+        Query query = em.createQuery("SELECT c.attachment FROM ContractAttachment c where c.description=:desc");
+        query.setParameter("desc", desc);
+
         List<byte[]> am = query.getResultList();
-        
+
         if (am.size() > 0) {
             return am.get(0);
         }
         return null;
     }
-    
+
 }

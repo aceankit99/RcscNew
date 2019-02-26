@@ -8,6 +8,7 @@ package com.flowserve.system606.service;
 import com.flowserve.system606.model.Attribute;
 import com.flowserve.system606.model.AttributeType;
 import com.flowserve.system606.model.Contract;
+import com.flowserve.system606.model.ContractAttachment;
 import com.flowserve.system606.model.CurrencyAttribute;
 import com.flowserve.system606.model.ExchangeRate;
 import com.flowserve.system606.model.FinancialPeriod;
@@ -18,13 +19,13 @@ import com.flowserve.system606.model.TransientMeasurable;
 import com.flowserve.system606.web.WebSession;
 import java.math.BigDecimal;
 import java.util.Currency;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -64,6 +65,16 @@ public class CalculationVersionService {
     @PostConstruct
     public void init() {
         //metricTypes = metricService.findActiveMetricTypes();
+    }
+
+    public ContractAttachment findContractAttachment(Long id) {
+        Query query = em.createQuery("SELECT c FROM ContractAttachment c WHERE c.id = :ID", ContractAttachment.class);
+        query.setParameter("ID", id);
+        List<ContractAttachment> am = query.getResultList();
+        if (am.size() > 0) {
+            return am.get(0);
+        }
+        return null;
     }
 
     private boolean isMetricStoredAtMeasurable(AttributeType attributeType, Measurable measurable) {

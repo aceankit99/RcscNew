@@ -8,69 +8,66 @@ package com.flowserve.system606.view;
 import com.flowserve.system606.model.BusinessUnit;
 import com.flowserve.system606.model.Contract;
 import com.flowserve.system606.model.ContractAttachment;
+import com.flowserve.system606.model.ContractVersion;
 import com.flowserve.system606.model.Customer;
 import com.flowserve.system606.model.User;
 import com.flowserve.system606.service.AdminService;
-import java.io.ByteArrayInputStream;
+import com.flowserve.system606.service.CalculationVersionService;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.SessionScoped;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import org.primefaces.model.DefaultStreamedContent;
-import org.primefaces.model.StreamedContent;
-
-
 
 /**
  *
- * @author user
+ * @author constacloud
  */
 @Named(value = "contractBooking")
-@SessionScoped
-public class ContractBooking implements Serializable{
-    
-    @Inject
-    private AdminService adminService;
+@ViewScoped
+public class ContractBooking implements Serializable {
 
     private static Logger logger = Logger.getLogger("com.flowserve.system606");
-    private Contract Contract = new Contract();
+
+    @Inject
+    private AdminService adminService;
+    @Inject
+    private CalculationVersionService calculationVersionService;
+
+    private Contract contract = new Contract();
     List<BusinessUnit> businessUnits = new ArrayList<BusinessUnit>();
     private User completedUser;
     private Customer completeCustomer;
-    List<String> attachmentName =new ArrayList<String>();
-    String fileName;
-    StreamedContent content;
-    byte[] tempFile;
-    
+    private ContractAttachment contractAttachment;
+    private ContractVersion contractVersion;
+    List<ContractAttachment> contractAttachmentList = new ArrayList<ContractAttachment>();
+
     @PostConstruct
     public void init() {
 
         try {
             businessUnits = adminService.allBusinessUnit();
-            attachmentName = adminService.allAttachment();
-            content=getPDF(attachmentName.get(0));
-           //just for initilizing the pdf viewer on page load
+            contract = adminService.findContractbyID(new Long(1));
+            contractVersion = contract.getContractVersionMap().get("1.0");
+            contractAttachmentList = contract.getContractVersionMap().get("1.0").getContractAttachment();
+            contractAttachment = contractAttachmentList.get(0);
         } catch (Exception ex) {
             Logger.getLogger(ReportingUnitEdit.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
 
-
     public Contract getContract() {
-        return Contract;
+        return contract;
     }
 
-    public void setContract(Contract Contract) {
-        this.Contract = Contract;
+    public void setContract(Contract contract) {
+        this.contract = contract;
     }
-
-  
 
     public List<BusinessUnit> getBusinessUnits() {
         return businessUnits;
@@ -96,40 +93,28 @@ public class ContractBooking implements Serializable{
         this.completeCustomer = completeCustomer;
     }
 
-    public List<String> getAttachmentName() {
-        return attachmentName;
+    public ContractVersion getContractVersion() {
+        return contractVersion;
     }
 
-    public void setAttachmentName(List<String> attachmentName) {
-        this.attachmentName = attachmentName;
+    public void setContractVersion(ContractVersion contractVersion) {
+        this.contractVersion = contractVersion;
     }
 
-    public String getFileName() {
-        return fileName;
+    public ContractAttachment getContractAttachment() {
+        return contractAttachment;
     }
 
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
-    }
-    
-   
-    public StreamedContent getPDF(String name) {
-        
-        tempFile = adminService.getAttachmentByDesc(name);
-        ByteArrayInputStream bytearrayContent = new ByteArrayInputStream(tempFile);
-        content = new DefaultStreamedContent(bytearrayContent, "application/pdf");
-        
-        return content;
-
+    public void setContractAttachment(ContractAttachment contractAttachment) {
+        this.contractAttachment = contractAttachment;
     }
 
-    public StreamedContent getContent() {
-        return content;
+    public List<ContractAttachment> getContractAttachmentList() {
+        return contractAttachmentList;
     }
 
-    public void setContent(StreamedContent content) {
-        this.content = content;
+    public void setContractAttachmentList(List<ContractAttachment> contractAttachmentList) {
+        this.contractAttachmentList = contractAttachmentList;
     }
-  
-  
+
 }

@@ -10,14 +10,10 @@ import com.flowserve.system606.model.Contract;
 import com.flowserve.system606.model.ContractAttachment;
 import com.flowserve.system606.model.ContractVersion;
 import com.flowserve.system606.model.Customer;
-import com.flowserve.system606.model.User;
 import com.flowserve.system606.service.AdminService;
 import com.flowserve.system606.service.CalculationVersionService;
-import java.io.File;
-import java.io.InputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -51,12 +47,15 @@ public class ContractAdd implements Serializable {
     private ContractAttachment sspAttachment;
     private ContractAttachment contractLineAttachment;
     private ContractAttachment otherAttachment;
-    
+
+    private boolean purcahseCheck;
+    private boolean purcahseDisable = true;
+
     private UploadedFile attachmentFile;
 
     List<BusinessUnit> businessUnits = new ArrayList<BusinessUnit>();
     private Customer completeCustomer;
-    
+
     @Inject
     private CalculationVersionService calculationVersionService;
 
@@ -65,32 +64,52 @@ public class ContractAdd implements Serializable {
 
     @PostConstruct
     public void init() {
-        
+
         try {
             businessUnits = adminService.allBusinessUnit();
-            purcahseAttachment = new ContractAttachment("Executed Purchase Order/Sales Order/Contract: ");
-            tncAttachment = new ContractAttachment("Terms and Conditions/Master Sales Agreement: ");
-            acknowledgementAttachment = new ContractAttachment("Order Acknowledgement: ");
-            sspAttachment = new ContractAttachment("Standalone Selling Price Basis: ");
-            contractLineAttachment = new ContractAttachment("Contract Line Detail Margin Analysis (SAP Form): ");
-            otherAttachment = new ContractAttachment("description");
+            purcahseAttachment = new ContractAttachment("Executed Purchase Order/Sales Order/Contract");
+            tncAttachment = new ContractAttachment("Terms and Conditions/Master Sales Agreement");
+            acknowledgementAttachment = new ContractAttachment("Order Acknowledgement");
+            sspAttachment = new ContractAttachment("Standalone Selling Price Basis");
+            contractLineAttachment = new ContractAttachment("Contract Line Detail Margin Analysis (SAP Form)");
+            otherAttachment = new ContractAttachment();
         } catch (Exception ex) {
             Logger.getLogger(ReportingUnitEdit.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
-    
+
+    public void uploadEnableDisable(String type) {
+        String summary = purcahseCheck ? "Checked" : "Unchecked";
+        if (type.equalsIgnoreCase("purcahse")) {
+            this.purcahseDisable = !summary.equalsIgnoreCase("Checked");
+        }
+
+    }
+
     public String saveNewContractVersion(Contract cv) throws Exception {
         FacesContext context = FacesContext.getCurrentInstance();
 
         try {
-            contractVersion.getContractAttachment().add(purcahseAttachment);
-            contractVersion.getContractAttachment().add(tncAttachment);
-            contractVersion.getContractAttachment().add(acknowledgementAttachment);
-            contractVersion.getContractAttachment().add(sspAttachment);
-            contractVersion.getContractAttachment().add(contractLineAttachment);
-            contractVersion.getContractAttachment().add(otherAttachment);
-            cv.getContractVersionMap().put(contract.getCurrentVersion(), contractVersion);
+            if (purcahseAttachment.getAttachment() != null) {
+                contractVersion.getContractAttachment().add(purcahseAttachment);
+            }
+            if (tncAttachment.getAttachment() != null) {
+                contractVersion.getContractAttachment().add(tncAttachment);
+            }
+            if (acknowledgementAttachment.getAttachment() != null) {
+                contractVersion.getContractAttachment().add(acknowledgementAttachment);
+            }
+            if (sspAttachment.getAttachment() != null) {
+                contractVersion.getContractAttachment().add(sspAttachment);
+            }
+            if (contractLineAttachment.getAttachment() != null) {
+                contractVersion.getContractAttachment().add(contractLineAttachment);
+            }
+            if (otherAttachment.getAttachment() != null) {
+                contractVersion.getContractAttachment().add(otherAttachment);
+            }
+            cv.putContractVersionMap(contract.getCurrentVersion(), contractVersion);
             adminService.persist(cv);
         } catch (Exception e) {
             logger.log(Level.SEVERE, e.getMessage(), e);
@@ -105,32 +124,44 @@ public class ContractAdd implements Serializable {
 
     public void handleFileUpload(FileUploadEvent event) {
         String type = (String) event.getComponent().getAttributes().get("fileAttachment");
-        
+
         try {
             byte[] bytes = IOUtils.toByteArray(event.getFile().getInputstream());
-             switch (type) {
+            switch (type) {
                 case "purchase":
-                    purcahseAttachment.setAttachment(new javax.sql.rowset.serial.SerialBlob(bytes));
+                    purcahseAttachment.setAttachment(bytes);
+                    purcahseAttachment.setContentType(event.getFile().getContentType());
+                    purcahseAttachment.setContractVersion(contractVersion);
                     break;
                 case "tnc":
-                       tncAttachment.setAttachment(new javax.sql.rowset.serial.SerialBlob(bytes));
+                    tncAttachment.setAttachment(bytes);
+                    tncAttachment.setContentType(event.getFile().getContentType());
+                    tncAttachment.setContractVersion(contractVersion);
                     break;
                 case "acknowledgement":
-                    acknowledgementAttachment.setAttachment(new javax.sql.rowset.serial.SerialBlob(bytes));
+                    acknowledgementAttachment.setAttachment(bytes);
+                    acknowledgementAttachment.setContentType(event.getFile().getContentType());
+                    acknowledgementAttachment.setAttachment(bytes);
                     break;
                 case "ssp":
-                    sspAttachment.setAttachment(new javax.sql.rowset.serial.SerialBlob(bytes));
+                    sspAttachment.setAttachment(bytes);
+                    sspAttachment.setContentType(event.getFile().getContentType());
+                    sspAttachment.setAttachment(bytes);
                     break;
                 case "contractLine":
-                    contractLineAttachment.setAttachment(new javax.sql.rowset.serial.SerialBlob(bytes));
+                    contractLineAttachment.setAttachment(bytes);
+                    contractLineAttachment.setContentType(event.getFile().getContentType());
+                    contractLineAttachment.setAttachment(bytes);
                     break;
                 case "other":
-                    otherAttachment.setAttachment(new javax.sql.rowset.serial.SerialBlob(bytes));
+                    otherAttachment.setAttachment(bytes);
+                    otherAttachment.setContentType(event.getFile().getContentType());
+                    otherAttachment.setAttachment(bytes);
                     break;
                 default:
                     break;
-             }
-             
+            }
+
             FacesMessage msg = new FacesMessage("Succesful", event.getFile().getFileName() + " is uploaded.");
             FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (Exception e) {
@@ -139,7 +170,7 @@ public class ContractAdd implements Serializable {
             logger.log(Level.SEVERE, "Error handleInitialContractUpload.", e);
         }
     }
-    
+
     public UploadedFile getAttachmentFile() {
         return attachmentFile;
     }
@@ -148,7 +179,6 @@ public class ContractAdd implements Serializable {
         this.attachmentFile = attachmentFile;
     }
 
-    
     public Contract getContract() {
         return contract;
     }
@@ -156,7 +186,7 @@ public class ContractAdd implements Serializable {
     public void setContract(Contract contract) {
         this.contract = contract;
     }
-    
+
     public ContractVersion getContractVersion() {
         return contractVersion;
     }
@@ -164,7 +194,7 @@ public class ContractAdd implements Serializable {
     public void setContractVersion(ContractVersion contractVersion) {
         this.contractVersion = contractVersion;
     }
-    
+
     public List<BusinessUnit> getBusinessUnits() {
         return businessUnits;
     }
@@ -172,7 +202,6 @@ public class ContractAdd implements Serializable {
     public void setBusinessUnits(List<BusinessUnit> businessUnits) {
         this.businessUnits = businessUnits;
     }
-
 
     public Customer getCompleteCustomer() {
         return completeCustomer;
@@ -230,5 +259,20 @@ public class ContractAdd implements Serializable {
         this.otherAttachment = otherAttachment;
     }
 
+    public boolean isPurcahseCheck() {
+        return purcahseCheck;
+    }
+
+    public void setPurcahseCheck(boolean purcahseCheck) {
+        this.purcahseCheck = purcahseCheck;
+    }
+
+    public boolean isPurcahseDisable() {
+        return purcahseDisable;
+    }
+
+    public void setPurcahseDisable(boolean purcahseDisable) {
+        this.purcahseDisable = purcahseDisable;
+    }
 
 }

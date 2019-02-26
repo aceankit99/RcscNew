@@ -82,7 +82,7 @@ public class AttributeService {
 
             attributeType.setOwnerEntityType(values[count++]);
             attributeType.setRequired("REQUIRED".equals(values[count++]));
-            attributeType.setMetricClass(values[count++] + "Version");
+            attributeType.setMetricClass(values[count++]);
             metricCurrencyType = values[count++];
             attributeType.setMetricCurrencyType(metricCurrencyType == null || "".equals(metricCurrencyType) ? null : CurrencyType.fromShortName(metricCurrencyType));
             attributeType.setConvertible("Convertible".equals(values[count++]));

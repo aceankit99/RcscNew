@@ -10,8 +10,7 @@
 
             body .ui-widget .ui-widget
             {
-                width: 180px;
-                min-width: 180px;
+                min-width: 160px;
             }
             .tagsize{
                 width: 180px;
@@ -19,6 +18,12 @@
             body .ui-chkbox .ui-chkbox-box {
                 width: 20px;
                 min-width: 20px;
+            }
+            body .ui-panelgrid .ui-panelgrid-cell {
+                padding: 8px 12px 8px 2px;
+            }
+            .ui-grid-col-6{
+                padding: 0 !important;
             }
         </style>
     </ui:define>
@@ -55,216 +60,192 @@
                                     <p:menuitem value=""  />
                                 </p:breadCrumb>
                                 <hr />
-                                <h3 style="margin-left: 55px;">General Information</h3>
-                                <p:panelGrid columns="4" columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank form-group" style="border:0px none; background-color:transparent;margin-left: 50px">
+                                <h3 style="margin-left: 30px;">General Information</h3>
+                                <p:panelGrid columns="2" columnClasses="ui-grid-col-6,ui-grid-col-6" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;margin-left: 10px">
+                                    <p:panel style="width:100%;">
+                                        <p:panelGrid columns="4" >
 
-                                    <p:outputLabel  value="Submitted By:"/>
-                                    <p:autoComplete
-                                        id="submittedBy"
-                                        var="user"
-                                        maxResults="10"
-                                        required="#{false}"
-                                        forceSelection="#{true}"
-                                        value="#{contractAdd.contractVersion.submittedBy}"
-                                        completeMethod="#{viewSupport.completeUser}"
-                                        itemLabel="#{user.name}"
-                                        itemValue="#{user}"
-                                        converter="userConverter"
-                                        placeholder="Search User">
-                                    </p:autoComplete>
+                                            <p:outputLabel  value="Submitted By:"/>
+                                            <p:autoComplete
+                                                id="submittedBy"
+                                                var="user"
+                                                maxResults="10"
+                                                required="#{false}"
+                                                forceSelection="#{true}"
+                                                value="#{contractAdd.contractVersion.submittedBy}"
+                                                completeMethod="#{viewSupport.completeUser}"
+                                                itemLabel="#{user.name}"
+                                                itemValue="#{user}"
+                                                converter="userConverter"
+                                                placeholder="Search User">
+                                            </p:autoComplete>
 
-                                    <p:outputLabel  value="Reporting Unit:"/>
-                                    <p:autoComplete
-                                        id="searchRU"
-                                        var="ru"
-                                        maxResults="10"
-                                        required="#{false}"
-                                        forceSelection="#{true}"
-                                        value="#{contractAdd.contract.reportingUnit}"
-                                        completeMethod="#{viewSupport.getCompleteReportingUnit}"
-                                        itemLabel="#{ru.name}"
-                                        itemValue="#{ru}"
-                                        converter="reportingUnitConverter"
-                                        placeholder="Search RUs..">
-                                    </p:autoComplete>
+                                            <p:outputLabel  value="Reporting Unit:"/>
+                                            <p:autoComplete
+                                                id="searchRU"
+                                                var="ru"
+                                                maxResults="10"
+                                                required="#{false}"
+                                                forceSelection="#{true}"
+                                                value="#{contractAdd.contract.reportingUnit}"
+                                                completeMethod="#{viewSupport.getCompleteReportingUnit}"
+                                                itemLabel="#{ru.name}"
+                                                itemValue="#{ru}"
+                                                converter="reportingUnitConverter"
+                                                placeholder="Search RUs..">
+                                            </p:autoComplete>
 
-                                    <p:outputLabel  value="Entry Date : "/>
-                                    <p:calendar id="entryDate" value="#{contractAdd.contractVersion.contractEntryDate}" converter="localDateConverter" style="width: 100%;"  pattern="MM/dd/yyyy" requiredMessage="Please Select a Date" >
-                                    </p:calendar>
+                                            <p:outputLabel  value="Entry Date : "/>
+                                            <p:calendar id="entryDate" value="#{contractAdd.contractVersion.contractEntryDate}" converter="localDateConverter" style="width: 100%;"  pattern="MM/dd/yyyy" requiredMessage="Please Select a Date" >
+                                            </p:calendar>
 
-                                    <p:outputLabel  value="Platform : "/>
-                                    <p:selectOneMenu id="console" value="#{contractAdd.contract.businessUnit}"
-                                                     effect="fade" var="t" style="width:180px" converter="businessUnitConverter">
-                                        <f:selectItem itemLabel="Select Platform" itemValue="" />
-                                        <f:selectItems value="#{contractAdd.businessUnits}" var="cnt" itemLabel="#{cnt.name}" itemValue="#{cnt}" />
-                                        <p:column>
-                                            <h:outputText value="#{t.name}" />
-                                        </p:column>
-                                    </p:selectOneMenu>
+                                            <p:outputLabel  value="Platform : "/>
+                                            <p:selectOneMenu id="console" value="#{contractAdd.contract.businessUnit}"
+                                                             effect="fade" var="t" style="width:180px" converter="businessUnitConverter">
+                                                <f:selectItem itemLabel="Select Platform" itemValue="" />
+                                                <f:selectItems value="#{contractAdd.businessUnits}" var="cnt" itemLabel="#{cnt.name}" itemValue="#{cnt}" />
+                                                <p:column>
+                                                    <h:outputText value="#{t.name}" />
+                                                </p:column>
+                                            </p:selectOneMenu>
+                                        </p:panelGrid>
+                                        <hr />
+                                        <h3 style="margin-left: 10px;">Contract Header</h3>
+                                        <p:panelGrid columns="4">
+
+                                            <p:outputLabel  value="Customer Name : "/>
+                                            <p:autoComplete
+                                                id="customername"
+                                                var="customer"
+                                                maxResults="10"
+                                                required="#{false}"
+                                                forceSelection="#{true}"
+                                                value="#{contractAdd.completeCustomer}"
+                                                completeMethod="#{viewSupport.completeCustomer}"
+                                                itemLabel="#{customer.name}"
+                                                itemValue="#{customer}"
+                                                converter="customerConverter"
+                                                placeholder="Search Customer">
+                                            </p:autoComplete>
+
+                                            <p:outputLabel  value="Customer PO# : "/>
+                                            <p:inputText  value="#{contractAdd.contract.customerPurchaseOrderNumber}"/>
+
+                                            <p:outputLabel  value="Legal Customer Name : "/>
+                                            <p:autoComplete
+                                                id="leagalname"
+                                                var="customer"
+                                                maxResults="10"
+                                                required="#{false}"
+                                                forceSelection="#{true}"
+                                                value="#{contractAdd.completeCustomer}"
+                                                completeMethod="#{viewSupport.completeCustomer}"
+                                                itemLabel="#{customer.legalName}"
+                                                itemValue="#{customer}"
+                                                converter="customerConverter"
+                                                placeholder="Search Customer">
+                                            </p:autoComplete>
+
+                                            <p:outputLabel  value="FLS Sales Order# : "/>
+                                            <p:inputText  value="#{contractAdd.contract.flsSalesOrderNumber}"/>
+
+                                            <p:outputLabel  value=""/>
+                                            <p:outputLabel  value=""/>
+
+                                            <p:outputLabel  value="SAP# "/>
+                                            <p:inputText  value="#{contractAdd.contract.flsSAPNumber}"/>
+
+                                            <p:outputLabel  value="Purchase Order Date : "/>
+                                            <p:calendar id="orderDate" value="#{contractAdd.contract.bookingDate}" converter="localDateConverter" style="width: 100%;"  pattern="MM/dd/yyyy" required="true" requiredMessage="Please Select a Date" >
+                                            </p:calendar>
+                                            <p:outputLabel  value="Contract Description"/>
+                                            <p:inputTextarea rows="4" cols="25" value="#{contractAdd.contract.description}"/>
+
+                                            <p:outputLabel  value="Date FLS sent acceptance : "/>
+                                            <p:calendar id="flsSentDate" value="#{contractAdd.contract.bookingDate}" converter="localDateConverter" style="width: 100%;"  pattern="MM/dd/yyyy" required="true" requiredMessage="Please Select a Date" >
+                                            </p:calendar>
+
+                                            <p:outputLabel  value="Estimates Contract Completion Date : "/>
+                                            <p:calendar id="completionDate"  value="#{viewSupport.getDateMetric('CONTRACT_COMPLETION_DATE', contractAdd.contract).value}" converter="localDateConverter" style="width: 100%;"  pattern="MM/dd/yyyy" required="true" requiredMessage="Please Select a Date" >
+                                            </p:calendar>
+
+                                            <p:outputLabel  value="Contract Currency : "/>
+                                            <p:selectOneMenu id="contractCurrency" value="#{contractAdd.contract.contractCurrency}"
+                                                             effect="fade" style="width:180px" converter="currencyConverter">
+                                                <f:selectItem itemLabel="Select Currency" itemValue="" />
+                                                <f:selectItems value="#{viewSupport.allCurrencies}" var="cur" itemLabel="#{cur.currencyCode}" itemValue="#{cur}" />
+                                                <p:column>
+                                                    <h:outputText value="#{cur.currencyCode}" />
+                                                </p:column>
+                                            </p:selectOneMenu>
+
+                                            <p:outputLabel  value="Stated Contract Price : "/>
+                                            <p:inputNumber style="width: 180px" />
+
+                                            <p:outputLabel  value="Stated Contract Price(USD) : "/>
+                                            <p:inputNumber style="width: 180px" />
+
+                                            <p:outputLabel  value="Stated Contract Price(Local Currency) : "/>
+                                            <p:inputNumber style="width: 180px" />
+
+                                        </p:panelGrid>
+
+                                    </p:panel>
+                                    <p:panel style="width:100%;">
+                                        <p:panelGrid columns="3" >
+
+                                            <p:selectBooleanCheckbox value="#{contractAdd.purcahseCheck}" style="width: 20px;min-width: 20px;">
+                                                <p:ajax update="messages,pur" listener="#{contractAdd.uploadEnableDisable('purcahse')}" />
+                                            </p:selectBooleanCheckbox>
+                                            <p:outputLabel value="#{contractAdd.purcahseAttachment.description} : " />
+                                            <p:fileUpload id="pur" disabled="#{contractAdd.purcahseDisable}" fileUploadListener="#{contractAdd.handleFileUpload}" mode="advanced" skinSimple="true"
+                                                          update="messages" auto="true" sizeLimit="5000000" allowTypes="/(\.|\/)(pdf)$/" style="width: 280px;">
+                                                <f:attribute name="fileAttachment" value="purchase" />
+                                            </p:fileUpload>
+
+                                            <p:selectBooleanCheckbox style="width: 20px;min-width: 20px;"/>
+                                            <p:outputLabel value="#{contractAdd.tncAttachment.description} : " />
+                                            <p:fileUpload fileUploadListener="#{contractAdd.handleFileUpload}" mode="advanced"
+                                                          update="messages" auto="true" sizeLimit="5000000" allowTypes="/(\.|\/)(pdf)$/" style="width: 280px;">
+                                                <f:attribute name="fileAttachment" value="tnc" />
+                                            </p:fileUpload>
+
+                                            <p:selectBooleanCheckbox style="width: 20px;min-width: 20px;"/>
+                                            <p:outputLabel value="#{contractAdd.acknowledgementAttachment.description} : " />
+                                            <p:fileUpload fileUploadListener="#{contractAdd.handleFileUpload}" mode="advanced"
+                                                          update="messages" auto="true" sizeLimit="5000000" allowTypes="/(\.|\/)(pdf)$/" style="width: 280px;">
+                                                <f:attribute name="fileAttachment" value="acknowledgement" />
+                                            </p:fileUpload>
+
+                                            <p:selectBooleanCheckbox style="width: 20px;min-width: 20px;"/>
+                                            <p:outputLabel value="#{contractAdd.sspAttachment.description} : " />
+                                            <p:fileUpload fileUploadListener="#{contractAdd.handleFileUpload}" mode="advanced"
+                                                          update="messages" auto="true" sizeLimit="5000000" allowTypes="/(\.|\/)(pdf)$/" style="width: 280px;">
+                                                <f:attribute name="fileAttachment" value="ssp" />
+                                            </p:fileUpload>
+
+                                            <p:selectBooleanCheckbox style="width: 20px;min-width: 20px;"/>
+                                            <p:outputLabel value="#{contractAdd.contractLineAttachment.description} : " />
+                                            <p:fileUpload fileUploadListener="#{contractAdd.handleFileUpload}" mode="advanced"
+                                                          update="messages" auto="true" sizeLimit="5000000" allowTypes="/(\.|\/)(pdf)$/" style="width: 280px;">
+                                                <f:attribute name="fileAttachment" value="contractLine" />
+                                            </p:fileUpload>
+                                        </p:panelGrid>
+                                        <p:panelGrid columns="4" >
+                                            <p:selectBooleanCheckbox style="width: 20px;min-width: 20px;"/>
+                                            <p:outputLabel value="Other (specify and attach) : " />
+                                            <p:inputTextarea rows="4" cols="25" value="#{contractAdd.otherAttachment.description}" style="margin-top: 18px;"/>
+                                            <p:fileUpload fileUploadListener="#{contractAdd.handleFileUpload}" mode="advanced"
+                                                          update="messages" auto="true" sizeLimit="5000000" allowTypes="/(\.|\/)(pdf)$/" style="width: 280px;">
+                                                <f:attribute name="fileAttachment" value="other" />
+                                            </p:fileUpload>
+                                        </p:panelGrid>
+                                    </p:panel>
                                 </p:panelGrid>
-                                <hr />
-                                <h3 style="margin-left: 55px;">Contract Header</h3>
-                                <p:panelGrid columns="4" columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank form-group" style="border:0px none; background-color:transparent;margin-left: 50px">
-
-                                    <p:outputLabel  value="Customer Name : "/>
-                                    <p:autoComplete
-                                        id="customername"
-                                        var="customer"
-                                        maxResults="10"
-                                        required="#{false}"
-                                        forceSelection="#{true}"
-                                        value="#{contractAdd.completeCustomer}"
-                                        completeMethod="#{viewSupport.completeCustomer}"
-                                        itemLabel="#{customer.name}"
-                                        itemValue="#{customer}"
-                                        converter="customerConverter"
-                                        placeholder="Search Customer">
-                                    </p:autoComplete>
-
-                                    <p:outputLabel  value="Customer PO# : "/>
-                                    <p:inputText  value="#{contractAdd.contract.customerPurchaseOrderNumber}"/>
-
-                                    <p:outputLabel  value="Legal Customer Name : "/>
-                                    <p:autoComplete
-                                        id="leagalname"
-                                        var="customer"
-                                        maxResults="10"
-                                        required="#{false}"
-                                        forceSelection="#{true}"
-                                        value="#{contractAdd.completeCustomer}"
-                                        completeMethod="#{viewSupport.completeCustomer}"
-                                        itemLabel="#{customer.legalName}"
-                                        itemValue="#{customer}"
-                                        converter="customerConverter"
-                                        placeholder="Search Customer">
-                                    </p:autoComplete>
-
-                                    <p:outputLabel  value="FLS Sales Order# : "/>
-                                    <p:inputText  value="#{contractAdd.contract.flsSalesOrderNumber}"/>
-
-                                    <p:outputLabel  value=""/>
-                                    <p:outputLabel  value=""/>
-
-                                    <p:outputLabel  value="SAP# "/>
-                                    <p:inputText  value="#{contractAdd.contract.flsSAPNumber}"/>
-
-                                    <p:outputLabel  value="Purchase Order Date : "/>
-                                    <p:calendar id="orderDate" value="#{contractAdd.contract.bookingDate}" converter="localDateConverter" style="width: 100%;"  pattern="MM/dd/yyyy" required="true" requiredMessage="Please Select a Date" >
-                                    </p:calendar>
-                                    <p:outputLabel  value=""/>
-                                    <p:outputLabel  value=""/>
-
-                                    <p:outputLabel  value="Date FLS sent acceptance : "/>
-                                    <p:calendar id="flsSentDate" value="#{contractAdd.contract.bookingDate}" converter="localDateConverter" style="width: 100%;"  pattern="MM/dd/yyyy" required="true" requiredMessage="Please Select a Date" >
-                                    </p:calendar>
-                                    <p:outputLabel  value=""/>
-                                    <p:outputLabel  value=""/>
-
-
-                                </p:panelGrid>
-                                <hr />
-                                <p:panelGrid columns="6" columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank form-group" style="border:0px none;margin-top: 40px; background-color:transparent;margin-left: 50px">
-
-                                    <p:outputLabel  value="Contract Currency : "/>
-                                    <p:selectOneMenu id="contractCurrency" value="#{contractAdd.contract.contractCurrency}"
-                                                     effect="fade" style="width:180px" converter="currencyConverter">
-                                        <f:selectItem itemLabel="Select Currency" itemValue="" />
-                                        <f:selectItems value="#{viewSupport.allCurrencies}" var="cur" itemLabel="#{cur.currencyCode}" itemValue="#{cur}" />
-                                        <p:column>
-                                            <h:outputText value="#{cur.currencyCode}" />
-                                        </p:column>
-                                    </p:selectOneMenu>
-                                    <p:outputLabel  value=""/>
-                                    <p:outputLabel  value=""/>
-                                    <p:outputLabel  value=""/>
-                                    <p:outputLabel  value=""/>
-
-                                    <p:outputLabel  value="Stated Contract Price : "/>
-                                    <p:inputNumber style="width: 180px" />
-
-                                    <p:outputLabel  value="Stated Contract Price(USD) : "/>
-                                    <p:inputNumber style="width: 180px" />
-
-                                    <p:outputLabel  value="Stated Contract Price(Local Currency) : "/>
-                                    <p:inputNumber style="width: 180px" />
-
-                                </p:panelGrid>
-                                <hr />
-                                <p:panelGrid columns="3" columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank form-group" style="border:0px none; background-color:transparent;margin-left: 50px">
-
-                                    <p:selectBooleanCheckbox />
-                                    <p:outputLabel value="#{contractAdd.purcahseAttachment.description}" />
-                                    <p:fileUpload fileUploadListener="#{contractAdd.handleFileUpload}" mode="advanced" skinSimple="true"
-                                                  update="messages" auto="true" sizeLimit="5000000" allowTypes="/(\.|\/)(pdf)$/" style="width: 300px;">
-                                        <f:attribute name="fileAttachment" value="purchase" />
-                                    </p:fileUpload>
-
-                                    <p:selectBooleanCheckbox />
-                                    <p:outputLabel value="#{contractAdd.tncAttachment.description}" />
-                                     <p:fileUpload fileUploadListener="#{contractAdd.handleFileUpload}" mode="advanced"
-                                                  update="messages" auto="true" sizeLimit="5000000" allowTypes="/(\.|\/)(pdf)$/" style="width: 300px;">
-                                        <f:attribute name="fileAttachment" value="tnc" />
-                                    </p:fileUpload>
-
-                                    <p:selectBooleanCheckbox />
-                                    <p:outputLabel value="#{contractAdd.acknowledgementAttachment.description}" />
-                                    <p:fileUpload fileUploadListener="#{contractAdd.handleFileUpload}" mode="advanced"
-                                                  update="messages" auto="true" sizeLimit="5000000" allowTypes="/(\.|\/)(pdf)$/" style="width: 300px;">
-                                        <f:attribute name="fileAttachment" value="acknowledgement" />
-                                    </p:fileUpload>
-
-                                    <p:selectBooleanCheckbox />
-                                    <p:outputLabel value="#{contractAdd.sspAttachment.description}" />
-                                    <p:fileUpload fileUploadListener="#{contractAdd.handleFileUpload}" mode="advanced"
-                                                  update="messages" auto="true" sizeLimit="5000000" allowTypes="/(\.|\/)(pdf)$/" style="width: 300px;">
-                                        <f:attribute name="fileAttachment" value="ssp" />
-                                    </p:fileUpload>
-
-                                    <p:selectBooleanCheckbox />
-                                    <p:outputLabel value="#{contractAdd.contractLineAttachment.description}" />
-                                    <p:fileUpload fileUploadListener="#{contractAdd.handleFileUpload}" mode="advanced"
-                                                  update="messages" auto="true" sizeLimit="5000000" allowTypes="/(\.|\/)(pdf)$/" style="width: 300px;">
-                                        <f:attribute name="fileAttachment" value="contractLine" />
-                                    </p:fileUpload>
-                                </p:panelGrid>
-                                <p:panelGrid columns="4" columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank form-group" style="border:0px none; background-color:transparent;margin-left: 50px">
-                                    <p:selectBooleanCheckbox />
-                                    <p:outputLabel value="Other (specify and attach): " />
-                                    <p:inputText  value="#{contractAdd.otherAttachment.description}"/>
-                                    <p:fileUpload fileUploadListener="#{contractAdd.handleFileUpload}" mode="advanced"
-                                                  update="messages" auto="true" sizeLimit="5000000" allowTypes="/(\.|\/)(pdf)$/" style="width: 300px;">
-                                        <f:attribute name="fileAttachment" value="other" />
-                                    </p:fileUpload>
-                                </p:panelGrid>
-                                <hr/>
-                                <h3 style="margin-left: 55px;">Wholly Unperformed</h3>
-                                <p:panelGrid columns="7" columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank form-group" style="border:0px none;margin-top: 40px; background-color:transparent;margin-left: 50px">
-                                    <p:outputLabel  value="Cost Incurred : "/>
-                                    <p:inputNumber style="width: 180px" />
-                                    <p:selectOneMenu id="currency" value="#{contractAdd.contract.contractCurrency}"
-                                                     effect="fade" style="width:180px" converter="currencyConverter">
-                                        <f:selectItem itemLabel="Select Currency" itemValue="" />
-                                        <f:selectItems value="#{viewSupport.allCurrencies}" var="cur" itemLabel="#{cur.currencyCode}" itemValue="#{cur}" />
-                                        <p:column>
-                                            <h:outputText value="#{cur.currencyCode}" />
-                                        </p:column>
-                                    </p:selectOneMenu>
-                                    <p:outputLabel  value="Payments Received : "/>
-                                    <p:inputNumber style="width: 180px" />
-                                    <p:selectOneMenu id="payment" value="#{contractAdd.contract.contractCurrency}"
-                                                     effect="fade" style="width:180px" converter="currencyConverter">
-                                        <f:selectItem itemLabel="Select Currency" itemValue="" />
-                                        <f:selectItems value="#{viewSupport.allCurrencies}" var="cur" itemLabel="#{cur.currencyCode}" itemValue="#{cur}" />
-                                        <p:column>
-                                            <h:outputText value="#{cur.currencyCode}" />
-                                        </p:column>
-                                    </p:selectOneMenu>
-                                </p:panelGrid>
-
                                 <p:toolbar style="margin-top: 50px;">
                                     <f:facet name="right">
-                                        <p:commandButton id="btnAnalysis" value="Submit for Analysis" action="#{contractAdd.saveNewContractVersion(contractAdd.contract)}" ajax="false" icon="ui-icon-disk fa fa-save" style="width: 215px;"/>
-                                        <p:commandButton id="btnSave" value="Save" ajax="false" icon="ui-icon-disk fa fa-save" />
+                                        <p:commandButton id="btnAnalysis" value="Submit for Review" action="#{contractAdd.saveNewContractVersion(contractAdd.contract)}" ajax="false" icon="ui-icon-disk fa fa-save" style="width: 215px;"/>
+                                        <p:commandButton id="btnSave" value="Save" ajax="false" icon="ui-icon-disk fa fa-save" style="width: 150px;"/>
                                     </f:facet>
                                 </p:toolbar>
 

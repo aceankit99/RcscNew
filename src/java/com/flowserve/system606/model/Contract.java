@@ -79,6 +79,8 @@ public class Contract extends BaseEntity<Long> implements MetricStore, EventStor
     private BigDecimal totalTransactionPrice;
     @Column(name = "CONTRACT_CURRENCY")
     private Currency contractCurrency;
+    @Column(name = "EFFECTIVE_FROM")
+    private LocalDate effectiveFrom;
     @OneToOne
     @JoinColumn(name = "CREATED_BY_ID")
     private User createdBy;
@@ -93,6 +95,8 @@ public class Contract extends BaseEntity<Long> implements MetricStore, EventStor
     private LocalDateTime lastUpdateDate;
     @Column(name = "IS_ACTIVE")
     private boolean active;
+    @Column(name = "ARCHIVED_DATE")
+    private LocalDate archivedDate;
     @OneToOne
     @JoinColumn(name = "SALES_DESTINATION_COUNTRY_ID")
     private Country salesDestinationCountry;
@@ -124,17 +128,17 @@ public class Contract extends BaseEntity<Long> implements MetricStore, EventStor
     @MapKeyJoinColumn(name = "PERIOD_ID")
     private Map<FinancialPeriod, WorkflowContext> periodApprovalRequestMap = new HashMap<FinancialPeriod, WorkflowContext>();
 
-   @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, orphanRemoval = true)
-   @JoinTable(name = "CONTRACT_VERSIONS", joinColumns = @JoinColumn(name = "CONTRACT_ID"), inverseJoinColumns = @JoinColumn(name = "VERSION_ID"))
-   private Map<String, ContractVersion> contractVersionMap = new HashMap<String, ContractVersion>();
-    
-   public Contract(){
-   }
-   
-   public Contract(String contractVersion){
-       this.currentVersion = contractVersion;
-   }
-   
+    @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, orphanRemoval = true)
+    @JoinTable(name = "CONTRACT_VERSIONS", joinColumns = @JoinColumn(name = "CONTRACT_ID"), inverseJoinColumns = @JoinColumn(name = "CONTRACT_VERSION_ID"))
+    private Map<String, ContractVersion> contractVersionMap = new HashMap<String, ContractVersion>();
+
+    public Contract() {
+    }
+
+    public Contract(String contractVersion) {
+        this.currentVersion = contractVersion;
+    }
+
     @Override
     public int compareTo(Contract obj) {
         return this.id.compareTo(obj.getId());
@@ -150,26 +154,6 @@ public class Contract extends BaseEntity<Long> implements MetricStore, EventStor
         }
 
         return pobs;
-    }
-    
-    public List<ContractAttachment> getContractAttachments(){
-        return contractVersionMap.get(this.currentVersion).getContractAttachment();
-    }
-    
-    public List<VariableConsideration> getVariableConsiderations(){
-        return contractVersionMap.get(this.currentVersion).getVariableConsideration();
-    }
-    
-    public List<ContractConsideration> getContractConsiderations(){
-        return contractVersionMap.get(this.currentVersion).getContractConsideration();
-    }
-    
-    public List<LineItems> getLineItems(){
-        return contractVersionMap.get(this.currentVersion).getLineItems();
-    }
-    
-    public List<ContractPerformanceObligation> getContractPerformanceObligations(){
-        return contractVersionMap.get(this.currentVersion).getContractPerformanceObligation();
     }
 
     public List<Event> getAllEventsByEventType(EventType eventType) {
@@ -219,7 +203,7 @@ public class Contract extends BaseEntity<Long> implements MetricStore, EventStor
 
         return events;
     }
-    
+
     public Map<String, ContractVersion> getContractVersionMap() {
         return contractVersionMap;
     }
@@ -227,7 +211,11 @@ public class Contract extends BaseEntity<Long> implements MetricStore, EventStor
     public void setContractVersionMap(Map<String, ContractVersion> contractVersionMap) {
         this.contractVersionMap = contractVersionMap;
     }
-    
+
+    public void putContractVersionMap(String version, ContractVersion contractVersion) {
+        contractVersionMap.put(version, contractVersion);
+    }
+
     public WorkflowContext getPeriodApprovalRequest(FinancialPeriod period) {
         return periodApprovalRequestMap.get(period);
     }
@@ -479,8 +467,7 @@ public class Contract extends BaseEntity<Long> implements MetricStore, EventStor
     public void setBookingDate(LocalDate bookingDate) {
         this.bookingDate = bookingDate;
     }
-    
-    
+
     public String getCurrentVersion() {
         return currentVersion;
     }
@@ -503,6 +490,22 @@ public class Contract extends BaseEntity<Long> implements MetricStore, EventStor
 
     public void setFlsSAPNumber(String flsSAPNumber) {
         this.flsSAPNumber = flsSAPNumber;
+    }
+
+    public LocalDate getEffectiveFrom() {
+        return effectiveFrom;
+    }
+
+    public void setEffectiveFrom(LocalDate effectiveFrom) {
+        this.effectiveFrom = effectiveFrom;
+    }
+
+    public LocalDate getArchivedDate() {
+        return archivedDate;
+    }
+
+    public void setArchivedDate(LocalDate archivedDate) {
+        this.archivedDate = archivedDate;
     }
 
 }

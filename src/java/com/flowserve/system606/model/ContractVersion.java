@@ -25,7 +25,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "CONTRACT_VERSION")
-public class ContractVersion implements Comparable<ContractVersion>,Serializable {
+public class ContractVersion implements Comparable<ContractVersion>, Serializable {
 
     private static final long serialVersionUID = -1990764230607265489L;
     private static final Logger LOG = Logger.getLogger(Contract.class.getName());
@@ -38,9 +38,11 @@ public class ContractVersion implements Comparable<ContractVersion>,Serializable
     @OneToOne
     @JoinColumn(name = "USER_ID")
     private User submittedBy;
+    @Column(name = "CONTRACT_ENTRY_DATE")
     private LocalDate contractEntryDate;
     @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, mappedBy = "contractVersion")
     private List<ContractAttachment> contractAttachment = new ArrayList<ContractAttachment>();
+
     @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, mappedBy = "contractVersion")
     private List<ContractConsideration> contractConsideration = new ArrayList<ContractConsideration>();
     @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, mappedBy = "contractVersion")
@@ -49,13 +51,15 @@ public class ContractVersion implements Comparable<ContractVersion>,Serializable
     private List<LineItems> lineItems = new ArrayList<LineItems>();
     @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, mappedBy = "contractVersion")
     private List<ContractPerformanceObligation> contractPerformanceObligation = new ArrayList<ContractPerformanceObligation>();
+
     public ContractVersion() {
     }
-    
+
     @Override
     public int compareTo(ContractVersion obj) {
         return this.id.compareTo(obj.getId());
     }
+
     public Long getId() {
         return id;
     }
@@ -82,10 +86,6 @@ public class ContractVersion implements Comparable<ContractVersion>,Serializable
 
     public List<ContractAttachment> getContractAttachment() {
         return contractAttachment;
-    }
-
-    public void setContractAttachment(List<ContractAttachment> contractAttachment) {
-        this.contractAttachment = contractAttachment;
     }
 
     public List<ContractConsideration> getContractConsideration() {
