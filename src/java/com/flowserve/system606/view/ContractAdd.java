@@ -129,6 +129,7 @@ public class ContractAdd implements Serializable {
             byte[] bytes = IOUtils.toByteArray(event.getFile().getInputstream());
             switch (type) {
                 case "purchase":
+                    //calculationVersionService.saveFileToS3(event);
                     purcahseAttachment.setAttachment(bytes);
                     purcahseAttachment.setContentType(event.getFile().getContentType());
                     purcahseAttachment.setContractVersion(contractVersion);

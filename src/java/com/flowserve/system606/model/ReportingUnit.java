@@ -84,6 +84,9 @@ public class ReportingUnit extends TransientMeasurable<Long> implements Measurab
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "reportingUnit")
     @OrderBy("name ASC")
     private List<Contract> contracts = new ArrayList<Contract>();
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "reportingUnit")
+    @OrderBy("name ASC")
+    private List<Customer> customers = new ArrayList<Customer>();
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "parentReportingUnit")
     private List<ReportingUnit> childReportingUnits = new ArrayList<ReportingUnit>();
     @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, orphanRemoval = true)
@@ -552,5 +555,13 @@ public class ReportingUnit extends TransientMeasurable<Long> implements Measurab
 
     public void setWorkflowHistory(List<WorkflowAction> workflowHistory) {
         this.workflowHistory = workflowHistory;
+    }
+
+    public List<Customer> getCustomers() {
+        return customers;
+    }
+
+    public void setCustomers(List<Customer> customers) {
+        this.customers = customers;
     }
 }

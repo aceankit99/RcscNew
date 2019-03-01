@@ -118,6 +118,10 @@ public class AdminService {
         return em.merge(be);
     }
 
+    public Customer update(Customer be) throws Exception {
+        return em.merge(be);
+    }
+
     public void persist(Object object) {
         em.persist(object);
     }
@@ -473,6 +477,12 @@ public class AdminService {
 
     public List<Customer> findCustomerByStartsWithName(String searchname) {
         TypedQuery<Customer> query = em.createQuery("SELECT u FROM Customer u WHERE UPPER(u.name) LIKE :NAME OR UPPER(u.legalName) LIKE :NAME ORDER BY UPPER(u.name)", Customer.class);
+        query.setParameter("NAME", "%" + searchname.toUpperCase() + "%");
+        return (List<Customer>) query.getResultList();
+    }
+
+    public List<Customer> searchParentCustomer(String searchname) {
+        TypedQuery<Customer> query = em.createQuery("SELECT u FROM Customer u WHERE (UPPER(u.name) LIKE :NAME OR UPPER(u.legalName) LIKE :NAME) AND u.master = TRUE ORDER BY UPPER(u.name)", Customer.class);
         query.setParameter("NAME", "%" + searchname.toUpperCase() + "%");
         return (List<Customer>) query.getResultList();
     }
@@ -1052,6 +1062,53 @@ public class AdminService {
         }
     }
 
+    public void initCustomers() throws Exception {
+        if (findCustomerByName("A. Blair Powell") == null) {
+            Logger.getLogger(AdminService.class.getName()).log(Level.INFO, "Initializing Customers");
+            BufferedReader reader = new BufferedReader(new InputStreamReader(AppInitializeService.class.getResourceAsStream("/resources/app_data_init_files/customers.txt"), "UTF-8"));
+            String line = null;
+            while ((line = reader.readLine()) != null) {
+                if (line.trim().length() == 0) {
+                    continue;
+                }
+                String[] values = line.split("\\|");
+                Customer masterCustomer = new Customer();
+                Customer customer = new Customer();
+                customer.setName(values[1]);
+                customer.setLegalName(values[1]);
+                customer.setLegacyId(Long.parseLong(values[0]));
+                persist(customer);
+
+                if (findMasterCustomerByName(values[2]) == null) {
+
+                    masterCustomer.setName(values[2]);
+                    masterCustomer.setLegalName(values[2]);
+                    masterCustomer.setMaster(true);
+                    persist(masterCustomer);
+                } else {
+                    masterCustomer = findMasterCustomerByName(values[2]);
+                }
+
+                String[] str;
+                str = values[4].split("-");
+                String code = str[0].trim().substring(2);
+                ReportingUnit ru = findReportingUnitByCode(code);
+                if (ru != null) {
+                    customer.setReportingUnit(ru);
+                    ru.getCustomers().add(customer);
+                    update(ru);
+                }
+                customer.setParentCustomer(masterCustomer);
+                update(customer);
+                masterCustomer.getChildCustomers().add(customer);
+                update(masterCustomer);
+
+            }
+            reader.close();
+            Logger.getLogger(AdminService.class.getName()).log(Level.INFO, "Finished initializing Customer.");
+        }
+    }
+
     public List<ExchangeRate> searchExchangeRates(String searchString) throws Exception {  // Need an application exception type defined.
         if (searchString == null || searchString.trim().length() < 2) {
             throw new Exception("Please supply a search string with at least 2 characters.");
@@ -1129,6 +1186,27 @@ public class AdminService {
 
     }
 
+    public Customer findCustomerByName(String name) throws Exception {
+        Query query = em.createQuery("SELECT c FROM Customer c WHERE UPPER(c.name) = :NAME", Customer.class);
+        query.setParameter("NAME", name.toUpperCase());
+
+        List<Customer> list = query.getResultList();
+        if (list.size() > 0) {
+            return list.get(0);
+        }
+        return null;
+    }
+
+    public Customer findMasterCustomerByName(String name) throws Exception {
+        Query query = em.createQuery("SELECT c FROM Customer c WHERE UPPER(c.name) = :NAME AND c.master = true", Customer.class);
+        query.setParameter("NAME", name.toUpperCase());
+        List<Customer> list = query.getResultList();
+        if (list.size() > 0) {
+            return list.get(0);
+        }
+        return null;
+    }
+
     public Contract findContractbyID(Long id) throws Exception {
 
         Query query = em.createQuery("SELECT c FROM Contract c WHERE c.id = :ID", Contract.class);
@@ -1136,27 +1214,6 @@ public class AdminService {
         List<Contract> contract = query.getResultList();
         if (contract.size() > 0) {
             return contract.get(0);
-        }
-        return null;
-    }
-
-    //the version_id is null currently so its just for a testing perpose of the pdf viewer
-    public List<String> allAttachment() throws Exception {
-        Query query = em.createQuery("SELECT c.description  FROM ContractAttachment c ");
-
-        return (List<String>) query.getResultList();
-    }
-
-    //the version_id is null currently so its just for a testing perpose of the pdf viewer
-    public byte[] getAttachmentByDesc(String desc) {
-
-        Query query = em.createQuery("SELECT c.attachment FROM ContractAttachment c where c.description=:desc");
-        query.setParameter("desc", desc);
-
-        List<byte[]> am = query.getResultList();
-
-        if (am.size() > 0) {
-            return am.get(0);
         }
         return null;
     }

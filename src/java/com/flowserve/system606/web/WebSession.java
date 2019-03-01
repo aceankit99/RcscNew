@@ -4,6 +4,7 @@ import com.flowserve.system606.model.BusinessUnit;
 import com.flowserve.system606.model.Company;
 import com.flowserve.system606.model.Contract;
 import com.flowserve.system606.model.Country;
+import com.flowserve.system606.model.Customer;
 import com.flowserve.system606.model.DataImportFile;
 import com.flowserve.system606.model.FinancialPeriod;
 import com.flowserve.system606.model.Holiday;
@@ -38,6 +39,7 @@ public class WebSession implements Serializable {
     private AppInitializeService appInitializeService;
     private BusinessUnit editBusinessUnit;
     private ReportingUnit editReportingUnit;
+    private Customer editCustomer;
     private User editUser;
     private Country country;
     private Holiday editHolidays;
@@ -226,6 +228,14 @@ public class WebSession implements Serializable {
 
     public void setRuCodeList(List<Long> RuCodeList) {
         this.RuCodeList = RuCodeList;
+    }
+
+    public Customer getEditCustomer() {
+        return editCustomer;
+    }
+
+    public void setEditCustomer(Customer editCustomer) {
+        this.editCustomer = editCustomer;
     }
 
 }

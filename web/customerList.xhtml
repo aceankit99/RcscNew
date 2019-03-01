@@ -1,0 +1,74 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+
+        </style>
+    </ui:define>
+
+    <ui:define name="title">Customer List</ui:define>
+
+    <ui:define name="viewname">Customer List</ui:define>
+
+    <ui:define name="content" >
+        <div style="min-height: calc(100vh - 235px);">
+            <div class="ui-g">
+                <div class="ui-g-12">
+                    <div class="card card-w-title">
+                        <p:messages showDetail="true" />
+                        <h1>Customer List</h1>
+                        <h:form id="reportForm">
+                            <p:focus for="searchString" />
+
+                            <p:inputText id="searchString" value="#{customerList.searchString}"/>
+
+                            <p:commandButton id="search" value="Search" ajax="true" icon="ui-icon-arrowrefresh-1-w" actionListener="#{customerList.search}" update="reportForm:reportTable" style="margin-left:10px" />
+                            <p:commandButton style="float: right;" icon="ui-icon-contact fa fa-plus" value="New Customer" action="#{adminController.addNewCustomer(customer)}"></p:commandButton>
+                            <p:ajaxStatus style="width:20px;height:20px;">
+                                <f:facet name="start">
+                                    <h:graphicImage value="images/loader.gif" style="width: 20px;"/>
+                                </f:facet>
+                                <f:facet name="complete">
+                                    <h:outputText value="" />
+                                </f:facet>
+                            </p:ajaxStatus>
+
+                            <p:defaultCommand target="search" />
+
+                            <p:dataTable id="reportTable" var="customer" value="#{customerList.customers}"  paginator="true" rows="30">
+
+                                <p:column headerText="ID" sortBy="#{customer.id}">
+                                    <h:commandLink value="#{customer.name}" action="#{adminController.editCustomer(customer)}"></h:commandLink>
+                                </p:column>
+
+                                <p:column headerText="Name" sortBy="#{customer.name}">
+                                    <h:outputText value="#{customer.name}" />
+                                </p:column>
+
+                                <p:column headerText="RU" >
+                                    <h:outputText value="#{customer.reportingUnit.name}" />
+                                </p:column>
+
+                                <p:column headerText="Is Master" style="text-align: center;">
+                                    <p:outputLabel for="@next" />
+                                    <p:selectBooleanCheckbox value="#{customer.master}" disabled="true" />
+                                </p:column>
+                                <p:column  headerText="Edit" >
+                                    <h:commandLink value="Edit Customer" action="#{adminController.editCustomer(customer)}"></h:commandLink>
+                                </p:column>
+
+                            </p:dataTable>
+
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ui:define>
+
+</ui:composition>

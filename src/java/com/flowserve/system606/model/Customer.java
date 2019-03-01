@@ -6,10 +6,19 @@
 package com.flowserve.system606.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -20,6 +29,8 @@ public class Customer implements Comparable<Customer>, Serializable {
     private static final Logger LOG = Logger.getLogger(Customer.class.getName());
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CUSTOMER_SEQ")
+    @SequenceGenerator(name = "CUSTOMER_SEQ", sequenceName = "CUSTOMER_SEQ", allocationSize = 50)
     @Column(name = "CUSTOMER_ID")
     private Long id;
 
@@ -32,8 +43,22 @@ public class Customer implements Comparable<Customer>, Serializable {
     @Column(name = "CUSTOMER_NUMBER")
     private String number;
 
-    //@Column(name = "FINANCIAL_SYSTEM_ID")
-    //private FinancialSystem financialSystem;
+    @ManyToOne
+    @JoinColumn(name = "REPORTING_UNIT_ID")
+    private ReportingUnit reportingUnit;
+    @ManyToOne
+    @JoinColumn(name = "PARENT_ID")
+    private Customer parentCustomer;
+
+    @Column(name = "LEGACY_ID")
+    private Long legacyId;
+
+    @Column(name = "MASTER")
+    private boolean master;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "parentCustomer")
+    private List<Customer> childCustomers = new ArrayList<Customer>();
+
     public Customer() {
     }
 
@@ -87,5 +112,45 @@ public class Customer implements Comparable<Customer>, Serializable {
 
     public void setLegalName(String legalName) {
         this.legalName = legalName;
+    }
+
+    public ReportingUnit getReportingUnit() {
+        return reportingUnit;
+    }
+
+    public void setReportingUnit(ReportingUnit reportingUnit) {
+        this.reportingUnit = reportingUnit;
+    }
+
+    public Customer getParentCustomer() {
+        return parentCustomer;
+    }
+
+    public void setParentCustomer(Customer parentCustomer) {
+        this.parentCustomer = parentCustomer;
+    }
+
+    public List<Customer> getChildCustomers() {
+        return childCustomers;
+    }
+
+    public void setChildCustomers(List<Customer> childCustomers) {
+        this.childCustomers = childCustomers;
+    }
+
+    public Long getLegacyId() {
+        return legacyId;
+    }
+
+    public void setLegacyId(Long legacyId) {
+        this.legacyId = legacyId;
+    }
+
+    public boolean isMaster() {
+        return master;
+    }
+
+    public void setMaster(boolean master) {
+        this.master = master;
     }
 }

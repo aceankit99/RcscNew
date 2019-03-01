@@ -1,0 +1,98 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+
+        </style>
+    </ui:define>
+
+    <ui:define name="title">#{customerEdit.editCustomer.getId() == null ? "New" : "Edit" } Customer</ui:define>
+
+    <ui:define name="viewname">#{customerEdit.editCustomer.getId() == null ? "New" : "Edit" } Customer</ui:define>
+
+    <ui:define name="content">
+        <div style="min-height: calc(100vh - 235px);">
+            <h:form id="mainForm">
+                <div class="ui-fluid">
+                    <div class="ui-g">
+                        <div class="ui-g-12 ui-md-12 ui-lg-6">
+                            <!--
+                            Setting to 12, 12, 6.  This will cause input area to switch to full width (12 cols) when screen size is small.  Large screen half-size (6 cols)
+                            ui-lg => number of columns for a large screen (screen width > 1024px)
+                            ui-md => number of columns for a medium screen (screen width < 1024px )
+                            ui-g = > number of columns by default (or screen width < 425px if lg and md columns are define)-->
+                            <div class="card card-w-title">
+                                <h1>#{customerEdit.editCustomer.getId() == null ? "New" : "Edit" } Customer</h1>
+                                <!--  Only two cols, so only two col columnClasses.  I had to use 6 and 6 to get this layout properly-->
+                                <p:panelGrid columns="2" columnClasses="ui-grid-col-6,ui-grid-col-6" layout="grid" styleClass="ui-panelgrid-blank form-group" style="border:0px none; background-color:transparent;">
+
+                                    <p:outputLabel for="id" value="ID" rendered="#{customerEdit.editCustomer.getId() == null ? 'false' : 'true' }"/>
+                                    <p:outputLabel id="id" value="#{customerEdit.editCustomer.id}" rendered="#{customerEdit.editCustomer.getId() == null ? 'false' : 'true' }"/>
+
+
+                                    <p:outputLabel for="name" value="Name"/>
+                                    <p:inputText id="name" value="#{customerEdit.editCustomer.name}"/>
+
+
+                                    <p:outputLabel for="parentCustomer" value="Parent Customer"/>
+                                    <p:autoComplete
+                                        id="parentCustomer"
+                                        var="cus"
+                                        maxResults="10"
+                                        required="#{false}"
+                                        forceSelection="#{true}"
+                                        value="#{customerEdit.editCustomer.parentCustomer}"
+                                        completeMethod="#{viewSupport.completeParentCustomer}"
+                                        itemLabel="#{cus.name}"
+                                        itemValue="#{cus}"
+                                        converter="customerConverter"
+                                        >
+                                        <h:outputText value="Begin typing customer name"/>
+                                    </p:autoComplete>
+
+                                    <p:outputLabel for="ru" value="Reporting Unit"/>
+                                    <p:autoComplete
+                                        id="ru"
+                                        var="ru"
+                                        maxResults="10"
+                                        required="#{false}"
+                                        forceSelection="#{true}"
+                                        value="#{customerEdit.editCustomer.reportingUnit}"
+                                        completeMethod="#{viewSupport.getCompleteReportingUnit}"
+                                        itemLabel="#{ru.name}"
+                                        itemValue="#{ru}"
+                                        converter="reportingUnitConverter"
+                                        placeholder="Begin typing.."
+                                        disabled="#{customerEdit.ruDisable}">
+                                    </p:autoComplete>
+
+                                    <p:outputLabel for="active" value="Master"/>
+                                    <p:selectBooleanCheckbox id="active" value="#{customerEdit.editCustomer.master}" >
+                                        <p:ajax update="ru" listener="#{customerEdit.disableIfMaster()}" />
+                                    </p:selectBooleanCheckbox>
+
+                                    <p:outputLabel for="lagecyID" value="Legacy ID" rendered="#{customerEdit.editCustomer.getId() == null ? 'false' : 'true' }"/>
+                                    <p:outputLabel id="lagecyID" value="#{customerEdit.editCustomer.legacyId}" rendered="#{customerEdit.editCustomer.getId() == null ? 'false' : 'true' }"/>
+
+                                    <f:facet name="footer">
+                                        <p:toolbar>
+                                            <f:facet name="right">
+                                                <p:commandButton id="btnReport" value="#{customerEdit.editCustomer.getId() == null ? 'Add' : 'Update' }" ajax="false" icon="ui-icon-disk fa fa-save" action="#{customerEdit.addUpdateCondition()}" style="max-width:150px;" process="@this"/>
+                                            </f:facet>
+                                        </p:toolbar>
+                                    </f:facet>
+                                </p:panelGrid>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+        </div>
+    </ui:define>
+
+</ui:composition>

@@ -83,6 +83,7 @@ public class AppInitializeService {
             adminService.initReportingUnits();
             adminService.initCoEtoParentRU();
             adminService.initCompaniesInRUs();
+            adminService.initCustomers();
             metricGroupService.initMetricGroups();
             calculationService.initBusinessRules();
             //calculationVersionService.saveTest();

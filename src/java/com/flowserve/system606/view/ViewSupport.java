@@ -20,7 +20,6 @@ import com.flowserve.system606.model.Measurable;
 import com.flowserve.system606.model.MetricStore;
 import com.flowserve.system606.model.PerformanceObligation;
 import com.flowserve.system606.model.ReportingUnit;
-import com.flowserve.system606.model.StringAttribute;
 import com.flowserve.system606.model.StringMetric;
 import com.flowserve.system606.model.User;
 import com.flowserve.system606.model.WorkflowAction;
@@ -230,6 +229,19 @@ public class ViewSupport implements Serializable {
 
         try {
             sites = adminService.searchSites(searchString);
+        } catch (Exception e) {
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", " site location error  " + e.getMessage());
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+            logger.log(Level.SEVERE, "Error siteLocations.", e);
+        }
+        return sites;
+    }
+
+    public List<Customer> completeParentCustomer(String searchString) {
+        List<Customer> sites = null;
+
+        try {
+            sites = adminService.searchParentCustomer(searchString);
         } catch (Exception e) {
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", " site location error  " + e.getMessage());
             FacesContext.getCurrentInstance().addMessage(null, msg);

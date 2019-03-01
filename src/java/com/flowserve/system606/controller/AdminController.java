@@ -8,6 +8,7 @@ package com.flowserve.system606.controller;
 import com.flowserve.system606.model.BusinessUnit;
 import com.flowserve.system606.model.Company;
 import com.flowserve.system606.model.Contract;
+import com.flowserve.system606.model.Customer;
 import com.flowserve.system606.model.DataImportFile;
 import com.flowserve.system606.model.FinancialPeriod;
 import com.flowserve.system606.model.Holiday;
@@ -230,6 +231,53 @@ public class AdminController implements Serializable {
         context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "FinancialPeriod saved", ""));
 
         return "financialPeriodList";
+    }
+
+    public String editCustomer(Customer customer) throws Exception {
+
+        webSession.setEditCustomer(customer);
+        return "customerEdit";
+    }
+
+    public String addNewCustomer(ReportingUnit u) throws Exception {
+
+        webSession.setEditCustomer(new Customer());
+        return "customerEdit";
+    }
+
+    public String updateCustomer(Customer u) throws Exception {
+
+        FacesContext context = FacesContext.getCurrentInstance();
+
+        try {
+            u.setLegalName(u.getName());
+            adminService.update(u);
+        } catch (Exception e) {
+            logger.log(Level.SEVERE, e.getMessage(), e);
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Error saving", e.getMessage()));
+            return null;
+        }
+
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Customer saved", ""));
+
+        return "customerList";
+    }
+
+    public String addCustomer(Customer c) throws Exception {
+        FacesContext context = FacesContext.getCurrentInstance();
+
+        try {
+            c.setLegalName(c.getName());
+            adminService.persist(c);
+        } catch (Exception e) {
+            logger.log(Level.SEVERE, e.getMessage(), e);
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Error saving", e.getMessage()));
+            return null;
+        }
+
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Customer saved", ""));
+
+        return "customerList";
     }
 
     public String addHoliday(Holiday h) {

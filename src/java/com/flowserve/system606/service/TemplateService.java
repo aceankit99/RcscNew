@@ -15,8 +15,11 @@ import com.flowserve.system606.model.PerformanceObligation;
 import com.flowserve.system606.model.ReportingUnit;
 import com.flowserve.system606.view.ViewSupport;
 import com.flowserve.system606.web.WebSession;
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.io.OutputStreamWriter;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -329,6 +332,65 @@ public class TemplateService {
         } finally {
             fis.close();
         }
+    }
+
+    public void processCustomerTemplateUpload(InputStream fis, String filename) throws Exception {  // Need an application exception type defined.
+
+        XSSFWorkbook workbook = new XSSFWorkbook(fis);
+        XSSFSheet worksheet = workbook.getSheetAt(1);
+
+        if (worksheet == null) {
+            throw new IllegalStateException("Invalid xlsx file.  Report detail to user");
+        }
+        int id;
+        String name = "";
+        String GlobleCus = "";
+        String platform = "";
+        String ru = "";
+        String sentDate = "";
+        String priorDay = "";
+        String CustomerPO = "";
+        String orderNum = "";
+        String cCurrency = "";
+        Double price;
+        File fout = new File("/Users/constacloud/NetBeansProjects/customer.txt");
+        FileOutputStream fos = new FileOutputStream(fout);
+
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
+        for (Row row : worksheet) {
+            if (row.getRowNum() < 2) {
+                continue;
+            }
+            Cell cell = row.getCell(CellReference.convertColStringToIndex("A"));
+            id = (int) cell.getNumericCellValue();
+            cell = row.getCell(CellReference.convertColStringToIndex("B"));
+            name = cell.getStringCellValue();
+            cell = row.getCell(CellReference.convertColStringToIndex("C"));
+            GlobleCus = cell.getStringCellValue();
+            cell = row.getCell(CellReference.convertColStringToIndex("D"));
+            platform = cell.getStringCellValue();
+            cell = row.getCell(CellReference.convertColStringToIndex("E"));
+            ru = cell.getStringCellValue();
+            cell = row.getCell(CellReference.convertColStringToIndex("F"));
+            sentDate = cell.getDateCellValue().toString();
+            cell = row.getCell(CellReference.convertColStringToIndex("G"));
+            priorDay = cell.getDateCellValue().toString();
+
+            cell = row.getCell(CellReference.convertColStringToIndex("H"));
+            CustomerPO = cell.getStringCellValue();
+            cell = row.getCell(CellReference.convertColStringToIndex("I"));
+            orderNum = cell.getStringCellValue();
+            cell = row.getCell(CellReference.convertColStringToIndex("J"));
+            cCurrency = cell.getStringCellValue();
+            cell = row.getCell(CellReference.convertColStringToIndex("K"));
+            price = cell.getNumericCellValue();
+
+            bw.write(id + "|" + name + "|" + GlobleCus + "|" + platform + "|" + ru + "|" + sentDate + "|" + priorDay + "|" + CustomerPO + "|" + orderNum + "|" + cCurrency + "|" + price);
+            bw.newLine();
+            Logger.getLogger(TemplateService.class.getName()).log(Level.INFO, name + "|" + GlobleCus + "|" + platform + "|" + ru + "|" + sentDate + "|" + priorDay + "|" + CustomerPO + "|" + orderNum + "|" + cCurrency + "|" + price);
+        }
+        bw.close();
+        fis.close();
     }
 
     private boolean billingEventDoesNotExistInContract(Contract contract, String invoiceNumber) {
